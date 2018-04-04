@@ -1,0 +1,22 @@
+uuid: 3ccc37c3-fa58-4970-86d5-35570330844e
+langcode: en
+status: true
+dependencies:
+  module:
+    - search
+  theme:
+    - byu_amp_d8
+_core:
+  default_config_hash: mtRNNsmn2cgwMWDd8m-rGFCIW3fzGLdqgelryM2rDqI
+id: byu_amp_d8_search
+theme: byu_amp_d8
+region: search
+weight: -1
+provider: null
+plugin: search_form_block
+settings:
+  id: search_form_block
+  label: Search
+  provider: search
+  label_display: visible
+visibility: {  }

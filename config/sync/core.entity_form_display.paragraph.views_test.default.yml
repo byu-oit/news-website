@@ -1,0 +1,67 @@
+uuid: 7cfc48c9-9c16-4502-bf3d-86b33dd373da
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.views_test.field_view_1
+    - field.field.paragraph.views_test.field_view_2
+    - field.field.paragraph.views_test.field_view_3
+    - field.field.paragraph.views_test.field_view_4
+    - field.field.paragraph.views_test.field_views_reference
+    - paragraphs.paragraphs_type.views_test
+  module:
+    - viewsreference
+id: paragraph.views_test.default
+targetEntityType: paragraph
+bundle: views_test
+mode: default
+content:
+  field_view_1:
+    weight: 0
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
+  field_view_2:
+    weight: 1
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
+  field_view_3:
+    weight: 2
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
+  field_view_4:
+    weight: 3
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
+  field_views_reference:
+    weight: 4
+    settings:
+      match_operator: CONTAINS
+      size: '60'
+      placeholder: ''
+    third_party_settings: {  }
+    type: viewsreference_autocomplete
+    region: content
+hidden:
+  created: true
+  status: true
+  uid: true

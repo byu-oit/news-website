@@ -1,0 +1,29 @@
+uuid: 7470a3eb-ef75-41d9-89dc-e9434c436387
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:b2403950-f78d-45bf-b182-e9cf2ad6537c'
+  module:
+    - block_class
+    - block_content
+  theme:
+    - amptheme
+third_party_settings:
+  block_class:
+    classes: byu-footer
+id: amptheme_relatedlinks
+theme: amptheme
+region: header
+weight: 0
+provider: null
+plugin: 'block_content:b2403950-f78d-45bf-b182-e9cf2ad6537c'
+settings:
+  id: 'block_content:b2403950-f78d-45bf-b182-e9cf2ad6537c'
+  label: 'Related Links'
+  provider: block_content
+  label_display: visible
+  status: true
+  info: ''
+  view_mode: full
+visibility: {  }

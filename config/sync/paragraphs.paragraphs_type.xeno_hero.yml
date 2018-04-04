@@ -1,0 +1,11 @@
+uuid: 09e503ff-0905-4d3c-8033-ec474fd87491
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: Ltau9fyjZ35Z8y6r6ogSQb3GPpJclPsawX2URzE-CMc
+id: xeno_hero
+label: 'DEPRECATED - Hero'
+icon_uuid: null
+description: 'DO NOT USE. Hero type included with the Bootstrap Paragraphs module.'
+behavior_plugins: {  }

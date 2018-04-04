@@ -1,0 +1,23 @@
+uuid: 0a8a4a8e-64c4-4c35-92ed-632757d88225
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_single_link
+    - node.type.hero_video
+  module:
+    - link
+id: node.hero_video.field_single_link
+field_name: field_single_link
+entity_type: node
+bundle: hero_video
+label: 'Main Link'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  link_type: 17
+  title: 0
+field_type: link

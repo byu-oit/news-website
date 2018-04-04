@@ -1,0 +1,9 @@
+uuid: 361be386-6b98-4d8e-b6a3-2256207ba4f0
+langcode: en
+status: true
+dependencies: {  }
+id: hero_image
+label: 'DEPRECATED - Hero Image'
+icon_uuid: null
+description: 'DO NOT USE. Insert full-width image.'
+behavior_plugins: {  }

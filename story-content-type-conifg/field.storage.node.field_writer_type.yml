@@ -1,0 +1,27 @@
+uuid: 8967439b-38b1-4779-ac00-67fe4d037bd4
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - options
+id: node.field_writer_type
+field_name: field_writer_type
+entity_type: node
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: 'Regular Internal Writer'
+      label: 'Regular Internal Writer'
+    -
+      value: 'Other Writer'
+      label: 'Other Writer'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

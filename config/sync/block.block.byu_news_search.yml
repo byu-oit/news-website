@@ -1,0 +1,22 @@
+uuid: 2170d132-d607-46b1-814d-fce6e80d6f29
+langcode: en
+status: true
+dependencies:
+  module:
+    - search
+  theme:
+    - byu_news
+_core:
+  default_config_hash: mtRNNsmn2cgwMWDd8m-rGFCIW3fzGLdqgelryM2rDqI
+id: byu_news_search
+theme: byu_news
+region: search
+weight: -1
+provider: null
+plugin: search_form_block
+settings:
+  id: search_form_block
+  label: Search
+  provider: search
+  label_display: visible
+visibility: {  }

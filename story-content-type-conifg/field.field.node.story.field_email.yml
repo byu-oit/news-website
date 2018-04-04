@@ -1,0 +1,19 @@
+uuid: f4aad329-11ce-4419-aebf-7cad68771bfa
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_email
+    - node.type.story
+id: node.story.field_email
+field_name: field_email
+entity_type: node
+bundle: story
+label: Email
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: email

@@ -1,0 +1,9 @@
+uuid: fc18ea2e-f87f-471b-af58-5d32760df347
+langcode: en
+status: true
+dependencies: {  }
+id: hero_overlay
+label: 'DEPRECATED - Hero Overlay'
+icon_uuid: null
+description: 'DO NOT USE. Text to be placed on top of the hero image.'
+behavior_plugins: {  }

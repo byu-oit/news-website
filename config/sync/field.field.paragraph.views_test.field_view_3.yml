@@ -1,0 +1,23 @@
+uuid: 6607e292-817f-416f-a759-ab9c14c6df09
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_view_3
+    - paragraphs.paragraphs_type.views_test
+id: paragraph.views_test.field_view_3
+field_name: field_view_3
+entity_type: paragraph
+bundle: views_test
+label: 'View 3'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:view'
+  handler_settings:
+    target_bundles: null
+    auto_create: false
+field_type: entity_reference

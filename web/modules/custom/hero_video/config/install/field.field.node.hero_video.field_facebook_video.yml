@@ -1,0 +1,25 @@
+uuid: 4f6ffa31-1fa9-46bb-b1ba-94aa2b86d971
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_facebook_video
+    - node.type.hero_video
+  module:
+    - link
+_core:
+  default_config_hash: NUf9Hao0fer--3jI9-IsKcUGqJNxTlfFQ4jHHnR3f1M
+id: node.hero_video.field_facebook_video
+field_name: field_facebook_video
+entity_type: node
+bundle: hero_video
+label: 'Facebook video'
+description: "Facebook video link, e.g.\r\nhttps://www.facebook.com/BYU/videos/10153595626722888/"
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  link_type: 17
+  title: 0
+field_type: link

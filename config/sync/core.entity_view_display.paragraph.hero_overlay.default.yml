@@ -1,0 +1,35 @@
+uuid: 5bb931b9-978c-411a-8703-79a30d18ed13
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.hero_overlay.field_headline
+    - field.field.paragraph.hero_overlay.field_subheading
+    - paragraphs.paragraphs_type.hero_overlay
+  module:
+    - field_formatter_class
+id: paragraph.hero_overlay.default
+targetEntityType: paragraph
+bundle: hero_overlay
+mode: default
+content:
+  field_headline:
+    weight: 21
+    label: visually_hidden
+    settings:
+      link_to_entity: false
+    third_party_settings:
+      field_formatter_class:
+        class: hero-headline
+    type: string
+    region: content
+  field_subheading:
+    weight: 22
+    label: visually_hidden
+    settings: {  }
+    third_party_settings:
+      field_formatter_class:
+        class: hero-subhead
+    type: basic_string
+    region: content
+hidden: {  }

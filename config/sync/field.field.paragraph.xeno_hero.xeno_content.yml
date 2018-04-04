@@ -1,0 +1,30 @@
+uuid: 831d4b24-fae2-4f30-916d-3a2e5e018e7a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.xeno_content
+    - paragraphs.paragraphs_type.xeno_hero
+  module:
+    - entity_reference_revisions
+_core:
+  default_config_hash: kD36ZcHrMCJyxZ6iSaebokN0LDc9-mZSjollV839SyI
+id: paragraph.xeno_hero.xeno_content
+field_name: xeno_content
+entity_type: paragraph
+bundle: xeno_hero
+label: Content
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles: null
+    target_bundles_drag_drop:
+      xeno_hero:
+        weight: 2
+        enabled: false
+field_type: entity_reference_revisions

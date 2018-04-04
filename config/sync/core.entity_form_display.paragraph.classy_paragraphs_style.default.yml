@@ -1,0 +1,15 @@
+uuid: 39c54731-5de0-4fda-a522-e3e29a05aa9e
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.classy_paragraphs_style
+id: paragraph.classy_paragraphs_style.default
+targetEntityType: paragraph
+bundle: classy_paragraphs_style
+mode: default
+content: {  }
+hidden:
+  created: true
+  status: true
+  uid: true

@@ -1,0 +1,6 @@
+[submodule "web/themes/custom/byu_news"]
+	path = web/themes/custom/byu_news
+	url = git@github.com:byuweb/byu_news_theme_d8
+[submodule "web/themes/custom/byu_amp_d8"]
+	path = web/themes/custom/byu_amp_d8
+	url = git@github.com:byuweb/byu_news_amp

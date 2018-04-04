@@ -1,0 +1,21 @@
+uuid: 92eb5798-a9e3-42ff-ab9b-4f8f395c7840
+langcode: en
+status: true
+dependencies:
+  module:
+    - user
+    - views
+    - viewsreference
+id: user.field_stories
+field_name: field_stories
+entity_type: user
+type: viewsreference
+settings:
+  target_type: view
+module: viewsreference
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

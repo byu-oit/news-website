@@ -1,0 +1,31 @@
+uuid: 6d988c81-c0f7-4d28-9ecf-eb657dfa80e4
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_class
+    - ctools
+  theme:
+    - amptheme
+third_party_settings:
+  block_class:
+    classes: col-md-8
+id: amptheme_pagetitle
+theme: amptheme
+region: content
+weight: 0
+provider: null
+plugin: page_title_block
+settings:
+  id: page_title_block
+  label: 'Page title'
+  provider: core
+  label_display: '0'
+visibility:
+  'entity_bundle:node':
+    id: 'entity_bundle:node'
+    bundles:
+      story: story
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'

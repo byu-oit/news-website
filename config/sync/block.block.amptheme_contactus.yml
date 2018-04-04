@@ -1,0 +1,29 @@
+uuid: 92f825fc-c54c-4da9-852e-8eca806ac02f
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:4b3e89a6-5445-467d-98aa-4bb9888bb9b0'
+  module:
+    - block_class
+    - block_content
+  theme:
+    - amptheme
+third_party_settings:
+  block_class:
+    classes: byu-footer
+id: amptheme_contactus
+theme: amptheme
+region: header
+weight: 0
+provider: null
+plugin: 'block_content:4b3e89a6-5445-467d-98aa-4bb9888bb9b0'
+settings:
+  id: 'block_content:4b3e89a6-5445-467d-98aa-4bb9888bb9b0'
+  label: 'Contact Us'
+  provider: block_content
+  label_display: visible
+  status: true
+  info: ''
+  view_mode: full
+visibility: {  }

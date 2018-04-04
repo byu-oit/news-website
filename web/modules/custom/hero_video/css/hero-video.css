@@ -1,0 +1,152 @@
+.hero-div {
+    position: relative;
+}
+.hero-video-container {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+    max-width: 100%;
+}
+.hero-video-container.hero-video-and-image {
+    display: none;
+}
+.hero-video-container iframe,
+.hero-video-container object,
+.hero-video-container embed {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+.hero-image-container img {
+    max-width:100% !important;
+    height:auto;
+    display:block;
+}
+.hero-text-container {
+    position: absolute;
+    bottom: 3em;
+    width: 70%;
+    left: 15%;
+    background-color: white;
+    padding: 20px 60px;
+    text-align: center
+}
+.hero-text-container .hero-more-button {
+    display: inline-block;
+    margin: 10px 0;
+    color: white;
+    background-color: #002E5D;
+    padding: 10px 2em;
+    font-weight: 400;
+}
+.hero-text-container .hero-more-button:focus,
+.hero-text-container .hero-more-button:hover {
+    color: white;
+    text-decoration: none;
+    background-color: #003DA5;
+    transition: background 0.2s;
+}
+.hero-div .hero-title {
+    font-family: "Vitesse A", "Vitesse B", serif;
+    font-size: xx-large;
+    line-height: 1;
+    padding-bottom: 0.7em;
+}
+.hero-div {
+    line-height: normal;
+    color: #002E5D;
+}
+.hero-div .hero-title {
+    padding-bottom: 0.2em;
+}
+.hero-div p {
+    line-height: normal;
+    color: #002E5D;
+    font-family: "Gotham A", "Gotham B", Arial, sans-serif;
+    font-weight: 400;
+}
+.hero-div a:focus p,
+.hero-div a:hover p {
+    color: #003DA5;
+}
+
+.hero-image-container .hero-image-play-button {
+    display: none;
+    position: absolute;
+    top: 34%;
+    height: auto;
+    width: 18%;
+    left: 41%;
+}
+.hero-image-container:focus .hero-image-play-button-non-hover,
+.hero-image-container:hover .hero-image-play-button-non-hover {
+    opacity: 0;
+}
+
+.hero-body.h3 {
+    margin-top: 0;
+}
+
+.hero-body.h3 p {
+    margin-bottom: 0;
+}
+
+@media screen and (max-width: 1424px) {
+    .hero-text-container {
+        width: 80%;
+        left: 10%;
+        padding: 15px 40px;
+    }
+}
+@media screen and (max-width: 1223px) {
+    .hero-text-container {
+        bottom: 2em;
+        padding: 10px 20px;
+    }
+    .hero-text-container p {
+        margin: 0;
+    }
+}
+@media screen and (max-width: 991px) {
+    .hero-text-container {
+        bottom: 1em;
+        width: 90%;
+        left: 5%;
+    }
+}
+@media screen and (max-width: 767px) {
+    .hero-text-container {
+        position: initial;
+        width: auto;
+        text-align: initial;
+    }
+    .hero-image-container {
+        position: relative;
+    }
+    .hero-image-container .hero-image-play-button {
+        width: 25%;
+        margin: auto;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+    }
+}
+@media screen and (min-width: 1024px) {
+    .hero-text-container-left, .hero-text-container-right {
+        top: 95px;
+        width: 360px;
+        opacity: 0.9;
+        bottom: auto;
+    }
+    .hero-text-container-left {
+        left: 60px;
+    }
+    .hero-text-container-right {
+        left: auto;
+        right: 60px;
+    }
+}

@@ -1,0 +1,16 @@
+uuid: 023e56c6-5688-4948-8941-dd0a44d26329
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: Y9NmnZHQq20ASSyTNA6JnwtWrJJiSajOehGDtmUFdM0
+name: medium
+label: 'Medium (220×220)'
+effects:
+  2990ace0-7b48-4a7b-afaa-d7ed329c327e:
+    uuid: 2990ace0-7b48-4a7b-afaa-d7ed329c327e
+    id: image_scale_and_crop
+    weight: 2
+    data:
+      width: 220
+      height: 220

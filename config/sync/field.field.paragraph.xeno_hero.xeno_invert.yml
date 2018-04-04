@@ -1,0 +1,23 @@
+uuid: a9ce9ead-3691-48e4-b884-8a6f3afa1053
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.xeno_invert
+    - paragraphs.paragraphs_type.xeno_hero
+  module:
+    - options
+_core:
+  default_config_hash: IKhH3wL1_OjWMQQks78pherULbe_5_q76GKovlSfJtQ
+id: paragraph.xeno_hero.xeno_invert
+field_name: xeno_invert
+entity_type: paragraph
+bundle: xeno_hero
+label: Invert
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

@@ -1,0 +1,9 @@
+uuid: 8b26f425-fcfb-48e6-ba83-9c16ca01a696
+langcode: en
+status: true
+dependencies: {  }
+name: Categories
+vid: categories
+description: 'General news categories.'
+hierarchy: 0
+weight: 0

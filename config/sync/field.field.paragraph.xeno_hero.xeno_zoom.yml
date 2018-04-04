@@ -1,0 +1,23 @@
+uuid: a01abd01-8c6b-47ea-85f0-b12217017f80
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.xeno_zoom
+    - paragraphs.paragraphs_type.xeno_hero
+  module:
+    - options
+_core:
+  default_config_hash: aB4YuMe-_PGqDhmUOSdSrfaQT3-epzkvbujBc6_Cha0
+id: paragraph.xeno_hero.xeno_zoom
+field_name: xeno_zoom
+entity_type: paragraph
+bundle: xeno_hero
+label: Zoom
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

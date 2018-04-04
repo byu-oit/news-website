@@ -1,0 +1,23 @@
+uuid: 993fc718-33e3-45ff-bc85-f192fb78356a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_story_link
+    - node.type.photo_essay
+  module:
+    - link
+id: node.photo_essay.field_story_link
+field_name: field_story_link
+entity_type: node
+bundle: photo_essay
+label: 'Story Link'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  link_type: 16
+  title: 0
+field_type: link

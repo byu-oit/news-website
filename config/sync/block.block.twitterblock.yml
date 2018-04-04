@@ -1,0 +1,47 @@
+uuid: 0a5d69a8-74ee-41fd-907a-a29b8293863d
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_class
+    - system
+    - twitter_block
+  theme:
+    - byu_news
+third_party_settings:
+  block_class:
+    classes: ''
+id: twitterblock
+theme: byu_news
+region: right_sidebar
+weight: -2
+provider: null
+plugin: twitter_block
+settings:
+  id: twitter_block
+  label: 'Now @ BYU'
+  provider: twitter_block
+  label_display: visible
+  username: BYU
+  theme: ''
+  link_color: ''
+  width: ''
+  height: '450'
+  chrome:
+    transparent: transparent
+    noheader: '0'
+    nofooter: '0'
+    noborders: '0'
+    noscrollbar: '0'
+  border_color: ''
+  language: ''
+  tweet_limit: ''
+  related: ''
+  polite: polite
+  widget_id: '690316619306835968'
+visibility:
+  request_path:
+    id: request_path
+    pages: '<front>'
+    negate: false
+    context_mapping: {  }

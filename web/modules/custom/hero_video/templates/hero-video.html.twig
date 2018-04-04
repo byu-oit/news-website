@@ -1,0 +1,45 @@
+{{ attach_library('hero_video/hero_video') }}
+<div class="hero-div">
+    {% if content.field_single_link.0['#url'].uri and (not node.field_facebook_video.uri) and (not node.field_youtube_video.uri) %}
+        <a href="{{ content.field_single_link.0['#url'].uri }}">
+    {% endif %}
+    <div class='hero-video-container {% if content.field_image.0 %} hero-video-and-image {% endif %}'>
+        {% if node.field_facebook_video.uri %}
+            <div class="fb-video" id="hero-video-facebook"
+                    data-href="{{ node.field_facebook_video.uri }}"
+                    data-width="1224"
+                    data-show-text="false">
+            </div>
+            <div id="fb-root"></div>
+        {% elseif node.field_youtube_video.uri %}
+            <div id="hero-video-youtube"
+                 data-href="{{ node.field_youtube_video.uri }}">
+            </div>
+        {% endif %}
+    </div>
+    <div class="hero-image-container">
+        {{ content.field_image.0 }}
+        <div class="hero-image-play-button-container">
+            <img class="hero-image-play-button hero-image-play-button-hover" alt="play video" src="/{{ directory }}/images/playbutton-hover.svg"/>
+            <img class="hero-image-play-button hero-image-play-button-non-hover" alt="play video" src="/{{ directory }}/images/playbutton.svg"/>
+        </div>
+    </div>
+    {% if content.field_single_link.0['#url'].uri and (node.field_facebook_video.uri or node.field_youtube_video.uri) %}
+        <a href="{{ content.field_single_link.0['#url'].uri }}">
+    {% endif %}
+    <div class="hero-text-container hero-text-container-{{node.field_text_box_position.value | lower}}">
+        <div class="hero-title">{{ node.field_caption.value }}</div>
+        <div class="hero-body h3">
+            {{ content.body.0 }}
+            {% if content.field_single_link.0['#url'].uri and (node.field_text_box_position.value == 'Left' or node.field_text_box_position.value == 'Right') %}
+                <span class="hero-more-button">View More</span>
+            {% endif %}
+        </div>
+    </div>
+    {% if content.field_single_link.0['#url'].uri and (node.field_facebook_video.uri or node.field_youtube_video.uri) %}
+        </a>
+    {% endif %}
+    {% if content.field_single_link.0['#url'].uri and (not node.field_facebook_video.uri) and (not node.field_youtube_video.uri) %}
+        </a>
+    {% endif %}
+</div>

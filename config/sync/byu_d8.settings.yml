@@ -1,0 +1,77 @@
+cdn_provider: ''
+_core:
+  default_config_hash: _5qrDuRmWmRVjW00si3U1s1NrgrocA4N653EYGRfgEE
+favicon:
+  mimetype: image/vnd.microsoft.icon
+  path: ''
+  url: 'http://www-test.news.byu.edu/themes/custom/byu_d8/favicon.ico'
+  use_default: 1
+schemas:
+  bootstrap: 8000
+  byu_d8: 8000
+features:
+  comment_user_picture: 1
+  comment_user_verification: 1
+  favicon: 1
+  node_user_picture: 1
+logo:
+  path: ''
+  url: ''
+  use_default: 1
+breadcrumb: null
+breadcrumb_home: null
+breadcrumb_title: null
+navbar_inverse: null
+navbar_position: null
+region_wells: {  }
+table_responsive: '-1'
+components_version: 1.x.x
+table: ''
+loader: 0
+font_package: fonts-basic
+fontawesome_use: 0
+libreberville_use: 0
+sourcesans_use: 0
+font_one: vitesse
+font_one_color: h1-navy
+font_two: vitesse
+font_two_color: h2-navy
+font_three: vitesse
+font_three_color: h3-navy
+font_four: vitesse
+font_four_color: h4-navy
+font_five: vitesse
+font_five_color: h5-navy
+p_font: default
+subtitle_use: 0
+subtitle_above: 0
+subtitle_italic: 0
+subtitle_text: ''
+login_use: 0
+login_url: ''
+logout_url: ''
+myaccount_use: 0
+myaccount_url: ''
+search_use: 0
+search_input: ''
+search_submit: ''
+actions_bg: none
+menu_disable: 0
+transparent: 0
+hero_width: '0'
+hero_vs_menu: '0'
+hero_image_width: 0
+full_width: 0
+custom_width: ''
+min_page_height: none
+byu_buttons: 0
+byu_tables: 0
+byu_box_shadows: 0
+your_css: ''
+footer_sticky: 0
+footer_option: normal
+contact_option: ''
+contact_about_link: ''
+contact_about: ''
+contact_us_link: ''
+contact_us: ''

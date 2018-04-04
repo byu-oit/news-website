@@ -1,0 +1,34 @@
+uuid: 4f83733c-d239-4e7d-8f62-f2e38ece3b0b
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.photo_essay
+  module:
+    - block_class
+    - system
+    - views
+  theme:
+    - byu_news
+third_party_settings:
+  block_class:
+    classes: ''
+id: views_block__photo_essay_block_1
+theme: byu_news
+region: right_sidebar
+weight: -3
+provider: null
+plugin: 'views_block:photo_essay-block_1'
+settings:
+  id: 'views_block:photo_essay-block_1'
+  label: ''
+  provider: views
+  label_display: visible
+  views_label: ''
+  items_per_page: none
+visibility:
+  request_path:
+    id: request_path
+    pages: '<front>'
+    negate: false
+    context_mapping: {  }

@@ -1,0 +1,21 @@
+uuid: c1d6d414-a7a9-43c7-affe-4b6af5a8a2c7
+langcode: en
+status: true
+dependencies:
+  module:
+    - link
+    - node
+_core:
+  default_config_hash: DrcI2gRMv5sSKTh73gKpAD3R7v8TVoUiFSVBj31IAB0
+id: node.field_facebook_video
+field_name: field_facebook_video
+entity_type: node
+type: link
+settings: {  }
+module: link
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

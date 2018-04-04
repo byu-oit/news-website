@@ -1,0 +1,21 @@
+uuid: 8517ff91-730f-45f2-951b-45e4005a0bb9
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_story_highlights
+    - node.type.story
+  module:
+    - text
+id: node.story.field_story_highlights
+field_name: field_story_highlights
+entity_type: node
+bundle: story
+label: 'Story Highlights'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

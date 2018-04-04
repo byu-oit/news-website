@@ -1,0 +1,9 @@
+uuid: c4b7a9fd-b673-4e8a-b665-e3f48710cf48
+langcode: en
+status: true
+dependencies: {  }
+id: classy_paragraphs_style
+label: 'Classy Paragraphs Style'
+icon_uuid: null
+description: ''
+behavior_plugins: {  }

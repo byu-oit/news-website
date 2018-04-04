@@ -1,0 +1,22 @@
+uuid: 13d66664-b6b8-4da8-864b-323038a8cfe8
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.body
+    - node.type.photo_essay
+  module:
+    - text
+id: node.photo_essay.body
+field_name: body
+entity_type: node
+bundle: photo_essay
+label: Body
+description: 'Description of the Exposure story.'
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: true
+field_type: text_with_summary

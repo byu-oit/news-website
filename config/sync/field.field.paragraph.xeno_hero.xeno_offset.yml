@@ -1,0 +1,21 @@
+uuid: f0f6d7ff-7ed3-4c32-ab2f-be5cb5252f6c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.xeno_offset
+    - paragraphs.paragraphs_type.xeno_hero
+_core:
+  default_config_hash: Zd5R40LHwFOMb8p_ajWB326LgkXimUusgL4plRKhL-A
+id: paragraph.xeno_hero.xeno_offset
+field_name: xeno_offset
+entity_type: paragraph
+bundle: xeno_hero
+label: Offset
+description: 'Enter a positive number to modify the position of the background image.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string
