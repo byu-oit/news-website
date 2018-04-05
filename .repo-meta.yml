@@ -7,7 +7,7 @@ repo_url: https://github.com/byu-oit/news-website  # optional
 software:
   - name: news-website  # optional
     deploy_to_cmdb: true # optional
-    type: ''
+    type: 'website'
     aliases:  # optional
     short_description: Drupal 8 News website # optional
     assignment_group: gro:AD-Front End Technologies and Applications
@@ -34,9 +34,9 @@ software:
       development:
         urls:  # optional
           product_page:
-          physical_url:
+          physical_url: https://news-linux.byu.edu
           virtual_url:
-        hosting_location: ''
+        hosting_location: 'typo-linux.byu.edu'
         aws_account:  # optional
         relationships: # optional
           depends_on:  # optional
