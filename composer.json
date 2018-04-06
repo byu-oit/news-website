@@ -27,7 +27,7 @@
         "drupal/block_class": "^1.0@alpha",
         "drupal/bootstrap_paragraphs": "^2.0@beta",
         "drupal/bulkdelete": "1.x-dev",
-        "drupal/byu_theme": "^2.0",
+        "drupal/byu_theme": "2.x-dev",
         "drupal/cas": "^1.0@RC",
         "drupal/ckeditor_entity_link": "^1.0@alpha",
         "drupal/conditional_fields": "^1.0@alpha",
