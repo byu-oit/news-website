@@ -45,7 +45,7 @@
         "drupal/purge": "^3.0@beta",
         "drupal/twitter_block": "^3.0",
         "drupal/varnish_purge": "^1.10",
-        "drupal/views_bulk_operations": "^1.0",
+        "drupal/views_bulk_operations": "^2.0",
         "drupal/views_infinite_scroll": "^1.5",
         "drupal/viewsreference": "^1.0",
         "drupal/webform": "^5.0@beta",
