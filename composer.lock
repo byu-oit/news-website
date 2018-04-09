@@ -1610,25 +1610,26 @@
         },
         {
             "name": "drupal/amp",
-            "version": "1.0.0",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupal.org/project/amp",
-                "reference": "8.x-1.0"
+                "reference": "8.x-1.1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/amp-8.x-1.0.zip",
-                "reference": "8.x-1.0",
-                "shasum": "e8eeae99be7a16dc8b0bafd865c824b8ae106aa9"
+                "url": "https://ftp.drupal.org/files/projects/amp-8.x-1.1.zip",
+                "reference": "8.x-1.1",
+                "shasum": "828e398e2020e3b28527b0d9f1989ca4c6f65315"
             },
             "require": {
                 "drupal/core": "*",
-                "drupal/token": "*",
+                "drupal/token": "^1.0",
                 "lullabot/amp": "^1.0.0"
             },
             "require-dev": {
-                "drupal/adsense": "*"
+                "drupal/adsense": "*",
+                "drupal/amptheme": "^1.0"
             },
             "type": "drupal-module",
             "extra": {
@@ -1636,8 +1637,8 @@
                     "dev-1.x": "1.x-dev"
                 },
                 "drupal": {
-                    "version": "8.x-1.0",
-                    "datestamp": "1467409439",
+                    "version": "8.x-1.1",
+                    "datestamp": "1523122157",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -1649,6 +1650,10 @@
                 "GPL-2.0+"
             ],
             "authors": [
+                {
+                    "name": "KarenS",
+                    "homepage": "https://www.drupal.org/user/45874"
+                },
                 {
                     "name": "marcelovani",
                     "homepage": "https://www.drupal.org/user/854220"
@@ -1686,17 +1691,17 @@
         },
         {
             "name": "drupal/amptheme",
-            "version": "1.0.0",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupal.org/project/amptheme",
-                "reference": "8.x-1.0"
+                "reference": "8.x-1.1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/amptheme-8.x-1.0.zip",
-                "reference": "8.x-1.0",
-                "shasum": "d515a1b7be432101593634ba8accf3752813e2fb"
+                "url": "https://ftp.drupal.org/files/projects/amptheme-8.x-1.1.zip",
+                "reference": "8.x-1.1",
+                "shasum": "c969746f56cbff42fc93678271179307e2a8e995"
             },
             "require": {
                 "drupal/core": "~8.0"
@@ -1707,8 +1712,8 @@
                     "dev-1.x": "1.x-dev"
                 },
                 "drupal": {
-                    "version": "8.x-1.0",
-                    "datestamp": "1467417239",
+                    "version": "8.x-1.1",
+                    "datestamp": "1523124480",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -1717,9 +1722,13 @@
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
             "license": [
-                "GPL-2.0+"
+                "GPL-2.0-or-later"
             ],
             "authors": [
+                {
+                    "name": "KarenS",
+                    "homepage": "https://www.drupal.org/user/45874"
+                },
                 {
                     "name": "mdrummond",
                     "homepage": "https://www.drupal.org/user/360968"
@@ -1729,6 +1738,7 @@
                     "homepage": "https://www.drupal.org/user/751908"
                 }
             ],
+            "description": "The AMP Base theme converts core templates to use AMP HTML.",
             "homepage": "https://www.drupal.org/project/amptheme",
             "support": {
                 "source": "http://cgit.drupalcode.org/amptheme"
@@ -4389,17 +4399,17 @@
         },
         {
             "name": "drupal/webform",
-            "version": "5.0.0-rc8",
+            "version": "5.0.0-rc10",
             "source": {
                 "type": "git",
                 "url": "https://git.drupal.org/project/webform",
-                "reference": "8.x-5.0-rc8"
+                "reference": "8.x-5.0-rc10"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/webform-8.x-5.0-rc8.zip",
-                "reference": "8.x-5.0-rc8",
-                "shasum": "afd630a330d1481085979bf30e9d06eabebd1ca1"
+                "url": "https://ftp.drupal.org/files/projects/webform-8.x-5.0-rc10.zip",
+                "reference": "8.x-5.0-rc10",
+                "shasum": "3243a597448af636ef7dbd9cbd5a33a95adc4551"
             },
             "require": {
                 "drupal/core": "*"
@@ -4416,8 +4426,8 @@
                     "dev-5.x": "5.x-dev"
                 },
                 "drupal": {
-                    "version": "8.x-5.0-rc8",
-                    "datestamp": "1522698184",
+                    "version": "8.x-5.0-rc10",
+                    "datestamp": "1523291284",
                     "security-coverage": {
                         "status": "not-covered",
                         "message": "RC releases are not covered by Drupal security advisories."
