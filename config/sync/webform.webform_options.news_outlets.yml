@@ -1,8 +1,0 @@
-uuid: 7368e8cd-4c34-4e40-8f65-f6ae7a4770a6
-langcode: en
-status: true
-dependencies: {  }
-id: news_outlets
-label: 'News Outlets'
-category: ''
-options: "b.morgan.296@gmail.com: 'Blake Home'\nweb-2@byu.edu: 'Blake Work'\n"

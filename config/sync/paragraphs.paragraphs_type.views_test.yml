@@ -1,9 +1,0 @@
-uuid: cf21594e-a47f-4063-b79e-09ca540b5e4c
-langcode: en
-status: true
-dependencies: {  }
-id: views_test
-label: 'DEPRECATED - Views Test'
-icon_uuid: null
-description: 'DO NOT USE. Test for different kinds of view fields.'
-behavior_plugins: {  }
