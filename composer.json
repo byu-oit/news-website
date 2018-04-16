@@ -100,6 +100,11 @@
             "web/profiles/contrib/{$name}": ["type:drupal-profile"],
             "web/themes/contrib/{$name}": ["type:drupal-theme"],
             "drush/contrib/{$name}": ["type:drupal-drush"]
-        }
+        },
+        "patches": {
+	    "drupal/core": {
+		"Add date range to views": "https://www.drupal.org/files/issues/2786577-270_0.patch"
+	    }
+	}
     }
 }

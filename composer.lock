@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "7c3c6ff3f48280505074943b01be69ad",
+    "content-hash": "9f5618b728ae056c334df4fa3d06a0c0",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -2754,6 +2754,9 @@
                     "recurse": false,
                     "replace": false,
                     "merge-extra": false
+                },
+                "patches_applied": {
+                    "Add date range to views": "https://www.drupal.org/files/issues/2786577-270_0.patch"
                 }
             },
             "autoload": {
