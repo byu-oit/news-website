@@ -44,6 +44,7 @@
         "drupal/pathauto": "1.x-dev",
         "drupal/purge": "^3.0@beta",
         "drupal/schema_metatag": "^1.2",
+        "drupal/search_api": "^1.8",
         "drupal/twitter_block": "^3.0",
         "drupal/varnish_purge": "^1.10",
         "drupal/views_bulk_operations": "^2.0",
