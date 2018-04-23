@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "c3b6934dc4b03d5f1f6e3f42261d6161",
+    "content-hash": "1c6128a03c4b14dd6fb54cc7423f72d9",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -3049,6 +3049,69 @@
             "time": "2018-04-18T17:00:56+00:00"
         },
         {
+            "name": "drupal/cors",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupal.org/project/cors",
+                "reference": "8.x-1.0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/cors-8.x-1.0.zip",
+                "reference": "8.x-1.0",
+                "shasum": "eec3f9c523003258392c3dd17afa72fecf12d21b"
+            },
+            "require": {
+                "drupal/core": "~8.0"
+            },
+            "require-dev": {
+                "drupal/coder": "dev-7.x-2.x",
+                "squizlabs/php_codesniffer": "~1.5"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "branch-alias": {
+                    "dev-1.x": "1.x-dev"
+                },
+                "drupal": {
+                    "version": "8.x-1.0",
+                    "datestamp": "1455049439",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Wim Leers",
+                    "homepage": "https://www.drupal.org/user/99777"
+                },
+                {
+                    "name": "dawehner",
+                    "homepage": "https://www.drupal.org/user/99340"
+                },
+                {
+                    "name": "ericduran",
+                    "homepage": "https://www.drupal.org/user/244460"
+                },
+                {
+                    "name": "justafish",
+                    "homepage": "https://www.drupal.org/user/161058"
+                }
+            ],
+            "description": "Allows Cross-origin resource sharing.",
+            "homepage": "https://www.drupal.org/project/cors",
+            "support": {
+                "source": "http://cgit.drupalcode.org/cors"
+            }
+        },
+        {
             "name": "drupal/ctools",
             "version": "3.0.0",
             "source": {
@@ -4388,61 +4451,6 @@
             "time": "2018-04-22T18:06:26+00:00"
         },
         {
-            "name": "drupal/purge",
-            "version": "3.0.0-beta8",
-            "source": {
-                "type": "git",
-                "url": "https://git.drupal.org/project/purge",
-                "reference": "8.x-3.0-beta8"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/purge-8.x-3.0-beta8.zip",
-                "reference": "8.x-3.0-beta8",
-                "shasum": "5b6a53d6adcfa0d4e081edf2563d366fc7205bc4"
-            },
-            "require": {
-                "drupal/core": "~8.0"
-            },
-            "type": "drupal-module",
-            "extra": {
-                "branch-alias": {
-                    "dev-3.x": "3.x-dev"
-                },
-                "drupal": {
-                    "version": "8.x-3.0-beta8",
-                    "datestamp": "1502719311",
-                    "security-coverage": {
-                        "status": "not-covered",
-                        "message": "Beta releases are not covered by Drupal security advisories."
-                    }
-                }
-            },
-            "notification-url": "https://packages.drupal.org/8/downloads",
-            "license": [
-                "GPL-2.0+"
-            ],
-            "authors": [
-                {
-                    "name": "SqyD",
-                    "homepage": "https://www.drupal.org/user/106525"
-                },
-                {
-                    "name": "djbobbydrake",
-                    "homepage": "https://www.drupal.org/user/336378"
-                },
-                {
-                    "name": "nielsvm",
-                    "homepage": "https://www.drupal.org/user/163285"
-                }
-            ],
-            "description": "Provides a generic external cache invalidation API and queue service.",
-            "homepage": "https://www.drupal.org/project/purge",
-            "support": {
-                "source": "http://cgit.drupalcode.org/purge"
-            }
-        },
-        {
             "name": "drupal/schema_metatag",
             "version": "1.2.0",
             "source": {
@@ -4564,59 +4572,6 @@
                 "source": "http://git.drupal.org/project/search_api.git",
                 "issues": "https://www.drupal.org/project/issues/search_api",
                 "irc": "irc://irc.freenode.org/drupal-search-api"
-            }
-        },
-        {
-            "name": "drupal/supercache",
-            "version": "1.3.0",
-            "source": {
-                "type": "git",
-                "url": "https://git.drupal.org/project/supercache",
-                "reference": "8.x-1.3"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/supercache-8.x-1.3.zip",
-                "reference": "8.x-1.3",
-                "shasum": "a28d1ef08e39548748a35352a8e885bd53677bd9"
-            },
-            "require": {
-                "drupal/core": "~8.0",
-                "symfony/polyfill-apcu": "^1.3"
-            },
-            "type": "drupal-module",
-            "extra": {
-                "branch-alias": {
-                    "dev-1.x": "1.x-dev"
-                },
-                "drupal": {
-                    "version": "8.x-1.3",
-                    "datestamp": "1495032187",
-                    "security-coverage": {
-                        "status": "covered",
-                        "message": "Covered by Drupal's security advisory policy"
-                    }
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Drupal\\supercache\\": "src/"
-                }
-            },
-            "notification-url": "https://packages.drupal.org/8/downloads",
-            "license": [
-                "GPL-2.0+"
-            ],
-            "authors": [
-                {
-                    "name": "david_garcia",
-                    "homepage": "https://www.drupal.org/user/696200"
-                }
-            ],
-            "description": "Drupal Supercache",
-            "homepage": "https://www.drupal.org/project/supercache",
-            "support": {
-                "source": "http://cgit.drupalcode.org/supercache"
             }
         },
         {
@@ -4747,61 +4702,6 @@
             "homepage": "http://drupal.org/project/twitter_block",
             "support": {
                 "source": "http://cgit.drupalcode.org/twitter_block"
-            }
-        },
-        {
-            "name": "drupal/varnish_purge",
-            "version": "1.10.0",
-            "source": {
-                "type": "git",
-                "url": "https://git.drupal.org/project/varnish_purge",
-                "reference": "8.x-1.10"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/varnish_purge-8.x-1.10.zip",
-                "reference": "8.x-1.10",
-                "shasum": "ab7ea1bd933856fc759dc0e1d53018cc5dee2718"
-            },
-            "require": {
-                "drupal/core": "~8.0"
-            },
-            "require-dev": {
-                "drupal/purge": "*",
-                "drupal/purge_tokens": "*",
-                "drupal/varnish_purger": "*"
-            },
-            "type": "drupal-module",
-            "extra": {
-                "branch-alias": {
-                    "dev-1.x": "1.x-dev"
-                },
-                "drupal": {
-                    "version": "8.x-1.10",
-                    "datestamp": "1516954984",
-                    "security-coverage": {
-                        "status": "covered",
-                        "message": "Covered by Drupal's security advisory policy"
-                    }
-                }
-            },
-            "notification-url": "https://packages.drupal.org/8/downloads",
-            "license": [
-                "GPL-2.0+"
-            ],
-            "authors": [
-                {
-                    "name": "MiSc",
-                    "homepage": "https://www.drupal.org/user/382892"
-                },
-                {
-                    "name": "deadbeef",
-                    "homepage": "https://www.drupal.org/user/93644"
-                }
-            ],
-            "homepage": "https://www.drupal.org/project/varnish_purge",
-            "support": {
-                "source": "http://cgit.drupalcode.org/varnish_purge"
             }
         },
         {
@@ -5085,105 +4985,6 @@
                 "docs": "https://www.drupal.org/docs/8/modules/webform",
                 "forum": "https://drupal.stackexchange.com/questions/tagged/webform"
             }
-        },
-        {
-            "name": "drupal/wincachedrupal",
-            "version": "1.11.0",
-            "source": {
-                "type": "git",
-                "url": "https://git.drupal.org/project/wincachedrupal",
-                "reference": "8.x-1.11"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/wincachedrupal-8.x-1.11.zip",
-                "reference": "8.x-1.11",
-                "shasum": "98476b2a3c83e9ed143e9c7e9a436270e50180c9"
-            },
-            "require": {
-                "drupal/core": "~8.0",
-                "drupal/supercache": "*",
-                "drupalonwindows/netphp": "2.x-dev"
-            },
-            "type": "drupal-module",
-            "extra": {
-                "branch-alias": {
-                    "dev-1.x": "1.x-dev"
-                },
-                "drupal": {
-                    "version": "8.x-1.11",
-                    "datestamp": "1491475084",
-                    "security-coverage": {
-                        "status": "covered",
-                        "message": "Covered by Drupal's security advisory policy"
-                    }
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Drupal\\wincachedrupal\\": "src/"
-                }
-            },
-            "notification-url": "https://packages.drupal.org/8/downloads",
-            "license": [
-                "GPL-2.0+"
-            ],
-            "authors": [
-                {
-                    "name": "david_garcia",
-                    "homepage": "https://www.drupal.org/user/696200"
-                }
-            ],
-            "description": "Drupal wincache integration",
-            "homepage": "https://www.drupal.org/project/wincachedrupal",
-            "support": {
-                "source": "http://cgit.drupalcode.org/wincachedrupal"
-            }
-        },
-        {
-            "name": "drupalonwindows/netphp",
-            "version": "2.x-dev",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/david-garcia-garcia/netphp.git",
-                "reference": "4c675c999a758d9cfc497d26bb1852c64f9d786f"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/david-garcia-garcia/netphp/zipball/4c675c999a758d9cfc497d26bb1852c64f9d786f",
-                "reference": "4c675c999a758d9cfc497d26bb1852c64f9d786f",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.5.0"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "5.0.*"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "NetPhp\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "David",
-                    "email": "deivid.garcia.garcia@gmail.com"
-                }
-            ],
-            "keywords": [
-                ".Net Framework",
-                ".net",
-                "dotnet",
-                "microsoft",
-                "php"
-            ],
-            "time": "2016-07-20T18:09:18+00:00"
         },
         {
             "name": "drush/drush",
@@ -7370,62 +7171,6 @@
             "description": "Symfony HttpKernel Component",
             "homepage": "https://symfony.com",
             "time": "2018-04-06T15:19:48+00:00"
-        },
-        {
-            "name": "symfony/polyfill-apcu",
-            "version": "v1.7.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/symfony/polyfill-apcu.git",
-                "reference": "e8ae2136ddb53dea314df56fcd88e318ab936c00"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-apcu/zipball/e8ae2136ddb53dea314df56fcd88e318ab936c00",
-                "reference": "e8ae2136ddb53dea314df56fcd88e318ab936c00",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.3"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.7-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Symfony\\Polyfill\\Apcu\\": ""
-                },
-                "files": [
-                    "bootstrap.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Nicolas Grekas",
-                    "email": "p@tchwork.com"
-                },
-                {
-                    "name": "Symfony Community",
-                    "homepage": "https://symfony.com/contributors"
-                }
-            ],
-            "description": "Symfony polyfill backporting apcu_* functions to lower PHP versions",
-            "homepage": "https://symfony.com",
-            "keywords": [
-                "apcu",
-                "compatibility",
-                "polyfill",
-                "portable",
-                "shim"
-            ],
-            "time": "2018-01-30T19:27:44+00:00"
         },
         {
             "name": "symfony/polyfill-iconv",
@@ -9938,7 +9683,6 @@
         "drupal/node_class": 10,
         "drupal/paragraphs_browser": 15,
         "drupal/pathauto": 20,
-        "drupal/purge": 10,
         "drupal/webform": 10
     },
     "prefer-stable": true,
