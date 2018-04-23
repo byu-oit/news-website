@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "1c6128a03c4b14dd6fb54cc7423f72d9",
+    "content-hash": "16d40b1a72b777fdd28e320dbfe67f28",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -3022,7 +3022,8 @@
                     "merge-extra": false
                 },
                 "patches_applied": {
-                    "Add date range to views": "https://www.drupal.org/files/issues/2786577-270_0.patch"
+                    "Add date range to views": "https://www.drupal.org/files/issues/2786577-270_0.patch",
+                    "Allow sudo fields in manage display": "https://www.drupal.org/files/issues/2018-03-13/title.display-2923701-161.patch"
                 }
             },
             "autoload": {
@@ -3280,6 +3281,57 @@
                 "source": "http://cgit.drupalcode.org/devel",
                 "issues": "http://drupal.org/project/devel",
                 "irc": "irc://irc.freenode.org/drupal-contribute"
+            }
+        },
+        {
+            "name": "drupal/download_all_files",
+            "version": "1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupal.org/project/download_all_files",
+                "reference": "8.x-1.1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/download_all_files-8.x-1.1.zip",
+                "reference": "8.x-1.1",
+                "shasum": "57587e4ff8beb22dd51b24bbbfd774fab597d551"
+            },
+            "require": {
+                "drupal/core": "~8.0"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "branch-alias": {
+                    "dev-1.x": "1.x-dev"
+                },
+                "drupal": {
+                    "version": "8.x-1.1",
+                    "datestamp": "1477575239",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "manojapare",
+                    "homepage": "https://www.drupal.org/user/2825053"
+                },
+                {
+                    "name": "rakesh.gectcr",
+                    "homepage": "https://www.drupal.org/user/1177822"
+                }
+            ],
+            "description": "This module will provide field formatter and block plugin for downloading all files associated with an entity.",
+            "homepage": "https://www.drupal.org/project/download_all_files",
+            "support": {
+                "source": "http://cgit.drupalcode.org/download_all_files"
             }
         },
         {
@@ -3653,6 +3705,62 @@
             }
         },
         {
+            "name": "drupal/geysir",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupal.org/project/geysir",
+                "reference": "8.x-1.0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/geysir-8.x-1.0.zip",
+                "reference": "8.x-1.0",
+                "shasum": "512d3552d3b49c58b3a742bd35bc15292c35eaa0"
+            },
+            "require": {
+                "drupal/core": "~8.0",
+                "drupal/paragraphs": "*"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "branch-alias": {
+                    "dev-1.x": "1.x-dev"
+                },
+                "drupal": {
+                    "version": "8.x-1.0",
+                    "datestamp": "1506599343",
+                    "security-coverage": {
+                        "status": "not-covered",
+                        "message": "Project has not opted into security advisory coverage!"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "AMPLEXOR",
+                    "homepage": "https://www.drupal.org/user/213049"
+                },
+                {
+                    "name": "jover",
+                    "homepage": "https://www.drupal.org/user/310720"
+                },
+                {
+                    "name": "vollepeer",
+                    "homepage": "https://www.drupal.org/user/628398"
+                }
+            ],
+            "description": "Enhancing the Drupal Author Experience.",
+            "homepage": "https://www.drupal.org/project/geysir",
+            "support": {
+                "source": "http://cgit.drupalcode.org/geysir"
+            }
+        },
+        {
             "name": "drupal/imce",
             "version": "1.6.0",
             "source": {
@@ -3697,6 +3805,53 @@
             "homepage": "https://drupal.org/project/imce",
             "support": {
                 "source": "http://cgit.drupalcode.org/imce"
+            }
+        },
+        {
+            "name": "drupal/manage_display",
+            "version": "1.0.0-alpha3",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupal.org/project/manage_display",
+                "reference": "8.x-1.0-alpha3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/manage_display-8.x-1.0-alpha3.zip",
+                "reference": "8.x-1.0-alpha3",
+                "shasum": "3f1948dd7cb4e5f4c09bf0b6639cda9f9dc1685a"
+            },
+            "require": {
+                "drupal/core": "~8.0"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "branch-alias": {
+                    "dev-1.x": "1.x-dev"
+                },
+                "drupal": {
+                    "version": "8.x-1.0-alpha3",
+                    "datestamp": "1520967484",
+                    "security-coverage": {
+                        "status": "not-covered",
+                        "message": "Project has not opted into security advisory coverage!"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "AdamPS",
+                    "homepage": "https://www.drupal.org/user/2650563"
+                }
+            ],
+            "description": "Make base fields such as 'title' available in \"Manage Display\"",
+            "homepage": "https://www.drupal.org/project/manage_display",
+            "support": {
+                "source": "http://cgit.drupalcode.org/manage_display"
             }
         },
         {
@@ -9678,6 +9833,7 @@
         "drupal/cas": 5,
         "drupal/ckeditor_entity_link": 15,
         "drupal/conditional_fields": 15,
+        "drupal/manage_display": 15,
         "drupal/masquerade": 10,
         "drupal/news_cards": 10,
         "drupal/node_class": 10,

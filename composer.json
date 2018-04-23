@@ -32,11 +32,14 @@
         "drupal/cors": "^1.0",
         "drupal/ctools": "^3.0",
         "drupal/devel": "^1.2",
+        "drupal/download_all_files": "^1.1",
         "drupal/features": "^3.5",
         "drupal/field_formatter_class": "^1.0",
         "drupal/field_group": "^1.0",
         "drupal/file_download": "^1.1",
+        "drupal/geysir": "^1.0",
         "drupal/imce": "^1.6",
+        "drupal/manage_display": "^1.0@alpha",
         "drupal/masquerade": "^2.0@beta",
         "drupal/metatag": "^1.4",
         "drupal/migrate_manifest": "^1.6",
@@ -109,7 +112,8 @@
         },
         "patches": {
 	    "drupal/core": {
-		"Add date range to views": "https://www.drupal.org/files/issues/2786577-270_0.patch"
+		"Add date range to views": "https://www.drupal.org/files/issues/2786577-270_0.patch",
+		"Allow sudo fields in manage display": "https://www.drupal.org/files/issues/2018-03-13/title.display-2923701-161.patch"
 	    }
 	}
     }
