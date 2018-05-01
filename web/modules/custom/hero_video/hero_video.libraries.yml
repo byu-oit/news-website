@@ -1,9 +1,0 @@
-hero_video:
-  version: 8.x
-  css:
-    base:
-      css/hero-video.css: {}
-  js:
-    js/hero-video.js: {}
-  dependencies:
-    - core/jquery
