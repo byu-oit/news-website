@@ -1,0 +1,9 @@
+uuid: 1bb79760-bb6a-430b-9d12-d35cc78bb4cc
+langcode: en
+status: true
+dependencies: {  }
+id: guest_writer
+label: 'Guest Writer'
+weight: 6
+is_admin: null
+permissions: {  }

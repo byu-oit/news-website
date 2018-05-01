@@ -1,0 +1,34 @@
+uuid: 7568c396-1060-4922-a8ee-001ea64b3613
+langcode: en
+status: true
+dependencies: {  }
+id: d7_user_flood
+class: Drupal\migrate\Plugin\Migration
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - 'Drupal 7'
+  - Configuration
+migration_group: migrate_drupal_7
+label: 'User flood configuration'
+source:
+  plugin: variable
+  variables:
+    - user_failed_login_identifier_uid_only
+    - user_failed_login_ip_limit
+    - user_failed_login_ip_window
+    - user_failed_login_user_window
+    - user_failed_login_user_limit
+  source_module: user
+process:
+  uid_only: user_failed_login_identifier_uid_only
+  ip_limit: user_failed_login_ip_limit
+  ip_window: user_failed_login_ip_window
+  user_limit: user_failed_login_user_limit
+  user_window: user_failed_login_user_window
+destination:
+  plugin: config
+  config_name: user.flood
+migration_dependencies:
+  required: {  }
+  optional: {  }

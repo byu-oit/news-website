@@ -1,0 +1,75 @@
+uuid: e3d38fe1-95a7-4dc1-bebb-cf8f729f545d
+langcode: en
+status: true
+dependencies: {  }
+id: d7_node_alert
+class: Drupal\migrate\Plugin\Migration
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - 'Drupal 7'
+  - Content
+migration_group: migrate_drupal_7
+label: 'Nodes (story alert)'
+source:
+  plugin: d7_node
+  node_type: alert
+process:
+  nid: tnid
+  vid: vid
+  langcode:
+    plugin: default_value
+    source: language
+    default_value: und
+  title: title
+  uid: node_uid
+  status: status
+  created: created
+  changed: changed
+  promote: promote
+  sticky: sticky
+  revision_uid: revision_uid
+  revision_log: log
+  revision_timestamp: timestamp
+  comment_node_alert/0/status: comment
+  field_story_alert:
+    plugin: sub_process
+    source: field_story_alert
+    process:
+      target_id: tid
+  field_story:
+    plugin: get
+    source: field_story
+  field_alert_contents:
+    plugin: get
+    source: field_alert_contents
+  field_story_date:
+    plugin: sub_process
+    source: field_story_date
+    process:
+      value:
+        plugin: format_date
+        from_format: 'Y-m-d H:i:s'
+        to_format: 'Y-m-d\TH:i:s'
+        source: value
+  field_story_subtitle:
+    plugin: get
+    source: field_story_subtitle
+  field_extra_recipient:
+    plugin: sub_process
+    source: field_extra_recipient
+    process:
+      value: email
+  field_message:
+    plugin: get
+    source: field_message
+destination:
+  plugin: 'entity:node'
+  default_bundle: alert
+migration_dependencies:
+  required:
+    - d7_user
+    - d7_node_type
+  optional:
+    - d7_field_instance
+    - d7_comment_field_instance

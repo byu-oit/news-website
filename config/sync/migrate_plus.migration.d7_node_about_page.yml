@@ -1,0 +1,62 @@
+uuid: 995e61ca-bcab-44fb-be4f-5034e21e7298
+langcode: en
+status: true
+dependencies: {  }
+id: d7_node_about_page
+class: Drupal\migrate\Plugin\Migration
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - 'Drupal 7'
+  - Content
+migration_group: migrate_drupal_7
+label: 'Nodes (About Page)'
+source:
+  plugin: d7_node
+  node_type: about_page
+process:
+  nid: tnid
+  vid: vid
+  langcode:
+    plugin: default_value
+    source: language
+    default_value: und
+  title: title
+  uid: node_uid
+  status: status
+  created: created
+  changed: changed
+  promote: promote
+  sticky: sticky
+  revision_uid: revision_uid
+  revision_log: log
+  revision_timestamp: timestamp
+  comment_node_about_page/0/status: comment
+  body:
+    plugin: get
+    source: body
+  field_article_title:
+    plugin: get
+    source: field_article_title
+  field_feature_image:
+    plugin: sub_process
+    source: field_feature_image
+    process:
+      target_id: fid
+      alt: alt
+      title: title
+      width: width
+      height: height
+  field_link_title:
+    plugin: get
+    source: field_link_title
+destination:
+  plugin: 'entity:node'
+  default_bundle: about_page
+migration_dependencies:
+  required:
+    - d7_user
+    - d7_node_type
+  optional:
+    - d7_field_instance
+    - d7_comment_field_instance

@@ -1,0 +1,26 @@
+uuid: 4863b036-da8d-4368-b687-c8f893249e4d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.internal_story.field_story
+    - paragraphs.paragraphs_type.internal_story
+  module:
+    - field_formatter_class
+id: paragraph.internal_story.default
+targetEntityType: paragraph
+bundle: internal_story
+mode: default
+content:
+  field_story:
+    weight: 0
+    label: hidden
+    settings:
+      view_mode: big_teaser
+      link: false
+    third_party_settings:
+      field_formatter_class:
+        class: ''
+    type: entity_reference_entity_view
+    region: content
+hidden: {  }

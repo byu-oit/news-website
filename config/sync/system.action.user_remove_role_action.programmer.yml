@@ -1,0 +1,14 @@
+uuid: fc29f31a-8861-4f3e-81a4-f4a3a93d47da
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.programmer
+  module:
+    - user
+id: user_remove_role_action.programmer
+label: 'Remove the programmer role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: programmer

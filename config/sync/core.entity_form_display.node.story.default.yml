@@ -1,0 +1,348 @@
+uuid: 66ff6fb9-eb18-47e0-9329-a1d8dd0f7818
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.story.body
+    - field.field.node.story.field_category
+    - field.field.node.story.field_full_name
+    - field.field.node.story.field_image
+    - field.field.node.story.field_main_body
+    - field.field.node.story.field_media_contact_byline
+    - field.field.node.story.field_media_contact_byline_perso
+    - field.field.node.story.field_media_contact_type
+    - field.field.node.story.field_media_placement
+    - field.field.node.story.field_meta_image
+    - field.field.node.story.field_publish_date
+    - field.field.node.story.field_related_stories
+    - field.field.node.story.field_show_on_front
+    - field.field.node.story.field_story_highlights
+    - field.field.node.story.field_subheading
+    - field.field.node.story.field_summary
+    - field.field.node.story.field_tags
+    - field.field.node.story.field_thumbnail
+    - field.field.node.story.field_writer
+    - field.field.node.story.field_writer_name
+    - field.field.node.story.field_writer_person_
+    - field.field.node.story.field_writer_type
+    - image.style.thumbnail
+    - node.type.story
+  module:
+    - chosen_field
+    - conditional_fields
+    - content_moderation
+    - datetime
+    - field_group
+    - image
+    - link
+    - paragraphs_browser
+    - text
+third_party_settings:
+  field_group:
+    group_assets:
+      children:
+        - field_thumbnail
+        - field_image
+        - field_meta_image
+      parent_name: ''
+      weight: 5
+      label: Photos
+      format_settings:
+        label: Photos
+        description: ''
+        required_fields: true
+        id: ''
+        classes: 'group-assets field-group-fieldset'
+      format_type: fieldset
+    group_author:
+      children:
+        - field_media_contact_type
+        - field_media_contact_byline
+        - field_full_name
+        - field_writer_type
+        - field_writer
+        - field_writer_name
+      parent_name: ''
+      weight: 4
+      format_type: fieldset
+      format_settings:
+        id: ''
+        classes: ''
+        description: ''
+        required_fields: true
+      label: Author
+    group_old:
+      children:
+        - field_story_highlights
+        - body
+      parent_name: ''
+      weight: 11
+      format_type: details
+      format_settings:
+        id: ''
+        classes: ''
+        open: false
+        required_fields: false
+      label: Old
+id: node.story.default
+targetEntityType: node
+bundle: story
+mode: default
+content:
+  body:
+    type: text_textarea_with_summary
+    weight: 5
+    settings:
+      rows: 9
+      summary_rows: 3
+      placeholder: ''
+    third_party_settings: {  }
+    region: content
+  field_category:
+    weight: 7
+    settings: {  }
+    third_party_settings: {  }
+    type: chosen_select
+    region: content
+  field_full_name:
+    weight: 4
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings:
+      conditional_fields:
+        9c02fc6b-8e94-43d8-9404-9df95898ce4b:
+          dependee: field_media_contact_type
+          settings:
+            state: visible
+            condition: value
+            grouping: AND
+            values_set: 1
+            value: ''
+            values: {  }
+            value_form:
+              -
+                value: external
+            effect: show
+            effect_options: {  }
+            selector: ''
+          entity_type: node
+          bundle: story
+    type: string_textfield
+    region: content
+  field_image:
+    weight: 10
+    settings:
+      preview_image_style: thumbnail
+      progress_indicator: throbber
+    third_party_settings:
+      imce:
+        enabled: true
+    type: image_image
+    region: content
+  field_main_body:
+    type: entity_reference_paragraphs_browser
+    weight: 3
+    settings:
+      title: Sections
+      title_plural: Sections
+      edit_mode: open
+      add_mode: button
+      form_display_mode: default
+      default_paragraph_type: text
+      paragraphs_browser: _na
+      modal_width: 80%
+      modal_height: auto
+    third_party_settings: {  }
+    region: content
+  field_media_contact_byline:
+    weight: 3
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings:
+      conditional_fields:
+        5997af55-f03d-47bb-ba54-33db5d9ec57a:
+          dependee: field_media_contact_type
+          settings:
+            state: visible
+            condition: value
+            grouping: AND
+            values_set: 1
+            value: ''
+            values: {  }
+            value_form:
+              -
+                value: regular
+            effect: show
+            effect_options: {  }
+            selector: ''
+          entity_type: node
+          bundle: story
+    type: entity_reference_autocomplete
+    region: content
+  field_media_contact_type:
+    weight: 2
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_media_placement:
+    weight: 10
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
+    region: content
+  field_meta_image:
+    weight: 11
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+    third_party_settings: {  }
+    type: image_image
+    region: content
+  field_publish_date:
+    weight: 26
+    settings: {  }
+    third_party_settings: {  }
+    type: datetime_default
+    region: content
+  field_related_stories:
+    weight: 9
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
+  field_show_on_front:
+    weight: 12
+    settings: {  }
+    third_party_settings: {  }
+    type: options_buttons
+    region: content
+  field_story_highlights:
+    weight: 4
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
+  field_subheading:
+    weight: 1
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_summary:
+    weight: 2
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textarea
+    region: content
+  field_tags:
+    weight: 8
+    settings: {  }
+    third_party_settings: {  }
+    type: chosen_select
+    region: content
+  field_thumbnail:
+    weight: 9
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+    third_party_settings: {  }
+    type: image_image
+    region: content
+  field_writer:
+    weight: 6
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings:
+      conditional_fields:
+        99a6d330-d397-4f93-aa26-9e662863bcb4:
+          dependee: field_writer_type
+          settings:
+            state: visible
+            condition: value
+            grouping: AND
+            values_set: 1
+            value: ''
+            values: {  }
+            value_form:
+              -
+                value: regular
+            effect: show
+            effect_options: {  }
+            selector: ''
+          entity_type: node
+          bundle: story
+    type: entity_reference_autocomplete
+    region: content
+  field_writer_name:
+    weight: 8
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings:
+      conditional_fields:
+        5fbe475b-b575-4a23-9534-231f09de89f9:
+          dependee: field_writer_type
+          settings:
+            state: visible
+            condition: value
+            grouping: AND
+            values_set: 1
+            value: ''
+            values: {  }
+            value_form:
+              -
+                value: external
+            effect: show
+            effect_options: {  }
+            selector: ''
+          entity_type: node
+          bundle: story
+    type: string_textfield
+    region: content
+  field_writer_type:
+    weight: 5
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  moderation_state:
+    type: moderation_state_default
+    weight: 15
+    settings: {  }
+    region: content
+    third_party_settings: {  }
+  title:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  field_media_contact_byline_perso: true
+  field_writer_person_: true
+  node_class: true
+  path: true
+  promote: true
+  status: true
+  sticky: true
+  uid: true

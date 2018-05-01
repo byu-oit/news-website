@@ -1,0 +1,29 @@
+uuid: fb011762-ed90-4d61-8650-9cb01eea3c62
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:4b3e89a6-5445-467d-98aa-4bb9888bb9b0'
+  module:
+    - block_class
+    - block_content
+  theme:
+    - byu_news
+third_party_settings:
+  block_class:
+    classes: byu-footer
+id: contactus
+theme: byu_news
+region: footer_11
+weight: 0
+provider: null
+plugin: 'block_content:4b3e89a6-5445-467d-98aa-4bb9888bb9b0'
+settings:
+  id: 'block_content:4b3e89a6-5445-467d-98aa-4bb9888bb9b0'
+  label: 'Contact Us'
+  provider: block_content
+  label_display: visible
+  status: true
+  info: ''
+  view_mode: full
+visibility: {  }

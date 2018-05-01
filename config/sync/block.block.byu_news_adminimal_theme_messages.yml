@@ -1,0 +1,22 @@
+uuid: bab1a22b-e776-4b27-abb2-c0d6c2d2b4f5
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - byu_news_adminimal_theme
+_core:
+  default_config_hash: uqFDSarH0U3KRZRBqLXrKQDmbaExJ-1o-Wna9nrvK1E
+id: byu_news_adminimal_theme_messages
+theme: byu_news_adminimal_theme
+region: highlighted
+weight: 0
+provider: null
+plugin: system_messages_block
+settings:
+  id: system_messages_block
+  label: 'Status messages'
+  provider: system
+  label_display: '0'
+visibility: {  }

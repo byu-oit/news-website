@@ -1,0 +1,45 @@
+uuid: 4a9a1a38-7328-418d-8bed-1392779e16a3
+langcode: en
+status: true
+dependencies: {  }
+id: statistics_node_counter
+class: Drupal\migrate\Plugin\Migration
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - 'Drupal 6'
+  - 'Drupal 7'
+  - Content
+migration_group: migrate_drupal_7
+label: 'Node counter'
+source:
+  plugin: node_counter
+process:
+  nid:
+    -
+      plugin: migration_lookup
+      migration:
+        - d6_node
+        - d7_node
+      source: nid
+    -
+      plugin: skip_on_empty
+      method: row
+  totalcount: totalcount
+  daycount: daycount
+  timestamp: timestamp
+destination:
+  plugin: node_counter
+migration_dependencies:
+  optional:
+    - d7_node_about_page
+    - d7_node_alert
+    - d7_node_article
+    - d7_node_asset
+    - d7_node_page
+    - d7_node_panel
+    - d7_node_person
+    - d7_node_slider
+    - d7_node_story
+    - d7_node_webform
+  required: {  }

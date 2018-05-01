@@ -1,0 +1,11 @@
+uuid: 4149732c-d27d-4e6b-8c3b-a88a574ee431
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: NgXc4Z7CDut73j89U7nIlZ4cAecZZLa5CwKTii5xAKA
+id: stories
+label: Story
+icon_uuid: null
+description: 'List of different stories from outside sources.'
+behavior_plugins: {  }

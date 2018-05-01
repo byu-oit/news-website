@@ -1,0 +1,9 @@
+uuid: 64489425-fe4c-48b2-a48b-7bca1519ff77
+langcode: en
+status: true
+dependencies: {  }
+name: Teams
+vid: teams
+description: 'Teams to group full-time employees.'
+hierarchy: 0
+weight: 0

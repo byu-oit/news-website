@@ -1,0 +1,9 @@
+uuid: 0840ff9e-2368-4a89-b68c-cc380e9d19ee
+langcode: en
+status: true
+dependencies: {  }
+id: regional_family
+label: Regional/Family
+category: 'News Outlets'
+likert: false
+options: "cjanemail@gmail.com: 'C. Jane Kendrick'\ncnorman@provo.utah.gov: 'Provo City, Corey Norman, Deputy Mayor'\njohn@provo.org: 'Provo City, John Curtis, Mayor'\ndan@saltlakemagazine.com: 'Salt Lake City Magazine, Dan Nailen, Arts & Entertainment'\nmary@saltlakemagazine.com: 'Salt Lake City Magazine, Mary Brown Malouf, Editor'\ninfo@utahkidsclub.com: 'Utah Kids Club, Cali Kellywood, Editor'\ngreg@uvmag.com: 'Utah Valley Magazine / Utah Valley 360, Greg Bennett, Editor'\nnews@utahvalley360.com: 'Utah Valley Magazine / Utah Valley 360, Rebecca Lane, News Editor'\nkim@utahvalleymoms.com: 'Utah Valley Moms, Kimberly Corrigan, Editor'\n"

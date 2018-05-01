@@ -1,0 +1,24 @@
+uuid: 22a33bbf-e8b1-4e4a-be75-2c83a5698cee
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.file.field_display_front_page
+  module:
+    - file
+id: file.image.field_display_front_page
+field_name: field_display_front_page
+entity_type: file
+bundle: image
+label: 'Display Front Page (NOT IN USE)'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

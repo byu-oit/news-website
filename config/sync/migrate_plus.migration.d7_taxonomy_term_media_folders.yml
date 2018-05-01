@@ -1,0 +1,48 @@
+uuid: 971ad182-5f28-498f-b6d8-31d9df451644
+langcode: en
+status: true
+dependencies: {  }
+id: d7_taxonomy_term_media_folders
+class: Drupal\migrate\Plugin\Migration
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - 'Drupal 7'
+  - Content
+migration_group: migrate_drupal_7
+label: 'Taxonomy terms (Media Folders)'
+source:
+  plugin: d7_taxonomy_term
+  bundle: media_folders
+process:
+  tid: tid
+  vid:
+    plugin: migration_lookup
+    migration: d7_taxonomy_vocabulary
+    source: vid
+  name: name
+  description/value: description
+  description/format: format
+  weight: weight
+  parent_id:
+    -
+      plugin: skip_on_empty
+      method: process
+      source: parent
+    -
+      plugin: migration_lookup
+      migration: d7_taxonomy_term
+  parent:
+    plugin: default_value
+    default_value: 0
+    source: '@parent_id'
+  forum_container: is_container
+  changed: timestamp
+destination:
+  plugin: 'entity:taxonomy_term'
+  default_bundle: media_folders
+migration_dependencies:
+  required:
+    - d7_taxonomy_vocabulary
+  optional:
+    - d7_field_instance

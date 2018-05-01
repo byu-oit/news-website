@@ -1,0 +1,14 @@
+uuid: c6859906-fc11-4aff-8831-20a865900197
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.guest_writer
+  module:
+    - user
+id: user_add_role_action.guest_writer
+label: 'Add the Guest Writer role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: guest_writer

@@ -1,0 +1,22 @@
+uuid: eb04d83a-ac10-481b-be09-2443141aed75
+langcode: en
+status: true
+dependencies:
+  module:
+    - help
+  theme:
+    - byu_news_adminimal_theme
+_core:
+  default_config_hash: QnywDG5_O9cJqxtgdY9dXhk6WysLrzNhJSy5aSZRv5g
+id: byu_news_adminimal_theme_help
+theme: byu_news_adminimal_theme
+region: help
+weight: 0
+provider: null
+plugin: help_block
+settings:
+  id: help_block
+  label: Help
+  provider: help
+  label_display: '0'
+visibility: {  }

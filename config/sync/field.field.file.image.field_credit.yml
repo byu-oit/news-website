@@ -1,0 +1,20 @@
+uuid: e88b2209-ea72-4ec9-a41b-e4159bb8003f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.file.field_credit
+  module:
+    - file
+id: file.image.field_credit
+field_name: field_credit
+entity_type: file
+bundle: image
+label: 'Photo Credit'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

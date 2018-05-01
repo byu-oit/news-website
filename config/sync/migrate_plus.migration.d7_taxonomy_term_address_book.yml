@@ -1,0 +1,72 @@
+uuid: d92add3b-1e2e-4e59-84cd-ede3ee718796
+langcode: en
+status: true
+dependencies: {  }
+id: d7_taxonomy_term_address_book
+class: Drupal\migrate\Plugin\Migration
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - 'Drupal 7'
+  - Content
+migration_group: migrate_drupal_7
+label: 'Taxonomy terms (Address Book)'
+source:
+  plugin: d7_taxonomy_term
+  bundle: address_book
+process:
+  tid: tid
+  vid:
+    plugin: migration_lookup
+    migration: d7_taxonomy_vocabulary
+    source: vid
+  name: name
+  description/value: description
+  description/format: format
+  weight: weight
+  parent_id:
+    -
+      plugin: skip_on_empty
+      method: process
+      source: parent
+    -
+      plugin: migration_lookup
+      migration: d7_taxonomy_term
+  parent:
+    plugin: default_value
+    default_value: 0
+    source: '@parent_id'
+  forum_container: is_container
+  changed: timestamp
+  field_position_title:
+    plugin: get
+    source: field_position_title
+  field_email:
+    plugin: sub_process
+    source: field_email
+    process:
+      value: email
+  field_position_title_2:
+    plugin: get
+    source: field_position_title_2
+  field_contact_phone:
+    plugin: get
+    source: field_contact_phone
+  field_child_terms:
+    plugin: sub_process
+    source: field_child_terms
+    process:
+      target_id: tid
+  field_parent_terms:
+    plugin: sub_process
+    source: field_parent_terms
+    process:
+      target_id: tid
+destination:
+  plugin: 'entity:taxonomy_term'
+  default_bundle: address_book
+migration_dependencies:
+  required:
+    - d7_taxonomy_vocabulary
+  optional:
+    - d7_field_instance

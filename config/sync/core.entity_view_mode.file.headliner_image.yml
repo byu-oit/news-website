@@ -1,0 +1,10 @@
+uuid: a21e4606-a60a-49a0-b665-595106e19d82
+langcode: en
+status: true
+dependencies:
+  module:
+    - file
+id: file.headliner_image
+label: headliner_image
+targetEntityType: file
+cache: true

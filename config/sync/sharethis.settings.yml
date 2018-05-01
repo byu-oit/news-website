@@ -1,0 +1,84 @@
+button_option: stbc_large
+comments: 0
+late_load: 0
+location: block
+node_types:
+  hero_video: null
+  paragraphs_pags: null
+  person: null
+  photo_essay: null
+  storify_paragraphs: null
+  story: null
+option_extras:
+  'Google Plus One:plusone': '0'
+  'Facebook Like:fblike': '0'
+option_neworzero: 0
+option_onhover: 1
+option_shorten: 1
+service_option: '''Facebook:facebook'',''Twitter:twitter'',''LinkedIn:linkedin'',''Google +:googleplus'''
+twitter_handle: '@BYU'
+twitter_recommends: '@BYU'
+twitter_suffix: '@BYU'
+webform_options: ''
+weight: 10
+widget_option: st_multi
+cns:
+  donotcopy: null
+  hashaddress: null
+sharethisnodes:
+  article:
+    full: full
+  page:
+    full: full
+  hero_video:
+    amp: '0'
+    big_teaser: '0'
+    full: '0'
+    rss: '0'
+    slideshow: '0'
+    teaser: '0'
+    token: '0'
+  paragraphs_pags:
+    amp: '0'
+    big_teaser: '0'
+    full: '0'
+    rss: '0'
+    slideshow: '0'
+    teaser: '0'
+    token: '0'
+  person:
+    amp: '0'
+    big_teaser: '0'
+    full: '0'
+    rss: '0'
+    slideshow: '0'
+    teaser: '0'
+    token: '0'
+  photo_essay:
+    amp: '0'
+    big_teaser: '0'
+    full: '0'
+    rss: '0'
+    slideshow: '0'
+    teaser: '0'
+    token: '0'
+  storify_paragraphs:
+    amp: '0'
+    big_teaser: '0'
+    full: '0'
+    rss: '0'
+    slideshow: '0'
+    teaser: '0'
+    token: '0'
+  story:
+    amp: '0'
+    big_teaser: '0'
+    full: '0'
+    rss: '0'
+    slideshow: '0'
+    teaser: '0'
+    token: '0'
+_core:
+  default_config_hash: OUePCWmQ_tUOCD4VF7-AP0maPJi2Y18f0JvNTgThhRQ
+publisherID: dr-28ede7a0-9ca2-e5e5-6d3c-fefe56639f1b
+callesi: '0'

@@ -1,0 +1,22 @@
+uuid: dc29df46-3b3d-4f0c-93b7-95552178e725
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.storify_paragraphs.field_stories
+    - node.type.storify_paragraphs
+  module:
+    - user
+_core:
+  default_config_hash: _Wr5wEU9K1rknXIJdQZAeTgu7okqbtnVCo4sej3N47w
+id: node.storify_paragraphs.teaser
+targetEntityType: node
+bundle: storify_paragraphs
+mode: teaser
+content:
+  links:
+    weight: 100
+    region: content
+hidden:
+  field_stories: true

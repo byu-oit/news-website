@@ -1,0 +1,32 @@
+uuid: b0bcd1d4-1860-4c0c-8ad3-1a91b7ebe97f
+langcode: en
+status: true
+dependencies: {  }
+id: d7_menu
+class: Drupal\migrate\Plugin\Migration
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - 'Drupal 7'
+  - Configuration
+migration_group: migrate_drupal_7
+label: Menus
+source:
+  plugin: menu
+process:
+  id:
+    plugin: static_map
+    bypass: true
+    source: menu_name
+    map:
+      main-menu: main
+      management: admin
+      navigation: tools
+      user-menu: account
+  label: title
+  description: description
+destination:
+  plugin: 'entity:menu'
+migration_dependencies:
+  required: {  }
+  optional: {  }

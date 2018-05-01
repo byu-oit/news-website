@@ -1,0 +1,19 @@
+uuid: 30320452-e4b9-472c-be31-63c14a95c714
+langcode: und
+status: true
+dependencies:
+  module:
+    - file
+id: file.field_cutline
+field_name: field_cutline
+entity_type: file
+type: string_long
+settings:
+  case_sensitive: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

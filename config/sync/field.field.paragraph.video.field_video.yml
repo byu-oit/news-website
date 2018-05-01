@@ -1,0 +1,25 @@
+uuid: 17dd022d-eab1-4b77-931b-0053316d9a6b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_video
+    - paragraphs.paragraphs_type.video
+  module:
+    - video_embed_field
+id: paragraph.video.field_video
+field_name: field_video
+entity_type: paragraph
+bundle: video
+label: Video
+description: 'Paste a Youtube or Vimeo url.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_providers:
+    youtube: youtube
+    vimeo: vimeo
+    youtube_playlist: '0'
+field_type: video_embed_field

@@ -1,0 +1,22 @@
+uuid: a70a1459-43cc-460c-b76e-cdb431dfe72b
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - byu_news_adminimal_theme
+_core:
+  default_config_hash: 4tBgu2JpCkGn7UDOPFN-ykWrnfPQLBp-OD5_dMgg7NY
+id: byu_news_adminimal_theme_breadcrumbs
+theme: byu_news_adminimal_theme
+region: breadcrumb
+weight: 0
+provider: null
+plugin: system_breadcrumb_block
+settings:
+  id: system_breadcrumb_block
+  label: Breadcrumbs
+  provider: system
+  label_display: '0'
+visibility: {  }

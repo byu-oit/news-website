@@ -1,0 +1,41 @@
+uuid: f3277259-e1ea-4ebb-aa20-ce188f2061c8
+langcode: en
+status: true
+dependencies: {  }
+id: writer
+label: Writer
+weight: 4
+is_admin: null
+permissions:
+  - 'access administration menu'
+  - 'access administration pages'
+  - 'access ckeditor link'
+  - 'access media browser'
+  - 'access toolbar'
+  - 'access workbench'
+  - 'create files'
+  - 'create story content'
+  - 'delete own image files'
+  - 'delete own story content'
+  - 'display drupal links'
+  - 'download own image files'
+  - 'edit own image files'
+  - 'edit own story content'
+  - 'moderate content from draft to needs_review'
+  - 'moderate content from needs_review to draft'
+  - 'use editorial transition create_new_draft'
+  - 'use editorial transition needs_review'
+  - 'use exclude node title'
+  - 'use media wysiwyg'
+  - 'use text format embed_code'
+  - 'use text format filtered_html'
+  - 'use text format full_html'
+  - 'use text format very_basic'
+  - 'use workbench_moderation my drafts tab'
+  - 'use workbench_moderation needs review tab'
+  - 'view any unpublished content'
+  - 'view any unpublished story content'
+  - 'view latest version'
+  - 'view own files'
+  - 'view own unpublished content'
+  - 'view the administration theme'

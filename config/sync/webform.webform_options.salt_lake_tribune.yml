@@ -1,0 +1,9 @@
+uuid: 2b7f91ca-c1da-419f-97e7-d854aa20a713
+langcode: en
+status: true
+dependencies: {  }
+id: salt_lake_tribune
+label: 'Salt Lake Tribune'
+category: 'News Outlets'
+likert: false
+options: "astuckey@sltrib.com: 'Alex Stuckey, higher ed'\nbwood@sltrib.com: 'Ben Wood, K-12 beat'\nellenf@sltrib.com: 'Ellen Fagg, Art & Ent, Culture, Books, Theater'\nrpiper@sltrib.com: 'Rachel Piper, Digital News editor'\nacekola@sltrib.com: 'Anna Cekola, Features'\nfeatures@sltrib.com: 'Arts & Entertainment Editor'\n"

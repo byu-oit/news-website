@@ -1,0 +1,9 @@
+uuid: 245e115a-355a-42cb-abac-747383b73ca2
+langcode: en
+status: true
+dependencies: {  }
+id: story_highlights
+label: 'Story Highlights'
+icon_uuid: null
+description: ''
+behavior_plugins: {  }

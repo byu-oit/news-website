@@ -1,0 +1,22 @@
+uuid: e1a65e1f-6a02-469b-ba90-99fc4aa0e598
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.file.field_keywords
+  module:
+    - file
+id: file.video.field_keywords
+field_name: field_keywords
+entity_type: file
+bundle: video
+label: 'Keywords (NOT IN USE)'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings: {  }
+field_type: entity_reference

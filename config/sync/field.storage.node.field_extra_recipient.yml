@@ -1,0 +1,18 @@
+uuid: b444005b-9fcb-481b-80c4-b8602c0d7333
+langcode: und
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_extra_recipient
+field_name: field_extra_recipient
+entity_type: node
+type: email
+settings: {  }
+module: core
+locked: false
+cardinality: 3
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

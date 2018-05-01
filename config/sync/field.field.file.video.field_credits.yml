@@ -1,0 +1,21 @@
+uuid: 9fc32478-888c-4fb3-99fa-e67382e8f692
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.file.field_credits
+  module:
+    - file
+    - text
+id: file.video.field_credits
+field_name: field_credits
+entity_type: file
+bundle: video
+label: Credits
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

@@ -1,0 +1,76 @@
+uuid: bbcb296c-e3f3-4c73-8caa-c706b3c556d8
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.image.field_alignment
+    - field.field.paragraph.image.field_image
+    - field.field.paragraph.image.field_image_caption
+    - field.field.paragraph.image.field_image_text
+    - paragraphs.paragraphs_type.image
+  module:
+    - field_formatter_class
+    - field_group
+    - image
+    - options
+    - text
+third_party_settings:
+  field_group:
+    group_image_side:
+      children:
+        - field_image
+        - field_image_caption
+      parent_name: ''
+      weight: 0
+      format_type: html_element
+      format_settings:
+        id: ''
+        classes: ''
+        element: div
+        show_label: false
+        label_element: h3
+        attributes: ''
+        effect: none
+        speed: fast
+      label: image-side
+id: paragraph.image.default
+targetEntityType: paragraph
+bundle: image
+mode: default
+content:
+  field_alignment:
+    type: list_key
+    weight: 2
+    region: content
+    label: above
+    settings: {  }
+    third_party_settings:
+      field_formatter_class:
+        class: hidden
+  field_image:
+    weight: 1
+    label: hidden
+    settings:
+      image_style: ''
+      image_link: ''
+    third_party_settings: {  }
+    type: image
+    region: content
+  field_image_caption:
+    weight: 2
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_image_text:
+    weight: 1
+    label: hidden
+    settings: {  }
+    third_party_settings:
+      field_formatter_class:
+        class: simple-text
+    type: text_default
+    region: content
+hidden: {  }

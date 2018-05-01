@@ -1,0 +1,24 @@
+uuid: f2d1a333-21fb-4a3f-af4b-5909ab7b3ddc
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_class
+    - masquerade
+  theme:
+    - byu_news_adminimal_theme
+third_party_settings:
+  block_class:
+    classes: ''
+id: masquerade_3
+theme: byu_news_adminimal_theme
+region: content
+weight: 0
+provider: null
+plugin: masquerade
+settings:
+  id: masquerade
+  label: Masquerade
+  provider: masquerade
+  label_display: visible
+visibility: {  }

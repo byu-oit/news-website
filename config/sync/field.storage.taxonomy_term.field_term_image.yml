@@ -1,0 +1,23 @@
+uuid: 729bf00a-60d3-4c69-8454-1980ec5727c5
+langcode: und
+status: true
+dependencies:
+  module:
+    - file
+    - taxonomy
+id: taxonomy_term.field_term_image
+field_name: field_term_image
+entity_type: taxonomy_term
+type: file
+settings:
+  display_default: false
+  display_field: false
+  uri_scheme: public
+  target_type: file
+module: file
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

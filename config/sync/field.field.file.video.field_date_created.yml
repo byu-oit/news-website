@@ -1,0 +1,20 @@
+uuid: 340ae5a1-87c5-4a11-9ebd-fdacd8b30a6d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.file.field_date_created
+  module:
+    - file
+id: file.video.field_date_created
+field_name: field_date_created
+entity_type: file
+bundle: video
+label: 'Date Created (NOT IN USE)'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: timestamp

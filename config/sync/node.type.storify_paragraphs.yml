@@ -1,0 +1,20 @@
+uuid: b33b0b62-9458-481f-983e-d522f318b28e
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus:
+      - main
+    parent: 'main:'
+_core:
+  default_config_hash: VRvBgk8P-vM7La_7ivB2f-GP-atxUozbif1fkqx12CE
+name: 'Storify Paragraphs'
+type: storify_paragraphs
+description: 'Display a list of links similar to a Storify story.'
+help: ''
+new_revision: true
+preview_mode: 1
+display_submitted: false

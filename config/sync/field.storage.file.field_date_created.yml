@@ -1,0 +1,18 @@
+uuid: 6347e0cf-83d5-469b-8d18-a54b16029cdb
+langcode: und
+status: true
+dependencies:
+  module:
+    - file
+id: file.field_date_created
+field_name: field_date_created
+entity_type: file
+type: timestamp
+settings: {  }
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

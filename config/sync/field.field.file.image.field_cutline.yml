@@ -1,0 +1,20 @@
+uuid: c7d94f50-60be-4208-893b-8ae008e2c5b0
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.file.field_cutline
+  module:
+    - file
+id: file.image.field_cutline
+field_name: field_cutline
+entity_type: file
+bundle: image
+label: Cutline
+description: 'Please limit this to under 250 characters. It will be trimmed otherwise.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

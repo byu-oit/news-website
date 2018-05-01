@@ -1,0 +1,19 @@
+uuid: b6e72e81-b3af-40ef-9bcd-1ba828f42a7a
+langcode: und
+status: true
+dependencies:
+  module:
+    - file
+    - text
+id: file.field_credits
+field_name: field_credits
+entity_type: file
+type: text_long
+settings: {  }
+module: text
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

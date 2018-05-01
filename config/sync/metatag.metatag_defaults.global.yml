@@ -1,0 +1,18 @@
+uuid: 77166403-bdb0-41a4-9640-f767bb0574e8
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: sL588ui1E_8-2c_UupwyYxcqX2OVyMFp3HTLbbFqvPc
+id: global
+label: Global
+tags:
+  canonical_url: '[current-page:url]'
+  title: '[current-page:title] | [site:name]'
+  apple_mobile_web_app_capable: 'yes'
+  application_name: 'BYU News'
+  apple_mobile_web_app_status_bar_style: default
+  handheldfriendly: trye
+  apple_mobile_web_app_title: 'BYU News'
+  theme_color: '#002e5d'
+  cleartype: 'on'

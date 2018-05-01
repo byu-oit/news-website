@@ -1,0 +1,68 @@
+uuid: cc7c13bf-c281-4a1c-b5be-2920b8d288f9
+langcode: en
+status: true
+dependencies: {  }
+id: d7_node_revision_about_page
+class: Drupal\migrate\Plugin\Migration
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - 'Drupal 7'
+  - Content
+migration_group: migrate_drupal_7
+label: 'Node revisions (About Page)'
+source:
+  plugin: d7_node_revision
+  node_type: about_page
+process:
+  nid: nid
+  vid: vid
+  langcode:
+    plugin: default_value
+    source: language
+    default_value: und
+  title: title
+  uid: node_uid
+  status: status
+  created: created
+  changed: changed
+  promote: promote
+  sticky: sticky
+  revision_uid: revision_uid
+  revision_log: log
+  revision_timestamp: timestamp
+  comment_node_about_page/0/status: comment
+  body:
+    plugin: get
+    source: body
+  field_article_title:
+    plugin: get
+    source: field_article_title
+  field_feature_image:
+    plugin: sub_process
+    source: field_feature_image
+    process:
+      target_id: fid
+      alt: alt
+      title: title
+      width: width
+      height: height
+  field_link_title:
+    plugin: get
+    source: field_link_title
+destination:
+  plugin: 'entity_revision:node'
+  default_bundle: about_page
+migration_dependencies:
+  required:
+    64: d7_node_about_page
+    65: d7_node_alert
+    66: d7_node_article
+    67: d7_node_asset
+    68: d7_node_page
+    69: d7_node_panel
+    70: d7_node_person
+    71: d7_node_slider
+    72: d7_node_story
+    73: d7_node_webform
+  optional: {  }

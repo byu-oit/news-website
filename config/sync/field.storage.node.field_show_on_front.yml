@@ -1,0 +1,28 @@
+uuid: eaacca25-6b6c-4cf7-a8f5-a9dbecbe09a8
+langcode: en
+status: true
+dependencies:
+  module:
+    - field_permissions
+    - node
+    - options
+third_party_settings:
+  field_permissions:
+    permission_type: public
+id: node.field_show_on_front
+field_name: field_show_on_front
+entity_type: node
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: 'true'
+      label: 'Show on Front Page'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

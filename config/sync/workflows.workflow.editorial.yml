@@ -1,0 +1,58 @@
+uuid: add52bd4-8088-4b47-b593-24a5f05872b3
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.story
+  module:
+    - content_moderation
+_core:
+  default_config_hash: T_JxNjYlfoRBi7Bj1zs5Xv9xv1btuBkKp5C1tNrjMhI
+id: editorial
+label: Editorial
+type: content_moderation
+type_settings:
+  states:
+    draft:
+      label: Draft
+      published: false
+      default_revision: false
+      weight: -10
+    needs_review:
+      published: false
+      default_revision: false
+      label: 'Needs Review'
+      weight: -9
+    published:
+      label: Published
+      published: true
+      default_revision: true
+      weight: -8
+  transitions:
+    create_new_draft:
+      label: 'Create New Draft'
+      to: draft
+      weight: -10
+      from:
+        - draft
+        - needs_review
+        - published
+    needs_review:
+      label: 'Needs Review'
+      from:
+        - draft
+        - needs_review
+        - published
+      to: needs_review
+      weight: -9
+    publish:
+      label: Publish
+      to: published
+      weight: -8
+      from:
+        - draft
+        - needs_review
+        - published
+  entity_types:
+    node:
+      - story

@@ -1,0 +1,44 @@
+uuid: 81faf81e-cfa2-40d8-9296-fefff55ee196
+langcode: en
+status: true
+dependencies: {  }
+id: d7_node_webform
+class: Drupal\migrate\Plugin\Migration
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - 'Drupal 7'
+  - Content
+migration_group: migrate_drupal_7
+label: 'Nodes (Webform)'
+source:
+  plugin: d7_node
+  node_type: webform
+process:
+  nid: tnid
+  vid: vid
+  langcode:
+    plugin: default_value
+    source: language
+    default_value: und
+  title: title
+  uid: node_uid
+  status: status
+  created: created
+  changed: changed
+  promote: promote
+  sticky: sticky
+  revision_uid: revision_uid
+  revision_log: log
+  revision_timestamp: timestamp
+  comment_node_webform/0/status: comment
+destination:
+  plugin: 'entity:node'
+  default_bundle: webform
+migration_dependencies:
+  required:
+    - d7_user
+    - d7_node_type
+  optional:
+    - d7_field_instance
+    - d7_comment_field_instance

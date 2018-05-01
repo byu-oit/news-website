@@ -1,0 +1,9 @@
+uuid: e7ce31e8-2576-4e1d-b871-e46fa13ac4b6
+langcode: en
+status: true
+dependencies: {  }
+id: internal_story
+label: 'Internal Story'
+icon_uuid: null
+description: 'Story from our own news site.'
+behavior_plugins: {  }

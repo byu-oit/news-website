@@ -1,0 +1,13 @@
+abs_urls: false
+admin_theme: false
+roles_profiles:
+  administrator:
+    public: admin
+  editor:
+    public: member
+  writer:
+    public: member
+  programmer:
+    public: member
+_core:
+  default_config_hash: 4FhrEwOM9yJ8neEoN77sxroTRBUXqRwap0KSJtFnYJs

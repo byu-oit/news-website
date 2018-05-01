@@ -1,0 +1,21 @@
+uuid: 51d634b5-53af-4ffd-bb3d-68f22a3896a0
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.file.field_description
+  module:
+    - file
+    - text
+id: file.video.field_description
+field_name: field_description
+entity_type: file
+bundle: video
+label: 'Description (NOT IN USE)'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

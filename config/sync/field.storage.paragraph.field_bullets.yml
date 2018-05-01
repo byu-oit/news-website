@@ -1,0 +1,19 @@
+uuid: d874d5c4-2f7c-4a52-90bc-ef20f66e2527
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraphs
+    - text
+id: paragraph.field_bullets
+field_name: field_bullets
+entity_type: paragraph
+type: text_long
+settings: {  }
+module: text
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

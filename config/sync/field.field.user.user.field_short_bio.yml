@@ -1,0 +1,21 @@
+uuid: d4cc82d8-40e0-422f-abc4-b5c69059e8a7
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_short_bio
+  module:
+    - text
+    - user
+id: user.user.field_short_bio
+field_name: field_short_bio
+entity_type: user
+bundle: user
+label: 'Short Bio'
+description: 'A short biography to appear on the contact us page.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

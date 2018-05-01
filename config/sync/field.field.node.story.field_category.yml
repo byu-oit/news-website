@@ -1,0 +1,29 @@
+uuid: 527f0815-9f12-4a1a-9791-acd8fb2e2b4b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_category
+    - node.type.story
+    - taxonomy.vocabulary.newsletter_categories
+id: node.story.field_category
+field_name: field_category
+entity_type: node
+bundle: story
+label: Category
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      newsletter_categories: newsletter_categories
+    sort:
+      field: name
+      direction: asc
+    auto_create: null
+    auto_create_bundle: null
+field_type: entity_reference

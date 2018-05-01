@@ -1,0 +1,9 @@
+uuid: c3926736-b279-4570-963c-b78d6a92b72b
+langcode: en
+status: true
+dependencies: {  }
+name: 'YouTube Tags'
+vid: youtube_tags
+description: ''
+hierarchy: 0
+weight: 0

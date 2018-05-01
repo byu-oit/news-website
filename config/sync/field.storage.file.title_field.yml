@@ -1,0 +1,20 @@
+uuid: 46aaa6fe-5e12-4dd3-a9d6-5271c7906106
+langcode: und
+status: true
+dependencies:
+  module:
+    - file
+    - text
+id: file.title_field
+field_name: title_field
+entity_type: file
+type: text
+settings:
+  max_length: 140
+module: text
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

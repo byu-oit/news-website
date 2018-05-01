@@ -1,0 +1,33 @@
+uuid: 62b8a4a4-8ce3-4bd4-87c1-7bb33e459d2f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_category
+    - node.type.photo_essay
+    - taxonomy.vocabulary.newsletter_categories
+  content:
+    - 'taxonomy_term:newsletter_categories:c792a702-298e-451f-9619-b01f064c41e4'
+id: node.photo_essay.field_category
+field_name: field_category
+entity_type: node
+bundle: photo_essay
+label: Category
+description: 'Select <i>Photo Essay</i>.'
+required: true
+translatable: true
+default_value:
+  -
+    target_uuid: c792a702-298e-451f-9619-b01f064c41e4
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      newsletter_categories: newsletter_categories
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

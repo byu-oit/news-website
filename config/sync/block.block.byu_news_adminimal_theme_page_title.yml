@@ -1,0 +1,20 @@
+uuid: 395f5eea-ca78-45a8-9e76-bc058420bcb9
+langcode: en
+status: true
+dependencies:
+  theme:
+    - byu_news_adminimal_theme
+_core:
+  default_config_hash: 9uzFZZNW73p2F8utCHwnMvxXZHBkUJuFKNKnoFuOySM
+id: byu_news_adminimal_theme_page_title
+theme: byu_news_adminimal_theme
+region: header
+weight: -5
+provider: null
+plugin: page_title_block
+settings:
+  id: page_title_block
+  label: 'Page title'
+  provider: core
+  label_display: '0'
+visibility: {  }

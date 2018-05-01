@@ -1,0 +1,32 @@
+uuid: d9fac8f8-1672-4d0e-91e3-9d1a97294861
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_class
+    - ctools
+    - sharethis
+  theme:
+    - byu_news
+third_party_settings:
+  block_class:
+    classes: ''
+id: sharethis
+theme: byu_news
+region: right_sidebar
+weight: 0
+provider: null
+plugin: sharethis_block
+settings:
+  id: sharethis_block
+  label: 'Share This Story'
+  provider: sharethis
+  label_display: visible
+visibility:
+  'entity_bundle:node':
+    id: 'entity_bundle:node'
+    bundles:
+      story: story
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'

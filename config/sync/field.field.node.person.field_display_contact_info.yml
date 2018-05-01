@@ -1,0 +1,23 @@
+uuid: 00fcb831-0543-4798-bfee-9df62c54207f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_display_contact_info
+    - node.type.person
+  module:
+    - options
+id: node.person.field_display_contact_info
+field_name: field_display_contact_info
+entity_type: node
+bundle: person
+label: 'Display Contact Information'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: display
+default_value_callback: ''
+settings: {  }
+field_type: list_string

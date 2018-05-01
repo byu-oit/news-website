@@ -1,0 +1,59 @@
+uuid: ee7d9007-1d75-41ae-aa96-f7ae1296a5d4
+langcode: en
+status: true
+dependencies: {  }
+id: d7_node_revision_article
+class: Drupal\migrate\Plugin\Migration
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - 'Drupal 7'
+  - Content
+migration_group: migrate_drupal_7
+label: 'Node revisions (Old Article To Delete)'
+source:
+  plugin: d7_node_revision
+  node_type: article
+process:
+  nid: nid
+  vid: vid
+  langcode:
+    plugin: default_value
+    source: language
+    default_value: und
+  title: title
+  uid: node_uid
+  status: status
+  created: created
+  changed: changed
+  promote: promote
+  sticky: sticky
+  revision_uid: revision_uid
+  revision_log: log
+  revision_timestamp: timestamp
+  comment_node_article/0/status: comment
+  body:
+    plugin: get
+    source: body
+  field_learn_more:
+    plugin: field_link
+    source: field_learn_more
+  field_title_link:
+    plugin: field_link
+    source: field_title_link
+destination:
+  plugin: 'entity_revision:node'
+  default_bundle: article
+migration_dependencies:
+  required:
+    64: d7_node_about_page
+    65: d7_node_alert
+    66: d7_node_article
+    67: d7_node_asset
+    68: d7_node_page
+    69: d7_node_panel
+    70: d7_node_person
+    71: d7_node_slider
+    72: d7_node_story
+    73: d7_node_webform
+  optional: {  }

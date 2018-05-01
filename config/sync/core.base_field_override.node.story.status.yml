@@ -1,0 +1,22 @@
+uuid: bd4e0f38-c6c1-4664-a864-da39b8f41bdb
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.story
+id: node.story.status
+field_name: status
+entity_type: node
+bundle: story
+label: Published
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

@@ -1,0 +1,30 @@
+uuid: bb9e3398-25f4-4032-aadc-81317d927a33
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_image_text
+    - paragraphs.paragraphs_type.image
+  module:
+    - allowed_formats
+    - text
+third_party_settings:
+  allowed_formats:
+    very_basic: very_basic
+    full_html: '0'
+    basic_html: '0'
+    code: '0'
+    restricted_html: '0'
+    plain_text: '0'
+id: paragraph.image.field_image_text
+field_name: field_image_text
+entity_type: paragraph
+bundle: image
+label: 'Image Text'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

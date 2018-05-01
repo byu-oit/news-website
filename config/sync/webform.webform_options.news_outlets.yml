@@ -1,0 +1,9 @@
+uuid: 7368e8cd-4c34-4e40-8f65-f6ae7a4770a6
+langcode: en
+status: true
+dependencies: {  }
+id: news_outlets
+label: 'Broadcast TV'
+category: 'News Outlets'
+likert: false
+options: "assignments@abc4.com: '4 Utah (KTVX/ABC)'\namonsen@good4utah.com: 'Ali Monsen (KTVX)'\ncneugabauer@sbgtv.com: 'Cimaron Neugabauer, KUTV Digital Editor'\ndmwoodruf@kutv.com: 'Daniel Woodruff (KUTV Reporter)'\ndpaynter@kjzz.com: 'Dean Paynter (KJZZ production director)'\nnews@fox13now.com: 'Fox 13 (KSTU)'\nassignment.desk@ksl.com: 'KSL 5 (NBC), Assignments Editor'\nnewsdesk@kutv2.com: 'KUTV 2 (CBS)'\n"

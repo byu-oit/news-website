@@ -1,0 +1,92 @@
+schemas:
+  bootstrap: 8000
+  byu_theme: 8000
+  byu_news: 8000
+  byu_d8: 8000
+favicon:
+  mimetype: image/vnd.microsoft.icon
+  path: ''
+  url: 'https://news-linux.byu.edu/themes/custom/byu_news/favicon.ico'
+  use_default: 1
+font_three: sentinel
+custom_width: '1200'
+font_package: fonts-full
+font_one: sentinel
+font_two: sentinel
+font_four: ringside
+font_four_color: h4-black
+font_five: ringside
+font_five_color: h5-black
+p_font: ringside
+footer_sticky: 1
+search_use: 1
+features:
+  comment_user_picture: 1
+  comment_user_verification: 1
+  favicon: 1
+  node_user_picture: 1
+logo:
+  path: ''
+  url: ''
+  use_default: 1
+components_version: 1.x.x
+table: ''
+loader: 0
+fontawesome_use: 0
+libreberville_use: 0
+sourcesans_use: 0
+font_one_color: h1-navy
+font_two_color: h2-navy
+font_three_color: h3-navy
+subtitle_use: 0
+subtitle_above: 0
+subtitle_italic: 0
+subtitle_text: ''
+login_use: 0
+login_url: ''
+logout_url: ''
+myaccount_use: 0
+myaccount_url: ''
+search_input: ''
+search_submit: ''
+actions_bg: none
+menu_disable: 0
+transparent: 0
+hero_width: '0'
+hero_vs_menu: '0'
+hero_image_width: 0
+full_width: 0
+min_page_height: none
+byu_buttons: 0
+byu_tables: 0
+byu_box_shadows: 0
+your_css: ''
+footer_option: normal
+contact_option: ''
+contact_about_link: ''
+contact_about: ''
+contact_us_link: ''
+contact_us: ''
+region_wells:
+  header: ''
+  header_actions: ''
+  nav_top: ''
+  search: ''
+  language_switcher: ''
+  primary_menu: ''
+  after_menu: ''
+  header_social: ''
+  slide_show: ''
+  slider_contact_form: ''
+  breadcrumb: ''
+  before_content: ''
+  content: ''
+  after_content: ''
+  left_sidebar: ''
+  right_sidebar: ''
+  label_footer: ''
+  footer_11: ''
+  footer_21: ''
+  footer_31: ''
+  footer_41: ''
+table_responsive: '-1'

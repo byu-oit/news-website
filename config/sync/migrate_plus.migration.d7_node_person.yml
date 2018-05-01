@@ -1,0 +1,76 @@
+uuid: 69051749-e792-4f6a-8439-d2160ba1e0b1
+langcode: en
+status: true
+dependencies: {  }
+id: d7_node_person
+class: Drupal\migrate\Plugin\Migration
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - 'Drupal 7'
+  - Content
+migration_group: migrate_drupal_7
+label: 'Nodes (Person)'
+source:
+  plugin: d7_node
+  node_type: person
+process:
+  nid: tnid
+  vid: vid
+  langcode:
+    plugin: default_value
+    source: language
+    default_value: und
+  title: title
+  uid: node_uid
+  status: status
+  created: created
+  changed: changed
+  promote: promote
+  sticky: sticky
+  revision_uid: revision_uid
+  revision_log: log
+  revision_timestamp: timestamp
+  comment_node_person/0/status: comment
+  body:
+    plugin: get
+    source: body
+  field_contact_phone:
+    plugin: get
+    source: field_contact_phone
+  field_contact_email:
+    plugin: sub_process
+    source: field_contact_email
+    process:
+      value: email
+  field_role:
+    plugin: get
+    source: field_role
+  title_field:
+    plugin: get
+    source: title_field
+  field_person_title:
+    plugin: get
+    source: field_person_title
+  field_display_contact_info:
+    plugin: get
+    source: field_display_contact_info
+  field_image:
+    plugin: sub_process
+    source: field_image
+    process:
+      target_id: fid
+      alt: alt
+      title: title
+      width: width
+      height: height
+destination:
+  plugin: 'entity:node'
+  default_bundle: person
+migration_dependencies:
+  required:
+    - d7_user
+    - d7_node_type
+  optional:
+    - d7_field_instance
+    - d7_comment_field_instance

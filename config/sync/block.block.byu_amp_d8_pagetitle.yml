@@ -1,0 +1,31 @@
+uuid: 2f4dc494-2989-45fb-8dc7-849e1fb368f0
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_class
+    - ctools
+  theme:
+    - byu_amp_d8
+third_party_settings:
+  block_class:
+    classes: col-md-8
+id: byu_amp_d8_pagetitle
+theme: byu_amp_d8
+region: content
+weight: 0
+provider: null
+plugin: page_title_block
+settings:
+  id: page_title_block
+  label: 'Page title'
+  provider: core
+  label_display: '0'
+visibility:
+  'entity_bundle:node':
+    id: 'entity_bundle:node'
+    bundles:
+      story: story
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'

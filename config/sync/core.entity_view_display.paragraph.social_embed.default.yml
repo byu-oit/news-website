@@ -1,0 +1,22 @@
+uuid: 3ff6a109-9c34-499c-8802-bfbb0213e0f6
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.social_embed.field_social_embed_code
+    - paragraphs.paragraphs_type.social_embed
+  module:
+    - text
+id: paragraph.social_embed.default
+targetEntityType: paragraph
+bundle: social_embed
+mode: default
+content:
+  field_social_embed_code:
+    weight: 2
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+hidden: {  }

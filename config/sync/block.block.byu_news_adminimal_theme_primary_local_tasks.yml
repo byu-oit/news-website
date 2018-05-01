@@ -1,0 +1,22 @@
+uuid: 01da9c1c-19d0-4910-85a9-8771a3c5b33c
+langcode: en
+status: true
+dependencies:
+  theme:
+    - byu_news_adminimal_theme
+_core:
+  default_config_hash: j_1v0HNarQo6dc9mNNy7hUbVEAen2JKdy8iOBcATty8
+id: byu_news_adminimal_theme_primary_local_tasks
+theme: byu_news_adminimal_theme
+region: header
+weight: 0
+provider: null
+plugin: local_tasks_block
+settings:
+  id: local_tasks_block
+  label: 'Primary tabs'
+  provider: core
+  label_display: '0'
+  primary: true
+  secondary: false
+visibility: {  }

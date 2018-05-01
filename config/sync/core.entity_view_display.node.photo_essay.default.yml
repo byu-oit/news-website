@@ -1,0 +1,60 @@
+uuid: 7980049e-f539-47d6-ae86-f9fa1f2feeed
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.photo_essay.body
+    - field.field.node.photo_essay.field_category
+    - field.field.node.photo_essay.field_story_link
+    - field.field.node.photo_essay.field_thumbnail
+    - node.type.photo_essay
+  module:
+    - image
+    - link
+    - text
+    - user
+id: node.photo_essay.default
+targetEntityType: node
+bundle: photo_essay
+mode: default
+content:
+  body:
+    weight: 104
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_category:
+    weight: 102
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  field_story_link:
+    weight: 105
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    type: link
+    region: content
+  field_thumbnail:
+    weight: 101
+    label: above
+    settings:
+      image_style: ''
+      image_link: ''
+    third_party_settings: {  }
+    type: image
+    region: content
+  links:
+    weight: 100
+    region: content
+hidden: {  }

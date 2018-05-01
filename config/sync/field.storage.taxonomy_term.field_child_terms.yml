@@ -1,0 +1,19 @@
+uuid: 932d57e1-d525-4394-ad7a-4c62b828d60e
+langcode: und
+status: true
+dependencies:
+  module:
+    - taxonomy
+id: taxonomy_term.field_child_terms
+field_name: field_child_terms
+entity_type: taxonomy_term
+type: entity_reference
+settings:
+  target_type: taxonomy_term
+module: core
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

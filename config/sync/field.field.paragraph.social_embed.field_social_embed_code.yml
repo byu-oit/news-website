@@ -1,0 +1,31 @@
+uuid: 76f070ec-2af3-44ee-965f-3cb57dcd6368
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_social_embed_code
+    - paragraphs.paragraphs_type.social_embed
+  module:
+    - allowed_formats
+    - text
+third_party_settings:
+  allowed_formats:
+    embed_code: embed_code
+    full_html: '0'
+    basic_html: '0'
+    code: '0'
+    restricted_html: '0'
+    very_basic: '0'
+    plain_text: '0'
+id: paragraph.social_embed.field_social_embed_code
+field_name: field_social_embed_code
+entity_type: paragraph
+bundle: social_embed
+label: 'Social Media Embed Code'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

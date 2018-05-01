@@ -1,0 +1,20 @@
+uuid: 93b03d31-c94a-41c2-adcd-cb08c23aa423
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - amp
+_core:
+  default_config_hash: kc3hj7RH2V6mDPtK3G0kYLLYwnunuVizUIpY53wERRo
+name: amp_metadata_content_image_min_696px_wide
+label: 'AMP Metadata: Content image (696px wide)'
+effects:
+  0efa62e2-b31e-43f1-a1f6-a350ea092f13:
+    uuid: 0efa62e2-b31e-43f1-a1f6-a350ea092f13
+    id: image_scale
+    weight: 1
+    data:
+      width: 696
+      height: null
+      upscale: true

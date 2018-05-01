@@ -1,0 +1,22 @@
+uuid: 6fb2412e-f9dc-41a3-bcdb-ea8fbbec558a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.story_highlights.field_bullets
+    - paragraphs.paragraphs_type.story_highlights
+  module:
+    - text
+id: paragraph.story_highlights.default
+targetEntityType: paragraph
+bundle: story_highlights
+mode: default
+content:
+  field_bullets:
+    weight: 0
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+hidden: {  }

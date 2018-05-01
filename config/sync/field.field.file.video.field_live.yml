@@ -1,0 +1,24 @@
+uuid: 8276a358-2296-4402-bfc7-611ef90fca13
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.file.field_live
+  module:
+    - file
+id: file.video.field_live
+field_name: field_live
+entity_type: file
+bundle: video
+label: 'Live (NOT IN USE)'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

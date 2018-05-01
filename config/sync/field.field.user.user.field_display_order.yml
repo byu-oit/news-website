@@ -1,0 +1,21 @@
+uuid: b21cba30-45d5-4426-8d8b-e5605b4a3078
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_display_order
+  module:
+    - options
+    - user
+id: user.user.field_display_order
+field_name: field_display_order
+entity_type: user
+bundle: user
+label: 'Display Order'
+description: 'Order in which the person is displayed on the contact us page.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_integer

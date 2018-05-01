@@ -1,0 +1,36 @@
+uuid: 566b491e-5900-460c-8978-903f6ff1b66d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.file.video.field_captioned
+    - field.field.file.video.field_credits
+    - field.field.file.video.field_date_created
+    - field.field.file.video.field_description
+    - field.field.file.video.field_keywords
+    - field.field.file.video.field_live
+    - field.field.file.video.field_public
+    - field.field.file.video.field_youtube_id
+  module:
+    - file
+    - text
+id: file.video.default
+targetEntityType: file
+bundle: video
+mode: default
+content:
+  field_credits:
+    label: hidden
+    weight: 2
+    type: text_default
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden:
+  field_captioned: true
+  field_date_created: true
+  field_description: true
+  field_keywords: true
+  field_live: true
+  field_public: true
+  field_youtube_id: true

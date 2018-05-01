@@ -1,0 +1,30 @@
+uuid: 9f69c7ff-3580-4419-8d96-4ec4b26a1ed7
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.slideshow.field_block
+    - paragraphs.paragraphs_type.slideshow
+  module:
+    - content_moderation
+id: paragraph.slideshow.default
+targetEntityType: paragraph
+bundle: slideshow
+mode: default
+content:
+  field_block:
+    weight: 101
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  moderation_state:
+    type: moderation_state_default
+    weight: 100
+    settings: {  }
+    region: content
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true
+  uid: true

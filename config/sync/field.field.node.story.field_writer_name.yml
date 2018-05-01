@@ -1,0 +1,19 @@
+uuid: 189599c7-b4bc-41af-8119-721cd557665b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_writer_name
+    - node.type.story
+id: node.story.field_writer_name
+field_name: field_writer_name
+entity_type: node
+bundle: story
+label: 'Writer Name'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

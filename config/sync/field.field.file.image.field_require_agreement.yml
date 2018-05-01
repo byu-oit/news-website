@@ -1,0 +1,24 @@
+uuid: d3685a85-7901-4816-a48d-d8bcaee34b61
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.file.field_require_agreement
+  module:
+    - file
+id: file.image.field_require_agreement
+field_name: field_require_agreement
+entity_type: file
+bundle: image
+label: 'Require agreement'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

@@ -1,0 +1,23 @@
+uuid: 3e5754ea-5924-4b2e-b135-f773deca6fb8
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_show_on_front
+    - node.type.story
+  module:
+    - options
+id: node.story.field_show_on_front
+field_name: field_show_on_front
+entity_type: node
+bundle: story
+label: 'Front Page'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 'true'
+default_value_callback: ''
+settings: {  }
+field_type: list_string

@@ -1,0 +1,22 @@
+uuid: 578d7f1f-7fed-454c-acab-dace0c6bcebb
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.photo_essay
+id: node.photo_essay.promote
+field_name: promote
+entity_type: node
+bundle: photo_essay
+label: 'Promoted to front page'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

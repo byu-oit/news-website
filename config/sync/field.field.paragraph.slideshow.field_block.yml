@@ -1,0 +1,26 @@
+uuid: 06b315f0-bf42-445f-a986-143cf8023485
+langcode: en
+status: true
+dependencies:
+  config:
+    - block.block.views_block__slideshow_block_1
+    - field.storage.paragraph.field_block
+    - paragraphs.paragraphs_type.slideshow
+id: paragraph.slideshow.field_block
+field_name: field_block
+entity_type: paragraph
+bundle: slideshow
+label: Block
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    target_uuid: 3ab08361-948a-4be8-bd07-2f73f6ee1964
+default_value_callback: ''
+settings:
+  handler: 'default:block'
+  handler_settings:
+    target_bundles: null
+    auto_create: false
+field_type: entity_reference

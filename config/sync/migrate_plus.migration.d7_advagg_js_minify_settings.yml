@@ -1,0 +1,26 @@
+uuid: 07fd17d9-1b88-46e3-9d13-4e5480f779ef
+langcode: en
+status: true
+dependencies: {  }
+id: d7_advagg_js_minify_settings
+class: Drupal\migrate\Plugin\Migration
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - 'Drupal 7'
+migration_group: migrate_drupal_7
+label: 'AdvAgg JS Minify configuration'
+source:
+  plugin: variable
+  variables:
+    - advagg_js_compressor
+    - advagg_js_compress_add_license
+process:
+  minifier: advagg_js_compressor
+  add_license: advagg_js_compress_add_license
+destination:
+  plugin: config
+  config_name: advagg_js_minify.settings
+migration_dependencies:
+  required: {  }
+  optional: {  }

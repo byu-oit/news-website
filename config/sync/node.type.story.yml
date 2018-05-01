@@ -1,0 +1,17 @@
+uuid: f5b04eb2-637b-4f19-a28d-0cca11d936ee
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus: {  }
+    parent: ''
+name: Story
+type: story
+description: 'Use <i>Story</i> content type to add stories.'
+help: ''
+new_revision: true
+preview_mode: 1
+display_submitted: true

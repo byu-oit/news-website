@@ -1,0 +1,110 @@
+uuid: 843ec317-0346-4dad-91c6-f86169ccf6f7
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_main_body
+    - node.type.story
+    - paragraphs.paragraphs_type.image
+    - paragraphs.paragraphs_type.slideshow
+    - paragraphs.paragraphs_type.social_embed
+    - paragraphs.paragraphs_type.story_highlights
+    - paragraphs.paragraphs_type.text
+    - paragraphs.paragraphs_type.video
+  module:
+    - entity_reference_revisions
+id: node.story.field_main_body
+field_name: field_main_body
+entity_type: node
+bundle: story
+label: 'Main Body'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      image: image
+      text: text
+      story_highlights: story_highlights
+      video: video
+      social_embed: social_embed
+      slideshow: slideshow
+    target_bundles_drag_drop:
+      image:
+        enabled: true
+        weight: 22
+      bp_accordion:
+        weight: 23
+        enabled: false
+      text:
+        enabled: true
+        weight: 23
+      bp_accordion_section:
+        weight: 24
+        enabled: false
+      bp_blank:
+        weight: 25
+        enabled: false
+      bp_block:
+        weight: 26
+        enabled: false
+      story_highlights:
+        enabled: true
+        weight: 27
+      bp_carousel:
+        weight: 27
+        enabled: false
+      bp_column_wrapper:
+        weight: 28
+        enabled: false
+      bp_columns:
+        weight: 29
+        enabled: false
+      video:
+        enabled: true
+        weight: 29
+      bp_columns_three_uneven:
+        weight: 30
+        enabled: false
+      bp_columns_two_uneven:
+        weight: 31
+        enabled: false
+      bp_image:
+        weight: 32
+        enabled: false
+      bp_modal:
+        weight: 33
+        enabled: false
+      bp_simple:
+        weight: 34
+        enabled: false
+      bp_tab_section:
+        weight: 35
+        enabled: false
+      bp_tabs:
+        weight: 36
+        enabled: false
+      bp_view:
+        weight: 37
+        enabled: false
+      internal_story:
+        weight: 47
+        enabled: false
+      social_embed:
+        enabled: true
+        weight: 48
+      social_media_embed:
+        weight: 48
+        enabled: false
+      stories:
+        weight: 49
+        enabled: false
+      slideshow:
+        enabled: true
+        weight: 50
+field_type: entity_reference_revisions

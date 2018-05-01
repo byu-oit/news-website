@@ -1,0 +1,26 @@
+uuid: 0e85b11a-24f8-4365-abd4-6d31b111c7d0
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.main
+  module:
+    - system
+  theme:
+    - byu_theme
+_core:
+  default_config_hash: I8TlpiUsGRJcbqAhiFli9Pe6_LSh5Coh_4JHx7dSD5Y
+id: byu_theme_main_menu
+theme: byu_theme
+region: primary_menu
+weight: 0
+provider: null
+plugin: 'system_menu_block:main'
+settings:
+  id: 'system_menu_block:main'
+  label: 'Main navigation'
+  provider: system
+  label_display: '0'
+  level: 1
+  depth: 1
+visibility: {  }

@@ -1,0 +1,33 @@
+uuid: 7190ed2c-3dd4-449e-a3e8-679fc38d74ea
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_bullets
+    - paragraphs.paragraphs_type.story_highlights
+  module:
+    - allowed_formats
+    - text
+third_party_settings:
+  allowed_formats:
+    very_basic: very_basic
+    full_html: '0'
+    basic_html: '0'
+    code: '0'
+    restricted_html: '0'
+    plain_text: '0'
+id: paragraph.story_highlights.field_bullets
+field_name: field_bullets
+entity_type: paragraph
+bundle: story_highlights
+label: bullets
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: "<ul>\r\n\t<li>Story Highlight 1</li>\r\n\t<li>Story Highlight 2</li>\r\n</ul>\r\n"
+    format: very_basic
+default_value_callback: ''
+settings: {  }
+field_type: text_long

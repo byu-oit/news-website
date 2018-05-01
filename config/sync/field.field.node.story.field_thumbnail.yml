@@ -1,0 +1,38 @@
+uuid: 21115124-e450-4d56-8bdf-fa18c425dbb6
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_thumbnail
+    - node.type.story
+  module:
+    - image
+id: node.story.field_thumbnail
+field_name: field_thumbnail
+entity_type: node
+bundle: story
+label: Thumbnail
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  file_directory: assets/images/thumbnails
+  file_extensions: 'png gif jpg jpeg'
+  max_filesize: ''
+  max_resolution: 375x230
+  min_resolution: 375x230
+  alt_field: true
+  alt_field_required: true
+  title_field: false
+  title_field_required: false
+  default_image:
+    uuid: ''
+    alt: ''
+    title: ''
+    width: null
+    height: null
+  handler: 'default:file'
+  handler_settings: {  }
+field_type: image

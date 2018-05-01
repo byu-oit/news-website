@@ -1,0 +1,37 @@
+uuid: 964a8e29-82b8-43e0-80f7-7ba9ff48a306
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_class
+    - ctools_block
+  theme:
+    - byu_news
+third_party_settings:
+  block_class:
+    classes: ''
+id: mediaplacement
+theme: byu_news
+region: right_sidebar
+weight: -4
+provider: null
+plugin: 'entity_field:node:field_media_placement'
+settings:
+  id: 'entity_field:node:field_media_placement'
+  label: 'Media Placement'
+  provider: ctools_block
+  label_display: '0'
+  formatter:
+    label: above
+    type: link
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: '0'
+      target: '0'
+    third_party_settings: {  }
+    weight: 0
+  context_mapping:
+    entity: '@node.node_route_context:node'
+visibility: {  }

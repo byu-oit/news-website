@@ -1,0 +1,14 @@
+uuid: c166765c-86aa-41c0-9360-ad1ff39b6337
+langcode: en
+status: true
+dependencies: {  }
+name: homepage_hero
+label: 'Homepage Hero'
+effects:
+  6d16bffb-d754-4c25-b68f-531dd4574dda:
+    uuid: 6d16bffb-d754-4c25-b68f-531dd4574dda
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 570
+      height: 320

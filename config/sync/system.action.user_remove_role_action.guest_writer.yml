@@ -1,0 +1,14 @@
+uuid: 837eb5bf-41e2-469f-9439-278dcad4d3a8
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.guest_writer
+  module:
+    - user
+id: user_remove_role_action.guest_writer
+label: 'Remove the Guest Writer role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: guest_writer

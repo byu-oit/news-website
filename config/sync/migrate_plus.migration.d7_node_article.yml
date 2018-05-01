@@ -1,0 +1,53 @@
+uuid: 84ba5f63-db1c-4f45-b1e2-e924ee4f408b
+langcode: en
+status: true
+dependencies: {  }
+id: d7_node_article
+class: Drupal\migrate\Plugin\Migration
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - 'Drupal 7'
+  - Content
+migration_group: migrate_drupal_7
+label: 'Nodes (Old Article To Delete)'
+source:
+  plugin: d7_node
+  node_type: article
+process:
+  nid: tnid
+  vid: vid
+  langcode:
+    plugin: default_value
+    source: language
+    default_value: und
+  title: title
+  uid: node_uid
+  status: status
+  created: created
+  changed: changed
+  promote: promote
+  sticky: sticky
+  revision_uid: revision_uid
+  revision_log: log
+  revision_timestamp: timestamp
+  comment_node_article/0/status: comment
+  body:
+    plugin: get
+    source: body
+  field_learn_more:
+    plugin: field_link
+    source: field_learn_more
+  field_title_link:
+    plugin: field_link
+    source: field_title_link
+destination:
+  plugin: 'entity:node'
+  default_bundle: article
+migration_dependencies:
+  required:
+    - d7_user
+    - d7_node_type
+  optional:
+    - d7_field_instance
+    - d7_comment_field_instance

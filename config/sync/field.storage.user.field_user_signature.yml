@@ -1,0 +1,19 @@
+uuid: 92159a6e-ac13-4412-9a55-2251dc27f267
+langcode: und
+status: true
+dependencies:
+  module:
+    - text
+    - user
+id: user.field_user_signature
+field_name: field_user_signature
+entity_type: user
+type: text_long
+settings: {  }
+module: text
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

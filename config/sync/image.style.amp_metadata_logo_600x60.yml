@@ -1,0 +1,20 @@
+uuid: d2f90f3b-7dd5-4051-84b9-75a66f99f0bf
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - amp
+_core:
+  default_config_hash: yqfJ7ZQuahsen4jVaXHM7sY3VBdeYdRXLAxFKHH-A4w
+name: amp_metadata_logo_600x60
+label: 'AMP Metadata: Logo (600x60)'
+effects:
+  e3b08820-12f7-4cf1-9f6a-25e493a1345c:
+    uuid: e3b08820-12f7-4cf1-9f6a-25e493a1345c
+    id: image_scale
+    weight: 1
+    data:
+      width: 600
+      height: 60
+      upscale: false

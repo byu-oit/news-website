@@ -1,0 +1,35 @@
+uuid: e2608e69-fe25-4bd9-9a9e-2851441ecf39
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.social_media_embed.field_embed_code
+    - paragraphs.paragraphs_type.social_media_embed
+  module:
+    - content_moderation
+    - text
+_core:
+  default_config_hash: JifLfyMsqY4OD3KxRmRPoE_OJbA4rhJ0HBpA1XqHxy8
+id: paragraph.social_media_embed.default
+targetEntityType: paragraph
+bundle: social_media_embed
+mode: default
+content:
+  field_embed_code:
+    weight: 0
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
+  moderation_state:
+    type: moderation_state_default
+    weight: 100
+    settings: {  }
+    region: content
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true
+  uid: true

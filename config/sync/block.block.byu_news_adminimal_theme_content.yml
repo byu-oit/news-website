@@ -1,0 +1,22 @@
+uuid: b8e810a1-0e26-4d97-b948-9b3101d5d88c
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - byu_news_adminimal_theme
+_core:
+  default_config_hash: c5LKZIgYZartRFEPJ34Zx50WWca1vKaodmYKVwVCRsI
+id: byu_news_adminimal_theme_content
+theme: byu_news_adminimal_theme
+region: content
+weight: 0
+provider: null
+plugin: system_main_block
+settings:
+  id: system_main_block
+  label: 'Main page content'
+  provider: system
+  label_display: '0'
+visibility: {  }

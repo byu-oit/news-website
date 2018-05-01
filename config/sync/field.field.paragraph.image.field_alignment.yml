@@ -1,0 +1,23 @@
+uuid: 41b8e40b-fe26-45be-a329-c661de26ebea
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_alignment
+    - paragraphs.paragraphs_type.image
+  module:
+    - options
+id: paragraph.image.field_alignment
+field_name: field_alignment
+entity_type: paragraph
+bundle: image
+label: 'Image Alignment'
+description: 'E.g. ''Left Alignment'' means the image will be on the left, text on the right.'
+required: true
+translatable: false
+default_value:
+  -
+    value: center
+default_value_callback: ''
+settings: {  }
+field_type: list_string

@@ -1,0 +1,30 @@
+uuid: 079e46d2-8e5b-472c-b5f7-a096453907e1
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_simple_text
+    - paragraphs.paragraphs_type.text
+  module:
+    - allowed_formats
+    - text
+third_party_settings:
+  allowed_formats:
+    very_basic: very_basic
+    full_html: '0'
+    basic_html: '0'
+    code: '0'
+    restricted_html: '0'
+    plain_text: '0'
+id: paragraph.text.field_simple_text
+field_name: field_simple_text
+entity_type: paragraph
+bundle: text
+label: 'Simple Text'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

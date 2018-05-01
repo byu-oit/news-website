@@ -1,0 +1,18 @@
+uuid: c5f5c5ce-4451-42ba-a80f-3f37debdf6f8
+langcode: und
+status: true
+dependencies:
+  module:
+    - file
+id: file.field_captioned
+field_name: field_captioned
+entity_type: file
+type: boolean
+settings: {  }
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

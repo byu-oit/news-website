@@ -1,0 +1,24 @@
+uuid: ac75f821-04c0-4854-a2df-f534a5c45830
+langcode: en
+status: true
+dependencies: {  }
+id: d7_advagg_css_minify_settings
+class: Drupal\migrate\Plugin\Migration
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - 'Drupal 7'
+migration_group: migrate_drupal_7
+label: 'AdvAgg CSS Minify configuration'
+source:
+  plugin: variable
+  variables:
+    - advagg_css_compressor
+process:
+  minifier: advagg_css_compressor
+destination:
+  plugin: config
+  config_name: advagg_css_minify.settings
+migration_dependencies:
+  required: {  }
+  optional: {  }

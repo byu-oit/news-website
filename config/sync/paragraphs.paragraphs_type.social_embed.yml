@@ -1,0 +1,9 @@
+uuid: c48d8ce0-d865-4828-8952-62d2344d267e
+langcode: en
+status: true
+dependencies: {  }
+id: social_embed
+label: 'Social Embed'
+icon_uuid: null
+description: ''
+behavior_plugins: {  }

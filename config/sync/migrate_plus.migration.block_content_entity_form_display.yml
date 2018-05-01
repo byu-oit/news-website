@@ -1,0 +1,43 @@
+uuid: e2a1e04d-53d3-43d8-9188-c969b44f3851
+langcode: en
+status: true
+dependencies: {  }
+id: block_content_entity_form_display
+class: Drupal\migrate\Plugin\Migration
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - 'Drupal 6'
+  - 'Drupal 7'
+  - Configuration
+migration_group: migrate_drupal_7
+label: 'Body field form display configuration'
+source:
+  plugin: embedded_data
+  data_rows:
+    -
+      entity_type: block_content
+      bundle: basic
+      form_mode: default
+      field_name: body
+  ids:
+    entity_type:
+      type: string
+    bundle:
+      type: string
+    form_mode:
+      type: string
+    field_name:
+      type: string
+  source_module: block
+process:
+  entity_type: entity_type
+  bundle: bundle
+  form_mode: form_mode
+  field_name: field_name
+destination:
+  plugin: component_entity_form_display
+migration_dependencies:
+  required:
+    - block_content_body_field
+  optional: {  }

@@ -1,0 +1,25 @@
+uuid: 9c902f92-05a4-4b70-8d9a-5cdd986b3e8d
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_class
+  theme:
+    - byu_news
+third_party_settings:
+  block_class:
+    classes: ''
+id: tabs
+theme: byu_news
+region: content
+weight: -9
+provider: null
+plugin: local_tasks_block
+settings:
+  id: local_tasks_block
+  label: Tabs
+  provider: core
+  label_display: '0'
+  primary: true
+  secondary: true
+visibility: {  }

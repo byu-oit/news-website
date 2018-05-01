@@ -1,0 +1,81 @@
+uuid: 3205911d-cce5-4a04-b64d-3150b6d1126c
+langcode: en
+status: true
+dependencies: {  }
+id: d7_node_revision_alert
+class: Drupal\migrate\Plugin\Migration
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - 'Drupal 7'
+  - Content
+migration_group: migrate_drupal_7
+label: 'Node revisions (story alert)'
+source:
+  plugin: d7_node_revision
+  node_type: alert
+process:
+  nid: nid
+  vid: vid
+  langcode:
+    plugin: default_value
+    source: language
+    default_value: und
+  title: title
+  uid: node_uid
+  status: status
+  created: created
+  changed: changed
+  promote: promote
+  sticky: sticky
+  revision_uid: revision_uid
+  revision_log: log
+  revision_timestamp: timestamp
+  comment_node_alert/0/status: comment
+  field_story_alert:
+    plugin: sub_process
+    source: field_story_alert
+    process:
+      target_id: tid
+  field_story:
+    plugin: get
+    source: field_story
+  field_alert_contents:
+    plugin: get
+    source: field_alert_contents
+  field_story_date:
+    plugin: sub_process
+    source: field_story_date
+    process:
+      value:
+        plugin: format_date
+        from_format: 'Y-m-d H:i:s'
+        to_format: 'Y-m-d\TH:i:s'
+        source: value
+  field_story_subtitle:
+    plugin: get
+    source: field_story_subtitle
+  field_extra_recipient:
+    plugin: sub_process
+    source: field_extra_recipient
+    process:
+      value: email
+  field_message:
+    plugin: get
+    source: field_message
+destination:
+  plugin: 'entity_revision:node'
+  default_bundle: alert
+migration_dependencies:
+  required:
+    64: d7_node_about_page
+    65: d7_node_alert
+    66: d7_node_article
+    67: d7_node_asset
+    68: d7_node_page
+    69: d7_node_panel
+    70: d7_node_person
+    71: d7_node_slider
+    72: d7_node_story
+    73: d7_node_webform
+  optional: {  }

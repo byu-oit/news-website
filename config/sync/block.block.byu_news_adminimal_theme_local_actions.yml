@@ -1,0 +1,20 @@
+uuid: 14b08010-4e3b-46e8-9f42-3472b3f3412d
+langcode: en
+status: true
+dependencies:
+  theme:
+    - byu_news_adminimal_theme
+_core:
+  default_config_hash: GfViEZC_TnB5T1evrj5HV6kChahSBA8YA1Alurj7hWE
+id: byu_news_adminimal_theme_local_actions
+theme: byu_news_adminimal_theme
+region: content
+weight: -5
+provider: null
+plugin: local_actions_block
+settings:
+  id: local_actions_block
+  label: 'Primary admin actions'
+  provider: core
+  label_display: '0'
+visibility: {  }

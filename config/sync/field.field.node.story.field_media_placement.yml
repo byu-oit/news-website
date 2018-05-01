@@ -1,0 +1,23 @@
+uuid: 0df5e95c-19ca-4b1c-aa3b-a2a5623119a6
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_media_placement
+    - node.type.story
+  module:
+    - link
+id: node.story.field_media_placement
+field_name: field_media_placement
+entity_type: node
+bundle: story
+label: 'Media Placement'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  link_type: 16
+  title: 2
+field_type: link

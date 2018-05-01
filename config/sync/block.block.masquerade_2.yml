@@ -1,0 +1,24 @@
+uuid: 13032934-166f-45b7-83b4-f9e810f9328e
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_class
+    - masquerade
+  theme:
+    - byu_news
+third_party_settings:
+  block_class:
+    classes: ''
+id: masquerade_2
+theme: byu_news
+region: footer_41
+weight: 0
+provider: null
+plugin: masquerade
+settings:
+  id: masquerade
+  label: Masquerade
+  provider: masquerade
+  label_display: visible
+visibility: {  }

@@ -1,0 +1,15 @@
+uuid: bbf2e5a9-396a-496c-8d2c-84f39d6c1299
+langcode: en
+status: true
+dependencies: {  }
+name: inline_full_width
+label: 'Inline Full Width (869px wide)'
+effects:
+  95f79436-4020-4e5d-a06f-54c3fcc43f50:
+    uuid: 95f79436-4020-4e5d-a06f-54c3fcc43f50
+    id: image_scale
+    weight: 1
+    data:
+      width: 869
+      height: null
+      upscale: true

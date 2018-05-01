@@ -1,0 +1,32 @@
+uuid: 73d2168e-cdbb-430a-b4c8-af68788bd070
+langcode: en
+status: true
+dependencies: {  }
+id: d7_shortcut_set
+class: Drupal\migrate\Plugin\Migration
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - 'Drupal 7'
+  - Configuration
+migration_group: migrate_drupal_7
+label: 'Shortcut sets'
+source:
+  plugin: d7_shortcut_set
+process:
+  id:
+    -
+      plugin: static_map
+      bypass: true
+      source: set_name
+      map:
+        shortcut-set-1: default
+    -
+      plugin: machine_name
+      field: id
+  label: title
+destination:
+  plugin: 'entity:shortcut_set'
+migration_dependencies:
+  required: {  }
+  optional: {  }

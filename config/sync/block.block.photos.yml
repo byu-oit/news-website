@@ -1,0 +1,42 @@
+uuid: ec6c2fef-647a-46e2-a72f-618868531203
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_class
+    - ctools_block
+    - node
+  theme:
+    - byu_news
+third_party_settings:
+  block_class:
+    classes: ''
+id: photos
+theme: byu_news
+region: right_sidebar
+weight: -3
+provider: null
+plugin: 'entity_field:node:field_image'
+settings:
+  id: 'entity_field:node:field_image'
+  label: Photos
+  provider: ctools_block
+  label_display: '0'
+  formatter:
+    label: above
+    type: image
+    settings:
+      image_style: thumbnail
+      image_link: ''
+    third_party_settings: {  }
+    weight: 0
+  context_mapping:
+    entity: '@node.node_route_context:node'
+visibility:
+  node_type:
+    id: node_type
+    bundles:
+      story: story
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'

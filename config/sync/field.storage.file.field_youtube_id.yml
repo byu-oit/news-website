@@ -1,0 +1,20 @@
+uuid: 85c740eb-5f2e-4fdf-8489-6ff91c51c625
+langcode: und
+status: true
+dependencies:
+  module:
+    - file
+    - text
+id: file.field_youtube_id
+field_name: field_youtube_id
+entity_type: file
+type: text
+settings:
+  max_length: 255
+module: text
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,18 @@
+uuid: f16d072d-e6df-45b0-b5e5-0fee0e1088b6
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - node.type.photo_essay
+  module:
+    - user
+id: node.photo_essay.teaser
+targetEntityType: node
+bundle: photo_essay
+mode: teaser
+content:
+  links:
+    weight: 100
+    region: content
+hidden: {  }

@@ -1,0 +1,19 @@
+uuid: ef0bfbf0-2f68-454f-8ac3-0238b550295f
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_related_stories
+field_name: field_related_stories
+entity_type: node
+type: entity_reference
+settings:
+  target_type: node
+module: core
+locked: false
+cardinality: 3
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

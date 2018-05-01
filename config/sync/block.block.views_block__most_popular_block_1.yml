@@ -1,0 +1,36 @@
+uuid: be33d2a6-fa2d-4652-868f-cd1aa7ddd7bb
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.most_popular
+  module:
+    - block_class
+    - node
+    - views
+  theme:
+    - byu_news
+third_party_settings:
+  block_class:
+    classes: ''
+id: views_block__most_popular_block_1
+theme: byu_news
+region: right_sidebar
+weight: -2
+provider: null
+plugin: 'views_block:most_popular-block_1'
+settings:
+  id: 'views_block:most_popular-block_1'
+  label: ''
+  provider: views
+  label_display: visible
+  views_label: ''
+  items_per_page: none
+visibility:
+  node_type:
+    id: node_type
+    bundles:
+      story: story
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'

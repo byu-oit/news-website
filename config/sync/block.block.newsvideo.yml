@@ -1,0 +1,31 @@
+uuid: ee909c89-9151-48dd-b0c0-947a55e1ed6c
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:db3d55ce-7738-424e-91f4-ec97a7b8024e'
+  module:
+    - block_content
+    - system
+  theme:
+    - byu_news
+id: newsvideo
+theme: byu_news
+region: right_sidebar
+weight: -7
+provider: null
+plugin: 'block_content:db3d55ce-7738-424e-91f4-ec97a7b8024e'
+settings:
+  id: 'block_content:db3d55ce-7738-424e-91f4-ec97a7b8024e'
+  label: 'News Video'
+  provider: block_content
+  label_display: visible
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  request_path:
+    id: request_path
+    pages: '<front>'
+    negate: false
+    context_mapping: {  }

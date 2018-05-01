@@ -1,0 +1,9 @@
+uuid: 7e18172e-0b2d-4b9c-89b4-c55241e0da7d
+langcode: en
+status: true
+dependencies: {  }
+id: ksl
+label: KSL
+category: 'News Outlets'
+likert: false
+options: "amay@ksl.com: 'Andrea May (KSL NewsRadio''s The Browsers)'\nassignmentdesk@ksl.com: 'Assignment Desk'\nradio.news@ksl.com: 'Radio Newsroom'\nkslweb@ksl.com: 'Online News Team'\nrtronier@ksl.com: 'Ryan Tonier, Radio \"The Browser\"'\nsam.penrod@ksl.com: 'Sam Penrod, KSL 5 (NBC)'\nshall@ksl.com: 'Spencer Hall, Broadcasting'\n"

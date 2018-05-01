@@ -1,0 +1,21 @@
+uuid: b1851fcc-2a08-4a31-ad77-7b62a54290c9
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.file.field_youtube_id
+  module:
+    - file
+    - text
+id: file.video.field_youtube_id
+field_name: field_youtube_id
+entity_type: file
+bundle: video
+label: 'YouTube ID (NOT IN USE)'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text

@@ -1,0 +1,9 @@
+uuid: f938e21d-0875-4e1b-9cb7-b988fcbc5f40
+langcode: en
+status: true
+dependencies: {  }
+id: daily_herald
+label: 'Daily Herald'
+category: 'News Outlets'
+likert: false
+options: "theticket@heraldextra.com: '\"The Ticket\", Arts & Entertainment'\namberfoote@gmail.com: 'Amber Foote, Arts Reporter'\nBDodson@heraldextra.com: 'Braley Dodson, Higher Ed Reporter'\nDCliements@heraldextra.com: 'Derrick Clements, Arts & Entertainment'\ndfox@heraldextra.com: 'Doug Fox, Features'\ngpugmire@heraldextra.com: 'Genelle Pugmire, Provo'\njdurrant@heraldextra.com: 'Jennifer Durrant, Special Sections editor'\njcarroll@heralextra.com: 'Jordan Carroll, community editor'\ndhnews@heraldextra.com: 'News Desk'\n"

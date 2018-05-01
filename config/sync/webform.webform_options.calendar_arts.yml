@@ -1,0 +1,9 @@
+uuid: 9220297c-f6f9-4406-9c6d-f5a85b1629f0
+langcode: en
+status: true
+dependencies: {  }
+id: calendar_arts
+label: 'Calendar & Arts'
+category: 'News Outlets'
+likert: false
+options: "theticket@heraldextra.com: '\"The Ticket\", Arts & Entertainment'\nashill@desnews.com: 'Aaron Shill, Features Editor/Mormon Times'\namberfoote@gmail.com: 'Amber Foote, Daily Herald arts reporter'\nbdodson@heraldextra.com: 'Braley Dodson, High Ed Reporter'\nDClements@heraldextra.com: 'Berrick Clememnts, Arts & Entertainment, Daily Herald'\nfeatures@deseretnews.com: 'Deseret News Feature Desk'\nellenf@sltrib.com: 'Ellen Fagg Wiest Art & Entertainment, Culture, Books, Theater'\njdurrant@heraldextra.com: 'Jennifer Durrant, Daily Herald special sections editor'\njcarroll@heraldextra.com: 'Jordan Carrol, Daily Herald community editor'\nscottr@cityweekly.net: 'Salt Lake City Weekly, Scott Renshaw, Arts& Entertainment'\ndan@saltlakemagazine.com: 'Salt Lake Magazine, Dan Nailen, Arts & Entertainment'\nacekola@sltrib.com: 'Salt Lake Tribune, Anna Cekola, Features'\nfeatures@sltrib.com: 'Salt Lake Tribune, Arts & Entertainment Editor'\ncalendar@sltrib.com: 'Salt Kale Tribune, Calendar'\ncreese@sltrib.com: 'Salt Lake Tribune, Cathy Newton, Classical Music'\nuniverse.campus@gmail.com: 'Universe, Campus Desk'\ncarrie.moore@byu.edu: 'Universe: Carrie Moore, managing editor'\nutahinfo@bedynamic.com: 'Utah Arts & Cultural Coalition'\nnews@utahvalley360.com: 'Utah Valley Magazine / Utah Valley 360, Rebecca Lane, News Editor'\n"

@@ -1,0 +1,25 @@
+uuid: 2b72a379-0c5f-4ff6-a37b-f55ce443d8aa
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.internal_story.field_story
+    - paragraphs.paragraphs_type.internal_story
+id: paragraph.internal_story.default
+targetEntityType: paragraph
+bundle: internal_story
+mode: default
+content:
+  field_story:
+    weight: 0
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
+hidden:
+  created: true
+  status: true
+  uid: true
