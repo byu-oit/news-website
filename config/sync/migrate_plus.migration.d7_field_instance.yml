@@ -1,4 +1,4 @@
-uuid: faafc1e0-95fa-42e8-9c08-3b8fb200180d
+uuid: 2986922b-c332-4112-aef7-ec94c9b0aeda
 langcode: en
 status: true
 dependencies: {  }
@@ -20,14 +20,31 @@ process:
     plugin: process_field
     source: type
     method: getFieldType
-  entity_type: entity_type
+  entity_type:
+    0:
+      plugin: get
+      source: entity_type
+    paragraphs:
+      plugin: static_map
+      map:
+        field_collection_item: paragraph
+        paragraphs_item: paragraph
+      bypass: true
   field_name: field_name
   bundle:
-    plugin: static_map
-    source: bundle
-    bypass: true
-    map:
-      comment_node_forum: comment_forum
+    0:
+      plugin: static_map
+      source: bundle
+      bypass: true
+      map:
+        comment_node_forum: comment_forum
+    paragraphs:
+      plugin: paragraphs_process_on_value
+      source_value: entity_type
+      expected_value: field_collection_item
+      process:
+        plugin: substr
+        start: 6
   label: label
   description: description
   required: required
@@ -54,3 +71,5 @@ migration_dependencies:
     - d7_node_type
     - d7_comment_type
     - d7_taxonomy_vocabulary
+    - d7_field_collection_type
+    - d7_paragraphs_type

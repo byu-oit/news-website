@@ -12,7 +12,7 @@ field_name: body
 entity_type: node
 bundle: story
 label: Body
-description: ''
+description: "<strong>TO ADD A SLIDESHOW:</strong><br>\r\nPaste this copy into body: <strong>&#91;views:embed:story_page_slideshow&#93;</strong>\r\n"
 required: false
 translatable: false
 default_value: {  }

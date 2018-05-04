@@ -1,0 +1,22 @@
+uuid: 0656ff06-68fe-427d-90e9-bd9addb47ac7
+langcode: en
+status: true
+dependencies:
+  module:
+    - search
+  theme:
+    - byu_theme
+_core:
+  default_config_hash: mtRNNsmn2cgwMWDd8m-rGFCIW3fzGLdqgelryM2rDqI
+id: byu_theme_search
+theme: byu_theme
+region: search
+weight: -1
+provider: null
+plugin: search_form_block
+settings:
+  id: search_form_block
+  label: Search
+  provider: search
+  label_display: visible
+visibility: {  }

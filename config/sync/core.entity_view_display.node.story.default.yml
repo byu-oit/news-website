@@ -5,7 +5,9 @@ dependencies:
   config:
     - field.field.node.story.body
     - field.field.node.story.field_category
+    - field.field.node.story.field_feature_as_hero
     - field.field.node.story.field_full_name
+    - field.field.node.story.field_hero_image
     - field.field.node.story.field_image
     - field.field.node.story.field_main_body
     - field.field.node.story.field_media_contact_byline
@@ -16,6 +18,7 @@ dependencies:
     - field.field.node.story.field_publish_date
     - field.field.node.story.field_related_stories
     - field.field.node.story.field_show_on_front
+    - field.field.node.story.field_story_hero_classes
     - field.field.node.story.field_story_highlights
     - field.field.node.story.field_subheading
     - field.field.node.story.field_summary
@@ -32,7 +35,6 @@ dependencies:
     - field_formatter_class
     - field_group
     - image
-    - options
     - text
 third_party_settings:
   field_group:
@@ -92,6 +94,16 @@ content:
     third_party_settings:
       field_formatter_class:
         class: ''
+  field_feature_as_hero:
+    weight: 12
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    type: boolean
+    region: content
   field_full_name:
     type: string
     weight: 0
@@ -100,6 +112,15 @@ content:
     settings:
       link_to_entity: false
     third_party_settings: {  }
+  field_hero_image:
+    weight: 13
+    label: above
+    settings:
+      image_style: ''
+      image_link: ''
+    third_party_settings: {  }
+    type: image
+    region: content
   field_main_body:
     type: entity_reference_revisions_entity_view
     weight: 1
@@ -137,6 +158,14 @@ content:
     third_party_settings:
       field_formatter_class:
         class: ''
+  field_story_hero_classes:
+    weight: 11
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
   field_story_highlights:
     type: text_default
     weight: 2

@@ -1,4 +1,4 @@
-uuid: d721e928-1f43-47b4-a40a-b764cf18f352
+uuid: 01f19acf-3a9d-4d58-a621-6e9d034dad4b
 langcode: en
 status: true
 dependencies: {  }
@@ -17,7 +17,16 @@ source:
     status: true
     langcode: und
 process:
-  entity_type: entity_type
+  entity_type:
+    0:
+      plugin: get
+      source: entity_type
+    paragraphs:
+      plugin: static_map
+      map:
+        field_collection_item: paragraph
+        paragraphs_item: paragraph
+      bypass: true
   status: constants/status
   langcode: constants/langcode
   field_name: field_name

@@ -1,4 +1,4 @@
-uuid: 4de9e2cd-9750-4c5c-9ee8-000d834560d8
+uuid: f8cdfba6-ee11-4b02-bcee-e84ea01da31b
 langcode: en
 status: true
 dependencies: {  }
@@ -32,7 +32,16 @@ process:
       teaser: Teaser
       full: Full
       default: Full
-  targetEntityType: entity_type
+  targetEntityType:
+    0:
+      plugin: get
+      source: entity_type
+    paragraphs:
+      plugin: static_map
+      map:
+        field_collection_item: paragraph
+        paragraphs_item: paragraph
+      bypass: true
 destination:
   plugin: 'entity:entity_view_mode'
 migration_dependencies:

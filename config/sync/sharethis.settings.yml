@@ -1,9 +1,8 @@
-button_option: stbc_large
+button_option: stbc_custom
 comments: 0
 late_load: 0
 location: block
 node_types:
-  hero_video: null
   paragraphs_pags: null
   person: null
   photo_essay: null

@@ -21,9 +21,9 @@ settings:
   id: 'entity_field:node:field_image'
   label: Photos
   provider: ctools_block
-  label_display: '0'
+  label_display: visible
   formatter:
-    label: above
+    label: hidden
     type: image
     settings:
       image_style: thumbnail

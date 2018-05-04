@@ -47,8 +47,8 @@ login_url: ''
 logout_url: ''
 myaccount_use: 0
 myaccount_url: ''
-search_input: ''
-search_submit: ''
+search_input: '[data-drupal-selector=\''edit-search\'']'
+search_submit: '[data-drupal-selector=\''edit-submit-search\'']'
 actions_bg: none
 menu_disable: 0
 transparent: 0
@@ -89,4 +89,5 @@ region_wells:
   footer_21: ''
   footer_31: ''
   footer_41: ''
+  hidden: ''
 table_responsive: '-1'

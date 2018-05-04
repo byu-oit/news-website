@@ -27,6 +27,7 @@ module:
   comment: 0
   conditional_fields: 0
   config: 0
+  config_tools: 0
   config_update: 0
   config_update_ui: 0
   contact: 0
@@ -55,7 +56,6 @@ module:
   file_download: 0
   filter: 0
   help: 0
-  hero_video: 0
   history: 0
   image: 0
   imce: 0
@@ -97,8 +97,7 @@ module:
   schema_person: 0
   schema_web_page: 0
   schema_web_site: 0
-  search_api: 0
-  search_api_db: 0
+  search: 0
   serialization: 0
   sharethis: 0
   shortcut: 0

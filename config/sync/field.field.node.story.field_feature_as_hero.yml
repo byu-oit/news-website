@@ -1,0 +1,23 @@
+uuid: 903b6bb6-2948-4f21-9bac-2e85ad3d9ff3
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_feature_as_hero
+    - node.type.story
+id: node.story.field_feature_as_hero
+field_name: field_feature_as_hero
+entity_type: node
+bundle: story
+label: 'Feature as Hero'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'Feature as Front Page Hero'
+  off_label: 'Off'
+field_type: boolean

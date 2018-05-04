@@ -1,0 +1,38 @@
+uuid: 6cf1bb44-6ad2-4825-a016-3edb8908aa98
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_hero_image
+    - node.type.story
+  module:
+    - image
+id: node.story.field_hero_image
+field_name: field_hero_image
+entity_type: node
+bundle: story
+label: 'Hero Image'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  file_extensions: 'png gif jpg jpeg'
+  alt_field: true
+  alt_field_required: true
+  title_field: false
+  title_field_required: false
+  max_resolution: ''
+  min_resolution: ''
+  default_image:
+    uuid: null
+    alt: ''
+    title: ''
+    width: null
+    height: null
+  file_directory: '[date:custom:Y]-[date:custom:m]'
+  max_filesize: ''
+  handler: 'default:file'
+  handler_settings: {  }
+field_type: image

@@ -1,0 +1,24 @@
+uuid: b8e1690c-e01f-485b-b2dd-b8ed9e1c2551
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_class
+    - search
+  theme:
+    - byu_news
+third_party_settings:
+  block_class:
+    classes: ''
+id: searchform
+theme: byu_news
+region: search
+weight: 0
+provider: null
+plugin: search_form_block
+settings:
+  id: search_form_block
+  label: 'Search form'
+  provider: search
+  label_display: visible
+visibility: {  }

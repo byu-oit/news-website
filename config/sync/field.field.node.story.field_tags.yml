@@ -5,13 +5,11 @@ dependencies:
   config:
     - field.storage.node.field_tags
     - node.type.story
-    - taxonomy.vocabulary.tags
-    - taxonomy.vocabulary.youtube_tags
 id: node.story.field_tags
 field_name: field_tags
 entity_type: node
 bundle: story
-label: Tags
+label: 'Keyword (invisible tag for search engines)'
 description: ''
 required: false
 translatable: false
@@ -19,13 +17,5 @@ default_value: {  }
 default_value_callback: ''
 settings:
   handler: 'default:taxonomy_term'
-  handler_settings:
-    target_bundles:
-      tags: tags
-      youtube_tags: youtube_tags
-    sort:
-      field: name
-      direction: asc
-    auto_create: false
-    auto_create_bundle: tags
+  handler_settings: {  }
 field_type: entity_reference

@@ -1,0 +1,39 @@
+uuid: 3e2a4455-e234-4649-b8fd-61875920a6b5
+langcode: en
+status: true
+dependencies: {  }
+id: search_page
+class: Drupal\migrate\Plugin\Migration
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - 'Drupal 6'
+  - 'Drupal 7'
+  - Configuration
+migration_group: migrate_drupal_7
+label: 'Search page configuration'
+source:
+  plugin: variable
+  variables:
+    - node_rank_comments
+    - node_rank_promote
+    - node_rank_recent
+    - node_rank_relevance
+    - node_rank_sticky
+    - node_rank_views
+  constants:
+    id: node_search
+    path: node
+    plugin: node_search
+  source_module: search
+process:
+  id: constants/id
+  path: constants/path
+  plugin: constants/plugin
+  configuration/rankings:
+    plugin: search_configuration_rankings
+destination:
+  plugin: 'entity:search_page'
+migration_dependencies:
+  required: {  }
+  optional: {  }

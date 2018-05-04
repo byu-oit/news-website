@@ -4,15 +4,22 @@ status: true
 dependencies:
   config:
     - field.field.node.person.body
+    - field.field.node.person.field_contact_email
+    - field.field.node.person.field_contact_phone
+    - field.field.node.person.field_display_contact_info
     - field.field.node.person.field_email
     - field.field.node.person.field_image
+    - field.field.node.person.field_link
+    - field.field.node.person.field_person_title
     - field.field.node.person.field_phone
+    - field.field.node.person.field_role
     - field.field.node.person.field_title
     - node.type.person
   module:
     - image
+    - manage_display
+    - telephone
     - text
-    - user
 id: node.person.default
 targetEntityType: node
 bundle: person
@@ -21,19 +28,29 @@ content:
   body:
     label: hidden
     type: text_default
-    weight: 101
+    weight: 4
     settings: {  }
     third_party_settings: {  }
     region: content
+  created:
+    label: hidden
+    type: timestamp
+    weight: 2
+    region: content
+    settings:
+      date_format: medium
+      custom_date_format: ''
+      timezone: ''
+    third_party_settings: {  }
   field_email:
-    weight: 105
+    weight: 7
     label: above
     settings: {  }
     third_party_settings: {  }
     type: basic_string
     region: content
   field_image:
-    weight: 106
+    weight: 8
     label: above
     settings:
       image_style: ''
@@ -42,20 +59,45 @@ content:
     type: image
     region: content
   field_phone:
-    weight: 104
+    weight: 6
     label: above
-    settings: {  }
+    settings:
+      title: ''
     third_party_settings: {  }
-    type: basic_string
+    type: telephone_link
     region: content
   field_title:
-    weight: 103
+    weight: 5
     label: above
     settings: {  }
     third_party_settings: {  }
     type: text_default
     region: content
   links:
-    weight: 100
+    weight: 3
     region: content
-hidden: {  }
+    settings: {  }
+    third_party_settings: {  }
+  title:
+    label: hidden
+    type: title
+    weight: 0
+    region: content
+    settings:
+      tag: h2
+      linked: true
+    third_party_settings: {  }
+  uid:
+    label: hidden
+    type: submitted
+    weight: 1
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  field_contact_email: true
+  field_contact_phone: true
+  field_display_contact_info: true
+  field_link: true
+  field_person_title: true
+  field_role: true

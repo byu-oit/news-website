@@ -1,4 +1,4 @@
-uuid: 3009d054-66a5-470d-98b9-2f42353da1f4
+uuid: 53f5819a-1c5a-4d0e-a519-c76429bdca1f
 langcode: en
 status: true
 dependencies: {  }
@@ -30,13 +30,30 @@ process:
     -
       plugin: skip_on_empty
       method: row
-  entity_type: entity_type
+  entity_type:
+    0:
+      plugin: get
+      source: entity_type
+    paragraphs:
+      plugin: static_map
+      map:
+        field_collection_item: paragraph
+        paragraphs_item: paragraph
+      bypass: true
   bundle:
-    plugin: static_map
-    source: bundle
-    bypass: true
-    map:
-      comment_node_forum: comment_forum
+    0:
+      plugin: static_map
+      source: bundle
+      bypass: true
+      map:
+        comment_node_forum: comment_forum
+    paragraphs:
+      plugin: paragraphs_process_on_value
+      source_value: entity_type
+      expected_value: field_collection_item
+      process:
+        plugin: substr
+        start: 6
   view_mode:
     -
       plugin: migration_lookup
@@ -88,4 +105,6 @@ migration_dependencies:
   required:
     - d7_field_instance
     - d7_view_modes
-  optional: {  }
+  optional:
+    - d7_field_collection_type
+    - d7_paragraphs_type

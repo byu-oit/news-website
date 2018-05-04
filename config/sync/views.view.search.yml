@@ -1,6 +1,6 @@
 uuid: 62a5badd-6675-4956-8dee-21aeb404bb6c
 langcode: en
-status: true
+status: false
 dependencies:
   config:
     - field.storage.node.body
@@ -48,11 +48,11 @@ display:
       exposed_form:
         type: basic
         options:
-          submit_button: Apply
+          submit_button: Search
           reset_button: false
           reset_button_label: Reset
           exposed_sorts_label: 'Sort by'
-          expose_sort_order: true
+          expose_sort_order: false
           sort_asc_label: Asc
           sort_desc_label: Desc
       pager:
@@ -542,6 +542,7 @@ display:
     display_options:
       display_extenders: {  }
       path: search
+      exposed_block: true
     cache_metadata:
       max-age: -1
       contexts:

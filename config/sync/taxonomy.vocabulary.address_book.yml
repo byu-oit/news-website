@@ -1,0 +1,9 @@
+uuid: ef1ef49b-04da-4067-8ef5-dc04c52419d5
+langcode: en
+status: true
+dependencies: {  }
+name: 'Address Book'
+vid: address_book
+description: ''
+hierarchy: 2
+weight: 0
