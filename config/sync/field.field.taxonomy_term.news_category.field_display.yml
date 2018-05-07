@@ -1,0 +1,23 @@
+uuid: 1a53d7e6-015d-4e56-866d-c3d99299a0ef
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_display
+    - taxonomy.vocabulary.news_category
+id: taxonomy_term.news_category.field_display
+field_name: field_display
+entity_type: taxonomy_term
+bundle: news_category
+label: 'Don''t Display'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

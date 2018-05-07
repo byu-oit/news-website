@@ -1,0 +1,33 @@
+uuid: 8094a4d1-ba2b-4e12-a44d-712bff64f40b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_headliner_image
+    - node.type.story
+  module:
+    - image
+id: node.story.field_headliner_image
+field_name: field_headliner_image
+entity_type: node
+bundle: story
+label: 'Masthead Image (Width: 1600px, Min Height: 230px - Max Height: 600px)'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  file_directory: headliner_images
+  file_extensions: 'png gif jpg jpeg'
+  max_filesize: ''
+  max_resolution: ''
+  min_resolution: ''
+  alt_field: false
+  title_field: false
+  default_image: 0
+  alt_field_required: true
+  title_field_required: false
+  handler: 'default:file'
+  handler_settings: {  }
+field_type: image

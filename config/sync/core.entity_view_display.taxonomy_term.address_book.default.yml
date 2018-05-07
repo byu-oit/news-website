@@ -1,0 +1,49 @@
+uuid: 230370d8-9a38-4800-b507-1130e96a473d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.address_book.field_child_terms
+    - field.field.taxonomy_term.address_book.field_contact_phone
+    - field.field.taxonomy_term.address_book.field_email
+    - field.field.taxonomy_term.address_book.field_parent_terms
+    - field.field.taxonomy_term.address_book.field_position_title
+    - field.field.taxonomy_term.address_book.field_position_title_2
+    - taxonomy.vocabulary.address_book
+  module:
+    - manage_display
+    - text
+id: taxonomy_term.address_book.default
+targetEntityType: taxonomy_term
+bundle: address_book
+mode: default
+content:
+  description:
+    label: hidden
+    type: text_default
+    weight: 2
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_email:
+    type: basic_string
+    weight: 1
+    region: content
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+  name:
+    label: hidden
+    type: title
+    weight: 0
+    region: content
+    settings:
+      tag: h2
+      linked: true
+    third_party_settings: {  }
+hidden:
+  field_child_terms: true
+  field_contact_phone: true
+  field_parent_terms: true
+  field_position_title: true
+  field_position_title_2: true

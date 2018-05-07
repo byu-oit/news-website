@@ -1,0 +1,21 @@
+uuid: e6f3d3da-678a-482d-b9a3-e02ec4e086af
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_hide_images
+    - node.type.story
+  module:
+    - options
+id: node.story.field_hide_images
+field_name: field_hide_images
+entity_type: node
+bundle: story
+label: 'Hide Images'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_integer

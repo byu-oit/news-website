@@ -1,0 +1,24 @@
+uuid: d5000d4c-eb5d-4608-858b-618d96f1d359
+langcode: und
+status: true
+dependencies:
+  module:
+    - node
+    - options
+id: node.field_exclude_from_feature
+field_name: field_exclude_from_feature
+entity_type: node
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: titleix
+      label: ' Exclude from Title IX feature page'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

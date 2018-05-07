@@ -4,7 +4,6 @@ status: true
 dependencies:
   config:
     - field.storage.user.field_stories
-    - views.view.user_s_stories
   module:
     - user
     - viewsreference
@@ -16,16 +15,7 @@ label: 'User Stories'
 description: ''
 required: false
 translatable: false
-default_value:
-  -
-    options:
-      title: 0
-      argument: ''
-    display_id: block_1
-    argument: null
-    title: 0
-    data: null
-    target_uuid: c7206678-b34d-44fd-b59f-b71fa43e93c9
+default_value: {  }
 default_value_callback: ''
 settings:
   handler: 'default:view'

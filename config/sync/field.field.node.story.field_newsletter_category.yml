@@ -1,0 +1,21 @@
+uuid: 60f0fcf3-1988-4bcc-b6ca-3a679c66016c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_newsletter_category
+    - node.type.story
+id: node.story.field_newsletter_category
+field_name: field_newsletter_category
+entity_type: node
+bundle: story
+label: Category
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings: {  }
+field_type: entity_reference

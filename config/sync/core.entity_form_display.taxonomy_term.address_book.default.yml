@@ -1,0 +1,77 @@
+uuid: baa99747-3397-4250-8927-eee0816000f6
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.address_book.field_child_terms
+    - field.field.taxonomy_term.address_book.field_contact_phone
+    - field.field.taxonomy_term.address_book.field_email
+    - field.field.taxonomy_term.address_book.field_parent_terms
+    - field.field.taxonomy_term.address_book.field_position_title
+    - field.field.taxonomy_term.address_book.field_position_title_2
+    - taxonomy.vocabulary.address_book
+  module:
+    - path
+    - telephone
+    - text
+id: taxonomy_term.address_book.default
+targetEntityType: taxonomy_term
+bundle: address_book
+mode: default
+content:
+  description:
+    type: text_textarea
+    weight: 1
+    region: content
+    settings:
+      placeholder: ''
+      rows: 5
+    third_party_settings: {  }
+  field_contact_phone:
+    type: telephone_default
+    weight: 6
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+  field_email:
+    type: email_default
+    weight: 5
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_position_title:
+    type: string_textfield
+    weight: 3
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_position_title_2:
+    type: string_textfield
+    weight: 4
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  name:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  path:
+    type: path
+    weight: 2
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  field_child_terms: true
+  field_parent_terms: true

@@ -1,0 +1,21 @@
+uuid: c92a7ccd-6974-4ece-954e-efcf35281ed7
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_contact_phone
+    - taxonomy.vocabulary.address_book
+  module:
+    - telephone
+id: taxonomy_term.address_book.field_contact_phone
+field_name: field_contact_phone
+entity_type: taxonomy_term
+bundle: address_book
+label: Phone
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: telephone

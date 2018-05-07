@@ -1,0 +1,19 @@
+uuid: 862dae9a-fed6-4f44-9265-238a0fd6a378
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_first_name
+    - node.type.story
+id: node.story.field_first_name
+field_name: field_first_name
+entity_type: node
+bundle: story
+label: 'Full Name'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

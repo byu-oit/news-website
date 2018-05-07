@@ -1,0 +1,23 @@
+uuid: c9fd4532-f02d-4e0a-a5fc-7f494f35472a
+langcode: en
+status: true
+dependencies:
+  module:
+    - ctools
+    - taxonomy
+id: adr
+label: 'Address Book'
+type: 'canonical_entities:taxonomy_term'
+pattern: '/address-book/[term:name]'
+selection_criteria:
+  50b06aa9-5efb-4cc3-b562-bd11f598ec79:
+    id: 'entity_bundle:taxonomy_term'
+    bundles:
+      address_book: address_book
+    negate: false
+    context_mapping:
+      taxonomy_term: taxonomy_term
+    uuid: 50b06aa9-5efb-4cc3-b562-bd11f598ec79
+selection_logic: and
+weight: -5
+relationships: {  }

@@ -1,0 +1,23 @@
+uuid: 7af55b71-b53d-4410-8305-f7e7a1c1b7e9
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_story_id
+    - node.type.story
+id: node.story.field_story_id
+field_name: field_story_id
+entity_type: node
+bundle: story
+label: 'Story ID'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

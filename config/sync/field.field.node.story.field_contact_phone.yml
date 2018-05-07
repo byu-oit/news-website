@@ -1,0 +1,21 @@
+uuid: 0269152c-ce74-45cc-9daf-556cc52973bc
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_contact_phone
+    - node.type.story
+  module:
+    - telephone
+id: node.story.field_contact_phone
+field_name: field_contact_phone
+entity_type: node
+bundle: story
+label: 'Contact Phone'
+description: 'Use () around the area code, entering the number in the following format: (800) 123-4567'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: telephone

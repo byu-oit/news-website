@@ -1,0 +1,21 @@
+uuid: 2bc7d90a-caba-4784-873e-3f5174133a48
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_child_terms
+    - taxonomy.vocabulary.address_book
+id: taxonomy_term.address_book.field_child_terms
+field_name: field_child_terms
+entity_type: taxonomy_term
+bundle: address_book
+label: 'Group Members'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings: {  }
+field_type: entity_reference

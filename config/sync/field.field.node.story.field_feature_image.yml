@@ -1,0 +1,33 @@
+uuid: 734d3f6b-c4c4-4ad2-98e0-83720491c77e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_feature_image
+    - node.type.story
+  module:
+    - image
+id: node.story.field_feature_image
+field_name: field_feature_image
+entity_type: node
+bundle: story
+label: 'Thumbnail Image (375px x 230px)'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  file_directory: feature_image
+  file_extensions: 'png gif jpg jpeg'
+  max_filesize: ''
+  max_resolution: 375x230
+  min_resolution: 375x230
+  alt_field: false
+  title_field: false
+  default_image: 0
+  alt_field_required: true
+  title_field_required: false
+  handler: 'default:file'
+  handler_settings: {  }
+field_type: image

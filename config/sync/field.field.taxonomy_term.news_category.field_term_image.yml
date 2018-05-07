@@ -1,0 +1,27 @@
+uuid: 5ab1465c-8dac-49ec-a06f-2914b973ab32
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_term_image
+    - taxonomy.vocabulary.news_category
+  module:
+    - file
+id: taxonomy_term.news_category.field_term_image
+field_name: field_term_image
+entity_type: taxonomy_term
+bundle: news_category
+label: 'Author Image'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  description_field: false
+  file_directory: ''
+  file_extensions: 'png gif jpg jpeg'
+  max_filesize: ''
+  handler: 'default:file'
+  handler_settings: {  }
+field_type: file

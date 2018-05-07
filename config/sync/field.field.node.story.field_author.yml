@@ -1,0 +1,32 @@
+uuid: fff70891-55be-43cc-b5de-544d5b27831c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_author
+    - node.type.story
+id: node.story.field_author
+field_name: field_author
+entity_type: node
+bundle: story
+label: Writer
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    view:
+      view_name: published_person_list
+      display_name: entityreference_1
+      args: {  }
+    behaviors:
+      views-select-list:
+        status: 0
+    target_bundles: null
+    sort:
+      field: _none
+      direction: ASC
+field_type: entity_reference

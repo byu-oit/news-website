@@ -1,0 +1,21 @@
+uuid: 9fe7ebb9-fc4d-4dfe-85df-d3ecf125b2af
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_parent_terms
+    - taxonomy.vocabulary.address_book
+id: taxonomy_term.address_book.field_parent_terms
+field_name: field_parent_terms
+entity_type: taxonomy_term
+bundle: address_book
+label: 'Member of Group(s):'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings: {  }
+field_type: entity_reference
