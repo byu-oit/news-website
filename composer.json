@@ -124,17 +124,17 @@
             "drush/contrib/{$name}": ["type:drupal-drush"]
         },
         "patches": {
-	    "drupal/core": {
-		    "Add date range to views": "https://www.drupal.org/files/issues/2786577-270_0.patch",
-		    "Allow sudo fields in manage display": "https://www.drupal.org/files/issues/2018-03-13/title.display-2923701-161.patch"
-	    },
-	    "drupal/migrate_upgrade": {
-		    "Add migrate-status command": "https://www.drupal.org/files/issues/2018-03-17/2915726-13.migrate_upgrade.Drush-9-port-of-commands.patch"
-	    },
-	    "drupal/field_group": {
-		    "Fix field group migration in 8.5": "https://www.drupal.org/files/issues/2018-03-12/2951335-7-fix-core-8-5-fieldgroup-migration.patch",
-		    "fix field Layout integration": "https://www.drupal.org/files/issues/2018-04-20/field_layout_support-2878359-56.patch"
+	        "drupal/core": {
+		        "Add date range to views": "https://www.drupal.org/files/issues/2786577-270_0.patch",
+		        "Allow pseudo fields in manage display": "https://www.drupal.org/files/issues/2018-03-13/title.display-2923701-161.patch"
+	        },
+	        "drupal/migrate_upgrade": {
+		        "Add migrate-status command": "https://www.drupal.org/files/issues/2018-03-17/2915726-13.migrate_upgrade.Drush-9-port-of-commands.patch"
+	        },
+	        "drupal/field_group": {
+		        "Fix field group migration in 8.5": "https://www.drupal.org/files/issues/2018-03-12/2951335-7-fix-core-8-5-fieldgroup-migration.patch",
+		        "Fix field Layout integration": "https://www.drupal.org/files/issues/2018-04-20/field_layout_support-2878359-56.patch"
+	        }
 	    }
-	}
     }
 }

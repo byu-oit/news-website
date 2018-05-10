@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "4ef836e729cd5f9442db36bd5971c59c",
+    "content-hash": "93f9873d7706a4fdf9d77e1d49d4856f",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -2246,7 +2246,7 @@
             "source": {
                 "type": "git",
                 "url": "https://git.drupal.org/project/byu_theme",
-                "reference": "9cb5e04b16f5dfe0a642cdf40decc0e1b267bb11"
+                "reference": "21be99564ee44b093d1a6ce4d3c3957f2987d0c5"
             },
             "require": {
                 "drupal/bootstrap": "~3.0",
@@ -2258,8 +2258,8 @@
                     "dev-2.x": "2.x-dev"
                 },
                 "drupal": {
-                    "version": "8.x-2.1+4-dev",
-                    "datestamp": "1525712880",
+                    "version": "8.x-2.1+5-dev",
+                    "datestamp": "1525804684",
                     "security-coverage": {
                         "status": "not-covered",
                         "message": "Project has not opted into security advisory coverage!"
@@ -2293,7 +2293,7 @@
             "support": {
                 "source": "http://cgit.drupalcode.org/byu_theme"
             },
-            "time": "2018-05-08T18:38:03+00:00"
+            "time": "2018-05-09T20:19:53+00:00"
         },
         {
             "name": "drupal/cas",
@@ -3204,7 +3204,7 @@
                 },
                 "patches_applied": {
                     "Add date range to views": "https://www.drupal.org/files/issues/2786577-270_0.patch",
-                    "Allow sudo fields in manage display": "https://www.drupal.org/files/issues/2018-03-13/title.display-2923701-161.patch"
+                    "Allow pseudo fields in manage display": "https://www.drupal.org/files/issues/2018-03-13/title.display-2923701-161.patch"
                 }
             },
             "autoload": {
@@ -3750,7 +3750,7 @@
                 },
                 "patches_applied": {
                     "Fix field group migration in 8.5": "https://www.drupal.org/files/issues/2018-03-12/2951335-7-fix-core-8-5-fieldgroup-migration.patch",
-                    "fix field Layout integration": "https://www.drupal.org/files/issues/2018-04-20/field_layout_support-2878359-56.patch"
+                    "Fix field Layout integration": "https://www.drupal.org/files/issues/2018-04-20/field_layout_support-2878359-56.patch"
                 }
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
