@@ -1,0 +1,37 @@
+uuid: d7642971-586d-48f5-97c4-29c99d32ac17
+langcode: en
+status: true
+dependencies:
+  config:
+    - image.style.hero_side_image_2_desktop
+    - image.style.hero_side_image_2_ipad_landscape
+    - image.style.hero_side_image_2_ipad_portrait
+  module:
+    - byu_hero
+_core:
+  default_config_hash: i9jZ0aA-GhpxA1wuHIeEANdlQ4jJufyA6BYFeWP8p2o
+id: hero_side_image_style_2
+label: 'Hero Side Image Style 2'
+image_style_mappings:
+  -
+    breakpoint_id: byu_hero.desktop
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: hero_side_image_2_desktop
+  -
+    breakpoint_id: byu_hero.tablet-wide
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: hero_side_image_2_ipad_landscape
+  -
+    breakpoint_id: byu_hero.tablet
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: hero_side_image_2_ipad_portrait
+  -
+    breakpoint_id: byu_hero.mobile
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: hero_side_image_2_ipad_landscape
+breakpoint_group: byu_hero
+fallback_image_style: hero_side_image_2_ipad_landscape

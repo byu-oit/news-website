@@ -15,8 +15,14 @@ dependencies:
     - field.field.file.image.field_link
     - field.field.file.image.field_require_agreement
   module:
+    - field_layout
     - file
+    - layout_discovery
     - link
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings: {  }
 id: file.image.default
 targetEntityType: file
 bundle: image

@@ -6,8 +6,15 @@ dependencies:
     - field.field.node.paragraphs_pags.field_paragraphs
     - node.type.paragraphs_pags
   module:
+    - content_moderation
+    - field_layout
+    - layout_discovery
     - paragraphs
     - path
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings: {  }
 id: node.paragraphs_pags.default
 targetEntityType: node
 bundle: paragraphs_pags
@@ -31,6 +38,12 @@ content:
       default_paragraph_type: ''
     third_party_settings: {  }
     region: content
+  moderation_state:
+    type: moderation_state_default
+    weight: 100
+    settings: {  }
+    region: content
+    third_party_settings: {  }
   node_class:
     type: string_textfield
     weight: 35

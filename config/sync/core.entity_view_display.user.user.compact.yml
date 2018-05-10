@@ -4,11 +4,27 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.user.compact
+    - field.field.user.user.field_biography
+    - field.field.user.user.field_display
+    - field.field.user.user.field_display_order
+    - field.field.user.user.field_phone
+    - field.field.user.user.field_short_bio
+    - field.field.user.user.field_stories
+    - field.field.user.user.field_team
+    - field.field.user.user.field_title_subline
+    - field.field.user.user.field_user_signature
     - field.field.user.user.user_picture
     - image.style.thumbnail
   module:
+    - field_layout
     - image
+    - layout_discovery
+    - manage_display
     - user
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings: {  }
 _core:
   default_config_hash: '-cLsS3M3JycipXQt9rEb81_HxKneReoGuRh8ijcOPXs'
 id: user.user.compact
@@ -16,6 +32,18 @@ targetEntityType: user
 bundle: user
 mode: compact
 content:
+  masquerade:
+    weight: 50
+    region: content
+  name:
+    label: hidden
+    type: title
+    weight: -50
+    region: content
+    settings:
+      tag: h2
+      linked: true
+    third_party_settings: {  }
   user_picture:
     type: image
     weight: 0
@@ -26,4 +54,13 @@ content:
     third_party_settings: {  }
     label: hidden
 hidden:
+  field_biography: true
+  field_display: true
+  field_display_order: true
+  field_phone: true
+  field_short_bio: true
+  field_stories: true
+  field_team: true
+  field_title_subline: true
+  field_user_signature: true
   member_for: true

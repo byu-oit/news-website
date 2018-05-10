@@ -7,6 +7,12 @@ dependencies:
     - paragraphs.paragraphs_type.internal_story
   module:
     - field_formatter_class
+    - field_layout
+    - layout_discovery
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings: {  }
 id: paragraph.internal_story.default
 targetEntityType: paragraph
 bundle: internal_story

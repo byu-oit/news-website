@@ -5,6 +5,7 @@ dependencies:
   config:
     - field.storage.node.body
     - field.storage.node.field_category
+    - field.storage.node.field_summary
     - field.storage.node.field_thumbnail
     - image.style.recent_stories_thumbnail
     - node.type.story
@@ -321,7 +322,7 @@ display:
             preserve_tags: ''
             html: false
           element_type: div
-          element_class: recent-story-teaser
+          element_class: ''
           element_label_type: ''
           element_label_class: ''
           element_label_colon: false
@@ -329,13 +330,75 @@ display:
           element_wrapper_class: ''
           element_default_classes: true
           empty: ''
-          hide_empty: false
+          hide_empty: true
           empty_zero: false
           hide_alter_empty: true
           click_sort_column: value
           type: text_summary_or_trimmed
           settings:
             trim_length: 600
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          plugin_id: field
+        field_summary:
+          id: field_summary
+          table: node__field_summary
+          field: field_summary
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: ''
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: true
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: basic_string
+          settings: {  }
           group_column: value
           group_columns: {  }
           group_rows: true
@@ -471,7 +534,7 @@ display:
           expose:
             label: ''
           granularity: second
-      title: 'Recent Stories'
+      title: Home
       header: {  }
       footer: {  }
       empty: {  }
@@ -495,6 +558,7 @@ display:
       tags:
         - 'config:field.storage.node.body'
         - 'config:field.storage.node.field_category'
+        - 'config:field.storage.node.field_summary'
         - 'config:field.storage.node.field_thumbnail'
   block_1:
     display_plugin: block
@@ -515,4 +579,27 @@ display:
       tags:
         - 'config:field.storage.node.body'
         - 'config:field.storage.node.field_category'
+        - 'config:field.storage.node.field_summary'
+        - 'config:field.storage.node.field_thumbnail'
+  page_1:
+    display_plugin: page
+    id: page_1
+    display_title: Page
+    position: 2
+    display_options:
+      display_extenders: {  }
+      path: home
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url.query_args
+        - user
+        - 'user.node_grants:view'
+        - user.permissions
+      tags:
+        - 'config:field.storage.node.body'
+        - 'config:field.storage.node.field_category'
+        - 'config:field.storage.node.field_summary'
         - 'config:field.storage.node.field_thumbnail'

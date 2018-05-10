@@ -5,21 +5,50 @@ dependencies:
   config:
     - core.entity_view_mode.node.slideshow
     - field.field.node.story.body
+    - field.field.node.story.field_address_book
+    - field.field.node.story.field_alert
+    - field.field.node.story.field_author
     - field.field.node.story.field_category
+    - field.field.node.story.field_contact_email
+    - field.field.node.story.field_contact_phone
+    - field.field.node.story.field_download_images
+    - field.field.node.story.field_enable_comments
+    - field.field.node.story.field_exclude_from_feature
+    - field.field.node.story.field_feature_as_hero
+    - field.field.node.story.field_feature_image
+    - field.field.node.story.field_first_name
     - field.field.node.story.field_full_name
+    - field.field.node.story.field_headline
+    - field.field.node.story.field_headliner_image
+    - field.field.node.story.field_hero_image
+    - field.field.node.story.field_hero_read_more_text
+    - field.field.node.story.field_hide_images
+    - field.field.node.story.field_highlights
     - field.field.node.story.field_image
+    - field.field.node.story.field_link
     - field.field.node.story.field_main_body
     - field.field.node.story.field_media_contact_byline
     - field.field.node.story.field_media_contact_byline_perso
     - field.field.node.story.field_media_contact_type
     - field.field.node.story.field_media_placement
     - field.field.node.story.field_meta_image
+    - field.field.node.story.field_newsletter_category
+    - field.field.node.story.field_photos
+    - field.field.node.story.field_publicize
+    - field.field.node.story.field_publish_date
+    - field.field.node.story.field_read_more_text
+    - field.field.node.story.field_related
+    - field.field.node.story.field_related_persons
     - field.field.node.story.field_related_stories
+    - field.field.node.story.field_require_agreement
     - field.field.node.story.field_show_on_front
+    - field.field.node.story.field_story_hero_classes
     - field.field.node.story.field_story_highlights
+    - field.field.node.story.field_story_id
     - field.field.node.story.field_subheading
     - field.field.node.story.field_summary
     - field.field.node.story.field_tags
+    - field.field.node.story.field_tags1
     - field.field.node.story.field_thumbnail
     - field.field.node.story.field_writer
     - field.field.node.story.field_writer_name
@@ -27,7 +56,13 @@ dependencies:
     - field.field.node.story.field_writer_type
     - node.type.story
   module:
+    - field_layout
     - image
+    - layout_discovery
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings: {  }
 id: node.story.slideshow
 targetEntityType: node
 bundle: story
@@ -46,21 +81,49 @@ hidden:
   body: true
   content_moderation_control: true
   created: true
+  field_address_book: true
+  field_alert: true
+  field_author: true
   field_category: true
+  field_contact_email: true
+  field_contact_phone: true
+  field_download_images: true
+  field_enable_comments: true
+  field_exclude_from_feature: true
+  field_feature_as_hero: true
+  field_feature_image: true
+  field_first_name: true
   field_full_name: true
+  field_headline: true
+  field_headliner_image: true
+  field_hero_image: true
+  field_hero_read_more_text: true
+  field_hide_images: true
+  field_highlights: true
+  field_link: true
   field_main_body: true
   field_media_contact_byline: true
   field_media_contact_byline_perso: true
   field_media_contact_type: true
   field_media_placement: true
   field_meta_image: true
+  field_newsletter_category: true
+  field_photos: true
+  field_publicize: true
   field_publish_date: true
+  field_read_more_text: true
+  field_related: true
+  field_related_persons: true
   field_related_stories: true
+  field_require_agreement: true
   field_show_on_front: true
+  field_story_hero_classes: true
   field_story_highlights: true
+  field_story_id: true
   field_subheading: true
   field_summary: true
   field_tags: true
+  field_tags1: true
   field_thumbnail: true
   field_writer: true
   field_writer_name: true

@@ -9,7 +9,6 @@ dependencies:
     - field.field.node.person.field_display_contact_info
     - field.field.node.person.field_email
     - field.field.node.person.field_image
-    - field.field.node.person.field_link
     - field.field.node.person.field_person_title
     - field.field.node.person.field_phone
     - field.field.node.person.field_role
@@ -18,10 +17,16 @@ dependencies:
     - node.type.person
   module:
     - content_moderation
+    - field_layout
     - image
+    - layout_discovery
     - path
     - telephone
     - text
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings: {  }
 id: node.person.default
 targetEntityType: node
 bundle: person
@@ -107,7 +112,6 @@ hidden:
   field_contact_email: true
   field_contact_phone: true
   field_display_contact_info: true
-  field_link: true
   field_person_title: true
   field_role: true
   promote: true

@@ -1,0 +1,19 @@
+uuid: 8dff8a0d-5e1a-4072-9573-ac3837904cbe
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - byu_hero
+_core:
+  default_config_hash: qXaAuoXZhseOhzyv20jdQQaQJv0o3FLqxL3yOMnEjNs
+name: hero_side_image_2_desktop
+label: 'Hero Side Image 2 Desktop'
+effects:
+  adf9946a-9f88-4315-a47a-e845af2dd275:
+    uuid: adf9946a-9f88-4315-a47a-e845af2dd275
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 570
+      height: 320

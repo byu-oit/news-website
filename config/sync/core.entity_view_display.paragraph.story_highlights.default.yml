@@ -6,7 +6,13 @@ dependencies:
     - field.field.paragraph.story_highlights.field_bullets
     - paragraphs.paragraphs_type.story_highlights
   module:
+    - field_layout
+    - layout_discovery
     - text
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings: {  }
 id: paragraph.story_highlights.default
 targetEntityType: paragraph
 bundle: story_highlights

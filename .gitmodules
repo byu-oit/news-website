@@ -7,3 +7,9 @@
 [submodule "web/themes/custom/byu_news_adminimal_theme"]
 	path = web/themes/custom/byu_news_adminimal_theme
 	url = git@github.com:byuweb/byu_news_adminimal_theme.git
+[submodule "web/libraries/cycle"]
+	path = web/libraries/cycle
+	url = https://github.com/malsup/cycle.git
+[submodule "web/libraries/json-js"]
+	path = web/libraries/json-js
+	url = https://github.com/douglascrockford/JSON-js.git

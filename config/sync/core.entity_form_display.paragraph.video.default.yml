@@ -7,7 +7,13 @@ dependencies:
     - paragraphs.paragraphs_type.video
   module:
     - content_moderation
+    - field_layout
+    - layout_discovery
     - video_embed_field
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings: {  }
 id: paragraph.video.default
 targetEntityType: paragraph
 bundle: video

@@ -7,7 +7,13 @@ dependencies:
     - paragraphs.paragraphs_type.social_media_embed
   module:
     - content_moderation
+    - field_layout
+    - layout_discovery
     - text
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings: {  }
 _core:
   default_config_hash: JifLfyMsqY4OD3KxRmRPoE_OJbA4rhJ0HBpA1XqHxy8
 id: paragraph.social_media_embed.default

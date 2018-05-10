@@ -9,7 +9,7 @@ _core:
 id: byu_news_adminimal_theme_local_actions
 theme: byu_news_adminimal_theme
 region: content
-weight: -5
+weight: -4
 provider: null
 plugin: local_actions_block
 settings:

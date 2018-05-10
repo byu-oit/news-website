@@ -7,6 +7,14 @@ dependencies:
     - field.field.paragraph.bp_block.bp_block
     - field.field.paragraph.bp_block.bp_width
     - paragraphs.paragraphs_type.bp_block
+  module:
+    - content_moderation
+    - field_layout
+    - layout_discovery
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings: {  }
 _core:
   default_config_hash: C9JQkqmEcygxPLZrxrGGGwb_sBeGjZs1gz1hD5KW5dA
 id: paragraph.bp_block.default
@@ -35,6 +43,12 @@ content:
     third_party_settings: {  }
     type: options_select
     region: content
+  moderation_state:
+    type: moderation_state_default
+    weight: 100
+    settings: {  }
+    region: content
+    third_party_settings: {  }
 hidden:
   created: true
   status: true

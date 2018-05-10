@@ -6,7 +6,13 @@ dependencies:
     - field.field.paragraph.social_media_embed.field_embed_code
     - paragraphs.paragraphs_type.social_media_embed
   module:
+    - field_layout
+    - layout_discovery
     - text
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings: {  }
 _core:
   default_config_hash: 4fqRmrNUJsH1SCeAfqD7ZpkxX13qhAGoW4Bn_L8Tfw4
 id: paragraph.social_media_embed.default

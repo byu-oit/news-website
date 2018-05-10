@@ -1,0 +1,19 @@
+uuid: b0860f9d-49a3-4a39-8267-7a92bdf9ac1a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_hero_read_more_text
+    - node.type.story
+id: node.story.field_hero_read_more_text
+field_name: field_hero_read_more_text
+entity_type: node
+bundle: story
+label: 'Hero: Read More Text'
+description: 'This will be linked back to the story.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

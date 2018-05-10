@@ -6,7 +6,13 @@ dependencies:
     - field.field.paragraph.social_embed.field_social_embed_code
     - paragraphs.paragraphs_type.social_embed
   module:
+    - field_layout
+    - layout_discovery
     - text
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings: {  }
 id: paragraph.social_embed.default
 targetEntityType: paragraph
 bundle: social_embed

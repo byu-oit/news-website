@@ -1,0 +1,15 @@
+uuid: 9ba6c3b7-f6eb-4886-9f81-83f6b522bd57
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - byu_hero
+  module:
+    - node
+_core:
+  default_config_hash: ktHpn7P8d8PuhydeGoVFi5EMf7bPDb0p-SXn-DO0Zsc
+id: node.hero_side_image_style_2
+label: 'Hero Side Image Style 2'
+targetEntityType: node
+cache: true

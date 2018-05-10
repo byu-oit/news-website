@@ -8,16 +8,16 @@ favicon:
   path: ''
   url: 'https://news-linux.byu.edu/themes/custom/byu_news/favicon.ico'
   use_default: 1
-font_three: sentinel
+font_three: libreb
 custom_width: '1200'
-font_package: fonts-full
-font_one: sentinel
-font_two: sentinel
-font_four: ringside
+font_package: fonts-basic
+font_one: libreb
+font_two: libreb
+font_four: roboto
 font_four_color: h4-black
-font_five: ringside
+font_five: roboto
 font_five_color: h5-black
-p_font: ringside
+p_font: roboto
 footer_sticky: 1
 search_use: 1
 features:
@@ -32,8 +32,8 @@ logo:
 components_version: 1.x.x
 table: ''
 loader: 0
-fontawesome_use: 0
-libreberville_use: 0
+fontawesome_use: 1
+libreberville_use: 1
 sourcesans_use: 0
 font_one_color: h1-navy
 font_two_color: h2-navy
@@ -47,12 +47,12 @@ login_url: ''
 logout_url: ''
 myaccount_use: 0
 myaccount_url: ''
-search_input: '[data-drupal-selector=\''edit-search\'']'
-search_submit: '[data-drupal-selector=\''edit-submit-search\'']'
+search_input: ''
+search_submit: '#search-block-form .input-group .input-group-btn button'
 actions_bg: none
 menu_disable: 0
 transparent: 0
-hero_width: '0'
+hero_width: '1'
 hero_vs_menu: '0'
 hero_image_width: 0
 full_width: 0
@@ -91,3 +91,7 @@ region_wells:
   footer_41: ''
   hidden: ''
 table_responsive: '-1'
+domine_use: 0
+montserrat_use: 0
+zilla_slab_use: 0
+roboto_use: 1

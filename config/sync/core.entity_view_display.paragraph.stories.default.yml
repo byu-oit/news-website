@@ -10,8 +10,14 @@ dependencies:
     - image.style.thumbnail
     - paragraphs.paragraphs_type.stories
   module:
+    - field_layout
     - image
+    - layout_discovery
     - link
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings: {  }
 _core:
   default_config_hash: uNj39brPnNfWCUrZrwf_APeUx71e4Wd1gC2n1qHn_lY
 id: paragraph.stories.default

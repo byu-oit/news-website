@@ -7,8 +7,14 @@ dependencies:
     - node.type.storify_paragraphs
   module:
     - content_moderation
+    - field_layout
+    - layout_discovery
     - paragraphs
     - path
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings: {  }
 _core:
   default_config_hash: eQD2QnxmsVJ0u1WJS9_uYdhebPbrhxuPTaxBkRiYGCI
 id: node.storify_paragraphs.default

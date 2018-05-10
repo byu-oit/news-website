@@ -20,12 +20,16 @@ settings:
   uri_scheme: public
   default_image:
     uuid: ''
+    alt: ''
+    title: ''
+    width: null
+    height: null
   target_type: file
   display_field: false
   display_default: false
 module: image
 locked: false
-cardinality: 1
+cardinality: -1
 translatable: true
 indexes:
   target_id:

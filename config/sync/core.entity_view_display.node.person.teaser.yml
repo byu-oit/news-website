@@ -16,8 +16,14 @@ dependencies:
     - field.field.node.person.field_title
     - node.type.person
   module:
+    - field_layout
+    - layout_discovery
+    - manage_display
     - text
-    - user
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings: {  }
 id: node.person.teaser
 targetEntityType: node
 bundle: person
@@ -31,9 +37,35 @@ content:
       trim_length: 600
     third_party_settings: {  }
     region: content
+  created:
+    label: hidden
+    type: timestamp
+    weight: -48
+    region: content
+    settings:
+      date_format: medium
+      custom_date_format: ''
+      timezone: ''
+    third_party_settings: {  }
   links:
     weight: 100
     region: content
+  title:
+    label: hidden
+    type: title
+    weight: -50
+    region: content
+    settings:
+      tag: h2
+      linked: true
+    third_party_settings: {  }
+  uid:
+    label: hidden
+    type: submitted
+    weight: -49
+    region: content
+    settings: {  }
+    third_party_settings: {  }
 hidden:
   field_contact_email: true
   field_contact_phone: true

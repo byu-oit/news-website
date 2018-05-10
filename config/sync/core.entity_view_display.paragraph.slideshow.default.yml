@@ -5,6 +5,13 @@ dependencies:
   config:
     - field.field.paragraph.slideshow.field_block
     - paragraphs.paragraphs_type.slideshow
+  module:
+    - field_layout
+    - layout_discovery
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings: {  }
 id: paragraph.slideshow.default
 targetEntityType: paragraph
 bundle: slideshow

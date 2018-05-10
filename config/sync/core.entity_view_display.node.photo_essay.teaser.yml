@@ -4,15 +4,55 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.node.teaser
+    - field.field.node.photo_essay.body
+    - field.field.node.photo_essay.field_category
+    - field.field.node.photo_essay.field_story_link
+    - field.field.node.photo_essay.field_thumbnail
     - node.type.photo_essay
   module:
-    - user
+    - field_layout
+    - layout_discovery
+    - manage_display
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings: {  }
 id: node.photo_essay.teaser
 targetEntityType: node
 bundle: photo_essay
 mode: teaser
 content:
+  created:
+    label: hidden
+    type: timestamp
+    weight: -48
+    region: content
+    settings:
+      date_format: medium
+      custom_date_format: ''
+      timezone: ''
+    third_party_settings: {  }
   links:
     weight: 100
     region: content
-hidden: {  }
+  title:
+    label: hidden
+    type: title
+    weight: -50
+    region: content
+    settings:
+      tag: h2
+      linked: true
+    third_party_settings: {  }
+  uid:
+    label: hidden
+    type: submitted
+    weight: -49
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  body: true
+  field_category: true
+  field_story_link: true
+  field_thumbnail: true

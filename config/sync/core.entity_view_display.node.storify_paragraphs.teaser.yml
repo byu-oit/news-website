@@ -7,7 +7,13 @@ dependencies:
     - field.field.node.storify_paragraphs.field_stories
     - node.type.storify_paragraphs
   module:
-    - user
+    - field_layout
+    - layout_discovery
+    - manage_display
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings: {  }
 _core:
   default_config_hash: _Wr5wEU9K1rknXIJdQZAeTgu7okqbtnVCo4sej3N47w
 id: node.storify_paragraphs.teaser
@@ -15,8 +21,34 @@ targetEntityType: node
 bundle: storify_paragraphs
 mode: teaser
 content:
+  created:
+    label: hidden
+    type: timestamp
+    weight: -48
+    region: content
+    settings:
+      date_format: medium
+      custom_date_format: ''
+      timezone: ''
+    third_party_settings: {  }
   links:
     weight: 100
     region: content
+  title:
+    label: hidden
+    type: title
+    weight: -50
+    region: content
+    settings:
+      tag: h2
+      linked: true
+    third_party_settings: {  }
+  uid:
+    label: hidden
+    type: submitted
+    weight: -49
+    region: content
+    settings: {  }
+    third_party_settings: {  }
 hidden:
   field_stories: true

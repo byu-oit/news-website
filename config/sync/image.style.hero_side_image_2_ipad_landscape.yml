@@ -1,0 +1,19 @@
+uuid: 4a55f287-dfd5-4bc4-a384-35a70b3cbdb5
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - byu_hero
+_core:
+  default_config_hash: 6T7G3jNpnana0WShMkwocrD4n3UDJCKblJjcQ6U0L8Y
+name: hero_side_image_2_ipad_landscape
+label: 'Hero Side Image 2 Ipad_landscape'
+effects:
+  7442f459-d24b-4cc0-9eee-fbf914d2ff03:
+    uuid: 7442f459-d24b-4cc0-9eee-fbf914d2ff03
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 480
+      height: 270

@@ -5,8 +5,6 @@ dependencies:
   config:
     - field.storage.node.field_paragraphs
     - node.type.paragraphs_pags
-    - paragraphs.paragraphs_type.bp_accordion_section
-    - paragraphs.paragraphs_type.bp_tab_section
   module:
     - entity_reference_revisions
 id: node.paragraphs_pags.field_paragraphs
@@ -23,9 +21,7 @@ settings:
   handler: 'default:paragraph'
   handler_settings:
     negate: 1
-    target_bundles:
-      bp_accordion_section: bp_accordion_section
-      bp_tab_section: bp_tab_section
+    target_bundles: {  }
     target_bundles_drag_drop:
       bp_simple:
         weight: -39

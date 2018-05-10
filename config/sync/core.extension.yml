@@ -15,8 +15,8 @@ module:
   block: 0
   block_class: 0
   block_content: 0
-  bootstrap_paragraphs: 0
   breakpoint: 0
+  byu_hero: 0
   cas: 0
   chosen: 0
   chosen_field: 0
@@ -27,6 +27,7 @@ module:
   comment: 0
   conditional_fields: 0
   config: 0
+  config_files: 0
   config_tools: 0
   config_update: 0
   config_update_ui: 0
@@ -50,7 +51,9 @@ module:
   field_formatter_class: 0
   field_group: 0
   field_group_migrate: 0
+  field_layout: 0
   field_permissions: 0
+  field_token_value: 0
   field_ui: 0
   file: 0
   file_download: 0
@@ -101,6 +104,7 @@ module:
   serialization: 0
   sharethis: 0
   shortcut: 0
+  smtp: 0
   statistics: 0
   system: 0
   taxonomy: 0

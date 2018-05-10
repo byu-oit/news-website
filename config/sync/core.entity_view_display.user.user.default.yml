@@ -16,11 +16,18 @@ dependencies:
     - image.style.recent_stories_thumbnail
   module:
     - field_formatter_class
+    - field_layout
     - image
+    - layout_discovery
+    - manage_display
     - telephone
     - text
     - user
     - viewsreference
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings: {  }
 _core:
   default_config_hash: V51QPCKkgNREKtSmB9Iu2wmAMEpktVpnzklWaZV8UYo
 id: user.user.default
@@ -62,6 +69,18 @@ content:
         class: ''
     type: string
     region: content
+  masquerade:
+    weight: 50
+    region: content
+  name:
+    label: hidden
+    type: title
+    weight: -50
+    region: content
+    settings:
+      tag: h2
+      linked: true
+    third_party_settings: {  }
   user_picture:
     type: image
     weight: 1

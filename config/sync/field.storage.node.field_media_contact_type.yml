@@ -13,10 +13,13 @@ settings:
   allowed_values:
     -
       value: regular
-      label: ' University Communications Staff'
+      label: 'University Communications Staff'
     -
       value: external
-      label: ' Guest Author or No Author'
+      label: 'Guest Author'
+    -
+      value: none
+      label: 'No author'
   allowed_values_function: ''
 module: options
 locked: false

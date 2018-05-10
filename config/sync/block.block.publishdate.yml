@@ -1,0 +1,42 @@
+uuid: 9d48bf95-9c81-4c36-8716-03dc62dced52
+langcode: en
+status: false
+dependencies:
+  module:
+    - block_class
+    - ctools_block
+    - node
+  theme:
+    - byu_news
+third_party_settings:
+  block_class:
+    classes: ''
+id: publishdate
+theme: byu_news
+region: content
+weight: -6
+provider: null
+plugin: 'entity_field:node:field_publish_date'
+settings:
+  id: 'entity_field:node:field_publish_date'
+  label: 'Publish Date'
+  provider: ctools_block
+  label_display: '0'
+  formatter:
+    label: hidden
+    type: datetime_default
+    settings:
+      timezone_override: ''
+      format_type: short
+    third_party_settings: {  }
+    weight: 0
+  context_mapping:
+    entity: '@node.node_route_context:node'
+visibility:
+  node_type:
+    id: node_type
+    bundles:
+      story: story
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'

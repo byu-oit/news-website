@@ -11,7 +11,9 @@ dependencies:
   module:
     - field_formatter_class
     - field_group
+    - field_layout
     - image
+    - layout_discovery
     - options
     - text
 third_party_settings:
@@ -33,6 +35,9 @@ third_party_settings:
         effect: none
         speed: fast
       label: image-side
+  field_layout:
+    id: layout_onecol
+    settings: {  }
 id: paragraph.image.default
 targetEntityType: paragraph
 bundle: image

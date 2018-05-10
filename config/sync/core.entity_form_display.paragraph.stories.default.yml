@@ -11,8 +11,14 @@ dependencies:
     - paragraphs.paragraphs_type.stories
   module:
     - content_moderation
+    - field_layout
     - image
+    - layout_discovery
     - link
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings: {  }
 _core:
   default_config_hash: EEy0zdkmadU2uZlSIPBRpCrYMbPGH5zSd3zDJ9gQwRY
 id: paragraph.stories.default

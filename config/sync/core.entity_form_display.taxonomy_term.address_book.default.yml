@@ -11,9 +11,15 @@ dependencies:
     - field.field.taxonomy_term.address_book.field_position_title_2
     - taxonomy.vocabulary.address_book
   module:
+    - field_layout
+    - layout_discovery
     - path
     - telephone
     - text
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings: {  }
 id: taxonomy_term.address_book.default
 targetEntityType: taxonomy_term
 bundle: address_book
