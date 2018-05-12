@@ -1,0 +1,29 @@
+uuid: 17b4db19-c1b9-4774-bb7b-b0ac80cf1fbb
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.api
+    - field.field.paragraph.text.field_simple_text
+    - paragraphs.paragraphs_type.text
+  module:
+    - field_layout
+    - layout_discovery
+    - text
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings: {  }
+id: paragraph.text.api
+targetEntityType: paragraph
+bundle: text
+mode: api
+content:
+  field_simple_text:
+    weight: 0
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+hidden: {  }

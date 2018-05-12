@@ -23,7 +23,6 @@ dependencies:
     - telephone
     - text
     - user
-    - viewsreference
 third_party_settings:
   field_layout:
     id: layout_onecol
@@ -36,31 +35,22 @@ bundle: user
 mode: default
 content:
   field_biography:
-    weight: 3
+    weight: 4
     label: hidden
     settings: {  }
     third_party_settings: {  }
     type: text_default
     region: content
   field_phone:
-    weight: 2
+    weight: 3
     label: inline
     settings:
       title: ''
     third_party_settings: {  }
     type: telephone_link
     region: content
-  field_stories:
-    weight: 4
-    label: hidden
-    settings:
-      plugin_types:
-        - block
-    third_party_settings: {  }
-    type: viewsreference_formatter
-    region: content
   field_title_subline:
-    weight: 0
+    weight: 1
     label: hidden
     settings:
       link_to_entity: false
@@ -69,13 +59,10 @@ content:
         class: ''
     type: string
     region: content
-  masquerade:
-    weight: 50
-    region: content
   name:
     label: hidden
     type: title
-    weight: -50
+    weight: 0
     region: content
     settings:
       tag: h2
@@ -83,7 +70,7 @@ content:
     third_party_settings: {  }
   user_picture:
     type: image
-    weight: 1
+    weight: 2
     region: content
     settings:
       image_style: recent_stories_thumbnail
@@ -96,6 +83,8 @@ hidden:
   field_display: true
   field_display_order: true
   field_short_bio: true
+  field_stories: true
   field_team: true
   field_user_signature: true
+  masquerade: true
   member_for: true

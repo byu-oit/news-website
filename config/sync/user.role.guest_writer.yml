@@ -4,6 +4,6 @@ status: true
 dependencies: {  }
 id: guest_writer
 label: 'Guest Writer'
-weight: 6
+weight: -8
 is_admin: null
 permissions: {  }

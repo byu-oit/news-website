@@ -5,11 +5,16 @@ dependencies:
   config:
     - field.storage.node.field_writer_person_
     - node.type.story
+  module:
+    - field_display_label
+third_party_settings:
+  field_display_label:
+    display_label: Writer
 id: node.story.field_writer_person_
 field_name: field_writer_person_
 entity_type: node
 bundle: story
-label: 'Writer (Person)'
+label: 'Writer (User)'
 description: ''
 required: false
 translatable: false
@@ -24,6 +29,7 @@ settings:
       role:
         editor: editor
         writer: writer
+        guest_writer: guest_writer
         administrator: '0'
         programmer: '0'
     target_bundles: null

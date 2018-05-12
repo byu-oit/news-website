@@ -1,0 +1,14 @@
+uuid: 815fa4a8-8465-4f87-85f3-68c675d41a54
+langcode: en
+status: true
+dependencies: {  }
+name: small_thumbnail
+label: 'Small Thumbnail'
+effects:
+  9e18e345-5f18-4081-8ed9-569bec0caa25:
+    uuid: 9e18e345-5f18-4081-8ed9-569bec0caa25
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 225
+      height: 135

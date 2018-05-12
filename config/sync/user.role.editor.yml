@@ -4,7 +4,7 @@ status: true
 dependencies: {  }
 id: editor
 label: Editor
-weight: 3
+weight: -6
 is_admin: null
 permissions:
   - 'access administration menu'
@@ -12,6 +12,8 @@ permissions:
   - 'access all webform results'
   - 'access ckeditor link'
   - 'access content overview'
+  - 'access file download'
+  - 'access files overview'
   - 'access media browser'
   - 'access own webform results'
   - 'access own webform submissions'
@@ -48,7 +50,9 @@ permissions:
   - 'create field_hero_image'
   - 'create files'
   - 'create page content'
+  - 'create photo_essay content'
   - 'create slider content'
+  - 'create storify_paragraphs content'
   - 'create story content'
   - 'create webform content'
   - 'delete any about_page content'
@@ -56,7 +60,6 @@ permissions:
   - 'delete any article content'
   - 'delete any asset content'
   - 'delete any page content'
-  - 'delete any person content'
   - 'delete any slider content'
   - 'delete any story content'
   - 'delete own about_page content'
@@ -123,6 +126,7 @@ permissions:
   - 'moderate content from needs_review to published'
   - 'moderate content from published to draft'
   - 'revert revisions'
+  - 'skip comment approval'
   - 'use advanced search'
   - 'use editorial transition create_new_draft'
   - 'use editorial transition needs_review'

@@ -35,6 +35,7 @@ third_party_settings:
         effect: none
         speed: fast
       label: image-side
+      region: content
   field_layout:
     id: layout_onecol
     settings: {  }

@@ -1,0 +1,10 @@
+uuid: b1398393-5768-46e9-8da8-396e5101cfbe
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.story_row
+label: 'Story Row'
+targetEntityType: node
+cache: true

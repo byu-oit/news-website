@@ -25,6 +25,7 @@ settings:
         -
           name: Lists
           items:
+            - DrupalImage
             - BulletedList
             - NumberedList
             - Blockquote

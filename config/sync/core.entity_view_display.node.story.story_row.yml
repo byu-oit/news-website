@@ -1,9 +1,9 @@
-uuid: 242fa69a-a9ea-4dc6-a5ba-e24f4c042a21
+uuid: d8909c0e-c24f-4a10-944e-4af267b7b07d
 langcode: en
 status: true
 dependencies:
   config:
-    - core.entity_view_mode.node.amp
+    - core.entity_view_mode.node.story_row
     - field.field.node.story.body
     - field.field.node.story.field_address_book
     - field.field.node.story.field_category
@@ -43,183 +43,105 @@ dependencies:
     - field.field.node.story.field_writer_type
     - node.type.story
   module:
-    - amp
+    - entity_reference_revisions
     - field_formatter_class
     - field_layout
     - layout_discovery
-    - link
-    - manage_display
+    - text
 third_party_settings:
   field_layout:
     id: layout_onecol
     settings: {  }
-id: node.story.amp
+id: node.story.story_row
 targetEntityType: node
 bundle: story
-mode: amp
+mode: story_row
 content:
   body:
     label: hidden
-    weight: 5
-    type: amp_text
+    weight: 3
+    type: text_default
     settings: {  }
     third_party_settings: {  }
     region: content
-  content_moderation_control:
-    weight: -20
+  field_main_body:
+    type: entity_reference_revisions_entity_view
+    weight: 1
     region: content
-  created:
     label: hidden
-    type: timestamp
-    weight: -48
-    region: content
     settings:
-      date_format: medium
-      custom_date_format: ''
-      timezone: ''
+      view_mode: default
+      link: ''
     third_party_settings: {  }
-  field_category:
-    type: entity_reference_label
-    weight: 10
+  field_related_stories:
+    type: entity_reference_entity_view
+    weight: 7
     region: content
-    label: above
+    label: hidden
     settings:
-      link: true
+      view_mode: teaser
+      link: false
     third_party_settings:
       field_formatter_class:
-        class: amp-story-category
-  field_full_name:
-    type: amp_text
+        class: ''
+  field_story_highlights:
+    type: text_default
+    weight: 2
+    region: content
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+  field_subheading:
+    type: string
     weight: 0
     region: content
     label: hidden
-    settings: {  }
+    settings:
+      link_to_entity: false
     third_party_settings: {  }
-  field_image:
-    type: amp_image
-    weight: 11
-    region: content
-    label: above
-    settings:
-      image_style: ''
-      image_link: ''
-      amp_layout: responsive
-      amp_fixed_height: '300'
-    third_party_settings:
-      field_formatter_class:
-        class: amp-story-photos
-  field_media_placement:
-    type: link
-    weight: 13
-    region: content
-    label: above
-    settings:
-      trim_length: 80
-      url_only: false
-      url_plain: false
-      rel: '0'
-      target: '0'
-    third_party_settings:
-      field_formatter_class:
-        class: amp-story-media-placements
-  field_related_stories:
-    type: entity_reference_label
-    weight: 14
-    region: content
-    label: above
-    settings:
-      link: true
-    third_party_settings:
-      field_formatter_class:
-        class: amp-story-recent-stories
-  field_story_highlights:
-    type: amp_text
-    weight: 4
-    region: content
-    label: hidden
-    settings: {  }
-    third_party_settings:
-      field_formatter_class:
-        class: amp-story-story-highlights
-  field_subheading:
-    type: amp_text
-    weight: 3
-    region: content
-    label: hidden
-    settings: {  }
-    third_party_settings:
-      field_formatter_class:
-        class: amp-story-subtitle
   field_tags:
     type: entity_reference_label
-    weight: 9
+    weight: 4
     region: content
-    label: above
+    label: inline
     settings:
       link: true
-    third_party_settings:
-      field_formatter_class:
-        class: amp-story-tags
-  field_writer:
-    type: entity_reference_label
-    weight: 7
-    region: content
-    label: above
-    settings:
-      link: true
-    third_party_settings:
-      field_formatter_class:
-        class: amp-story-writer
+    third_party_settings: {  }
   field_writer_name:
-    type: amp_text
+    type: string
     weight: 6
     region: content
-    label: hidden
-    settings: {  }
-    third_party_settings:
-      field_formatter_class:
-        class: amp-story-writer
+    label: inline
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
   field_writer_person_:
     type: entity_reference_label
-    weight: 8
+    weight: 5
     region: content
-    label: hidden
+    label: inline
     settings:
       link: true
-    third_party_settings:
-      field_formatter_class:
-        class: amp-story-writer
-  title:
-    label: hidden
-    type: title
-    weight: -50
-    region: content
-    settings:
-      tag: h2
-      linked: true
-      classes: ''
-    third_party_settings: {  }
-  uid:
-    label: hidden
-    type: submitted
-    weight: -49
-    region: content
-    settings: {  }
     third_party_settings: {  }
 hidden:
+  content_moderation_control: true
+  created: true
   field_address_book: true
+  field_category: true
   field_contact_email: true
   field_contact_phone: true
   field_download_images: true
   field_feature_as_hero: true
   field_feature_image: true
+  field_full_name: true
   field_headliner_image: true
   field_hero_image: true
   field_hero_read_more_text: true
-  field_main_body: true
+  field_image: true
   field_media_contact_byline: true
   field_media_contact_byline_perso: true
   field_media_contact_type: true
+  field_media_placement: true
   field_meta_image: true
   field_photos: true
   field_publish_date: true
@@ -231,5 +153,8 @@ hidden:
   field_story_hero_classes: true
   field_summary: true
   field_thumbnail: true
+  field_writer: true
   field_writer_type: true
   links: true
+  title: true
+  uid: true

@@ -4,6 +4,6 @@ status: true
 dependencies: {  }
 name: 'Address Book'
 vid: address_book
-description: ''
-hierarchy: 2
+description: 'Directory of people to send stories to with the ''Share This Story'' option.'
+hierarchy: 0
 weight: 0

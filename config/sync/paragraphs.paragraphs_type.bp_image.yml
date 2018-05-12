@@ -5,7 +5,7 @@ dependencies: {  }
 _core:
   default_config_hash: Tx54VzzCAn8dLv59wjsdRKDuJmYhZCNkjpiJDOlpQuU
 id: bp_image
-label: Image
+label: 'Bootstrap Image'
 icon_uuid: null
-description: null
+description: ''
 behavior_plugins: {  }

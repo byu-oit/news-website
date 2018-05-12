@@ -10,7 +10,7 @@ id: node.story.field_writer
 field_name: field_writer
 entity_type: node
 bundle: story
-label: Writer
+label: 'Writer Old Field'
 description: ''
 required: false
 translatable: false

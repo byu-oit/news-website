@@ -5,6 +5,11 @@ dependencies:
   config:
     - field.storage.node.field_writer_name
     - node.type.story
+  module:
+    - field_display_label
+third_party_settings:
+  field_display_label:
+    display_label: Writer
 id: node.story.field_writer_name
 field_name: field_writer_name
 entity_type: node

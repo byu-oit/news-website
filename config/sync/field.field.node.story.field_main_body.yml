@@ -5,7 +5,6 @@ dependencies:
   config:
     - field.storage.node.field_main_body
     - node.type.story
-    - paragraphs.paragraphs_type.image
     - paragraphs.paragraphs_type.slideshow
     - paragraphs.paragraphs_type.social_embed
     - paragraphs.paragraphs_type.story_highlights
@@ -28,7 +27,6 @@ settings:
   handler_settings:
     negate: 0
     target_bundles:
-      image: image
       text: text
       story_highlights: story_highlights
       video: video
@@ -36,17 +34,11 @@ settings:
       slideshow: slideshow
     target_bundles_drag_drop:
       image:
-        enabled: true
         weight: 22
-      bp_accordion:
-        weight: 23
         enabled: false
       text:
         enabled: true
         weight: 23
-      bp_accordion_section:
-        weight: 24
-        enabled: false
       bp_blank:
         weight: 25
         enabled: false
@@ -56,55 +48,37 @@ settings:
       story_highlights:
         enabled: true
         weight: 27
-      bp_carousel:
-        weight: 27
-        enabled: false
       bp_column_wrapper:
         weight: 28
-        enabled: false
-      bp_columns:
-        weight: 29
         enabled: false
       video:
         enabled: true
         weight: 29
-      bp_columns_three_uneven:
-        weight: 30
-        enabled: false
       bp_columns_two_uneven:
         weight: 31
         enabled: false
       bp_image:
         weight: 32
         enabled: false
-      bp_modal:
-        weight: 33
-        enabled: false
       bp_simple:
-        weight: 34
-        enabled: false
-      bp_tab_section:
-        weight: 35
-        enabled: false
-      bp_tabs:
-        weight: 36
+        weight: -33
         enabled: false
       bp_view:
-        weight: 37
+        weight: -33
         enabled: false
       internal_story:
-        weight: 47
+        weight: -33
         enabled: false
       social_embed:
         enabled: true
-        weight: 48
+        weight: -33
       social_media_embed:
-        weight: 48
+        weight: -33
         enabled: false
       stories:
-        weight: 49
+        weight: -33
         enabled: false
       slideshow:
         enabled: true
-        weight: 50
+        weight: -33
 field_type: entity_reference_revisions

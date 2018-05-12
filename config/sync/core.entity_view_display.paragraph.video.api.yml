@@ -1,0 +1,22 @@
+uuid: ef75a345-b80c-4c0e-8152-cc1d4ce16f9d
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.api
+    - field.field.paragraph.video.field_video
+    - paragraphs.paragraphs_type.video
+  module:
+    - field_layout
+    - layout_discovery
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings: {  }
+id: paragraph.video.api
+targetEntityType: paragraph
+bundle: video
+mode: api
+content: {  }
+hidden:
+  field_video: true

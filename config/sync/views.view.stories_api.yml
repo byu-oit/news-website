@@ -7,12 +7,14 @@ dependencies:
     - field.storage.node.field_category
     - field.storage.node.field_image
     - field.storage.node.field_publicize
+    - field.storage.node.field_publish_date
     - field.storage.node.field_summary
     - field.storage.node.field_tags
     - field.storage.node.field_writer
     - field.storage.node.field_writer_person_
     - node.type.story
   module:
+    - datetime
     - file
     - image
     - node
@@ -450,10 +452,10 @@ display:
           separator: ', '
           field_api_classes: false
           plugin_id: field
-        created:
-          id: created
-          table: node_field_data
-          field: created
+        field_publish_date:
+          id: field_publish_date
+          table: node__field_publish_date
+          field: field_publish_date
           relationship: none
           group_type: group
           admin_label: ''
@@ -499,11 +501,10 @@ display:
           empty_zero: false
           hide_alter_empty: true
           click_sort_column: value
-          type: timestamp
+          type: datetime_default
           settings:
-            date_format: api
-            custom_date_format: ''
-            timezone: ''
+            timezone_override: ''
+            format_type: api
           group_column: value
           group_columns: {  }
           group_rows: true
@@ -514,8 +515,6 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
-          entity_type: node
-          entity_field: created
           plugin_id: field
         changed:
           id: changed
@@ -1293,21 +1292,19 @@ display:
           reduce_duplicates: false
           plugin_id: list_field
       sorts:
-        created:
-          id: created
-          table: node_field_data
-          field: created
-          order: DESC
-          entity_type: node
-          entity_field: created
-          plugin_id: date
+        field_publish_date_value:
+          id: field_publish_date_value
+          table: node__field_publish_date
+          field: field_publish_date_value
           relationship: none
           group_type: group
           admin_label: ''
+          order: DESC
           exposed: false
           expose:
             label: ''
           granularity: second
+          plugin_id: datetime
       header: {  }
       footer: {  }
       empty: {  }
@@ -1424,6 +1421,7 @@ display:
         - 'config:field.storage.node.field_category'
         - 'config:field.storage.node.field_image'
         - 'config:field.storage.node.field_publicize'
+        - 'config:field.storage.node.field_publish_date'
         - 'config:field.storage.node.field_summary'
         - 'config:field.storage.node.field_tags'
         - 'config:field.storage.node.field_writer'
@@ -1518,6 +1516,7 @@ display:
         - 'config:field.storage.node.field_category'
         - 'config:field.storage.node.field_image'
         - 'config:field.storage.node.field_publicize'
+        - 'config:field.storage.node.field_publish_date'
         - 'config:field.storage.node.field_summary'
         - 'config:field.storage.node.field_tags'
         - 'config:field.storage.node.field_writer'

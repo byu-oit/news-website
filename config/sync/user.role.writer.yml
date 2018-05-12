@@ -4,13 +4,15 @@ status: true
 dependencies: {  }
 id: writer
 label: Writer
-weight: 4
+weight: -7
 is_admin: null
 permissions:
   - 'access administration menu'
   - 'access administration pages'
   - 'access ckeditor link'
   - 'access content overview'
+  - 'access file download'
+  - 'access files overview'
   - 'access media browser'
   - 'access toolbar'
   - 'access workbench'
@@ -24,6 +26,7 @@ permissions:
   - 'edit own story content'
   - 'moderate content from draft to needs_review'
   - 'moderate content from needs_review to draft'
+  - 'skip comment approval'
   - 'use editorial transition create_new_draft'
   - 'use editorial transition needs_review'
   - 'use exclude node title'

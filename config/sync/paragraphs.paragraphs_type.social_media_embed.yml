@@ -5,7 +5,7 @@ dependencies: {  }
 _core:
   default_config_hash: BleO-xZY90b-Ho_QB1S5Smw4LijIC6OWc2pLUiCaovc
 id: social_media_embed
-label: 'Social Media Embed'
+label: 'Storify Social Media'
 icon_uuid: null
 description: 'Embed code for a social media post.'
 behavior_plugins: {  }

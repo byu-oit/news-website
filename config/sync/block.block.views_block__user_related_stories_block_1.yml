@@ -1,9 +1,9 @@
-uuid: 8eb06ddc-38ea-4e0e-a4cd-15bfbc05ff05
+uuid: c0c4b8d4-7b23-4ec9-9de1-38b4e58971c5
 langcode: en
 status: true
 dependencies:
   config:
-    - views.view.homepage_hero
+    - views.view.user_related_stories
   module:
     - block_class
     - system
@@ -13,22 +13,23 @@ dependencies:
 third_party_settings:
   block_class:
     classes: ''
-id: views_block__homepage_hero_block_1
+id: views_block__user_related_stories_block_1
 theme: byu_news
-region: before_content
-weight: -10
+region: content
+weight: -8
 provider: null
-plugin: 'views_block:homepage_hero-block_1'
+plugin: 'views_block:user_related_stories-block_1'
 settings:
-  id: 'views_block:homepage_hero-block_1'
+  id: 'views_block:user_related_stories-block_1'
   label: ''
   provider: views
   label_display: '0'
   views_label: ''
   items_per_page: none
+  context_mapping: {  }
 visibility:
   request_path:
     id: request_path
-    pages: '<front>'
+    pages: '/user/*'
     negate: false
     context_mapping: {  }

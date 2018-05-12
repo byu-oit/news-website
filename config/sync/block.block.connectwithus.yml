@@ -15,7 +15,7 @@ third_party_settings:
 id: connectwithus
 theme: byu_news
 region: footer_41
-weight: 0
+weight: -10
 provider: null
 plugin: 'block_content:3db82325-af62-49ee-ac35-a059f10a5bec'
 settings:

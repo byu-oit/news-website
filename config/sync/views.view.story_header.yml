@@ -81,7 +81,7 @@ display:
           group_type: group
           admin_label: ''
           label: ''
-          exclude: true
+          exclude: false
           alter:
             alter_text: false
             text: ''
@@ -144,7 +144,7 @@ display:
           group_type: group
           admin_label: ''
           label: ''
-          exclude: true
+          exclude: false
           alter:
             alter_text: false
             text: ''
@@ -187,7 +187,7 @@ display:
           click_sort_column: value
           type: string
           settings:
-            link_to_entity: true
+            link_to_entity: false
           group_column: value
           group_columns: {  }
           group_rows: true
@@ -461,7 +461,7 @@ display:
           group_type: group
           admin_label: ''
           label: ''
-          exclude: false
+          exclude: true
           alter:
             alter_text: false
             text: ''
