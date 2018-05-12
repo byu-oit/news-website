@@ -1,9 +1,0 @@
-uuid: ec9bd032-44cd-4fda-b8a3-2e79be5b49be
-langcode: en
-status: true
-dependencies: {  }
-name: 'Old Category'
-vid: news_category
-description: ''
-hierarchy: 0
-weight: 0
