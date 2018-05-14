@@ -6,6 +6,8 @@ dependencies:
     - field.storage.node.field_category
     - node.type.story
     - taxonomy.vocabulary.newsletter_categories
+  content:
+    - 'taxonomy_term:newsletter_categories:48b20a26-a4c3-4812-849a-e35a7092ea7f'
 id: node.story.field_category
 field_name: field_category
 entity_type: node
@@ -14,7 +16,9 @@ label: Category
 description: ''
 required: true
 translatable: false
-default_value: {  }
+default_value:
+  -
+    target_uuid: 48b20a26-a4c3-4812-849a-e35a7092ea7f
 default_value_callback: ''
 settings:
   handler: 'default:taxonomy_term'
@@ -24,6 +28,6 @@ settings:
     sort:
       field: name
       direction: asc
-    auto_create: null
-    auto_create_bundle: null
+    auto_create: false
+    auto_create_bundle: ''
 field_type: entity_reference

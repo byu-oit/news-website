@@ -1,0 +1,14 @@
+uuid: f9caec15-b808-4cc3-bed9-721cccad8190
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.photographers
+  module:
+    - user
+id: user_add_role_action.photographers
+label: 'Add the Photographers role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: photographers

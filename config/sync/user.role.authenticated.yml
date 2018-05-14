@@ -19,7 +19,6 @@ permissions:
   - 'edit own comments'
   - 'post comments'
   - 'search content'
-  - 'use advanced search'
   - 'use custom search'
   - 'use exclude node title'
   - 'use text format very_basic'

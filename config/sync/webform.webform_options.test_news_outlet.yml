@@ -1,9 +1,0 @@
-uuid: c73b8721-3af7-4a29-9f07-c3147cd5e967
-langcode: en
-status: true
-dependencies: {  }
-id: test_news_outlet
-label: 'Test News Outlet'
-category: 'News Outlets'
-likert: false
-options: "web-2@byu.edu: 'Blake Morgan'\n"

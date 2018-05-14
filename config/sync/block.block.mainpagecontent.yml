@@ -1,0 +1,24 @@
+uuid: 90cd0abf-4d20-4360-981b-4f4d6ca861b4
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_class
+    - system
+  theme:
+    - byu_news
+third_party_settings:
+  block_class:
+    classes: ''
+id: mainpagecontent
+theme: byu_news
+region: content
+weight: -9
+provider: null
+plugin: system_main_block
+settings:
+  id: system_main_block
+  label: 'Main page content'
+  provider: system
+  label_display: '0'
+visibility: {  }

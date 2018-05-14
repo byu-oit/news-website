@@ -28,6 +28,7 @@ tags:
   google_plus_image: '[node:field_meta_image]'
   google_plus_author: '[node:author]'
   google_plus_description: '[node:summary]'
+  theme_color: '#002e5d'
   og_phone_number: '[node:author:field_phone]'
   og_url: '[node:url]'
   og_type: story

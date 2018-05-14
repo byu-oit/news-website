@@ -6,7 +6,7 @@ dependencies:
     - views.view.most_popular
   module:
     - block_class
-    - node
+    - system
     - views
   theme:
     - byu_news
@@ -27,10 +27,8 @@ settings:
   views_label: ''
   items_per_page: none
 visibility:
-  node_type:
-    id: node_type
-    bundles:
-      story: story
+  request_path:
+    id: request_path
+    pages: "/node/*\r\n/user/*\r\n<front>\r\n/search/*"
     negate: false
-    context_mapping:
-      node: '@node.node_route_context:node'
+    context_mapping: {  }

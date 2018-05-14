@@ -1,9 +1,0 @@
-uuid: 37bda04c-7621-4620-93e5-8095769090b2
-langcode: en
-status: true
-dependencies: {  }
-id: kuer_fm_news
-label: 'KUER-FM News'
-category: 'News Outlets'
-likert: false
-options: "news@kuer.org: 'News Desk'\nbnelson@kuer.org: 'Bob Nelson'\neneumann@kuer.org: 'Erik Neumann'\njfahys@kuer.org: 'Judy Fahys'\njritchey@kuer.org: 'Julia Ritchey'\nlhale@kuer.org: 'Lee Hale'\nnnixon@kuer.org: 'Nicole Nixon'\nwevans@kuer.org: 'Whittney Evans'\n"

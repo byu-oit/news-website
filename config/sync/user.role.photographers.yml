@@ -1,0 +1,22 @@
+uuid: 1e7d5b14-5cc7-440f-984e-48c866780253
+langcode: en
+status: true
+dependencies: {  }
+id: photographers
+label: Photographers
+weight: -3
+is_admin: null
+permissions:
+  - 'access content'
+  - 'access toolbar'
+  - 'create photo_essay content'
+  - 'delete own photo_essay content'
+  - 'edit any photo_essay content'
+  - 'edit own photo_essay content'
+  - 'revert photo_essay revisions'
+  - 'use editorial transition create_new_draft'
+  - 'use editorial transition needs_review'
+  - 'view any unpublished content'
+  - 'view latest version'
+  - 'view own unpublished content'
+  - 'view photo_essay revisions'

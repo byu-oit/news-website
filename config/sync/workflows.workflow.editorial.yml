@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - node.type.photo_essay
     - node.type.story
   module:
     - content_moderation
@@ -55,4 +56,5 @@ type_settings:
         - published
   entity_types:
     node:
+      - photo_essay
       - story

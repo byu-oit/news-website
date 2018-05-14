@@ -9,9 +9,7 @@ dependencies:
     - field.field.node.story.field_category
     - field.field.node.story.field_contact_email
     - field.field.node.story.field_contact_phone
-    - field.field.node.story.field_download_images
     - field.field.node.story.field_feature_as_hero
-    - field.field.node.story.field_feature_image
     - field.field.node.story.field_full_name
     - field.field.node.story.field_headliner_image
     - field.field.node.story.field_hero_image
@@ -23,10 +21,8 @@ dependencies:
     - field.field.node.story.field_media_contact_type
     - field.field.node.story.field_media_placement
     - field.field.node.story.field_meta_image
-    - field.field.node.story.field_photos
     - field.field.node.story.field_publish_date
     - field.field.node.story.field_read_more_text
-    - field.field.node.story.field_related
     - field.field.node.story.field_related_persons
     - field.field.node.story.field_related_stories
     - field.field.node.story.field_require_agreement
@@ -72,9 +68,7 @@ hidden:
   field_category: true
   field_contact_email: true
   field_contact_phone: true
-  field_download_images: true
   field_feature_as_hero: true
-  field_feature_image: true
   field_full_name: true
   field_headliner_image: true
   field_hero_image: true
@@ -85,10 +79,8 @@ hidden:
   field_media_contact_type: true
   field_media_placement: true
   field_meta_image: true
-  field_photos: true
   field_publish_date: true
   field_read_more_text: true
-  field_related: true
   field_related_persons: true
   field_related_stories: true
   field_require_agreement: true

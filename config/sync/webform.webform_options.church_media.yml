@@ -1,9 +1,0 @@
-uuid: 9055f332-2a67-4a63-8aff-8cbc7c4fd5ad
-langcode: en
-status: true
-dependencies: {  }
-id: church_media
-label: 'Church Media'
-category: 'News Outlets'
-likert: false
-options: "ehawkins@ldschurch.org: 'Church Public Affairs, Eric Hawkins'\nkirklandlb@ldschurch.org: 'Church Public Affairs, Lyman Kirkland, Senior Manager News Media Relations'\nperkeyjj@ldschurch.org: 'Joshua J. Perkey, Ensign'\njswensen@deseretnews.com: 'LDS Church News, Jason Swensen, Staff Writer'\nmholman@desnews.com: 'LDSChurch News, Marianne Holman, Staff Writer'\nrmorgenegg@desnews.com: 'LDS Church News, Ryan Morgenegg, Staff Writer'\nsarah@deseretnews.com: 'LDS Church News, Sarah Jane Weaver, Associate Editor'\n"

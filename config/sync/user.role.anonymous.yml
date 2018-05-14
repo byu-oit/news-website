@@ -18,7 +18,6 @@ permissions:
   - 'download files'
   - 'post comments'
   - 'search content'
-  - 'use advanced search'
   - 'use custom search'
   - 'use exclude node title'
   - 'view disqus comments'

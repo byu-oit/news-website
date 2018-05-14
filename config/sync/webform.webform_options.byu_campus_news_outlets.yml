@@ -1,9 +1,0 @@
-uuid: 8203762e-745e-447a-bd02-7aba7c9c0a57
-langcode: en
-status: true
-dependencies: {  }
-id: byu_campus_news_outlets
-label: 'BYU Campus News Outlets'
-category: 'News Outlets'
-likert: false
-options: "michael.johanson@byu.edu: 'Director of Alumni Communications'\namanda_fronk@byu.edu: 'BYU Magazine, Amanda Fronk, Associate Editor'\nbrittany_rogers@byu.edu: 'BYU Magazine, Brittany Rogers, assistant editor'\nmike_walker@byu.edu: 'BYU Magazine, Mike Walker, Associate Editor'\npeter_gardner@byu.edu: 'BYU Magazine, Peter Gardner, Editor'\nbyuradiodesk@gmail.com: 'BYU Radio Assignment Desk'\ndon.shelline@byu.edu: 'BYU Radio, Don Shelline, Manager'\njulie.rose@byu.edu: 'BYU Radio, Julie Rose, Producer'\nmarcus.smith@byu.edu: 'BYU Radio, Marcus Smith, General'\ntennery.norton@byu.edu: 'BYU Radio, Tennery Norton'\nchristine.nokleby@byu.edu: 'Classical 89 (KBYU-FM), Christine Nokleby, Public Information Manager'\neric.glissmeyer@byu.edu: 'Classical 89 (KBYU-FM), Eric Glissmeyer, Manager'\nothello_richards@byu.edu: 'Eleven News (students), Othello Richards, Manager'\ndiena.simmons@byu.edu: 'KBYU-TV Eleven, Diena Simmons, TV Manager & Producer'\nuniverse.campus@gmail.com: 'Unvierse, Campus Desk'\nuniverse.metro@gmail.com: 'Universe, Metro Desk'\nuniverse.releases@gmail.com: 'Universe, News Releases'\nquint_randle@byu.edu: 'Universe, Quint Randle, Faculty Advisor'\nsteve.fidel@byu.edu: 'Universe, Steve Fidel, Newsroom Director'\ncarrie.moore@byu.edu: 'Universe: Carrie Moore, managing editor'\n"

@@ -11,7 +11,7 @@ field_name: field_block
 entity_type: paragraph
 bundle: slideshow
 label: Block
-description: ''
+description: 'The slideshow will pull images from the Downloadable Photos section below.'
 required: false
 translatable: false
 default_value:

@@ -42,6 +42,6 @@ settings:
 visibility:
   request_path:
     id: request_path
-    pages: '<front>'
+    pages: "<front>\r\n/user/*\r\n/contact\r\n/search/*"
     negate: false
     context_mapping: {  }

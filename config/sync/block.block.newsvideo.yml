@@ -5,10 +5,14 @@ dependencies:
   content:
     - 'block_content:basic:db3d55ce-7738-424e-91f4-ec97a7b8024e'
   module:
+    - block_class
     - block_content
     - system
   theme:
     - byu_news
+third_party_settings:
+  block_class:
+    classes: ''
 id: newsvideo
 theme: byu_news
 region: right_sidebar
@@ -26,6 +30,6 @@ settings:
 visibility:
   request_path:
     id: request_path
-    pages: '<front>'
+    pages: "<front>\r\n/user/*\r\n/contact\r\n/search/*"
     negate: false
     context_mapping: {  }

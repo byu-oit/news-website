@@ -1,9 +1,0 @@
-uuid: 2d9d552a-e234-4529-b342-ac27faed4410
-langcode: en
-status: true
-dependencies: {  }
-id: deseret_news
-label: 'Deseret News'
-category: 'News Outlets'
-likert: false
-options: "ashill@desnews.com: 'Aaron Shill, content director'\napond@deseretnews.com: 'Allison Pond, Associate / National / Sunday / Faith'\naraymond@deseretnews.com: 'Art Raymond, business'\nblockhart@deseretnews.com: 'Ben Lockart, health'\nrappleye@deseretnews.com: 'Christine Rappleye, features editor'\ncitdsk@desnews.com: 'City Desk'\nnews@deseretnews.com: 'Deseret News - General News'\nfeatures@deseretnews.com: 'Deseret News Features Desk'\nehellewell@deseretdigital.com: 'Emily Hellewell, Family Share'\nlois@desnews.com: 'Lois Collins, Staff Writer'\ntaylor@deseretnews.com: 'Scott Taylor, LDS Content'\ntwalch@desnews.com: 'Tad Walch, LDS Church / Enterprise Team / City / Utah C.'\nwleonard@deseretnews.com: 'Wendy Leonard, Health, transportation, breaking news'\n"
