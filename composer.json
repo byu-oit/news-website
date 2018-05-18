@@ -41,6 +41,7 @@
         "drupal/field_permissions": "^1.0@RC",
         "drupal/field_token_value": "^1.0",
         "drupal/file_download": "^1.1",
+        "drupal/google_analytics": "^2.2",
         "drupal/imce": "^1.6",
         "drupal/inline_entity_form": "^1.0@beta",
         "drupal/manage_display": "^1.0@alpha",
@@ -68,6 +69,7 @@
         "drupal/views_slideshow": "^4.6",
         "drupal/views_tree": "2.x-dev",
         "drupal/viewsreference": "^1.2",
+        "drupal/webform": "5.0-rc12",
         "drush/drush": "^9.2",
         "symfony/var-dumper": "^3.0",
         "webflo/drupal-finder": "^1.0.0",
@@ -128,7 +130,8 @@
 	        "drupal/core": {
 		        "Add date range to views": "https://www.drupal.org/files/issues/2786577-270_0.patch",
 		        "Allow pseudo fields in manage display": "https://www.drupal.org/files/issues/2018-03-13/title.display-2923701-161.patch",
-                "RenderedEntity null value": "https://www.drupal.org/files/issues/2018-05-14/2972774-2.patch"
+                "RenderedEntity null value": "https://www.drupal.org/files/issues/2018-05-14/2972774-2.patch",
+                "Make CKEditor and IMCE play with each other": "https://www.drupal.org/files/issues/2018-03-29/2822217-drupalimagecaption-img-src-fix-13.diff"
 	        },
 	        "drupal/migrate_upgrade": {
 		        "Add migrate-status command": "https://www.drupal.org/files/issues/2018-03-17/2915726-13.migrate_upgrade.Drush-9-port-of-commands.patch"

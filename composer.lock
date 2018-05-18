@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "305fa30909cad9eb7f1368f5a0ca619e",
+    "content-hash": "eea362596422ec6aa15b34dfee1c35ed",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -1485,17 +1485,17 @@
         },
         {
             "name": "drupal/adminimal_admin_toolbar",
-            "version": "1.5.0",
+            "version": "1.6.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupal.org/project/adminimal_admin_toolbar",
-                "reference": "8.x-1.5"
+                "reference": "8.x-1.6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/adminimal_admin_toolbar-8.x-1.5.zip",
-                "reference": "8.x-1.5",
-                "shasum": "2b4b4f04d5b0a5ff1d94b55a2096d1221a1010a4"
+                "url": "https://ftp.drupal.org/files/projects/adminimal_admin_toolbar-8.x-1.6.zip",
+                "reference": "8.x-1.6",
+                "shasum": "b99c96d6b6ad5f88e77b1e1b0385128f3841292f"
             },
             "require": {
                 "drupal/admin_toolbar": "*",
@@ -1507,8 +1507,8 @@
                     "dev-1.x": "1.x-dev"
                 },
                 "drupal": {
-                    "version": "8.x-1.5",
-                    "datestamp": "1500955443",
+                    "version": "8.x-1.6",
+                    "datestamp": "1526659380",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -1517,19 +1517,18 @@
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
             "license": [
-                "GPL-2.0+"
+                "GPL-2.0-or-later"
             ],
             "authors": [
                 {
-                    "name": "Ted Slesinski",
-                    "homepage": "https://www.drupal.org/u/energee"
+                    "name": "energee",
+                    "homepage": "https://www.drupal.org/user/962636"
                 }
             ],
             "description": "Adminimal styling brought to admin toolbar.",
             "homepage": "https://www.drupal.org/project/adminimal_admin_toolbar",
             "support": {
-                "source": "http://cgit.drupalcode.org/adminimal_admin_toolbar",
-                "issues": "https://www.drupal.org/project/issues/adminimal_admin_toolbar"
+                "source": "http://cgit.drupalcode.org/adminimal_admin_toolbar"
             }
         },
         {
@@ -1712,17 +1711,17 @@
         },
         {
             "name": "drupal/amp",
-            "version": "2.0.0",
+            "version": "2.1.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupal.org/project/amp",
-                "reference": "8.x-2.0"
+                "reference": "8.x-2.1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/amp-8.x-2.0.zip",
-                "reference": "8.x-2.0",
-                "shasum": "83d877cbdfa796413e49cad8f8f6a5989309e1b5"
+                "url": "https://ftp.drupal.org/files/projects/amp-8.x-2.1.zip",
+                "reference": "8.x-2.1",
+                "shasum": "15e1173e4213aaf10640d0cdea0d82acaced45f7"
             },
             "require": {
                 "drupal/core": "*",
@@ -1739,8 +1738,8 @@
                     "dev-2.x": "2.x-dev"
                 },
                 "drupal": {
-                    "version": "8.x-2.0",
-                    "datestamp": "1523125195",
+                    "version": "8.x-2.1",
+                    "datestamp": "1526489580",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -2187,10 +2186,14 @@
             "source": {
                 "type": "git",
                 "url": "https://git.drupal.org/project/byu_hero",
-                "reference": "bf0a2495c07f9d75ca2d2c020960d814c2cf244f"
+                "reference": "0d9d4fd1bab1dcbfd16b763fa16063f3e652f778"
             },
             "require": {
                 "drupal/core": "*"
+            },
+            "require-dev": {
+                "drupal/imce": "*",
+                "drupal/manage_display": "*"
             },
             "type": "drupal-module",
             "extra": {
@@ -2198,8 +2201,8 @@
                     "dev-1.x": "1.x-dev"
                 },
                 "drupal": {
-                    "version": "8.x-1.0-alpha1+2-dev",
-                    "datestamp": "1525966084",
+                    "version": "8.x-1.0-alpha1+3-dev",
+                    "datestamp": "1525968784",
                     "security-coverage": {
                         "status": "not-covered",
                         "message": "Project has not opted into security advisory coverage!"
@@ -2226,6 +2229,10 @@
                 {
                     "name": "sher1",
                     "homepage": "https://www.drupal.org/user/453534"
+                },
+                {
+                    "name": "willtwall",
+                    "homepage": "https://www.drupal.org/user/3573587"
                 }
             ],
             "description": "Displays a BYU hero component",
@@ -2233,7 +2240,7 @@
             "support": {
                 "source": "http://cgit.drupalcode.org/byu_hero"
             },
-            "time": "2018-05-10T16:10:46+00:00"
+            "time": "2018-05-14T14:52:19+00:00"
         },
         {
             "name": "drupal/byu_theme",
@@ -2241,7 +2248,7 @@
             "source": {
                 "type": "git",
                 "url": "https://git.drupal.org/project/byu_theme",
-                "reference": "359ab615c224970ec818ae6cdfb8f5880727fafd"
+                "reference": "4eca9ca50c0c61c9adf283d5559dac7f99fc81c2"
             },
             "require": {
                 "drupal/bootstrap": "~3.0",
@@ -2253,8 +2260,8 @@
                     "dev-2.x": "2.x-dev"
                 },
                 "drupal": {
-                    "version": "8.x-2.1+7-dev",
-                    "datestamp": "1525972680",
+                    "version": "8.x-2.1+8-dev",
+                    "datestamp": "1526067184",
                     "security-coverage": {
                         "status": "not-covered",
                         "message": "Project has not opted into security advisory coverage!"
@@ -2281,6 +2288,10 @@
                 {
                     "name": "sher1",
                     "homepage": "https://www.drupal.org/user/453534"
+                },
+                {
+                    "name": "willtwall",
+                    "homepage": "https://www.drupal.org/user/3573587"
                 }
             ],
             "description": "Theme for BYU based on Bootstrap and web components.",
@@ -2288,7 +2299,7 @@
             "support": {
                 "source": "http://cgit.drupalcode.org/byu_theme"
             },
-            "time": "2018-05-11T19:32:42+00:00"
+            "time": "2018-05-17T16:04:10+00:00"
         },
         {
             "name": "drupal/cas",
@@ -3200,7 +3211,8 @@
                 "patches_applied": {
                     "Add date range to views": "https://www.drupal.org/files/issues/2786577-270_0.patch",
                     "Allow pseudo fields in manage display": "https://www.drupal.org/files/issues/2018-03-13/title.display-2923701-161.patch",
-                    "RenderedEntity null value": "https://www.drupal.org/files/issues/2018-05-14/2972774-2.patch"
+                    "RenderedEntity null value": "https://www.drupal.org/files/issues/2018-05-14/2972774-2.patch",
+                    "Make CKEditor and IMCE play with each other": "https://www.drupal.org/files/issues/2018-03-29/2822217-drupalimagecaption-img-src-fix-13.diff"
                 }
             },
             "autoload": {
@@ -4002,6 +4014,62 @@
             "support": {
                 "source": "http://cgit.drupalcode.org/file_download",
                 "issues": "http://drupal.org/project/issues/file_download"
+            }
+        },
+        {
+            "name": "drupal/google_analytics",
+            "version": "2.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupal.org/project/google_analytics",
+                "reference": "8.x-2.2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/google_analytics-8.x-2.2.zip",
+                "reference": "8.x-2.2",
+                "shasum": "15cd0642ad99f3776a46b702e5012713405a0733"
+            },
+            "require": {
+                "drupal/core": "~8.0"
+            },
+            "require-dev": {
+                "drupal/php": "*",
+                "drupal/token": "*"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "branch-alias": {
+                    "dev-2.x": "2.x-dev"
+                },
+                "drupal": {
+                    "version": "8.x-2.2",
+                    "datestamp": "1506372845",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "hass",
+                    "homepage": "https://www.drupal.org/u/hass"
+                },
+                {
+                    "name": "See other contributors",
+                    "homepage": "https://www.drupal.org/node/49388/committers"
+                }
+            ],
+            "description": "Allows your site to be tracked by Google Analytics by adding a Javascript tracking code to every page.",
+            "homepage": "https://www.drupal.org/project/google_analytics",
+            "support": {
+                "source": "http://git.drupal.org/project/google_analytics.git",
+                "issues": "https://www.drupal.org/project/issues/google_analytics"
             }
         },
         {
@@ -5691,6 +5759,105 @@
             "support": {
                 "source": "http://cgit.drupalcode.org/viewsreference",
                 "issues": "http://drupal.org/project/issues/viewsreference"
+            }
+        },
+        {
+            "name": "drupal/webform",
+            "version": "5.0.0-rc12",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupal.org/project/webform",
+                "reference": "8.x-5.0-rc12"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/webform-8.x-5.0-rc12.zip",
+                "reference": "8.x-5.0-rc12",
+                "shasum": "d677eb59bf2084267476fa482b5fbccb0dc8afb9"
+            },
+            "require": {
+                "drupal/core": "*"
+            },
+            "require-dev": {
+                "drupal/devel": "*",
+                "drupal/token": "*",
+                "drupal/webform_node": "*",
+                "drupal/webform_scheduled_email": "*"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "branch-alias": {
+                    "dev-5.x": "5.x-dev"
+                },
+                "drupal": {
+                    "version": "8.x-5.0-rc12",
+                    "datestamp": "1524706684",
+                    "security-coverage": {
+                        "status": "not-covered",
+                        "message": "RC releases are not covered by Drupal security advisories."
+                    }
+                },
+                "drush": {
+                    "services": {
+                        "drush.services.yml": "^9"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "Jacob Rockowitz (jrockowitz)",
+                    "homepage": "https://www.drupal.org/u/jrockowitz",
+                    "role": "Maintainer"
+                },
+                {
+                    "name": "Alexander Trotsenko (bucefal91)",
+                    "homepage": "https://www.drupal.org/u/bucefal91",
+                    "role": "Co-maintainer"
+                },
+                {
+                    "name": "bucefal91",
+                    "homepage": "https://www.drupal.org/user/504128"
+                },
+                {
+                    "name": "fenstrat",
+                    "homepage": "https://www.drupal.org/user/362649"
+                },
+                {
+                    "name": "jrockowitz",
+                    "homepage": "https://www.drupal.org/user/371407"
+                },
+                {
+                    "name": "podarok",
+                    "homepage": "https://www.drupal.org/user/116002"
+                },
+                {
+                    "name": "quicksketch",
+                    "homepage": "https://www.drupal.org/user/35821"
+                },
+                {
+                    "name": "sanchiz",
+                    "homepage": "https://www.drupal.org/user/1671246"
+                },
+                {
+                    "name": "tedbow",
+                    "homepage": "https://www.drupal.org/user/240860"
+                },
+                {
+                    "name": "torotil",
+                    "homepage": "https://www.drupal.org/user/865256"
+                }
+            ],
+            "description": "Enables the creation of webforms and questionnaires.",
+            "homepage": "https://drupal.org/project/webform",
+            "support": {
+                "source": "http://cgit.drupalcode.org/webform",
+                "issues": "https://www.drupal.org/project/issues/webform?version=8.x",
+                "docs": "https://www.drupal.org/docs/8/modules/webform",
+                "forum": "https://drupal.stackexchange.com/questions/tagged/webform"
             }
         },
         {
@@ -8897,16 +9064,16 @@
         },
         {
             "name": "zendframework/zend-feed",
-            "version": "2.9.0",
+            "version": "2.9.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/zendframework/zend-feed.git",
-                "reference": "abe88686124d492e0a2a84656f15e5482bfbe030"
+                "reference": "15a6ca78dd8f67b687e4f902657b4e420a8fd1e0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/zendframework/zend-feed/zipball/abe88686124d492e0a2a84656f15e5482bfbe030",
-                "reference": "abe88686124d492e0a2a84656f15e5482bfbe030",
+                "url": "https://api.github.com/repos/zendframework/zend-feed/zipball/15a6ca78dd8f67b687e4f902657b4e420a8fd1e0",
+                "reference": "15a6ca78dd8f67b687e4f902657b4e420a8fd1e0",
                 "shasum": ""
             },
             "require": {
@@ -8954,7 +9121,7 @@
                 "feed",
                 "zf"
             ],
-            "time": "2017-12-04T17:59:38+00:00"
+            "time": "2018-05-14T21:45:18+00:00"
         },
         {
             "name": "zendframework/zend-stdlib",
