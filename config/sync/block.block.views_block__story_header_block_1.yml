@@ -1,4 +1,4 @@
-uuid: 6a5eaa54-36f1-4513-8a02-81bdaddff7d9
+uuid: 26e8d8f0-3619-4e80-b507-2a6ce05b3e79
 langcode: en
 status: true
 dependencies:
@@ -16,7 +16,7 @@ third_party_settings:
 id: views_block__story_header_block_1
 theme: byu_news
 region: before_content
-weight: -8
+weight: 0
 provider: null
 plugin: 'views_block:story_header-block_1'
 settings:

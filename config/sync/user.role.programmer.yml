@@ -4,7 +4,7 @@ status: true
 dependencies: {  }
 id: programmer
 label: Programmer
-weight: -5
+weight: -4
 is_admin: null
 permissions:
   - 'access administration menu'

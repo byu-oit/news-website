@@ -64,11 +64,13 @@ dependencies:
     - 'taxonomy_term:address_book:3fa27d2a-6f7d-4669-84f2-64384e9fd853'
     - 'taxonomy_term:address_book:3fedd8bf-ae70-4246-b344-56053b02647c'
     - 'taxonomy_term:address_book:403ba163-5fdb-4383-b746-c75030e3ea8f'
+    - 'taxonomy_term:address_book:4354e2cf-9742-421e-9ea6-88146493a9f0'
     - 'taxonomy_term:address_book:43e1146c-202f-4047-9cd0-93f40564549a'
     - 'taxonomy_term:address_book:440f6315-e46f-4942-b29c-cede8451199e'
     - 'taxonomy_term:address_book:44fc1d53-51bd-4aa7-a3b1-e77917d88cb4'
     - 'taxonomy_term:address_book:48a7581e-fcc7-4e0e-a04b-92c6328c75de'
     - 'taxonomy_term:address_book:49b05790-82a3-4e35-abec-0a69b24aff46'
+    - 'taxonomy_term:address_book:4a41f6bb-e58a-4e28-81a1-1632a9918ea0'
     - 'taxonomy_term:address_book:4b925da3-fbff-4767-8aa6-7b04dcf3fc53'
     - 'taxonomy_term:address_book:4f6be6d5-ee32-4490-b61b-bdf653329d19'
     - 'taxonomy_term:address_book:5343f1b7-5ec3-4f26-b44a-685b4cc1ed09'
@@ -592,6 +594,10 @@ default_value:
     target_uuid: 39043331-0088-4983-bab6-52ef5de3f277
   -
     target_uuid: 49b05790-82a3-4e35-abec-0a69b24aff46
+  -
+    target_uuid: 4a41f6bb-e58a-4e28-81a1-1632a9918ea0
+  -
+    target_uuid: 4354e2cf-9742-421e-9ea6-88146493a9f0
 default_value_callback: ''
 settings:
   handler: 'default:taxonomy_term'

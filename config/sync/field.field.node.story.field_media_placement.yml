@@ -6,7 +6,11 @@ dependencies:
     - field.storage.node.field_media_placement
     - node.type.story
   module:
+    - field_display_label
     - link
+third_party_settings:
+  field_display_label:
+    display_label: 'Read More From'
 id: node.story.field_media_placement
 field_name: field_media_placement
 entity_type: node

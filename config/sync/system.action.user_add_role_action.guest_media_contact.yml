@@ -1,0 +1,14 @@
+uuid: 2d0f2f2b-d0c8-431b-a302-cb045d8d6ae2
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.guest_media_contact
+  module:
+    - user
+id: user_add_role_action.guest_media_contact
+label: 'Add the Guest Media Contact role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: guest_media_contact

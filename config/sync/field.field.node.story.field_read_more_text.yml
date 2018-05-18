@@ -17,9 +17,9 @@ required: false
 translatable: false
 default_value:
   -
-    value: '<a href="../node/[node:nid]"  class="no-button">[node:field_hero_read_more_text]</a>'
+    value: '<a href="../node/[node:nid]">[node:field_hero_read_more_text]</a>'
 default_value_callback: ''
 settings:
-  field_value: '<a href="../node/[node:nid]">[node:field_hero_read_more_text]</a>'
+  field_value: '<a href="[node:url]">[node:field_hero_read_more_text]</a>'
   remove_empty: 1
 field_type: field_token_value

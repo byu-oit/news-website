@@ -11,12 +11,10 @@ dependencies:
     - field.field.node.story.field_contact_phone
     - field.field.node.story.field_feature_as_hero
     - field.field.node.story.field_full_name
-    - field.field.node.story.field_headliner_image
     - field.field.node.story.field_hero_image
     - field.field.node.story.field_hero_read_more_text
     - field.field.node.story.field_image
     - field.field.node.story.field_main_body
-    - field.field.node.story.field_media_contact_byline
     - field.field.node.story.field_media_contact_byline_perso
     - field.field.node.story.field_media_contact_type
     - field.field.node.story.field_media_placement
@@ -33,7 +31,6 @@ dependencies:
     - field.field.node.story.field_summary
     - field.field.node.story.field_tags
     - field.field.node.story.field_thumbnail
-    - field.field.node.story.field_writer
     - field.field.node.story.field_writer_name
     - field.field.node.story.field_writer_person_
     - field.field.node.story.field_writer_type
@@ -183,11 +180,9 @@ hidden:
   field_contact_email: true
   field_contact_phone: true
   field_feature_as_hero: true
-  field_headliner_image: true
   field_hero_image: true
   field_hero_read_more_text: true
   field_main_body: true
-  field_media_contact_byline: true
   field_media_contact_byline_perso: true
   field_media_contact_type: true
   field_media_placement: true
@@ -201,7 +196,6 @@ hidden:
   field_summary: true
   field_tags: true
   field_thumbnail: true
-  field_writer: true
   field_writer_name: true
   field_writer_person_: true
   field_writer_type: true

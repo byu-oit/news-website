@@ -4,7 +4,7 @@ status: true
 dependencies: {  }
 id: editor
 label: Editor
-weight: -6
+weight: -5
 is_admin: null
 permissions:
   - 'access administration menu'
@@ -141,6 +141,7 @@ permissions:
   - 'use exclude node title'
   - 'use media wysiwyg'
   - 'use panels in place editing'
+  - 'use text format embed_code'
   - 'use text format filtered_html'
   - 'use text format very_basic'
   - 'use workbench_moderation my drafts tab'

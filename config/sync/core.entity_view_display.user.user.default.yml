@@ -8,7 +8,6 @@ dependencies:
     - field.field.user.user.field_display_order
     - field.field.user.user.field_phone
     - field.field.user.user.field_short_bio
-    - field.field.user.user.field_stories
     - field.field.user.user.field_team
     - field.field.user.user.field_title_subline
     - field.field.user.user.field_user_signature
@@ -84,7 +83,6 @@ hidden:
   field_display: true
   field_display_order: true
   field_short_bio: true
-  field_stories: true
   field_team: true
   field_user_signature: true
   masquerade: true

@@ -2,14 +2,22 @@ minimum_single: 20
 minimum_multiple: 20
 disable_search_threshold: 0
 minimum_width: 0
-jquery_selector: 'select:visible'
+jquery_selector: 'select:visible,select#edit-story'
 search_contains: false
 disable_search: false
 allow_single_deselect: false
 placeholder_text_multiple: 'Choose some options'
 placeholder_text_single: 'Choose an option'
 no_results_text: 'No results match'
-disabled_themes: {  }
+disabled_themes:
+  seven: '0'
+  bootstrap: '0'
+  byu_amp_d8: '0'
+  amptheme: '0'
+  byu_news: '0'
+  byu_news_adminimal_theme: '0'
+  adminimal_theme: '0'
+  byu_theme: '0'
 chosen_include: 2
 _core:
   default_config_hash: JUHKHJeHl1bWXY41HMIcDR-VmAWvJ4OJycDubCkIeDU

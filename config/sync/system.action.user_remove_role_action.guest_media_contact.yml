@@ -1,0 +1,14 @@
+uuid: 6d7610a2-1600-4baf-be96-c0a5718bc6f4
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.guest_media_contact
+  module:
+    - user
+id: user_remove_role_action.guest_media_contact
+label: 'Remove the Guest Media Contact role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: guest_media_contact

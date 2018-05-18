@@ -4,7 +4,6 @@ status: true
 dependencies:
   config:
     - field.storage.node.field_related_persons
-    - node.type.person
     - node.type.story
 id: node.story.field_related_persons
 field_name: field_related_persons
@@ -19,8 +18,7 @@ default_value_callback: ''
 settings:
   handler: 'default:node'
   handler_settings:
-    target_bundles:
-      person: person
+    target_bundles: {  }
     sort:
       field: _none
       direction: ASC

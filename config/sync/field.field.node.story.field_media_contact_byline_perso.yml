@@ -22,11 +22,13 @@ settings:
     filter:
       type: role
       role:
-        editor: editor
-        writer: writer
         guest_writer: guest_writer
-        administrator: '0'
+        guest_media_contact: guest_media_contact
+        writer: writer
+        editor: editor
         programmer: '0'
+        administrator: '0'
+        photographers: '0'
     target_bundles: null
     sort:
       field: _none

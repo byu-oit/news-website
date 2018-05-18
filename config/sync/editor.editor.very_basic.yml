@@ -17,18 +17,26 @@ settings:
           items:
             - Bold
             - Italic
+            - PasteFromWord
         -
           name: Links
           items:
             - DrupalLink
             - DrupalUnlink
         -
+          name: Alignment
+          items:
+            - JustifyLeft
+            - JustifyCenter
+            - JustifyRight
+        -
           name: Lists
           items:
-            - DrupalImage
             - BulletedList
             - NumberedList
+            - DrupalImage
             - Blockquote
+            - '-'
   plugins:
     stylescombo:
       styles: ''
