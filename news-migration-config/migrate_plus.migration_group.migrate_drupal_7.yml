@@ -12,9 +12,9 @@ shared_configuration:
     key: drupal_7
     database:
       driver: mysql
-      username: drupal.admin
-      password: helPer21
-      host: asb-ucom-dev1.byu.edu
+      username: dpadmin
+      password: StayoffthisSystem!2017
+      host: localhost
       port: ''
-      database: news_drupal
+      database: news7_drupal
       prefix: null
