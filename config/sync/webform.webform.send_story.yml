@@ -10,7 +10,7 @@ id: send_story
 title: 'Send Story'
 description: 'Send a story to your news contacts.'
 category: ''
-elements: "recipient:\n  '#type': webform_term_checkboxes\n  '#title': Recipient\n  '#required': true\n  '#required_error': 'At least one recipient is required.'\n  '#vocabulary': address_book\n  '#breadcrumb': true\n  '#tree_delimiter': ''\nstory:\n  '#type': webform_entity_select\n  '#title': Story\n  '#required': true\n  '#required_error': 'A story must be selected.'\n  '#target_type': node\n  '#selection_handler': views\n  '#selection_settings':\n    view:\n      view_name: story_to_send\n      display_name: entity_reference_1\n      arguments: {  }\nmessage:\n  '#type': textarea\n  '#title': Message\n  '#autocomplete': 'off'\n"
+elements: "story:\n  '#type': webform_entity_select\n  '#title': Story\n  '#required': true\n  '#required_error': 'A story must be selected.'\n  '#target_type': node\n  '#selection_handler': views\n  '#selection_settings':\n    view:\n      view_name: story_to_send\n      display_name: entity_reference_1\n      arguments: {  }\nrecipient:\n  '#type': webform_term_checkboxes\n  '#title': Recipient\n  '#description': 'Select up to 30 contacts to email at once.'\n  '#required': true\n  '#required_error': 'At least one recipient is required.'\n  '#vocabulary': address_book\n  '#breadcrumb_delimiter': ''\n  '#tree_delimiter': '<span>     - </span>'\nmessage:\n  '#type': textarea\n  '#title': Message\n  '#autocomplete': 'off'\n"
 css: ''
 javascript: ''
 settings:
@@ -74,7 +74,7 @@ settings:
   draft_loaded_message: ''
   confirmation_type: page
   confirmation_title: 'Your Story Has Been Sent'
-  confirmation_message: "Your story, [webform_submission:values:story:entity:title], has been sent to &nbsp;[webform_submission:values:recipient:entity:name] at:&nbsp;[webform_submission:values:recipient:entity:field_email]<br />\r\n<br />\r\n<br />\r\nTitle<br />\r\n[webform_submission:values:story:entity:title]<br />\r\nRecipient name:&nbsp;&nbsp;[webform_submission:values:recipient:entity:name]<br />\r\nEmail Address: [webform_submission:values:recipient:entity:field_email]<br />\r\nNode&nbsp; ID:&nbsp; &nbsp;[webform_submission:values:story:entity:nid]<br />\r\n<br />\r\n<strong>Date:</strong> [webform_submission:values:story:entity:field_publish_date]&nbsp;<br />\r\n<strong>Full Story and Images:</strong>&nbsp;[webform_submission:values:story:entity:url]<br />\r\n<br />\r\nFull Story body: [webform_submission:values:story:delta:format:html]<br />\r\n&nbsp;"
+  confirmation_message: "Your story, <strong>[webform_submission:values:story:entity:title]</strong>, has been sent.<br />\r\n&nbsp;"
   confirmation_url: ''
   confirmation_attributes: {  }
   confirmation_back: true
@@ -100,55 +100,65 @@ settings:
 access:
   create:
     roles:
-      - anonymous
-      - authenticated
+      - editor
+      - administrator
     users: {  }
     permissions: {  }
   view_any:
-    roles: {  }
+    roles:
+      - editor
+      - administrator
     users: {  }
     permissions: {  }
   update_any:
-    roles: {  }
+    roles:
+      - editor
+      - administrator
     users: {  }
     permissions: {  }
   delete_any:
-    roles: {  }
+    roles:
+      - editor
+      - administrator
     users: {  }
     permissions: {  }
   purge_any:
-    roles: {  }
+    roles:
+      - editor
+      - administrator
     users: {  }
     permissions: {  }
   view_own:
-    roles: {  }
+    roles:
+      - editor
+      - administrator
     users: {  }
     permissions: {  }
   update_own:
-    roles: {  }
+    roles:
+      - editor
+      - administrator
     users: {  }
     permissions: {  }
   delete_own:
-    roles: {  }
+    roles:
+      - editor
+      - administrator
     users: {  }
     permissions: {  }
   administer:
-    roles: {  }
+    roles:
+      - editor
+      - administrator
     users: {  }
     permissions: {  }
   test:
-    roles: {  }
+    roles:
+      - editor
+      - administrator
     users: {  }
     permissions: {  }
 handlers:
-  debug:
-    id: debug
-    label: Debug
-    handler_id: debug
-    status: true
-    conditions: {  }
-    weight: 0
-    settings: {  }
   email:
     id: email
     label: Email
@@ -159,17 +169,17 @@ handlers:
     settings:
       states:
         - completed
-      to_mail: '[webform_submission:values:recipient]'
+      to_mail: '[webform_submission:values:recipient:entity:field_email]'
       to_options: {  }
       cc_mail: ''
       cc_options: {  }
-      bcc_mail: ''
+      bcc_mail: '[webform_submission:values:recipient:0:entity:field_email],[webform_submission:values:recipient:1:entity:field_email],[webform_submission:values:recipient:2:entity:field_email][webform_submission:values:recipient:3:entity:field_email], [webform_submission:values:recipient:4:entity:field_email],[webform_submission:values:recipient:5:entity:field_email],[webform_submission:values:recipient:6:entity:field_email][webform_submission:values:recipient:7:entity:field_email], [webform_submission:values:recipient:8:entity:field_email],[webform_submission:values:recipient:9:entity:field_email],[webform_submission:values:recipient:10:entity:field_email][webform_submission:values:recipient:11:entity:field_email], [webform_submission:values:recipient:12:entity:field_email],[webform_submission:values:recipient:13:entity:field_email],[webform_submission:values:recipient:14:entity:field_email][webform_submission:values:recipient:15:entity:field_email], [webform_submission:values:recipient:16:entity:field_email],[webform_submission:values:recipient:17:entity:field_email],[webform_submission:values:recipient:18:entity:field_email][webform_submission:values:recipient:19:entity:field_email], [webform_submission:values:recipient:20:entity:field_email],[webform_submission:values:recipient:21:entity:field_email],[webform_submission:values:recipient:22:entity:field_email][webform_submission:values:recipient:23:entity:field_email], [webform_submission:values:recipient:24:entity:field_email],[webform_submission:values:recipient:25:entity:field_email],[webform_submission:values:recipient:26:entity:field_email][webform_submission:values:recipient:27:entity:field_email], [webform_submission:values:recipient:28:entity:field_email],[webform_submission:values:recipient:29:entity:field_email]'
       bcc_options: {  }
-      from_mail: default
+      from_mail: '[webform_submission:values:story:entity:field_media_contact_byline_perso:entity:mail]'
       from_options: {  }
-      from_name: default
-      subject: default
-      body: default
+      from_name: '[webform_submission:values:story:entity:field_media_contact_byline_perso:entity:name]'
+      subject: '[webform_submission:values:story:entity:title]'
+      body: "[webform_submission:values:message]\n<hr /><strong>BYU News Release</strong>\n\n<p style=\"font-size: 20px\"><strong>[webform_submission:values:story:entity:title]</strong></p>\n<strong>Date:</strong> [webform_submission:values:story:entity:field_publish_date]&nbsp;<br />\n<strong>Full Story and Images:</strong>&nbsp;[webform_submission:values:story:entity:url]<br />\n&nbsp;\n<div>[webform_submission:values:story:delta:format:html]</div>"
       excluded_elements: {  }
       ignore_access: false
       exclude_empty: true

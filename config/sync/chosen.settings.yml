@@ -11,13 +11,13 @@ placeholder_text_single: 'Choose an option'
 no_results_text: 'No results match'
 disabled_themes:
   seven: '0'
-  bootstrap: '0'
-  byu_amp_d8: '0'
+  adminimal_theme: '0'
   amptheme: '0'
+  bootstrap: '0'
+  byu_theme: '0'
+  byu_amp_d8: '0'
   byu_news: '0'
   byu_news_adminimal_theme: '0'
-  adminimal_theme: '0'
-  byu_theme: '0'
 chosen_include: 2
 _core:
   default_config_hash: JUHKHJeHl1bWXY41HMIcDR-VmAWvJ4OJycDubCkIeDU
