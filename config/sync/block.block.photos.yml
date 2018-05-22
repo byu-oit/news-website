@@ -14,7 +14,7 @@ third_party_settings:
 id: photos
 theme: byu_news
 region: right_sidebar
-weight: -6
+weight: -8
 provider: null
 plugin: 'entity_field:node:field_image'
 settings:

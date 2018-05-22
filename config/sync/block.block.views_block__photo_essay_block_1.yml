@@ -16,7 +16,7 @@ third_party_settings:
 id: views_block__photo_essay_block_1
 theme: byu_news
 region: right_sidebar
-weight: -9
+weight: -11
 provider: null
 plugin: 'views_block:photo_essay-block_1'
 settings:
