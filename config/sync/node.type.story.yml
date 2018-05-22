@@ -7,11 +7,11 @@ dependencies:
 third_party_settings:
   menu_ui:
     available_menus: {  }
-    parent: ''
-name: Story
+    parent: 'main-menu:0:'
+name: 'A Story'
 type: story
 description: 'Use <i>Story</i> content type to add stories.'
 help: ''
 new_revision: true
 preview_mode: 1
-display_submitted: true
+display_submitted: false
