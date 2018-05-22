@@ -5,24 +5,22 @@ dependencies: {  }
 _core:
   default_config_hash: dJ0L2DNSj5q6XVZAGsuVDpJTh5UeYkIPwKrUOOpr8YI
 id: authenticated
-label: 'Authenticated User'
-weight: -9
+label: 'authenticated user'
+weight: 1
 is_admin: false
 permissions:
   - 'access comments'
   - 'access content'
   - 'access site-wide contact form'
   - 'access user contact forms'
-  - 'access user profiles'
   - 'download any image files'
   - 'download files'
   - 'edit own comments'
   - 'post comments'
   - 'search content'
+  - 'skip comment approval'
+  - 'use advanced search'
   - 'use custom search'
   - 'use exclude node title'
-  - 'use text format very_basic'
   - 'view disqus comments'
-  - 'view field_slideshow_block'
   - 'view files'
-  - 'view own field_slideshow_block'

@@ -3,8 +3,8 @@ langcode: en
 status: true
 dependencies: {  }
 id: editor
-label: Editor
-weight: -5
+label: 'Editor (FTE)'
+weight: -4
 is_admin: null
 permissions:
   - 'access administration menu'
