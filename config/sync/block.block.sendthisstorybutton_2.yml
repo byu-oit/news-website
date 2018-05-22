@@ -1,0 +1,37 @@
+uuid: 1bbf63d9-1477-47e0-9f32-586cce2fc2c2
+langcode: en
+status: false
+dependencies:
+  content:
+    - 'block_content:basic:a8ae54dc-5b75-4dd8-862e-446fe2f513f1'
+  module:
+    - block_class
+    - block_content
+    - node
+  theme:
+    - byu_news_adminimal_theme
+third_party_settings:
+  block_class:
+    classes: ''
+id: sendthisstorybutton_2
+theme: byu_news_adminimal_theme
+region: content
+weight: 0
+provider: null
+plugin: 'block_content:a8ae54dc-5b75-4dd8-862e-446fe2f513f1'
+settings:
+  id: 'block_content:a8ae54dc-5b75-4dd8-862e-446fe2f513f1'
+  label: 'Send This Story button'
+  provider: block_content
+  label_display: '0'
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  node_type:
+    id: node_type
+    bundles:
+      story: story
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'
