@@ -3,14 +3,21 @@ langcode: en
 status: true
 dependencies: {  }
 id: writer
-label: writer
-weight: 4
+label: Writer
+weight: -6
 is_admin: null
 permissions:
   - 'access administration menu'
   - 'access administration pages'
   - 'access ckeditor link'
+  - 'access content overview'
+  - 'access contextual links'
+  - 'access file download'
+  - 'access files overview'
+  - 'access in-place editing'
   - 'access media browser'
+  - 'access toolbar'
+  - 'access user profiles'
   - 'access workbench'
   - 'create files'
   - 'create story content'
@@ -22,13 +29,18 @@ permissions:
   - 'edit own story content'
   - 'moderate content from draft to needs_review'
   - 'moderate content from needs_review to draft'
+  - 'use editorial transition create_new_draft'
+  - 'use editorial transition needs_review'
   - 'use exclude node title'
   - 'use media wysiwyg'
+  - 'use text format embed_code'
   - 'use text format filtered_html'
-  - 'use text format full_html'
+  - 'use text format very_basic'
   - 'use workbench_moderation my drafts tab'
   - 'use workbench_moderation needs review tab'
+  - 'view any unpublished content'
   - 'view any unpublished story content'
+  - 'view latest version'
   - 'view own files'
   - 'view own unpublished content'
   - 'view the administration theme'

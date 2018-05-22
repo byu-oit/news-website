@@ -5,19 +5,19 @@ dependencies: {  }
 _core:
   default_config_hash: j5zLMOdJBqC0bMvSdth5UebkprJB8g_2FXHqhfpJzow
 id: anonymous
-label: 'anonymous user'
-weight: 0
+label: 'Anonymous User'
+weight: -10
 is_admin: false
 permissions:
   - 'access comments'
   - 'access content'
   - 'access site-wide contact form'
   - 'access user contact forms'
+  - 'access user profiles'
   - 'download any image files'
   - 'download files'
   - 'post comments'
   - 'search content'
-  - 'use advanced search'
   - 'use custom search'
   - 'use exclude node title'
   - 'view disqus comments'

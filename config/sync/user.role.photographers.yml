@@ -4,7 +4,7 @@ status: true
 dependencies: {  }
 id: photographers
 label: Photographers
-weight: -2
+weight: -5
 is_admin: null
 permissions:
   - 'access content'
@@ -14,6 +14,7 @@ permissions:
   - 'edit any photo_essay content'
   - 'edit own photo_essay content'
   - 'revert photo_essay revisions'
+  - 'search content'
   - 'use editorial transition create_new_draft'
   - 'use editorial transition needs_review'
   - 'view any unpublished content'
