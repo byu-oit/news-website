@@ -32,9 +32,25 @@ targetEntityType: file
 bundle: image
 mode: default
 content:
+  field_credit:
+    type: string_textfield
+    weight: 4
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_cutline:
+    type: string_textarea
+    weight: 5
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
   field_image_alt_text:
     type: string_textfield
-    weight: 0
+    weight: 1
     settings:
       size: 60
       placeholder: ''
@@ -42,7 +58,7 @@ content:
     region: content
   field_image_title_text:
     type: string_textfield
-    weight: 0
+    weight: 2
     settings:
       size: 60
       placeholder: ''
@@ -50,7 +66,7 @@ content:
     region: content
   filename:
     type: string_textfield
-    weight: -5
+    weight: 0
     region: content
     settings:
       size: 60
@@ -58,13 +74,11 @@ content:
     third_party_settings: {  }
   path:
     type: path
-    weight: 30
+    weight: 3
     region: content
     settings: {  }
     third_party_settings: {  }
 hidden:
-  field_credit: true
-  field_cutline: true
   field_display_download_link: true
   field_display_front_page: true
   field_display_story: true
