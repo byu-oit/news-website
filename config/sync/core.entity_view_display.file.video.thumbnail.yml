@@ -1,0 +1,50 @@
+uuid: 155329a2-e891-4e02-b217-c7edef03a79b
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.file.thumbnail
+    - field.field.file.video.field_captioned
+    - field.field.file.video.field_credits
+    - field.field.file.video.field_date_created
+    - field.field.file.video.field_description
+    - field.field.file.video.field_keywords
+    - field.field.file.video.field_live
+    - field.field.file.video.field_public
+    - field.field.file.video.field_youtube_id
+    - file_entity.type.video
+  module:
+    - field_layout
+    - layout_discovery
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings: {  }
+_core:
+  default_config_hash: _Q1l94kLWLkX17ofAFFAQL9emt-VMNP8Sk3_KdgkvdU
+id: file.video.thumbnail
+targetEntityType: file
+bundle: video
+mode: thumbnail
+content:
+  filename:
+    type: string
+    weight: 1
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    region: content
+hidden:
+  field_captioned: true
+  field_credits: true
+  field_date_created: true
+  field_description: true
+  field_keywords: true
+  field_live: true
+  field_public: true
+  field_youtube_id: true
+  filemime: true
+  filesize: true
+  uid: true
+  uri: true

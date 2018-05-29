@@ -181,6 +181,7 @@ permissions:
   - 'view any unpublished webform content'
   - 'view conditional fields'
   - 'view config updates report'
+  - 'view files'
   - 'view latest version'
   - 'view own files'
   - 'view own private files'

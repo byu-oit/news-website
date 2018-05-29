@@ -1,8 +1,9 @@
-uuid: b4a5f997-ce9c-4efa-8545-af5ce889bf2a
+uuid: ac554e02-3cf1-48ec-b7d4-ffa0300775da
 langcode: en
 status: true
 dependencies:
   config:
+    - core.entity_view_mode.file.thumbnail
     - field.field.file.image.field_credit
     - field.field.file.image.field_cutline
     - field.field.file.image.field_display_download_link
@@ -17,6 +18,7 @@ dependencies:
     - field.field.file.image.field_link
     - field.field.file.image.field_require_agreement
     - file_entity.type.image
+    - image.style.thumbnail
   module:
     - field_layout
     - file_entity
@@ -26,67 +28,29 @@ third_party_settings:
     id: layout_onecol
     settings: {  }
 _core:
-  default_config_hash: _Bf428kqU4oErwcNNTL2Wj4HQfES94Bs4usKnK3iL2Q
-id: file.image.default
+  default_config_hash: 8trPid18Dj2TjH8c4n0Eb1KrYcJR0xYIyNlgYlGk2XI
+id: file.image.thumbnail
 targetEntityType: file
 bundle: image
-mode: default
+mode: thumbnail
 content:
-  field_image_alt_text:
-    type: string
-    weight: 0
-    settings: {  }
-    third_party_settings: {  }
-    label: above
-    region: content
-  field_image_title_text:
-    type: string
-    weight: 0
-    settings: {  }
-    third_party_settings: {  }
-    label: above
-    region: content
-  filemime:
-    type: string
-    weight: 2
-    region: content
-    label: above
-    settings:
-      link_to_entity: false
-    third_party_settings: {  }
   filename:
     type: string
-    label: hidden
-    weight: -5
-    region: content
+    weight: 1
+    label: visually_hidden
     settings:
       link_to_entity: false
     third_party_settings: {  }
-  filesize:
-    type: file_size
-    weight: 3
     region: content
-    label: above
-    settings: {  }
-    third_party_settings: {  }
-  uid:
-    type: uri_link
-    weight: 1
-    region: content
-    label: above
-    settings: {  }
-    third_party_settings: {  }
   uri:
     type: file_image
     label: hidden
-    weight: -5
-    region: content
+    weight: 0
     settings:
-      title: field_image_title_text
-      alt: field_image_alt_text
-      image_style: ''
+      image_style: thumbnail
       image_link: ''
     third_party_settings: {  }
+    region: content
 hidden:
   field_credit: true
   field_cutline: true
@@ -97,5 +61,10 @@ hidden:
   field_download_link: true
   field_file_image_alt_text: true
   field_file_image_title_text: true
+  field_image_alt_text: true
+  field_image_title_text: true
   field_link: true
   field_require_agreement: true
+  filemime: true
+  filesize: true
+  uid: true

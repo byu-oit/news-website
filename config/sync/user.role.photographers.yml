@@ -18,6 +18,7 @@ permissions:
   - 'use editorial transition create_new_draft'
   - 'use editorial transition needs_review'
   - 'view any unpublished content'
+  - 'view files'
   - 'view latest version'
   - 'view own unpublished content'
   - 'view photo_essay revisions'

@@ -8,6 +8,7 @@ dependencies:
     - block_class
     - block_content
     - node
+    - user
   theme:
     - byu_news
 third_party_settings:
@@ -35,3 +36,11 @@ visibility:
     negate: false
     context_mapping:
       node: '@node.node_route_context:node'
+  user_role:
+    id: user_role
+    roles:
+      editor: editor
+      administrator: administrator
+    negate: false
+    context_mapping:
+      user: '@user.current_user_context:current_user'

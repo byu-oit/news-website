@@ -26,7 +26,7 @@ settings:
     label: hidden
     type: image
     settings:
-      image_style: thumbnail
+      image_style: sidebar_image_preview
       image_link: ''
     third_party_settings: {  }
     weight: 0

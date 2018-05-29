@@ -1,4 +1,4 @@
-uuid: b4a5f997-ce9c-4efa-8545-af5ce889bf2a
+uuid: 5d3b6019-9bbc-495f-8ec1-521dc39684a8
 langcode: en
 status: true
 dependencies:
@@ -19,73 +19,48 @@ dependencies:
     - file_entity.type.image
   module:
     - field_layout
-    - file_entity
     - layout_discovery
+    - path
 third_party_settings:
   field_layout:
     id: layout_onecol
     settings: {  }
 _core:
-  default_config_hash: _Bf428kqU4oErwcNNTL2Wj4HQfES94Bs4usKnK3iL2Q
+  default_config_hash: HYzof_QiEoo7449yRhD_uJoLXMEAmSafqexxGS9OmjQ
 id: file.image.default
 targetEntityType: file
 bundle: image
 mode: default
 content:
   field_image_alt_text:
-    type: string
+    type: string_textfield
     weight: 0
-    settings: {  }
+    settings:
+      size: 60
+      placeholder: ''
     third_party_settings: {  }
-    label: above
     region: content
   field_image_title_text:
-    type: string
+    type: string_textfield
     weight: 0
-    settings: {  }
-    third_party_settings: {  }
-    label: above
-    region: content
-  filemime:
-    type: string
-    weight: 2
-    region: content
-    label: above
     settings:
-      link_to_entity: false
+      size: 60
+      placeholder: ''
     third_party_settings: {  }
+    region: content
   filename:
-    type: string
-    label: hidden
+    type: string_textfield
     weight: -5
     region: content
     settings:
-      link_to_entity: false
+      size: 60
+      placeholder: ''
     third_party_settings: {  }
-  filesize:
-    type: file_size
-    weight: 3
+  path:
+    type: path
+    weight: 30
     region: content
-    label: above
     settings: {  }
-    third_party_settings: {  }
-  uid:
-    type: uri_link
-    weight: 1
-    region: content
-    label: above
-    settings: {  }
-    third_party_settings: {  }
-  uri:
-    type: file_image
-    label: hidden
-    weight: -5
-    region: content
-    settings:
-      title: field_image_title_text
-      alt: field_image_alt_text
-      image_style: ''
-      image_link: ''
     third_party_settings: {  }
 hidden:
   field_credit: true
