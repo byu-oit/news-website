@@ -7,7 +7,7 @@ repo_url: https://github.com/byu-oit/news-website  # optional
 software:
   - name: news-website  # optional
     deploy_to_cmdb: true # optional
-    type: 'web app'
+    type: web app
     aliases:  # optional
     short_description: Drupal 8 News website # optional
     assignment_group: gro:AD-Front End Technologies and Applications
@@ -29,6 +29,8 @@ software:
       - JavaScript
       - CSS
       - HTML
+      - Composer
+      - Travis-ci.com
     standard_change_template:
     stages:
       development:
@@ -36,7 +38,7 @@ software:
           product_page:
           physical_url:
           virtual_url:
-        hosting_location: 'Other'
+        hosting_location: Other
         aws_account:  # optional
         relationships: # optional
           depends_on:  # optional
