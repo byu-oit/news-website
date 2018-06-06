@@ -1,0 +1,82 @@
+uuid: 38ac59f3-ba3c-4e91-8fdd-e6d50e57b920
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_main_body
+    - node.type.basic_page
+    - paragraphs.paragraphs_type.slideshow
+    - paragraphs.paragraphs_type.social_embed
+    - paragraphs.paragraphs_type.text
+    - paragraphs.paragraphs_type.video
+  module:
+    - entity_reference_revisions
+id: node.basic_page.field_main_body
+field_name: field_main_body
+entity_type: node
+bundle: basic_page
+label: 'Main Body'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      slideshow: slideshow
+      social_embed: social_embed
+      text: text
+      video: video
+    target_bundles_drag_drop:
+      bp_blank:
+        weight: 17
+        enabled: false
+      bp_block:
+        weight: 18
+        enabled: false
+      bp_columns_two_uneven:
+        weight: 19
+        enabled: false
+      bp_column_wrapper:
+        weight: 20
+        enabled: false
+      bp_image:
+        weight: 21
+        enabled: false
+      bp_simple:
+        weight: 22
+        enabled: false
+      bp_view:
+        weight: 23
+        enabled: false
+      image:
+        weight: 24
+        enabled: false
+      internal_story:
+        weight: 25
+        enabled: false
+      slideshow:
+        enabled: true
+        weight: 26
+      social_embed:
+        enabled: true
+        weight: 27
+      social_media_embed:
+        weight: 28
+        enabled: false
+      stories:
+        weight: 29
+        enabled: false
+      story_highlights:
+        weight: 30
+        enabled: false
+      text:
+        enabled: true
+        weight: 31
+      video:
+        enabled: true
+        weight: 32
+field_type: entity_reference_revisions

@@ -1,0 +1,29 @@
+uuid: e1960dbc-fa39-4ea8-a98e-b21f497dd7bb
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.file.field_photo_credit
+    - file_entity.type.image
+    - taxonomy.vocabulary.photographers
+id: file.image.field_photo_credit
+field_name: field_photo_credit
+entity_type: file
+bundle: image
+label: 'Photo Credit'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      photographers: photographers
+    sort:
+      field: name
+      direction: asc
+    auto_create: true
+    auto_create_bundle: ''
+field_type: entity_reference

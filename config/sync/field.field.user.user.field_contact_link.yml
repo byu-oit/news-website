@@ -1,0 +1,25 @@
+uuid: d3a7e3e7-283d-40f4-8ef8-f7f7ed0c48a1
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_contact_link
+  module:
+    - field_token_value
+    - user
+id: user.user.field_contact_link
+field_name: field_contact_link
+entity_type: user
+bundle: user
+label: 'Contact Link'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: '<a href="[user:url]/contact">Contact [user:name]</a>'
+default_value_callback: ''
+settings:
+  field_value: '<a href="../user/[user:uid]/contact">Contact [user:name]</a>'
+  remove_empty: 1
+field_type: field_token_value

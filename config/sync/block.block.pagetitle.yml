@@ -1,0 +1,29 @@
+uuid: a415b2c0-6029-4f8c-935b-ddacad32cbbd
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_class
+    - system
+  theme:
+    - byu_news
+third_party_settings:
+  block_class:
+    classes: ''
+id: pagetitle
+theme: byu_news
+region: content
+weight: -12
+provider: null
+plugin: page_title_block
+settings:
+  id: page_title_block
+  label: 'Page title'
+  provider: core
+  label_display: '0'
+visibility:
+  request_path:
+    id: request_path
+    pages: /contact
+    negate: false
+    context_mapping: {  }

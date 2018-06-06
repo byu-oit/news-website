@@ -1,0 +1,10 @@
+uuid: dab91826-1f05-45b3-9ccc-565f1c05e4dd
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.story_row_linked
+label: 'Story Row Linked'
+targetEntityType: node
+cache: true

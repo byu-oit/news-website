@@ -1,0 +1,10 @@
+uuid: 372d4c0f-c51c-4bd3-9208-6149b49b9b79
+langcode: en
+status: true
+dependencies:
+  module:
+    - user
+id: user.row
+label: 'User Row'
+targetEntityType: user
+cache: true

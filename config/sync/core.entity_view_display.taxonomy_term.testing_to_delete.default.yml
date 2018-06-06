@@ -1,0 +1,46 @@
+uuid: bde3ed27-be7e-48fd-8049-fe59060ffc4a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.testing_to_delete.field_practice_photographer
+    - taxonomy.vocabulary.testing_to_delete
+  module:
+    - field_layout
+    - layout_discovery
+    - manage_display
+    - text
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings: {  }
+id: taxonomy_term.testing_to_delete.default
+targetEntityType: taxonomy_term
+bundle: testing_to_delete
+mode: default
+content:
+  description:
+    label: hidden
+    type: text_default
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_practice_photographer:
+    weight: 1
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  name:
+    label: hidden
+    type: title
+    weight: -50
+    region: content
+    settings:
+      tag: h2
+      linked: true
+    third_party_settings: {  }
+hidden: {  }

@@ -1,0 +1,29 @@
+uuid: b4aed4be-d522-4b7e-8514-2f4e4813e272
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_practice_photographer
+    - taxonomy.vocabulary.photographers
+    - taxonomy.vocabulary.testing_to_delete
+id: taxonomy_term.testing_to_delete.field_practice_photographer
+field_name: field_practice_photographer
+entity_type: taxonomy_term
+bundle: testing_to_delete
+label: 'Practice Photographer'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      photographers: photographers
+    sort:
+      field: name
+      direction: asc
+    auto_create: true
+    auto_create_bundle: ''
+field_type: entity_reference

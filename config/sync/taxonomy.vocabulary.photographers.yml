@@ -1,0 +1,9 @@
+uuid: 530bd163-8798-429a-88d1-c2a96407eed3
+langcode: en
+status: true
+dependencies: {  }
+name: Photographers
+vid: photographers
+description: 'Photo Credit Options in Stories'
+hierarchy: 0
+weight: 0

@@ -1,0 +1,34 @@
+uuid: 93699877-9b1f-44ce-80bc-9a07c9bf9e67
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.title_ix
+  module:
+    - block_class
+    - system
+    - views
+  theme:
+    - byu_news
+third_party_settings:
+  block_class:
+    classes: ''
+id: views_block__title_ix_block_1
+theme: byu_news
+region: content
+weight: 0
+provider: null
+plugin: 'views_block:title_ix-block_1'
+settings:
+  id: 'views_block:title_ix-block_1'
+  label: ''
+  provider: views
+  label_display: visible
+  views_label: ''
+  items_per_page: none
+visibility:
+  request_path:
+    id: request_path
+    pages: /title-ix
+    negate: false
+    context_mapping: {  }
