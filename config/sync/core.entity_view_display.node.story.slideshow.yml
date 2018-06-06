@@ -1,6 +1,6 @@
 uuid: 959ea7ab-8ee1-4c50-9a42-a503145916c8
 langcode: en
-status: true
+status: false
 dependencies:
   config:
     - core.entity_view_mode.node.slideshow
@@ -20,10 +20,8 @@ dependencies:
     - field.field.node.story.field_media_placement
     - field.field.node.story.field_meta_image
     - field.field.node.story.field_publish_date
-    - field.field.node.story.field_read_more_text
     - field.field.node.story.field_related_persons
     - field.field.node.story.field_related_stories
-    - field.field.node.story.field_require_agreement
     - field.field.node.story.field_show_on_front
     - field.field.node.story.field_story_hero_classes
     - field.field.node.story.field_story_highlights
@@ -75,10 +73,8 @@ hidden:
   field_media_placement: true
   field_meta_image: true
   field_publish_date: true
-  field_read_more_text: true
   field_related_persons: true
   field_related_stories: true
-  field_require_agreement: true
   field_show_on_front: true
   field_story_hero_classes: true
   field_story_highlights: true

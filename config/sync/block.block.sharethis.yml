@@ -14,7 +14,7 @@ third_party_settings:
 id: sharethis
 theme: byu_news
 region: right_sidebar
-weight: -6
+weight: -5
 provider: null
 plugin: sharethis_block
 settings:

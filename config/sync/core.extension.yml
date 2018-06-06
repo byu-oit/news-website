@@ -17,6 +17,7 @@ module:
   block_content: 0
   breakpoint: 0
   byu_hero: 0
+  captcha: 0
   cas: 0
   chosen: 0
   chosen_field: 0
@@ -65,10 +66,12 @@ module:
   history: 0
   image: 0
   imce: 0
+  inline_entity_form: 0
   kint: 0
   layout_discovery: 0
   link: 0
   masquerade: 0
+  maxlength: 0
   menu_ui: 0
   metatag: 0
   metatag_dc: 0
@@ -97,6 +100,7 @@ module:
   path: 0
   quickedit: 0
   rdf: 0
+  recaptcha: 0
   responsive_image: 0
   rest: 0
   schema_metatag: 0

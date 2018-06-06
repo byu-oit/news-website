@@ -20,10 +20,8 @@ dependencies:
     - field.field.node.story.field_media_placement
     - field.field.node.story.field_meta_image
     - field.field.node.story.field_publish_date
-    - field.field.node.story.field_read_more_text
     - field.field.node.story.field_related_persons
     - field.field.node.story.field_related_stories
-    - field.field.node.story.field_require_agreement
     - field.field.node.story.field_show_on_front
     - field.field.node.story.field_story_hero_classes
     - field.field.node.story.field_story_highlights
@@ -54,7 +52,7 @@ mode: story_row
 content:
   body:
     label: hidden
-    weight: 2
+    weight: 3
     type: text_summary_or_trimmed
     settings:
       trim_length: 300
@@ -62,9 +60,19 @@ content:
       field_formatter_class:
         class: ''
     region: content
+  field_category:
+    type: entity_reference_label
+    weight: 1
+    region: content
+    label: hidden
+    settings:
+      link: false
+    third_party_settings:
+      field_formatter_class:
+        class: story-row-category
   field_summary:
     type: basic_string
-    weight: 3
+    weight: 4
     region: content
     label: hidden
     settings: {  }
@@ -79,10 +87,10 @@ content:
       image_link: ''
     third_party_settings:
       field_formatter_class:
-        class: views-field-field-thumbnail
+        class: story-row-thumbnail
   title:
     type: title
-    weight: 1
+    weight: 2
     region: content
     label: hidden
     settings:
@@ -95,7 +103,6 @@ hidden:
   content_moderation_control: true
   created: true
   field_address_book: true
-  field_category: true
   field_contact_email: true
   field_contact_phone: true
   field_feature_as_hero: true
@@ -109,10 +116,8 @@ hidden:
   field_media_placement: true
   field_meta_image: true
   field_publish_date: true
-  field_read_more_text: true
   field_related_persons: true
   field_related_stories: true
-  field_require_agreement: true
   field_show_on_front: true
   field_story_hero_classes: true
   field_story_highlights: true

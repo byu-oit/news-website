@@ -6,6 +6,7 @@ open: null
 close: null
 uid: 61
 template: false
+archive: false
 id: send_story
 title: 'Send Story'
 description: 'Send a story to your news contacts.'
@@ -17,7 +18,7 @@ settings:
   ajax: false
   ajax_scroll_top: form
   page: true
-  page_submit_path: ''
+  page_submit_path: /send-story
   page_confirm_path: ''
   form_submit_once: false
   form_exception_message: ''
@@ -50,6 +51,8 @@ settings:
   submission_login_message: ''
   submission_exception_message: ''
   submission_locked_message: ''
+  previous_submission_message: ''
+  previous_submissions_message: ''
   autofill: false
   autofill_message: ''
   autofill_excluded_elements: {  }
@@ -179,13 +182,13 @@ handlers:
       from_options: {  }
       from_name: '[webform_submission:values:story:entity:field_media_contact_byline_perso:entity:name]'
       subject: '[webform_submission:values:story:entity:title]'
-      body: "[webform_submission:values:message]\n<hr /><strong>BYU News Release</strong>\n\n<p style=\"font-size: 20px\"><strong>[webform_submission:values:story:entity:title]</strong></p>\n<strong>Date:</strong> [webform_submission:values:story:entity:field_publish_date]&nbsp;<br />\n<strong>Full Story and Images:</strong>&nbsp;[webform_submission:values:story:entity:url]<br />\n&nbsp;\n<div>[webform_submission:values:story:delta:format:html]</div>"
+      body: "{{ webform_token('[webform_submission:values:message]', webform_submission) }}\n<hr /><strong>BYU News Release</strong>\n\n<p style=\"font-size: 20px\"><strong>{{ webform_token('[webform_submission:values:story:entity:title]', webform_submission) }}</strong></p>\n<strong>Date:</strong> {{ webform_token('[webform_submission:values:story:entity:field_publish_date]', webform_submission) }}<br />\n<strong>Full Story and Images:</strong> {{ webform_token('[webform_submission:values:story:entity:url]', webform_submission) }}<br />\n\n{% for item in webform_token('[webform_submission:values:story:delta:format:html]', webform_submission) %}\n\n\n    {{ item | striptags('<p>')  | raw }}\n    {% if not loop.last %}|{% endif %}\n\n\n{% endfor %}\n\n"
       excluded_elements: {  }
       ignore_access: false
       exclude_empty: true
       html: true
       attachments: false
-      twig: false
+      twig: true
       debug: false
       reply_to: ''
       return_path: ''

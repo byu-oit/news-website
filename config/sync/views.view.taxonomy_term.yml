@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - core.entity_view_mode.node.story_row_linked
     - field.storage.node.body
     - field.storage.node.field_summary
     - field.storage.node.field_thumbnail
@@ -577,6 +578,20 @@ display:
         options: {  }
       path: taxonomy/term/%
       display_extenders: {  }
+      style:
+        type: default
+        options:
+          row_class: story-row
+          default_row_class: true
+          uses_fields: false
+      defaults:
+        style: false
+        row: false
+      row:
+        type: 'entity:node'
+        options:
+          relationship: none
+          view_mode: story_row_linked
     cache_metadata:
       contexts:
         - 'languages:language_content'

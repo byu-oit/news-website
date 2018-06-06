@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.field.user.user.field_biography
+    - field.field.user.user.field_contact_link
     - field.field.user.user.field_display
     - field.field.user.user.field_display_order
     - field.field.user.user.field_phone
@@ -15,6 +16,7 @@ dependencies:
     - image.style.thumbnail
   module:
     - field_layout
+    - field_token_value
     - image
     - layout_discovery
     - path
@@ -49,6 +51,12 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: text_textarea
+    region: content
+  field_contact_link:
+    weight: 14
+    settings: {  }
+    third_party_settings: {  }
+    type: field_token_value_default
     region: content
   field_display:
     weight: 11
@@ -94,6 +102,9 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: string_textfield
+    region: content
+  google_analytics:
+    weight: 3
     region: content
   language:
     weight: 2

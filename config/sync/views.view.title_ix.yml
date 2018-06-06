@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - core.entity_view_mode.node.story_row_linked
     - field.storage.node.body
     - field.storage.node.field_category
     - field.storage.node.field_summary
@@ -84,10 +85,13 @@ display:
         type: default
         options:
           grouping: {  }
-          row_class: title-ix-row
+          row_class: story-row
           default_row_class: true
       row:
-        type: fields
+        type: 'entity:node'
+        options:
+          relationship: none
+          view_mode: story_row_linked
       fields:
         field_thumbnail:
           id: field_thumbnail
@@ -526,14 +530,14 @@ display:
           expose:
             label: ''
           granularity: second
-      title: 'Title IX'
+      title: ''
       header: {  }
       footer: {  }
       empty: {  }
       relationships: {  }
       arguments: {  }
       display_extenders: {  }
-      css_class: view-recent-stories
+      css_class: ''
     cache_metadata:
       max-age: -1
       contexts:

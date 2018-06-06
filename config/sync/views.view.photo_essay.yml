@@ -6,7 +6,7 @@ dependencies:
     - field.storage.node.body
     - field.storage.node.field_story_link
     - field.storage.node.field_thumbnail
-    - image.style.thumbnail
+    - image.style.sidebar_image_preview
     - node.type.photo_essay
   module:
     - image
@@ -186,7 +186,7 @@ display:
           click_sort_column: target_id
           type: image
           settings:
-            image_style: thumbnail
+            image_style: sidebar_image_preview
             image_link: ''
           group_column: ''
           group_columns: {  }

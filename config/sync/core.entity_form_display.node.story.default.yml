@@ -19,10 +19,8 @@ dependencies:
     - field.field.node.story.field_media_placement
     - field.field.node.story.field_meta_image
     - field.field.node.story.field_publish_date
-    - field.field.node.story.field_read_more_text
     - field.field.node.story.field_related_persons
     - field.field.node.story.field_related_stories
-    - field.field.node.story.field_require_agreement
     - field.field.node.story.field_show_on_front
     - field.field.node.story.field_story_hero_classes
     - field.field.node.story.field_story_highlights
@@ -42,6 +40,7 @@ dependencies:
     - datetime
     - field_group
     - field_layout
+    - file_entity
     - image
     - imce
     - layout_discovery
@@ -219,12 +218,9 @@ content:
   field_image:
     weight: 11
     settings:
-      preview_image_style: thumbnail
       progress_indicator: throbber
-    third_party_settings:
-      imce:
-        enabled: true
-    type: image_image
+    third_party_settings: {  }
+    type: file_editable
     region: content
   field_main_body:
     type: entity_reference_paragraphs_browser
@@ -334,7 +330,12 @@ content:
     settings:
       rows: 3
       placeholder: ''
-    third_party_settings: {  }
+    third_party_settings:
+      maxlength:
+        maxlength_js: 300
+        maxlength_js_label: 'Content limited to @limit characters, remaining: <strong>@remaining</strong>'
+        maxlength_js_enforce: false
+        maxlength_js_truncate_html: false
     type: string_textarea
     region: content
   field_tags:
@@ -430,9 +431,7 @@ hidden:
   created: true
   field_contact_email: true
   field_contact_phone: true
-  field_read_more_text: true
   field_related_persons: true
-  field_require_agreement: true
   field_story_hero_classes: true
   node_class: true
   path: true

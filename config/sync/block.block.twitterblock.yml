@@ -14,7 +14,7 @@ third_party_settings:
 id: twitterblock
 theme: byu_news
 region: right_sidebar
-weight: -10
+weight: -11
 provider: null
 plugin: twitter_block
 settings:

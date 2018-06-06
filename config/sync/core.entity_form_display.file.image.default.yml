@@ -3,19 +3,8 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.file.image.field_credit
     - field.field.file.image.field_cutline
-    - field.field.file.image.field_display_download_link
-    - field.field.file.image.field_display_front_page
-    - field.field.file.image.field_display_story
-    - field.field.file.image.field_display_video
-    - field.field.file.image.field_download_link
-    - field.field.file.image.field_file_image_alt_text
-    - field.field.file.image.field_file_image_title_text
-    - field.field.file.image.field_image_alt_text
-    - field.field.file.image.field_image_title_text
-    - field.field.file.image.field_link
-    - field.field.file.image.field_require_agreement
+    - field.field.file.image.field_photo_credit
     - file_entity.type.image
   module:
     - field_layout
@@ -32,14 +21,6 @@ targetEntityType: file
 bundle: image
 mode: default
 content:
-  field_credit:
-    type: string_textfield
-    weight: 4
-    region: content
-    settings:
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
   field_cutline:
     type: string_textarea
     weight: 5
@@ -48,21 +29,14 @@ content:
       rows: 5
       placeholder: ''
     third_party_settings: {  }
-  field_image_alt_text:
-    type: string_textfield
-    weight: 1
+  field_photo_credit:
+    weight: 6
     settings:
+      match_operator: CONTAINS
       size: 60
       placeholder: ''
     third_party_settings: {  }
-    region: content
-  field_image_title_text:
-    type: string_textfield
-    weight: 2
-    settings:
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
+    type: entity_reference_autocomplete
     region: content
   filename:
     type: string_textfield
@@ -78,13 +52,4 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
-hidden:
-  field_display_download_link: true
-  field_display_front_page: true
-  field_display_story: true
-  field_display_video: true
-  field_download_link: true
-  field_file_image_alt_text: true
-  field_file_image_title_text: true
-  field_link: true
-  field_require_agreement: true
+hidden: {  }

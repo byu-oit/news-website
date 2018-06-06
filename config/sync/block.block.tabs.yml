@@ -4,6 +4,7 @@ status: true
 dependencies:
   module:
     - block_class
+    - user
   theme:
     - byu_news
 third_party_settings:
@@ -22,4 +23,17 @@ settings:
   label_display: '0'
   primary: true
   secondary: true
-visibility: {  }
+visibility:
+  user_role:
+    id: user_role
+    roles:
+      guest_writer: guest_writer
+      guest_media_contact: guest_media_contact
+      writer: writer
+      photographers: photographers
+      editor: editor
+      programmer: programmer
+      administrator: administrator
+    negate: false
+    context_mapping:
+      user: '@user.current_user_context:current_user'

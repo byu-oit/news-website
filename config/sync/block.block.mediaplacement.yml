@@ -13,7 +13,7 @@ third_party_settings:
 id: mediaplacement
 theme: byu_news
 region: right_sidebar
-weight: -9
+weight: -10
 provider: null
 plugin: 'entity_field:node:field_media_placement'
 settings:

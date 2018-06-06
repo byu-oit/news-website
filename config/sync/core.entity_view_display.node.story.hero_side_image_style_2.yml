@@ -20,10 +20,8 @@ dependencies:
     - field.field.node.story.field_media_placement
     - field.field.node.story.field_meta_image
     - field.field.node.story.field_publish_date
-    - field.field.node.story.field_read_more_text
     - field.field.node.story.field_related_persons
     - field.field.node.story.field_related_stories
-    - field.field.node.story.field_require_agreement
     - field.field.node.story.field_show_on_front
     - field.field.node.story.field_story_hero_classes
     - field.field.node.story.field_story_highlights
@@ -39,7 +37,6 @@ dependencies:
     - byu_hero
     - field_formatter_class
     - field_layout
-    - field_token_value
     - image
 third_party_settings:
   field_layout:
@@ -51,23 +48,25 @@ bundle: story
 mode: hero_side_image_style_2
 content:
   field_hero_image:
-    weight: 2
+    weight: 3
     label: hidden
     settings:
       image_style: ''
     third_party_settings: {  }
     type: image_url
     region: image_source
-  field_read_more_text:
-    type: field_token_value_text
-    weight: 0
+  field_hero_read_more_text:
+    type: string
+    weight: 2
     region: read_more
     label: hidden
     settings:
-      wrapper: ''
-    third_party_settings: {  }
+      link_to_entity: true
+    third_party_settings:
+      field_formatter_class:
+        class: ''
   field_story_hero_classes:
-    weight: 7
+    weight: 4
     label: above
     settings:
       link_to_entity: false
@@ -76,7 +75,7 @@ content:
     region: classes
   field_summary:
     type: basic_string
-    weight: 10
+    weight: 1
     region: intro
     label: above
     settings: {  }
@@ -87,7 +86,7 @@ content:
     weight: 0
     region: headline
     settings:
-      link_to_entity: false
+      link_to_entity: true
     third_party_settings:
       field_formatter_class:
         class: ''
@@ -101,7 +100,6 @@ hidden:
   field_contact_phone: true
   field_feature_as_hero: true
   field_full_name: true
-  field_hero_read_more_text: true
   field_image: true
   field_main_body: true
   field_media_contact_byline_perso: true
@@ -111,7 +109,6 @@ hidden:
   field_publish_date: true
   field_related_persons: true
   field_related_stories: true
-  field_require_agreement: true
   field_show_on_front: true
   field_story_highlights: true
   field_subheading: true

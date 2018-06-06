@@ -3,19 +3,8 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.file.image.field_credit
     - field.field.file.image.field_cutline
-    - field.field.file.image.field_display_download_link
-    - field.field.file.image.field_display_front_page
-    - field.field.file.image.field_display_story
-    - field.field.file.image.field_display_video
-    - field.field.file.image.field_download_link
-    - field.field.file.image.field_file_image_alt_text
-    - field.field.file.image.field_file_image_title_text
-    - field.field.file.image.field_image_alt_text
-    - field.field.file.image.field_image_title_text
-    - field.field.file.image.field_link
-    - field.field.file.image.field_require_agreement
+    - field.field.file.image.field_photo_credit
     - file_entity.type.image
   module:
     - field_layout
@@ -32,19 +21,13 @@ targetEntityType: file
 bundle: image
 mode: default
 content:
-  field_image_alt_text:
-    type: string
-    weight: 0
-    settings: {  }
-    third_party_settings: {  }
+  field_photo_credit:
+    weight: 4
     label: above
-    region: content
-  field_image_title_text:
-    type: string
-    weight: 0
-    settings: {  }
+    settings:
+      link: true
     third_party_settings: {  }
-    label: above
+    type: entity_reference_label
     region: content
   filemime:
     type: string
@@ -88,14 +71,4 @@ content:
       image_link: ''
     third_party_settings: {  }
 hidden:
-  field_credit: true
   field_cutline: true
-  field_display_download_link: true
-  field_display_front_page: true
-  field_display_story: true
-  field_display_video: true
-  field_download_link: true
-  field_file_image_alt_text: true
-  field_file_image_title_text: true
-  field_link: true
-  field_require_agreement: true

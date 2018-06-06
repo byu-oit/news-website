@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - core.entity_view_mode.node.story_row_linked
     - field.storage.node.body
     - field.storage.node.field_category
     - field.storage.node.field_summary
@@ -88,7 +89,7 @@ display:
         type: default
         options:
           grouping: {  }
-          row_class: recent-stories-row
+          row_class: story-row
           default_row_class: true
       row:
         type: fields
@@ -135,7 +136,7 @@ display:
           element_label_class: ''
           element_label_colon: false
           element_wrapper_type: ''
-          element_wrapper_class: ''
+          element_wrapper_class: story-row-thumbnail
           element_default_classes: true
           empty: ''
           hide_empty: false
@@ -194,7 +195,7 @@ display:
             preserve_tags: ''
             html: false
           element_type: h4
-          element_class: recent-stories-category
+          element_class: story-row-category
           element_label_type: ''
           element_label_class: ''
           element_label_colon: false
@@ -566,6 +567,7 @@ display:
     position: 1
     display_options:
       display_extenders: {  }
+      enabled: false
     cache_metadata:
       max-age: -1
       contexts:
@@ -587,7 +589,45 @@ display:
     position: 2
     display_options:
       display_extenders: {  }
+      path: home-original
+      enabled: true
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url.query_args
+        - user
+        - 'user.node_grants:view'
+        - user.permissions
+      tags:
+        - 'config:field.storage.node.body'
+        - 'config:field.storage.node.field_category'
+        - 'config:field.storage.node.field_summary'
+        - 'config:field.storage.node.field_thumbnail'
+  page_2:
+    display_plugin: page
+    id: page_2
+    display_title: 'Homepage Stories'
+    position: 2
+    display_options:
+      display_extenders: {  }
       path: home
+      display_description: ''
+      style:
+        type: default
+        options:
+          grouping: {  }
+          row_class: story-row
+          default_row_class: true
+      defaults:
+        style: false
+        row: false
+      row:
+        type: 'entity:node'
+        options:
+          relationship: none
+          view_mode: story_row_linked
     cache_metadata:
       max-age: -1
       contexts:
