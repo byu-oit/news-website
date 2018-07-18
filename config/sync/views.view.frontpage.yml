@@ -1,6 +1,6 @@
 uuid: 8ac3682b-348c-40f8-a873-c612384de1cf
 langcode: en
-status: false
+status: true
 dependencies:
   config:
     - core.entity_view_mode.node.rss
@@ -291,6 +291,7 @@ display:
     display_options:
       path: node
       display_extenders: {  }
+      enabled: false
     display_plugin: page
     display_title: Page
     id: page_1

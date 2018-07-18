@@ -4,7 +4,6 @@ status: true
 dependencies:
   config:
     - field.field.node.story.body
-    - field.field.node.story.field_address_book
     - field.field.node.story.field_category
     - field.field.node.story.field_contact_email
     - field.field.node.story.field_contact_phone
@@ -19,7 +18,6 @@ dependencies:
     - field.field.node.story.field_media_placement
     - field.field.node.story.field_meta_image
     - field.field.node.story.field_publish_date
-    - field.field.node.story.field_related_persons
     - field.field.node.story.field_related_stories
     - field.field.node.story.field_show_on_front
     - field.field.node.story.field_story_hero_classes
@@ -115,15 +113,6 @@ content:
       placeholder: ''
     third_party_settings: {  }
     region: content
-  field_address_book:
-    type: entity_reference_autocomplete
-    weight: 6
-    region: content
-    settings:
-      match_operator: CONTAINS
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
   field_category:
     weight: 6
     settings: {  }
@@ -431,7 +420,6 @@ hidden:
   created: true
   field_contact_email: true
   field_contact_phone: true
-  field_related_persons: true
   field_story_hero_classes: true
   node_class: true
   path: true

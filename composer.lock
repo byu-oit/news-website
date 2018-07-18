@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "7066dc6a6fb8bc0ce33b1cef566713cb",
+    "content-hash": "6f6ad37059080063c9926315389fae6d",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -2254,11 +2254,17 @@
         },
         {
             "name": "drupal/byu_theme",
-            "version": "dev-2.x",
+            "version": "3.1.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupal.org/project/byu_theme",
-                "reference": "4eca9ca50c0c61c9adf283d5559dac7f99fc81c2"
+                "reference": "8.x-3.1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/byu_theme-8.x-3.1.zip",
+                "reference": "8.x-3.1",
+                "shasum": "97dc40e68ae0cddd0d1f4de4e270bed41bb85f9a"
             },
             "require": {
                 "drupal/bootstrap": "~3.0",
@@ -2267,11 +2273,11 @@
             "type": "drupal-theme",
             "extra": {
                 "branch-alias": {
-                    "dev-2.x": "2.x-dev"
+                    "dev-3.x": "3.x-dev"
                 },
                 "drupal": {
-                    "version": "8.x-2.1+8-dev",
-                    "datestamp": "1526067184",
+                    "version": "8.x-3.1",
+                    "datestamp": "1528833780",
                     "security-coverage": {
                         "status": "not-covered",
                         "message": "Project has not opted into security advisory coverage!"
@@ -2308,8 +2314,7 @@
             "homepage": "https://www.drupal.org/project/byu_theme",
             "support": {
                 "source": "http://cgit.drupalcode.org/byu_theme"
-            },
-            "time": "2018-05-17T16:04:10+00:00"
+            }
         },
         {
             "name": "drupal/captcha",
@@ -11410,7 +11415,6 @@
         "drupal/block_class": 15,
         "drupal/bootstrap_paragraphs": 10,
         "drupal/byu_hero": 20,
-        "drupal/byu_theme": 20,
         "drupal/captcha": 10,
         "drupal/cas": 5,
         "drupal/ckeditor_entity_link": 15,

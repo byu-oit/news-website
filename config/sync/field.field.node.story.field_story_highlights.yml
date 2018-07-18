@@ -10,11 +10,12 @@ dependencies:
     - text
 third_party_settings:
   allowed_formats:
-    very_basic: very_basic
+    basic_html: basic_html
     full_html: '0'
-    basic_html: '0'
     code: '0'
+    embed_code: '0'
     restricted_html: '0'
+    very_basic: '0'
     plain_text: '0'
 id: node.story.field_story_highlights
 field_name: field_story_highlights

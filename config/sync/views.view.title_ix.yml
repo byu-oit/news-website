@@ -20,6 +20,7 @@ dependencies:
     - taxonomy
     - text
     - user
+    - views_infinite_scroll
 id: title_ix
 label: 'Title IX'
 module: views
@@ -61,12 +62,15 @@ display:
           sort_asc_label: Asc
           sort_desc_label: Desc
       pager:
-        type: full
+        type: infinite_scroll
         options:
           items_per_page: 5
           offset: 0
           id: 0
           total_pages: null
+          tags:
+            previous: '‹ Previous'
+            next: 'Next ›'
           expose:
             items_per_page: false
             items_per_page_label: 'Items per page'
@@ -75,12 +79,9 @@ display:
             items_per_page_options_all_label: '- All -'
             offset: false
             offset_label: Offset
-          tags:
-            previous: '‹ Previous'
-            next: 'Next ›'
-            first: '« First'
-            last: 'Last »'
-          quantity: 9
+          views_infinite_scroll:
+            button_text: 'Load More'
+            automatically_load_content: false
       style:
         type: default
         options:

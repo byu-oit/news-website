@@ -69,7 +69,7 @@ display:
             field_publish_date: field_publish_date
             field_media_contact_byline_perso: field_media_contact_byline_perso
             field_full_name: field_full_name
-          separator: '|'
+          separator: ''
           hide_empty: true
       fields:
         field_category:

@@ -3,7 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
-    - core.entity_view_mode.node.story_row
+    - core.entity_view_mode.node.story_row_linked
     - node.type.story
     - user.role.editor
     - user.role.guest_media_contact
@@ -82,7 +82,7 @@ display:
         type: 'entity:node'
         options:
           relationship: none
-          view_mode: story_row
+          view_mode: story_row_linked
       fields:
         title:
           id: title

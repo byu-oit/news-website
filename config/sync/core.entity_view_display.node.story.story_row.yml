@@ -5,7 +5,6 @@ dependencies:
   config:
     - core.entity_view_mode.node.story_row
     - field.field.node.story.body
-    - field.field.node.story.field_address_book
     - field.field.node.story.field_category
     - field.field.node.story.field_contact_email
     - field.field.node.story.field_contact_phone
@@ -20,7 +19,6 @@ dependencies:
     - field.field.node.story.field_media_placement
     - field.field.node.story.field_meta_image
     - field.field.node.story.field_publish_date
-    - field.field.node.story.field_related_persons
     - field.field.node.story.field_related_stories
     - field.field.node.story.field_show_on_front
     - field.field.node.story.field_story_hero_classes
@@ -102,7 +100,6 @@ content:
 hidden:
   content_moderation_control: true
   created: true
-  field_address_book: true
   field_contact_email: true
   field_contact_phone: true
   field_feature_as_hero: true
@@ -116,7 +113,6 @@ hidden:
   field_media_placement: true
   field_meta_image: true
   field_publish_date: true
-  field_related_persons: true
   field_related_stories: true
   field_show_on_front: true
   field_story_hero_classes: true

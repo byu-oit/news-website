@@ -13,11 +13,11 @@ custom_width: '1200'
 font_package: fonts-basic
 font_one: libreb
 font_two: libreb
-font_four: roboto
+font_four: vitesse
 font_four_color: h4-black
-font_five: roboto
+font_five: vitesse
 font_five_color: h5-black
-p_font: roboto
+p_font: default
 footer_sticky: 1
 search_use: 1
 features:

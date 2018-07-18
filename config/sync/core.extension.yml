@@ -17,6 +17,7 @@ module:
   block_content: 0
   breakpoint: 0
   byu_hero: 0
+  byu_migrate_news: 0
   captcha: 0
   cas: 0
   chosen: 0
@@ -25,7 +26,6 @@ module:
   ckeditor: 0
   ckeditor_entity_link: 0
   color: 0
-  comment: 0
   conditional_fields: 0
   config: 0
   config_files: 0

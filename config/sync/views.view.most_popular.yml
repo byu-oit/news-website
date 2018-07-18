@@ -149,11 +149,11 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
-          operator: '>='
+          operator: '<'
           value:
             min: ''
             max: ''
-            value: '-1 month'
+            value: '1 month'
             type: offset
           group: 1
           exposed: false
