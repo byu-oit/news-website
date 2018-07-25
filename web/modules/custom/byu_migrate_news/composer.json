@@ -1,0 +1,14 @@
+{
+  "name": "drupal/byu_migrate_news",
+  "type": "drupal-module",
+  "description": "Module to migrate BYU News Site from Drupal 7 to Drupal 8",
+  "keywords": ["Drupal"],
+  "license": "GPL-2.0+",
+  "homepage": "https://www.drupal.org/project/byu_migrate_news",
+  "minimum-stability": "dev",
+  "support": {
+    "issues": "https://www.drupal.org/project/issues/byu_migrate_news",
+    "source": "http://cgit.drupalcode.org/byu_migrate_news"
+  },
+  "require": { }
+}

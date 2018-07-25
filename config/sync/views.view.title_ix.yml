@@ -12,8 +12,9 @@ dependencies:
     - node.type.story
     - taxonomy.vocabulary.tags
   content:
-    - 'taxonomy_term:tags:958abc44-2799-4f53-941d-ccd5a94a5faf'
+    - 'taxonomy_term:tags:c55647e3-492a-4208-a92c-4b3bf9289c87'
   module:
+    - datetime
     - image
     - node
     - options
@@ -441,7 +442,7 @@ display:
           admin_label: ''
           operator: or
           value:
-            - 3765
+            - 9373
           group: 1
           exposed: false
           expose:
@@ -516,21 +517,19 @@ display:
           reduce_duplicates: false
           plugin_id: list_field
       sorts:
-        created:
-          id: created
-          table: node_field_data
-          field: created
-          order: DESC
-          entity_type: node
-          entity_field: created
-          plugin_id: date
+        field_publish_date_value:
+          id: field_publish_date_value
+          table: node__field_publish_date
+          field: field_publish_date_value
           relationship: none
           group_type: group
           admin_label: ''
+          order: DESC
           exposed: false
           expose:
             label: ''
           granularity: second
+          plugin_id: datetime
       title: ''
       header: {  }
       footer: {  }

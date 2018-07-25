@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "6f6ad37059080063c9926315389fae6d",
+    "content-hash": "6643b1d16ca777120deeef69bc75097e",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -2366,65 +2366,6 @@
                 "docs": "https://drupal-bootstrap.org",
                 "issues": "https://www.drupal.org/project/issues/bootstrap",
                 "irc": "irc://irc.freenode.org/drupal-bootstrap"
-            }
-        },
-        {
-            "name": "drupal/bootstrap_paragraphs",
-            "version": "2.0.0-beta3",
-            "source": {
-                "type": "git",
-                "url": "https://git.drupal.org/project/bootstrap_paragraphs",
-                "reference": "8.x-2.0-beta3"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/bootstrap_paragraphs-8.x-2.0-beta3.zip",
-                "reference": "8.x-2.0-beta3",
-                "shasum": "5203c0dbdb7795c77687f9e42181bff87d945e8d"
-            },
-            "require": {
-                "drupal/core": "*",
-                "drupal/entity_reference_revisions": "*",
-                "drupal/paragraphs": "*",
-                "drupal/viewsreference": "*"
-            },
-            "require-dev": {
-                "drupal/contact_formatter": "*",
-                "drupal/paragraphs": "*",
-                "drupal/webform": "*"
-            },
-            "type": "drupal-module",
-            "extra": {
-                "branch-alias": {
-                    "dev-2.x": "2.x-dev"
-                },
-                "drupal": {
-                    "version": "8.x-2.0-beta3",
-                    "datestamp": "1520222584",
-                    "security-coverage": {
-                        "status": "not-covered",
-                        "message": "Beta releases are not covered by Drupal security advisories."
-                    }
-                }
-            },
-            "notification-url": "https://packages.drupal.org/8/downloads",
-            "license": [
-                "GPL-2.0-or-later"
-            ],
-            "authors": [
-                {
-                    "name": "albertski",
-                    "homepage": "https://www.drupal.org/user/1327432"
-                },
-                {
-                    "name": "thejimbirch",
-                    "homepage": "https://www.drupal.org/user/2507260"
-                }
-            ],
-            "description": "A suite of Paragraph bundles made with the Boostrap framework.",
-            "homepage": "https://www.drupal.org/project/bootstrap_paragraphs",
-            "support": {
-                "source": "http://cgit.drupalcode.org/bootstrap_paragraphs"
             }
         },
         {
@@ -5381,6 +5322,57 @@
             "support": {
                 "source": "http://git.drupal.org/project/recaptcha.git",
                 "issues": "https://www.drupal.org/project/issues/recaptcha"
+            }
+        },
+        {
+            "name": "drupal/redirect",
+            "version": "1.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupal.org/project/redirect",
+                "reference": "8.x-1.2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/redirect-8.x-1.2.zip",
+                "reference": "8.x-1.2",
+                "shasum": "ac503fbfbd15523c65f38d8b326e5f2159683cdb"
+            },
+            "require": {
+                "drupal/core": "~8"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "branch-alias": {
+                    "dev-1.x": "1.x-dev"
+                },
+                "drupal": {
+                    "version": "8.x-1.2",
+                    "datestamp": "1525419785",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "Berdir",
+                    "homepage": "https://www.drupal.org/user/214652"
+                },
+                {
+                    "name": "Dave Reid",
+                    "homepage": "https://www.drupal.org/user/53892"
+                }
+            ],
+            "description": "Allows users to redirect from old URLs to new URLs.",
+            "homepage": "https://www.drupal.org/project/redirect",
+            "support": {
+                "source": "http://cgit.drupalcode.org/redirect"
             }
         },
         {
@@ -11724,7 +11716,6 @@
     "minimum-stability": "dev",
     "stability-flags": {
         "drupal/block_class": 15,
-        "drupal/bootstrap_paragraphs": 10,
         "drupal/byu_hero": 20,
         "drupal/captcha": 10,
         "drupal/cas": 5,

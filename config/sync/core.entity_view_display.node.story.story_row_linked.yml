@@ -33,6 +33,7 @@ dependencies:
     - image.style.recent_stories_thumbnail
     - node.type.story
   module:
+    - byu_news
     - field_formatter_class
     - field_layout
     - image
@@ -73,7 +74,9 @@ content:
     region: content
     label: hidden
     settings: {  }
-    third_party_settings: {  }
+    third_party_settings:
+      field_formatter_class:
+        class: ''
   field_thumbnail:
     type: image
     weight: 0

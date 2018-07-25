@@ -1,0 +1,35 @@
+<?php
+
+/**
+ * @file
+ * Contains byu_migrate_news.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function byu_migrate_news_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the byu_migrate_news module.
+    case 'help.page.byu_migrate_news':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Module to migrate BYU News Site from Drupal 7 to Drupal 8') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function byu_migrate_news_theme() {
+  return [
+    'byu_migrate_news' => [
+      'render element' => 'children',
+    ],
+  ];
+}
