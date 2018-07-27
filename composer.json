@@ -49,6 +49,7 @@
         "drupal/masquerade": "^2.0@beta",
         "drupal/maxlength": "^1.0@beta",
         "drupal/metatag": "^1.4",
+        "drupal/migrate_upgrade": "^2.0",
         "drupal/module_filter": "^3.1",
         "drupal/news_cards": "^1.0@beta",
         "drupal/node_class": "^1.0@beta",
@@ -88,7 +89,6 @@
         "drupal/devel": "^1.2",
         "drupal/migrate_manifest": "^1.7",
         "drupal/migrate_tools": "4.x-dev",
-        "drupal/migrate_upgrade": "3.x-dev",
         "jcalderonzumba/gastonjs": "~1.0.2",
         "jcalderonzumba/mink-phantomjs-driver": "~0.3.1",
         "mikey179/vfsstream": "~1.2",
@@ -132,19 +132,13 @@
             "web/themes/contrib/{$name}": ["type:drupal-theme"],
             "drush/contrib/{$name}": ["type:drupal-drush"]
         },
+        "enable-patching": true,
         "patches": {
 	        "drupal/core": {
 		        "Add date range to views": "https://www.drupal.org/files/issues/2786577-270_0.patch",
 		        "Allow pseudo fields in manage display": "https://www.drupal.org/files/issues/2018-03-13/title.display-2923701-161.patch",
                 "RenderedEntity null value": "https://www.drupal.org/files/issues/2018-05-14/2972774-2.patch",
                 "Make CKEditor and IMCE play with each other": "https://www.drupal.org/files/issues/2018-03-29/2822217-drupalimagecaption-img-src-fix-13.diff"
-	        },
-	        "drupal/migrate_upgrade": {
-		        "Add migrate-status command": "https://www.drupal.org/files/issues/2018-03-17/2915726-13.migrate_upgrade.Drush-9-port-of-commands.patch"
-	        },
-	        "drupal/field_group": {
-		        "Fix field group migration in 8.5": "https://www.drupal.org/files/issues/2018-03-12/2951335-7-fix-core-8-5-fieldgroup-migration.patch",
-		        "Fix field Layout integration": "https://www.drupal.org/files/issues/2018-04-20/field_layout_support-2878359-56.patch"
 	        }
 	    }
     }

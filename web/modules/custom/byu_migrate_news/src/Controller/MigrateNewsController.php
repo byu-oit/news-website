@@ -4,9 +4,10 @@ namespace Drupal\byu_migrate_news\Controller;
 
 use Drupal\Core\Controller\ControllerBase;
 use Drupal\node\Entity\Node;
+use Drupal\node\NodeInterface;
 use \Drupal\file\Entity\File;
 use Drupal\taxonomy\Entity\Term;
-
+use Drupal\redirect\Entity\Redirect;
 /**
  * Class MigrateImagesController.
  */
@@ -368,4 +369,42 @@ class MigrateNewsController extends ControllerBase {
             '#markup' => $this->t("Status Updated!")
         ];
     }
+  public function addredirects() {
+//    $query = \Drupal::database()->select('drupal7_news.redirect', 'r');
+//    $query->addField('r', 'source');
+//    $query->addField('r', 'redirect');
+//    $query->condition('r.status', NodeInterface::PUBLISHED);
+//    $query->addTag('node_access');
+//    $redirect_result = $query->execute()->fetchAll();
+
+    $redirect_query = "SELECT source,redirect FROM drupal7_news.redirect WHERE status = 1 and source not in (select redirect_source__path FROM drupal8_news.redirect )";
+    $redirect_result = db_query($redirect_query);
+    $redirectCount = 0;
+    foreach ($redirect_result as $row) {
+      $redirectUrl = $row->redirect;
+      $redirectSource = $row->source;
+      $redirect = Redirect::create();
+      $redirect->setSource($redirectSource);
+      $redirect->setRedirect($redirectUrl);
+      $redirect->setLanguage('und');
+      $redirect->setStatusCode(\Drupal::config('redirect.settings')->get('default_status_code'));
+      $redirect->save();
+      $redirectCount++;
+    }
+    return [
+      '#type' => 'markup',
+      '#markup' => $this->t($redirectCount . " Redirects Created!")
+    ];
+  }
+
+  /**
+   * this is not working yet and it doesn't truly matter since I can truncate the table by hand
+   */
+//  public function removeallredirects() {
+//    $result = \Drupal::database()->truncate('redirect')->execute();
+//    return [
+//      '#type' => 'markup',
+//      '#markup' => $this->t("All Redirects Deleted! " . $result)
+//    ];
+//  }
 }
