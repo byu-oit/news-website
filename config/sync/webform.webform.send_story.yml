@@ -1,4 +1,3 @@
-uuid: 572cba79-4abd-4109-95d1-e7498604cbf7
 langcode: en
 status: open
 dependencies: {  }
@@ -47,6 +46,7 @@ settings:
   submission_label: ''
   submission_log: false
   submission_user_columns: {  }
+  submission_user_duplicate: false
   submission_login: false
   submission_login_message: ''
   submission_exception_message: ''
@@ -59,7 +59,9 @@ settings:
   wizard_progress_bar: true
   wizard_progress_pages: false
   wizard_progress_percentage: false
+  wizard_progress_link: false
   wizard_start_label: ''
+  wizard_preview_link: false
   wizard_confirmation: true
   wizard_confirmation_label: ''
   wizard_track: ''
@@ -70,6 +72,7 @@ settings:
   preview_attributes: {  }
   preview_excluded_elements: {  }
   preview_exclude_empty: true
+  preview_exclude_empty_checkbox: false
   draft: none
   draft_multiple: false
   draft_auto_save: false
@@ -186,6 +189,7 @@ handlers:
       excluded_elements: {  }
       ignore_access: false
       exclude_empty: true
+      exclude_empty_checkbox: false
       html: true
       attachments: false
       twig: true
@@ -194,3 +198,4 @@ handlers:
       return_path: ''
       sender_mail: ''
       sender_name: ''
+uuid: 572cba79-4abd-4109-95d1-e7498604cbf7

@@ -68,6 +68,7 @@ third_party_settings:
         id: ''
         classes: col-md-8
       label: 'Left Column'
+      region: content
     group_right_column:
       children:
         - field_link
@@ -86,6 +87,7 @@ third_party_settings:
         id: ''
         classes: col-md-4
       label: 'Right Column'
+      region: content
   field_layout:
     id: layout_onecol
     settings: {  }
