@@ -48,3 +48,17 @@ byu_migrate_news.migrate_news_controller_FixStatus:
     _title: 'FixStatus'
   requirements:
     _permission: 'access content'
+byu_migrate_news.migrate_news_controller_AddRedirects:
+  path: '/byu_migrate_news/AddRedirects'
+  defaults:
+    _controller: '\Drupal\byu_migrate_news\Controller\MigrateNewsController::AddRedirects'
+    _title: 'AddRedirects'
+  requirements:
+    _permission: 'access content'
+#byu_migrate_news.migrate_news_controller_RemoveAllRedirects:
+#  path: '/byu_migrate_news/RemoveRedirects'
+#  defaults:
+#    _controller: '\Drupal\byu_migrate_news\Controller\MigrateNewsController::RemoveAllRedirects'
+#    _title: 'RemoveAllRedirects'
+#  requirements:
+#    _permission: 'access content'
