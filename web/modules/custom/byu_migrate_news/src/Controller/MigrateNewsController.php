@@ -391,6 +391,8 @@ class MigrateNewsController extends ControllerBase {
       $redirect->save();
       $redirectCount++;
     }
+	$fix_query = 'update redirect set redirect_redirect__uri = replace(redirect_redirect__uri,"internal:","entity:")';
+	$fix_result = db_query($fix_query);
     return [
       '#type' => 'markup',
       '#markup' => $this->t($redirectCount . " Redirects Created!")
