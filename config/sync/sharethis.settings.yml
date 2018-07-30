@@ -3,8 +3,7 @@ comments: 0
 late_load: 0
 location: block
 node_types:
-  paragraphs_pags: null
-  person: null
+  basic_page: null
   photo_essay: null
   storify_paragraphs: null
   story: null
@@ -57,24 +56,44 @@ sharethisnodes:
     amp: '0'
     big_teaser: '0'
     full: '0'
+    hero_side_image_style_2: '0'
     rss: '0'
     slideshow: '0'
+    story_row: '0'
+    story_row_linked: '0'
     teaser: '0'
     token: '0'
   storify_paragraphs:
     amp: '0'
     big_teaser: '0'
     full: '0'
+    hero_side_image_style_2: '0'
     rss: '0'
     slideshow: '0'
+    story_row: '0'
+    story_row_linked: '0'
     teaser: '0'
     token: '0'
   story:
     amp: '0'
     big_teaser: '0'
     full: '0'
+    hero_side_image_style_2: '0'
     rss: '0'
     slideshow: '0'
+    story_row: '0'
+    story_row_linked: '0'
+    teaser: '0'
+    token: '0'
+  basic_page:
+    amp: '0'
+    big_teaser: '0'
+    full: '0'
+    hero_side_image_style_2: '0'
+    rss: '0'
+    slideshow: '0'
+    story_row: '0'
+    story_row_linked: '0'
     teaser: '0'
     token: '0'
 _core:
