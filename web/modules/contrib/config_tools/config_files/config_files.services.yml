@@ -1,0 +1,5 @@
+services:
+  config_files.config.events:
+    class: Drupal\config_files\EventSubscriber\FileConfigEvents
+    tags:
+      - {name: event_subscriber}

@@ -1,0 +1,7 @@
+uuid: d5865e9a-723f-4604-83ce-29cc89d9b1e8
+langcode: en
+status: true
+dependencies: {  }
+id: content
+label: Content
+groups: {  }

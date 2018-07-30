@@ -1,0 +1,8 @@
+langcode: en
+status: true
+dependencies: {  }
+id: stories
+label: Story
+icon_uuid: null
+description: 'List of different stories from outside sources.'
+behavior_plugins: {  }

@@ -1,0 +1,14 @@
+name: Config tools
+type: module
+description: 'Handle logging of changes to configuration, push to a git repo.'
+package: Configuration
+# version: VERSION
+# core: 8.x
+configure: config_tools.settings
+dependencies:
+
+# Information added by Drupal.org packaging script on 2017-05-25
+version: '8.x-1.0-alpha4'
+core: '8.x'
+project: 'config_tools'
+datestamp: 1495734492

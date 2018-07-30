@@ -1,0 +1,32 @@
+<?php
+
+/**
+ * @file
+ * Allows site administrators to store config seperatly.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function config_files_help($route_name, RouteMatchInterface $route_match) {
+
+
+
+
+  switch ($route_name) {
+    case 'config_files.settings':
+      $config = \Drupal::config('git_config.config');
+      $git_url = $config->get('git_url');
+      if (!isset($git_url)) {
+        $output = '<p>' . t('You need to set git settings before setting Active files directory.') . '</p>';
+      }
+      else {
+        $output = '<p>' . t('Config files uses a seperate folder to track changes
+        to active configuration. When you push save, all of the active
+        configuration will be written to the path specified.') . '</p>';
+      }
+      return $output;
+  }
+}

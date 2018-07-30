@@ -1,0 +1,25 @@
+{
+    "name": "drupal/config_tools",
+    "description": "Tools for managing config with git",
+    "type": "drupal-module",
+    "license": "GPL-2.0+",
+    "homepage": "https://drupal.org/project/config_tools",
+    "authors": [
+        {
+            "name": "Kris Vanderwater (EclipseGc)",
+            "role": "Maintainer"
+        },
+        {
+            "name": "Mikke Schirén (MiSc)",
+            "role": "Co-maintainer"
+        },
+        {
+            "name": "Yi Yang (yang_yi_cn)",
+            "role": "Co-maintainer"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "cpliakas/git-wrapper": "^1.7"
+    }
+}

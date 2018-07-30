@@ -1,0 +1,4 @@
+news_cards:
+  css:
+    theme:
+      css/paragraphs--stories.css: { minified: true }

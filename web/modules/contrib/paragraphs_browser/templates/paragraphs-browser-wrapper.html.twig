@@ -1,0 +1,18 @@
+{#
+/**
+ * @file
+ * Default theme implementation for a paragraphs browser wrapper.
+ *
+ * Available variables:
+ * - children: Contains the child elements of the paragraphs dropbutton menu.
+ *
+ * @ingroup themeable
+ */
+#}
+{% if children %}
+    {% spaceless %}
+        <div class="paragraphs-browser-wrapper">
+            {{ children }}
+        </div>
+    {% endspaceless %}
+{% endif %}

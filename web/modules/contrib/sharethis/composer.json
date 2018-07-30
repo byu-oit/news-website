@@ -1,0 +1,7 @@
+{
+  "name": "drupal/sharethis",
+  "type": "drupal-module",
+  "description": "Add the ShareThis widget to nodes on your site",
+  "homepage": "http://drupal.org/project/sharethis",
+  "license": "GPL-2.0+"
+}

@@ -1,0 +1,23 @@
+<?php
+
+/**
+ * @file
+ * Allows site administrators to add git repo to push config changes to.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function git_config_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    case 'git_config.settings':
+      $output = '<p>' . t('To be able to push config changes to a git repo,
+        you must provide details about git repo used, and which private key to
+        use. This key must exist on the server, and should be outside the web
+        root. For security reasons, should not the Git repo be public.') .
+        '</p>';
+      return $output;
+  }
+}

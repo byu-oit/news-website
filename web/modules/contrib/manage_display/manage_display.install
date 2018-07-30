@@ -1,0 +1,15 @@
+<?php
+
+/**
+ * @file
+ * Contains install and update functions.
+ */
+
+/**
+ * Implements hook_install().
+*/
+function manage_display_install() {
+  // Increase module weight so that manage_display_preprocess_node is called after rdf_preprocess_node.
+  // @todo Not working reliably?
+  module_set_weight('manage_display', 1);
+}

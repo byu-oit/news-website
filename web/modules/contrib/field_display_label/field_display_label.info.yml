@@ -1,0 +1,13 @@
+name: Field Display Label
+type: module
+description: 'Defines a label for fields that is used for displaying content which can be different than the form label.'
+package: Field types
+dependencies:
+  - drupal:field
+# core: '8.x'
+
+# Information added by Drupal.org packaging script on 2016-07-10
+version: '8.x-1.0'
+core: '8.x'
+project: 'field_display_label'
+datestamp: 1468149028

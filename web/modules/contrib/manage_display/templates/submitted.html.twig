@@ -1,0 +1,50 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display 'submitted' information.
+ *
+ * Available variables:
+ * - author_picture: The author user entity, rendered using the "compact"
+ *   view mode.
+ * - metadata: Metadata for this entity.
+ * - date: Creation date field.
+ * - author_attributes: HTML attributes for the containing element.
+ * - account: The full account information for the user.
+ * - uid: The user ID, or zero if not a user. As used in anonymous comments.
+ * - name: The user's name, sanitized, and optionally truncated.
+ * - name_raw: The user's name, un-truncated.
+ * - truncated: Whether the user's name was truncated.
+ * - extra: Additional text to append to the user's name, sanitized.
+ * - profile_access: Whether the current user has permission to access this
+     users profile page.
+ * - link_path: The path or URL of the user's profile page, home page,
+ *   or other desired page to link to for more information about the user.
+ * - homepage: (optional) The home page of the account, only set for non users.
+ * - link_options: Options to set on the \Drupal\Core\Url object if linking the
+ *   user's name to the user's page.
+ * - attributes: HTML attributes for the containing element.
+ *
+ * @see template_preprocess_submitted()
+ *
+ * @ingroup themeable
+ */
+#}
+<footer>
+  {{ author_picture }}
+  <div{{ author_attributes }}>
+    {% if link_path -%}
+      {% if date -%}
+        {% trans %}Submitted by <a{{ attributes }}>{{ name }}{{ extra }}</a> on {{ date }}{% endtrans %}
+      {%- else -%}
+        {% trans %}Submitted by <a{{ attributes }}>{{ name }}{{ extra }}</a>{% endtrans %}
+      {%- endif -%}
+    {%- else -%}
+      {% if date -%}
+        {% trans %}Submitted by <span{{ attributes }}>{{ name }}{{ extra }}</span> on {{ date }}{% endtrans %}
+      {%- else -%}
+        {% trans %}Submitted by <span{{ attributes }}>{{ name }}{{ extra }}</span>{% endtrans %}
+      {%- endif -%}
+    {%- endif -%}
+    {{ metadata }}
+  </div>
+</footer>

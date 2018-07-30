@@ -1,0 +1,26 @@
+{#
+/**
+ * @file
+ * Default theme implementation for a paragraphs browser wrapper.
+ *
+ * @ingroup themeable
+ */
+#}
+
+<fieldset class="paragraphs-browser-paragraph-type">
+    <legend>{{ form.label }}</legend>
+
+  {% if form.image_path %}
+      <div>
+          <img src="{{ form.image_path }}" alt="{{ form.label }}">
+      </div>
+  {% endif %}
+
+  {% if form.description %}
+      <div>
+          <span>{{ form.description }}</span>
+      </div>
+  {% endif %}
+
+  {{ form.add_more }}
+</fieldset>

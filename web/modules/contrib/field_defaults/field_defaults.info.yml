@@ -1,0 +1,13 @@
+name: Field Defaults
+description: Adds and overwrites default field values on existing content
+type: module
+# core: 8.x
+configure: field_defaults.field_defaults_settings_form
+dependencies:
+  - field_ui
+
+# Information added by Drupal.org packaging script on 2018-04-09
+version: '8.x-1.0-rc2'
+core: '8.x'
+project: 'field_defaults'
+datestamp: 1523289784

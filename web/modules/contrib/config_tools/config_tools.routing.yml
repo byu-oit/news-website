@@ -1,0 +1,7 @@
+config_tools.settings:
+  path: '/admin/config/development/configuration/config-tools'
+  defaults:
+    _form: '\Drupal\config_tools\Form\ConfigToolsSettingsForm'
+    _title: 'Config tools configuration'
+  requirements:
+    _permission: 'administer config_tools'

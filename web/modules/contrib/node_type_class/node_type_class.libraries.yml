@@ -1,0 +1,8 @@
+node_type_class.classes:
+  version: VERSION
+  js:
+    node_type_class.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupal
+    - core/drupal.form

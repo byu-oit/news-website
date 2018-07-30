@@ -1,0 +1,24 @@
+{
+  "name": "drupal/require_on_publish",
+  "description": "",
+  "type": "drupal-module",
+  "homepage": "https://www.drupal.org/project/require_on_publish",
+  "support": {
+    "issues": "https://www.drupal.org/project/issues/require_on_publish"
+  },
+  "keywords": [
+    "require on publish",
+    "require",
+    "publish",
+    "required field",
+    "field"
+  ],
+  "license": "GPL-2.0+",
+  "authors": [
+    {
+      "name": "Mike Priscella",
+      "homepage": "https://drupal.org/u/mpriscella",
+      "role": "Maintainer"
+    }
+  ]
+}

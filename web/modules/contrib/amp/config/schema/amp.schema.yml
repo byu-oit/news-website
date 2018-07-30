@@ -1,0 +1,54 @@
+field.formatter.settings.amp_image:
+  type: mapping
+  label: 'AMP image field formatter settings'
+  mapping:
+    image_style:
+      type: string
+      label: 'The image style to be used'
+    image_link:
+      type: string
+      label: 'To what the image should be linked'
+    amp_layout:
+      type: string
+      label: 'Which AMP layout to use'
+    amp_fixed_height:
+      type: integer
+      label: 'The fixed height, if `fixed-height` was used as layout'
+
+field.formatter.settings.amp_iframe:
+  type: mapping
+  label: 'AMP iFrame field formatter settings'
+
+field.formatter.settings.amp_text:
+  type: mapping
+  label: 'AMP Text field formatter settings'
+
+field.formatter.settings.amp_text_summary_or_trimmed:
+  type: mapping
+  label: 'AMP Summary or Trimmed field formatter settings'
+  mapping:
+    trim_length:
+      type: integer
+      label: 'Trim length'
+
+field.formatter.settings.amp_text_trimmed:
+  type: mapping
+  label: 'AMP Trimmed Text field formatter settings'
+  mapping:
+    trim_length:
+      type: integer
+      label: 'Trim length'
+
+field.formatter.settings.amp_video:
+  type: mapping
+  label: 'AMP Video field formatter settings'
+  mapping:
+    use_description_as_link_text:
+      type: boolean
+      label: 'Replace the file name by its description when available'
+    amp_video_width:
+      type: integer
+      label: 'Width'
+    amp_video_height:
+      type: integer
+      label: 'Height'

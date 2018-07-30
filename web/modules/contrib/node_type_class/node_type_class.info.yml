@@ -1,0 +1,10 @@
+type: module
+name : Node type class
+description : Adds classes specific to content types
+# core : 8.x
+
+# Information added by Drupal.org packaging script on 2015-08-27
+version: '8.x-1.0-beta1'
+core: '8.x'
+project: 'node_type_class'
+datestamp: 1440699840

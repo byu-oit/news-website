@@ -1,0 +1,92 @@
+<?php
+
+use Drupal\image\Entity\ImageStyle;
+use Drupal\image\ImageStyleInterface;
+
+/**
+ * Implements hook_requirements().
+ */
+function amp_requirements($phase) {
+  $requirements = [];
+  if (!class_exists('\Lullabot\AMP\AMP')) {
+    $requirements['amp_library'] = [
+      'title' => t('AMP'),
+      'value' => t('Not available'),
+      'description' => t('The AMP module requires the PHP <a href="@library">AMP library</a>.', ['@library' => 'https://github.com/Lullabot/amp-library']),
+      'severity' => REQUIREMENT_ERROR,
+    ];
+  }
+
+  if ($phase == 'runtime') {
+    $module_handler = \Drupal::service('module_handler');
+    if (!$module_handler->moduleExists('token')) {
+      $requirements['amp_token'] = [
+        'title' => t('Token module required for AMP'),
+        'value' => t('Not installed'),
+        'description' => t('The AMP module requires the <a href="@module">Token</a> module as a dependency. Please download and install Token to prevent errors with AMP.', ['@module' => 'https://www.drupal.org/project/token']),
+        'severity' => REQUIREMENT_ERROR,
+      ];
+    }
+
+    $theme_handler = \Drupal::service('theme_handler');
+    if (!$theme_handler->themeExists('amptheme')) {
+      $requirements['amptheme'] = [
+        'title' => t('AMP Base Theme'),
+        'value' => t('Not installed'),
+        'description' => t('The AMP module requires the <a href="@theme">AMP Base Theme</a> to be installed.', ['@theme' => 'https://www.drupal.org/project/amptheme']),
+        'severity' => REQUIREMENT_ERROR,
+      ];
+    }
+  }
+  return $requirements;
+}
+
+/**
+ * Implementation of hook_update_last_removed().
+ */
+function amp_update_last_removed() {
+  return 8002;
+}
+
+/**
+ * Remove node_types from amp.settings.
+ */
+function amp_update_8001(&$sandbox) {
+  $config = \Drupal::service('config.factory')->getEditable('amp.settings');
+  $config->clear('node_types')->save();
+}
+
+/**
+ * REMOVED.
+ * @see https://www.drupal.org/project/amp/issues/2867636
+ */
+function amp_update_8002() {
+}
+
+/**
+ * Fix Amp's image style dependencies.
+ */
+function amp_update_8003() {
+  $config_factory = \Drupal::configFactory();
+  $styles = [
+    'amp_metadata_content_image_min_696px_wide',
+    'amp_metadata_logo_600x60',
+  ];
+  foreach ($styles as $style) {
+    $image_style = \Drupal::entityTypeManager()->getStorage('image_style')->load($style);
+    if ($image_style) {
+      $config = $config_factory->getEditable('image.style.' . $style);
+      $config->set('dependencies.enforced.module', ['amp']);
+      $config->save();
+    }
+  }
+}
+
+/**
+ * Remove AMP metatadata, deferring to the Schema.org Metadata module now.
+ */
+function amp_update_8004() {
+  $config_factory = \Drupal::configFactory();
+  $config = $config_factory->getEditable('amp.metadata');
+  $config->delete();
+}

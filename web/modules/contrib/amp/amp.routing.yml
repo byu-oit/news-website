@@ -1,0 +1,15 @@
+amp.settings:
+  path: '/admin/config/content/amp'
+  defaults:
+    _form: '\Drupal\amp\Form\AmpSettingsForm'
+    _title: 'Configure the AMP module'
+  requirements:
+    _permission: 'administer site configuration'
+
+amp.test_library_hello:
+  path: 'admin/amp/library/test'
+  defaults:
+    _controller: '\Drupal\amp\Controller\AMPTestLibrary::hello'
+    _title: 'Test Library'
+  requirements:
+    _permission: 'administer site configuration'

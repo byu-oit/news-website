@@ -1,0 +1,7 @@
+file_download_counter.settings:
+  path: '/admin/config/system/file-download-counter'
+  defaults:
+    _form: 'Drupal\file_download_counter\FileDownloadSettingsForm'
+    _title: 'File Downloads'
+  requirements:
+    _permission: 'administer file download counter'

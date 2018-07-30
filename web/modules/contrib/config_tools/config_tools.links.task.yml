@@ -1,0 +1,11 @@
+config_tools.settings:
+  route_name: config_tools.settings
+  base_route: config.sync
+  title: 'Config tools'
+  weight: 98
+
+config_tools.settings.basic:
+  route_name: config_tools.settings
+  parent_id: config_tools.settings
+  title: 'Basic'
+  weight: -100

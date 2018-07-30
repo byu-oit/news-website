@@ -1,0 +1,40 @@
+amp.settings:
+  type: mapping
+  label: 'AMP settings'
+  mapping:
+    langcode:
+      type: string
+    google_analytics_id:
+      type: string
+      label: 'Google Analytics Web Property ID'
+    google_adsense_id:
+      type: string
+      label: 'Google AdSense Publisher ID'
+    google_doubleclick_id:
+      type: string
+      label: 'Google DoubleClick for Publishers Network ID'
+    amp_pixel:
+      type: boolean
+      label: 'Whether the amp-pixel should be included'
+    amp_pixel_domain_name:
+      type: string
+      label: 'Domain name of tracking pixel'
+    amp_pixel_query_string:
+      type: string
+      label: 'Query path for domain of tracking pixel'
+    amp_pixel_random_number:
+      type: boolean
+      label: 'Whether to include a random number in the URL'
+    amp_library_warnings_display:
+      type: boolean
+      label: 'Whether to show AMP Library warnings in all text formatters for all users'
+    amp_library_process_full_html:
+      type: boolean
+      label: 'If the full html should be processed by the AMP library'
+    amp_library_process_full_html_warnings:
+      type: boolean
+      label: 'Whether to add a notice in the Drupal log for each AMP page showing AMP warnings'
+    amp_library_process_statistics:
+      type: boolean
+      label: 'Whether to add an HTML comment with statistics to the Drupal page output'
+

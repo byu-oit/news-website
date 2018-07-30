@@ -1,0 +1,5 @@
+git_config.settings:
+  route_name: git_config.settings
+  parent_id: config_tools.settings
+  title: 'Git'
+  weight: -100

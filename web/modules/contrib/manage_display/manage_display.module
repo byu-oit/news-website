@@ -1,0 +1,119 @@
+<?php
+/**
+ * @file
+ * Make base fields such as 'title' available in "Manage Display".
+ */
+
+use Drupal\Core\Entity\Display\EntityViewDisplayInterface;
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Entity\EntityTypeInterface;
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\node\Entity\NodeType;
+
+/**
+ * Implements hook_entity_base_field_info_alter().
+ */
+function manage_display_entity_base_field_info_alter(&$base_field_definitions, EntityTypeInterface $entity_type) {
+  $info = manage_display_base_field_info($entity_type->id());
+  foreach ($info as $field => $options) {
+    $base_field_definitions[$field]
+      ->setDisplayConfigurable('view', TRUE)
+      ->setDisplayOptions('view', $options);
+  }
+}
+
+/**
+ * Return information about the base fields that can be managed.
+ *
+ * @param string $entity_type_id
+ *   Entity type ID to return fields for.
+ *
+ * @return array
+ *   Array keyed by field name with value equal to the default display options.
+ */
+function manage_display_base_field_info($entity_type_id) {
+  $info['node']['title'] = [
+    'label' => 'hidden',
+    'type' => 'title',
+    'weight' => -50,
+  ];
+
+  $info['node']['uid'] = [
+    'label' => 'hidden',
+    'type' => 'submitted',
+    'weight' => -49,
+  ];
+
+  $info['node']['created'] = [
+    'label' => 'hidden',
+    'type' => 'timestamp',
+    'weight' => -48,
+  ];
+
+  $info['user']['name'] = $info['node']['title'];
+  $info['taxonomy_term']['name'] = $info['node']['title'];
+  $info['aggregator_feed']['title'] = $info['node']['title'];
+
+  // @todo Alter hook
+
+  return isset($info[$entity_type_id]) ? $info[$entity_type_id] : [];
+}
+
+/**
+ * Implements hook_theme().
+ */
+function manage_display_theme() {
+  return [
+    'submitted' => [
+      'base hook' => 'username',
+      'variables' => [
+        'date' => [],
+        'metadata' => [],
+        'account' => NULL,
+        'attributes' => [],
+        'link_options' => [],
+      ],
+    ],
+  ];
+}
+
+function template_preprocess_submitted(&$variables) {
+  $account = $variables['account'];
+
+  if (theme_get_setting('features.node_user_picture')) {
+    // To change user picture settings (e.g. image style), edit the 'compact'
+    // view mode on the User entity. Note that the 'compact' view mode might
+    // not be configured, so remember to always check the theme setting first.
+    $variables['author_picture'] = user_view($account, 'compact');
+  }
+
+  if (is_array($variables['date'])) {
+    $variables['date']['#inline_field'] = TRUE;
+    $variables['date'] = \Drupal::service('renderer')->render($variables['date']);
+  }
+}
+
+/**
+ * Implements hook_preprocess_node().
+ */
+function manage_display_preprocess_node(&$variables) {
+  // Move date into the created element.
+  if (isset($variables['content']['uid']) && ($variables['content']['uid']['#formatter'] == 'submitted')) {
+    if (isset($variables['date'])) {
+      $variables['content']['uid'][0]["#date"] = $variables['date'];
+      unset($variables['date']);
+    }
+    if (isset($variables['content']['created'])) {
+      $variables['content']['uid'][0]['#date'] = $variables['content']['created'];
+      unset($variables['content']['created']);
+    }
+  }
+}
+
+/**
+ * Imlements hook_form_FORM_ID_alter().
+ */
+function manage_display_form_node_type_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
+  // Hide display_submitted in GUI.
+  $form['display']['#access'] = FALSE;
+}

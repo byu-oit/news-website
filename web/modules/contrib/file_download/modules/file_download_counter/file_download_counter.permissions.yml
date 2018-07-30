@@ -1,0 +1,4 @@
+administer file download counter:
+  title: 'Administer file download counter'
+view file download counter:
+  title: 'View file download hits'

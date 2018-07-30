@@ -1,0 +1,25 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.social_media_embed.field_embed_code
+    - paragraphs.paragraphs_type.social_media_embed
+  module:
+    - text
+id: paragraph.social_media_embed.default
+targetEntityType: paragraph
+bundle: social_media_embed
+mode: default
+content:
+  field_embed_code:
+    weight: 0
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
+hidden:
+  created: true
+  status: true
+  uid: true

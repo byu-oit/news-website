@@ -9,7 +9,6 @@ dependencies:
     - field.field.node.story.field_contact_email
     - field.field.node.story.field_contact_phone
     - field.field.node.story.field_feature_as_hero
-    - field.field.node.story.field_full_name
     - field.field.node.story.field_hero_image
     - field.field.node.story.field_hero_read_more_text
     - field.field.node.story.field_image
@@ -109,14 +108,6 @@ content:
       custom_date_format: ''
       timezone: ''
     third_party_settings: {  }
-  field_full_name:
-    weight: 13
-    label: hidden
-    settings:
-      link_to_entity: false
-    third_party_settings: {  }
-    type: string
-    region: content
   field_image:
     weight: 3
     label: above

@@ -1,0 +1,7 @@
+config_files.settings:
+  path: '/admin/config/development/configuration/config-push/files'
+  defaults:
+    _form: '\Drupal\config_files\Form\ConfigFilesSettingsForm'
+    _title: 'Files Configuration'
+  requirements:
+    _permission: 'administer config_files'

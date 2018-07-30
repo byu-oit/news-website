@@ -1,0 +1,17 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - node.type.storify_paragraphs
+  module:
+    - user
+id: node.storify_paragraphs.teaser
+targetEntityType: node
+bundle: storify_paragraphs
+mode: teaser
+content:
+  links:
+    weight: 100
+    region: content
+hidden: {  }

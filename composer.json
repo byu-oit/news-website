@@ -37,7 +37,7 @@
         "drupal/field_defaults": "^1.0@RC",
         "drupal/field_display_label": "^1.0",
         "drupal/field_formatter_class": "^1.0",
-        "drupal/field_group": "3.x-dev",
+        "drupal/field_group": "3.x",
         "drupal/field_permissions": "^1.0@RC",
         "drupal/field_token_value": "^1.0",
         "drupal/file_download": "^1.1",
@@ -49,7 +49,6 @@
         "drupal/masquerade": "^2.0@beta",
         "drupal/maxlength": "^1.0@beta",
         "drupal/metatag": "^1.4",
-        "drupal/migrate_upgrade": "^2.0",
         "drupal/module_filter": "^3.1",
         "drupal/news_cards": "^1.0@beta",
         "drupal/node_class": "^1.0@beta",
@@ -62,7 +61,7 @@
         "drupal/require_on_publish": "^1.0@beta",
         "drupal/schema_metatag": "^1.2",
         "drupal/search_api": "^1.8",
-        "drupal/sharethis": "2.x-dev",
+        "drupal/sharethis": "2.x",
         "drupal/slick": "^1.0",
         "drupal/slick_views": "^1.0@RC",
         "drupal/smtp": "^1.0@beta",
@@ -139,7 +138,10 @@
 		        "Allow pseudo fields in manage display": "https://www.drupal.org/files/issues/2018-03-13/title.display-2923701-161.patch",
                 "RenderedEntity null value": "https://www.drupal.org/files/issues/2018-05-14/2972774-2.patch",
                 "Make CKEditor and IMCE play with each other": "https://www.drupal.org/files/issues/2018-03-29/2822217-drupalimagecaption-img-src-fix-13.diff"
-	        }
+	        },
+		"drupal/sharethis": {
+			"change service_string to array": "https://www.drupal.org/files/issues/Error-operator-not-supported-for-strings-2885710-12128018.patch"
+		}
 	    }
     }
 }

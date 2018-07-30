@@ -1,0 +1,23 @@
+uuid: 490d5c9a-6566-4e18-84e8-a6fa94b3d7bf
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_link
+    - paragraphs.paragraphs_type.stories
+  module:
+    - link
+id: paragraph.stories.field_link
+field_name: field_link
+entity_type: paragraph
+bundle: stories
+label: Title/Link
+description: 'Place the URL to the story in the <em>URL</em> field and the story title in the <em>Link text</em> field.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  link_type: 16
+  title: 2
+field_type: link

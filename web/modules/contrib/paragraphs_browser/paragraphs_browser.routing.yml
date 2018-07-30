@@ -1,0 +1,99 @@
+entity.paragraphs_browser_type.collection:
+  path: '/admin/structure/paragraphs_type/browsers'
+  defaults:
+    _entity_list: 'paragraphs_browser_type'
+    _title: 'Paragraphs browser types'
+  requirements:
+    _permission: 'administer paragraphs types'
+
+paragraphs_browser.type_add:
+  path: '/admin/structure/paragraphs_type/browsers/add'
+  defaults:
+    _entity_form: 'paragraphs_browser_type.add'
+    _title: 'Add paragraphs browser collection type'
+  requirements:
+    _permission: 'administer paragraphs types'
+
+entity.paragraphs_browser_type.edit_form:
+  path: '/admin/structure/paragraphs_type/browsers/{paragraphs_browser_type}/edit'
+  defaults:
+    _entity_form: 'paragraphs_browser_type.edit'
+  requirements:
+    _permission: 'administer paragraphs types'
+entity.paragraphs_browser_type.delete_form:
+  path: '/admin/structure/paragraphs_type/browsers/{paragraphs_browser_type}/delete'
+  defaults:
+    _entity_form: 'paragraphs_browser_type.delete'
+    _title: 'Delete'
+  requirements:
+    _permission: 'administer paragraphs types'
+entity.paragraphs_browser_type.groups_form:
+  path: '/admin/structure/paragraphs_type/browsers/{paragraphs_browser_type}/groups'
+  defaults:
+    _entity_form: 'paragraphs_browser_type.groups'
+    _title: 'Manage Groups'
+  requirements:
+    _permission: 'administer paragraphs types'
+  options:
+    paragraphs_browser_type:
+      view:
+        tempstore: TRUE
+        type: 'entity:paragraphs_browser_type'
+entity.paragraphs_browser_type.group_add_form:
+  path: '/admin/structure/paragraphs_type/browsers/{paragraphs_browser_type}/groups/add'
+  defaults:
+    _entity_form: 'paragraphs_browser_type.group_add'
+    _title: 'Add Group'
+  requirements:
+    _permission: 'administer paragraphs types'
+  options:
+    paragraphs_browser_type:
+      view:
+        tempstore: TRUE
+        type: 'entity:paragraphs_browser_type'
+paragraphs_browser.paragraphs_browser_type.group_edit_form:
+  path: '/admin/structure/paragraphs_type/browsers/{paragraphs_browser_type}/groups/{group_machine_name}/edit'
+  defaults:
+    _form: 'Drupal\paragraphs_browser\Form\GroupEditForm'
+    _title: 'Manage Group'
+  requirements:
+    _permission: 'administer paragraphs types'
+  options:
+    parameters:
+      paragraphs_browser_type:
+        type: entity:paragraphs_browser_type
+paragraphs_browser.paragraphs_browser_type.group_delete_form:
+  path: '/admin/structure/paragraphs_type/browsers/{paragraphs_browser_type}/groups/{group_machine_name}/delete'
+  defaults:
+    _form: 'Drupal\paragraphs_browser\Form\GroupDeleteConfirm'
+    _title: 'Delete Group'
+  requirements:
+    _permission: 'administer paragraphs types'
+  options:
+    parameters:
+      paragraphs_browser_type:
+        type: entity:paragraphs_browser_type
+paragraphs_browser.paragraph_type.group_edit:
+  path: '/admin/structure/paragraphs_type/{paragraphs_type}/browsers/groups'
+  defaults:
+    _form: 'Drupal\paragraphs_browser\Form\ParagraphTypeGroupsForm'
+    _title: 'Manage Groups'
+  requirements:
+    _permission: 'administer paragraphs types'
+  options:
+    parameters:
+      paragraphs_type:
+        type: entity:paragraphs_type
+paragraphs_browser.paragraphs_browser_controller:
+  path: '/paragraphs_browser/{field_config}/{paragraphs_browser_type}/{uuid}'
+  defaults:
+    _controller: '\Drupal\paragraphs_browser\Controller\ParagraphsBrowserController::paragraphsBrowserSelect'
+    _title: 'Select a paragraph type'
+  requirements:
+    _permission: 'access content'
+  options:
+    parameters:
+      field_config:
+        type: entity:field_config
+      paragraphs_browser_type:
+        type: entity:paragraphs_browser_type

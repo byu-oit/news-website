@@ -1,0 +1,6 @@
+download_all_files.download_path:
+  path: '/download_all_files/{node_id}/{field_name}'
+  defaults:
+    _controller: '\Drupal\download_all_files\Controller\DownloadController::downloadAllFiles'
+  requirements:
+    _permission: 'access content'

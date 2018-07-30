@@ -1,0 +1,4 @@
+amp.settings:
+  route_name: 'amp.settings'
+  base_route: 'amp.settings'
+  title: 'Configure'

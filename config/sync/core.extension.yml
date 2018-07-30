@@ -89,7 +89,6 @@ module:
   migrate_manifest: 0
   migrate_plus: 0
   migrate_tools: 0
-  migrate_upgrade: 0
   module_filter: 0
   news_cards: 0
   node: 0

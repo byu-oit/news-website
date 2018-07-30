@@ -1,0 +1,6 @@
+<?php
+
+/**
+ * @file
+ * Provides a field type allowing the value to be set using tokens.
+ */

@@ -1,0 +1,10 @@
+paragraphs_browser.type_add:
+  route_name: 'paragraphs_browser.type_add'
+  title: 'Add paragraphs browser type'
+  appears_on:
+    - entity.paragraphs_browser_type.collection
+paragraphs_browser.group_add:
+  route_name: 'entity.paragraphs_browser_type.group_add_form'
+  title: 'Add group'
+  appears_on:
+    - entity.paragraphs_browser_type.groups_form

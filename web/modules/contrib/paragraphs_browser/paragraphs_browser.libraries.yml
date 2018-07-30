@@ -1,0 +1,9 @@
+modal:
+  version: VERSION
+  js:
+    js/paragraphs_browser.modal.js: {}
+  css:
+    component:
+      css/paragraphs_browser.css: {}
+  dependencies:
+    - core/drupal.dialog.ajax

@@ -1,0 +1,54 @@
+<?php
+
+/**
+ * @file
+ * This is the file description for Node type class module.
+ *
+ * This file adds a fieldset to the node type form and adds classes to the
+ * node page in body tag based on the content type.
+ */
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function node_type_class_form_node_type_edit_form_alter(&$form, \Drupal\Core\Form\FormStateInterface &$form_state) {
+  /** @var \Drupal\node\NodeTypeInterface $type */
+  $type = $form_state->getFormObject()->getEntity();
+  $classes = $type->getThirdPartySetting('node_type_class', 'classes', '');
+  // Build the form.
+  $form['node_type_class_fieldset'] = array(
+    '#type' => 'details',
+    '#title' => t('Node type class'),
+    '#weight' => 1,
+    '#group' => 'additional_settings',
+    '#attached' => array(
+      'library' => array('node_type_class/node_type_class.classes'),
+    ),
+  );
+  $form['node_type_class_fieldset']['node_type_class'] = array(
+    '#title' => t('CSS class(es)'),
+    '#type' => 'textfield',
+    '#description' => t('To add multiple classes, separate them with a space.'),
+    '#default_value' => $classes,
+  );
+  $form['#entity_builders'][] = 'node_type_class_form_node_type_form_builder';
+}
+
+/**
+ * Entity builder for the node type form with Node type class.
+ */
+function node_type_class_form_node_type_form_builder($entity_type, NodeTypeInterface $type, &$form, \Drupal\Core\Form\FormStateInterface $form_state) {
+  $type->setThirdPartySetting('node_type_class', 'classes', $form_state->getValue('node_type_class'));
+}
+
+/**
+ * Implements hook_preprocess_html().
+ */
+function node_type_class_preprocess_html(&$variables) {
+  if (!empty($variables['node_type'])) {
+    $node_type = $variables['node_type'];
+    $type = \Drupal::service('entity.manager')->getStorage('node_type')->load($node_type);
+    $classes = $type->getThirdPartySetting('node_type_class', 'classes', '');
+    $variables['attributes']['class'][] = $classes;
+  }
+}

@@ -1,0 +1,53 @@
+<?php
+
+/**
+ * @file
+ * Check requirements.
+ */
+
+use Drupal\Core\Url;
+
+/**
+ * Implements hook_requirements().
+ */
+function git_config_requirements($phase) {
+
+  $requirements = [];
+  $requirements['git-wrapper'] = [
+    'title' => t('GitWrapper'),
+    'value' => t('Is present <em>(needed for config_tools submodule git_config)</em>'),
+  ];
+  $requirements['git'] = [
+    'title' => t('Git'),
+    'value' => t('Is present <em>(needed for config_tools submodule git_config)</em>'),
+  ];
+
+  if (!class_exists('GitWrapper\GitWrapper')) {
+    $requirements['git-wrapper']['value'] = t('Missing');
+    $url = Url::fromUri('https://github.com/cpliakas/git-wrapper');
+    $requirements['git-wrapper']['description'] = t('You must install the @wrapper PHP component to make use of the git_config module.', array('@wrapper' => \Drupal::l('GitWrapper', $url)));
+    $requirements['git-wrapper']['severity'] = REQUIREMENT_ERROR;
+  }
+  if (_check_git_executable() !== TRUE) {
+    $requirements['git']['value'] = t('Is missing');
+    $requirements['git']['description'] = t('You need to have git installed on server to use git_config');
+    $requirements['git']['severity'] = REQUIREMENT_WARNING;
+  }
+
+  return $requirements;
+}
+
+/**
+ * Check if git exists on server, only works for *nix.
+ *
+ * @todo add check for other systems.
+ *
+ * @return bool
+ *   Returns TRUE if git exists.
+ */
+function _check_git_executable() {
+  $check = shell_exec("command -v git");
+  if (!empty($check)) {
+    return TRUE;
+  }
+}

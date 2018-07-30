@@ -1,0 +1,4 @@
+services:
+  term_merge.term_merger:
+    class: Drupal\term_merge\TermMerger
+    arguments: ['@entity_type.manager', '@entity_type.bundle.info', '@entity_field.manager']

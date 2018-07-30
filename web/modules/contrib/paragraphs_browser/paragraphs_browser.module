@@ -1,0 +1,177 @@
+<?php
+
+/**
+ * @file
+ * Contains paragraphs_browser.module..
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\paragraphs_browser\Entity\BrowserType;
+
+/**
+ * Implements hook_help().
+ */
+function paragraphs_browser_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the paragraphs_browser module.
+    case 'help.page.paragraphs_browser':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Provides browser for adding additional paragraphs.') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function paragraphs_browser_theme() {
+  return array(
+    'paragraphs_browser_wrapper' => array(
+      'variables' => array('children' => NULL),
+    ),
+    'paragraphs_browser_paragraph_type' => array(
+      'render element' => 'form',
+    ),
+  );
+}
+
+/**
+ * Load function for Paragraphs Browser Type.
+ *
+ * @param $entity
+ * @return \Drupal\Core\Entity\EntityInterface|null|static
+ */
+function paragraphs_browser_type_load($name) {
+  return BrowserType::load($name);
+}
+
+/**
+ * Implements hook_form_alter().
+ */
+function paragraphs_browser_form_paragraphs_type_edit_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
+  $entity = $form_state->getFormObject()->getEntity();
+
+  // Add additional fields to the Paragraph Type add/edit form.
+  $form['paragraphs_browser'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Paragraphs Browser Settings'),
+    '#tree' => TRUE,
+  );
+  $form['paragraphs_browser']['description'] = array(
+    '#type' => 'textarea',
+    '#title' => 'Description',
+    '#default_value' => $entity->getThirdPartySetting('paragraphs_browser', 'description')
+
+);
+
+  // Provide an image path field, or the ability to upload an image directly.
+  $form['paragraphs_browser']['image'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Image Settings'),
+  );
+  $form['paragraphs_browser']['image']['image_path'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Path to image'),
+    '#default_value' => $entity->getThirdPartySetting('paragraphs_browser', 'image_path')
+  );
+  $form['paragraphs_browser']['image']['image_upload'] = array(
+    '#type' => 'file',
+    '#title' => t('Upload image'),
+    '#maxlength' => 40,
+    '#description' => t("If you don't have direct file access to the server, use this field to upload your image.")
+  );
+
+  // Add a validation callback for added fields.
+  $form['#validate'][] = 'paragraphs_browser_form_paragraphs_type_edit_form_validate';
+
+  // Add a callback to the entity builder array for attaching new field data.
+  $form['#entity_builders'][] = 'paragraphs_browser_paragraph_type_form_builder';
+}
+
+function paragraphs_browser_form_paragraphs_type_edit_form_validate(&$form, \Drupal\Core\Form\FormStateInterface $form_state) {
+  $values = $form_state->getValue('paragraphs_browser');
+  if (\Drupal::moduleHandler()->moduleExists('file')) {
+    // Handle file uploads.
+
+    $validators = array('file_validate_extensions' => array('png gif jpg jpeg apng svg'));
+
+    // Check for a new uploaded logo.
+    $file = file_save_upload('paragraphs_browser', $validators, FALSE, 0);
+    if (isset($file)) {
+      // File upload was attempted.
+      if ($file) {
+        $values['image']['image_upload'] = $file;
+        // Put the temporary file in form_values so we can save it on submit.
+        $form_state->setValue('paragraphs_browser', $values);
+      }
+      else {
+        // File upload failed.
+        $form_state->setErrorByName('image_upload', t('The image could not be uploaded.'));
+      }
+    }
+  }
+}
+
+/**
+ * Entity builder for the menu configuration entity.
+ */
+function paragraphs_browser_paragraph_type_form_builder($entity_type, \Drupal\paragraphs\Entity\ParagraphsType $paragraphs_type, &$form, \Drupal\Core\Form\FormStateInterface $form_state) {
+  // Get the paragraphs_browser values.
+  if ($values = $form_state->getValue('paragraphs_browser')) {
+    // If a new file has been uploaded, copy the file and save the new files path to the 'image_path' field.
+    if (!empty($values['image']['image_upload'])) {
+      $filename = file_unmanaged_copy($values['image']['image_upload']->getFileUri());
+      $values['image']['image_path'] = $filename;
+    }
+    // Unset the value for the image_upload field.
+    unset($values['image']['image_upload']);
+
+    // If the user entered a path relative to the system files directory for
+    // the image, store a public:// URI so the theme system can handle it.
+    if (!empty($values['image']['image_path'])) {
+      $values['image']['image_path'] = paragraphs_browser_image_path_validate($values['image']['image_path']);
+    }
+
+    // If description value provided, set third party setting on paragraph_type entity.
+    if(!empty($values['description'])) {
+      $paragraphs_type->setThirdPartySetting('paragraphs_browser', 'description', $values['description']);
+    } else {
+      $paragraphs_type->unsetThirdPartySetting('paragraphs_browser', 'description');
+    }
+    // If image_path value provided, set third party setting on paragraph_type entity.
+    if(!empty($values['image']['image_path'])) {
+      $paragraphs_type->setThirdPartySetting('paragraphs_browser', 'image_path', $values['image']['image_path']);
+    } else {
+      $paragraphs_type->unsetThirdPartySetting('paragraphs_browser', 'image_path');
+    }
+  }
+}
+
+/**
+ * Utility confirms path is relative to Drupal root, and prepends URI if applicable.
+ *
+ * @param $path
+ * @return bool|string
+ */
+function paragraphs_browser_image_path_validate($path) {
+  // Absolute local file paths are invalid.
+  if (drupal_realpath($path) == $path) {
+    return FALSE;
+  }
+  // A path relative to the Drupal root or a fully qualified URI is valid.
+  if (is_file($path)) {
+    return $path;
+  }
+  // Prepend 'public://' for relative file paths within public filesystem.
+  if (file_uri_scheme($path) === FALSE) {
+    $path = 'public://' . $path;
+  }
+  if (is_file($path)) {
+    return $path;
+  }
+  return FALSE;
+}
+

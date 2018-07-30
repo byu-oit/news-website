@@ -1,0 +1,14 @@
+name: AMP Adsense
+type: module
+description: Helps render Adsense blocks as AMP elements
+# core: 8.x
+package: Other
+dependencies:
+  - amp
+  - adsense
+
+# Information added by Drupal.org packaging script on 2018-05-16
+version: '8.x-2.1'
+core: '8.x'
+project: 'amp'
+datestamp: 1526489584

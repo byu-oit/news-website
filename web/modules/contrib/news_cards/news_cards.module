@@ -1,0 +1,35 @@
+<?php
+
+/**
+ * @file
+ * Contains news_cards.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function news_cards_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the news_cards module.
+    case 'help.page.news_cards':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Paragraph styles to display external news articles in a card format.') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function news_cards_theme($existing, $type, $theme, $path) {
+  $theme = [];
+  $theme['paragraph__stories'] = [
+    'template' => 'paragraph--stories',
+  ];
+  return $theme;
+}

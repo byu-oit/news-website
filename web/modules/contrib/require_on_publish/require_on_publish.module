@@ -1,0 +1,70 @@
+<?php
+
+/**
+ * @file
+ * Module file for the Require on Publish module.
+ */
+
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\field\Entity\FieldConfig;
+use Drupal\Core\Entity\EntityTypeInterface;
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function require_on_publish_form_field_config_edit_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  /** @var Drupal\node\NodeInterface $node */
+  $node = $form['#entity'];
+
+  if ($node->getEntityTypeId() !== 'node') {
+    return;
+  }
+
+  $field_name = $form['default_value']['widget']['#field_name'];
+  /** @var \Drupal\field\FieldConfigInterface $field */
+  $field_config = FieldConfig::loadByName($node->getEntityTypeId(), $node->bundle(), $field_name);
+
+  $form['require_on_publish'] = [
+    '#type' => 'checkbox',
+    '#title' => t('Required on Publish'),
+    '#default_value' => $field_config->getSetting('require_on_publish') ?? FALSE,
+    '#weight' => -4,
+  ];
+  $form['actions']['submit']['#submit'][] = 'require_on_publish_field_config_submit';
+}
+
+/**
+ * Submit handler for the form_field_config_edit form.
+ */
+function require_on_publish_field_config_submit($form, FormStateInterface $form_state) {
+  /** @var \Drupal\Core\Config\ConfigFactoryInterface $config */
+  $config = \Drupal::configFactory();
+
+  /** @var Drupal\node\NodeInterface $node */
+  $node = $form['#entity'];
+
+  $field_name = $form['default_value']['widget']['#field_name'];
+  $config_id = sprintf('field.field.%s.%s.%s', $node->getEntityTypeId(), $node->bundle(), $field_name);
+
+  /** @var \Drupal\Core\Config\Config $field_config */
+  $field_config = $config->getEditable($config_id);
+  /** @var int $value */
+  $value = $form_state->getValue('require_on_publish');
+
+  $field_config->set('settings.require_on_publish', $value)->save(TRUE);
+}
+
+/**
+ * Implements hook_entity_bundle_field_info_alter().
+ */
+function require_on_publish_entity_bundle_field_info_alter(&$fields, EntityTypeInterface $entity_type, $bundle) {
+  if ($entity_type->id() !== 'node') {
+    return;
+  }
+
+  foreach ($fields as $field) {
+    if ($field->getSetting('require_on_publish')) {
+      $field->addConstraint('require_on_publish', []);
+    }
+  }
+}

@@ -1,0 +1,9 @@
+paragraphs_browser_type.collection:
+  title: 'Manage Browsers'
+  description: 'Configure paragraph browser types.'
+  base_route: entity.paragraphs_type.collection
+  route_name: entity.paragraphs_browser_type.collection
+paragraphs_browser.paragraph_type.group_edit:
+  title: 'Configure Groups'
+  route_name: paragraphs_browser.paragraph_type.group_edit
+  base_route: entity.paragraphs_type.edit_form

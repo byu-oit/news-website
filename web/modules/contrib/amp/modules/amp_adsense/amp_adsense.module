@@ -1,0 +1,42 @@
+<?php
+
+use Drupal\adsense\Plugin\AdsenseAd\ManagedAd;
+
+/**
+ * Implements hook_preprocess_block().
+ */
+function amp_adsense_preprocess_block(array &$variables) {
+  $amp_context = \Drupal::service('router.amp_context');
+  if ($amp_context->isAmpRoute() && ($variables['base_plugin_id'] === 'adsense_managed_ad_block' || $variables['base_plugin_id'] === 'adsense_cse_ad_block')) {
+    // Get the required block variables.
+    $height = $variables['configuration']['ad_height'];
+    $width = $variables['configuration']['ad_width'];
+    $data_ad_client = \Drupal::config('adsense.settings')->get('adsense_basic_id');
+    $data_ad_slot = $variables['configuration']['ad_slot'];
+
+    // Get the optional block variables.
+    if (isset($variables['content']['#classes'])) {
+      $classes = $variables['content']['#classes'];
+    }
+    else {
+      $classes = [];
+    }
+
+    $variables['content'] = [
+      'inside' => [
+        '#theme' => 'amp_ad',
+        '#type' => 'adsense',
+        '#attributes' => [
+          'class' => $classes,
+          'height' => $height,
+          'width' => $width,
+          'data-ad-client'  => $data_ad_client,
+          'data-ad-slot'  => $data_ad_slot
+        ]
+      ]
+    ];
+    if (!empty($classes)) {
+      $variables['content']['inside']['#attributes']['class'] = $classes;
+    }
+  }
+}

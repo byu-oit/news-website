@@ -1,0 +1,7 @@
+field.formatter.settings.field_token_value_text:
+  type: mapping
+  label: 'Field Token Value configuration'
+  mapping:
+    wrapper:
+      type: string
+      label: 'Wrapper'

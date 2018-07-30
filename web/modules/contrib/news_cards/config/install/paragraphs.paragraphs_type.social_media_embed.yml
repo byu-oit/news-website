@@ -1,0 +1,8 @@
+langcode: en
+status: true
+dependencies: {  }
+id: social_media_embed
+label: 'Social Media Embed'
+icon_uuid: null
+description: 'Embed code for a social media post.'
+behavior_plugins: {  }

@@ -1,0 +1,10 @@
+field.formatter.settings.title:
+  type: mapping
+  label: 'Title field formatter settings.'
+  mapping:
+    linked:
+      type: boolean
+      label: 'Linked'
+    tag:
+      type: string
+      label: 'Tag'

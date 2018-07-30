@@ -1,0 +1,17 @@
+name: AMP Base
+type: theme
+# amptheme uses Stable as its base theme to minimize markup: that is the default
+# base theme so does not need to be declared.
+description: The AMP Base theme converts core templates to use AMP HTML.
+package: Custom
+# core: 8.x
+regions:
+  header: Header
+  content: Content
+  footer: Footer
+
+# Information added by Drupal.org packaging script on 2018-04-07
+version: '8.x-1.1'
+core: '8.x'
+project: 'amptheme'
+datestamp: 1523124484

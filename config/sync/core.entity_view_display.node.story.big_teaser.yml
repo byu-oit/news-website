@@ -9,7 +9,6 @@ dependencies:
     - field.field.node.story.field_contact_email
     - field.field.node.story.field_contact_phone
     - field.field.node.story.field_feature_as_hero
-    - field.field.node.story.field_full_name
     - field.field.node.story.field_hero_image
     - field.field.node.story.field_hero_read_more_text
     - field.field.node.story.field_image
@@ -87,7 +86,6 @@ hidden:
   field_contact_email: true
   field_contact_phone: true
   field_feature_as_hero: true
-  field_full_name: true
   field_hero_image: true
   field_hero_read_more_text: true
   field_image: true

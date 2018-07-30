@@ -1,0 +1,13 @@
+name: 'News Cards'
+type: module
+description: 'Paragraph styles to display external news articles in a card format.'
+# core: 8.x
+package: 'Paragraphs'
+dependencies:
+  - paragraphs:paragraphs
+
+# Information added by Drupal.org packaging script on 2018-02-26
+version: '8.x-1.0-beta3'
+core: '8.x'
+project: 'news_cards'
+datestamp: 1519670586

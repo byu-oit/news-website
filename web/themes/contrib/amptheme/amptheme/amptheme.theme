@@ -1,0 +1,296 @@
+<?php
+
+use Drupal\core\Url;
+use Drupal\Core\Template\Attribute;
+use Drupal\Core\Image\ImageInterface;
+use Drupal\Core\StreamWrapper\PublicStream;
+use Drupal\node\NodeInterface;
+
+/**
+ * Implements hook_theme().
+ */
+function amptheme_theme($existing, $type, $theme, $path) {
+  return [
+    'amp_skip_link' => [
+      'variables' => [
+        'skiptext' => NULL
+      ],
+      'template' => 'navigation/amp-skip-link'
+    ]
+  ];
+}
+
+/**
+* Implements hook_preprocess_html() for HTML document templates.
+*/
+function amptheme_preprocess_html(&$variables) {
+  foreach ($variables['page']['#attached']['html_head'] as $key => $value) {
+    if ($value[1] === 'viewport') {
+      $value[0]['#attributes']['content'] = 'width=device-width,minimum-scale=1,initial-scale=1';
+      $variables['page']['#attached']['html_head'][$key] = $value;
+    }
+    // Remove any other scripts that are being attached to the page.
+    if ($value[0]['#tag'] == 'script' && (!isset($value[0]['#attributes']['type']) || $value[0]['#attributes']['type'] != 'application/ld+json')) {
+      unset($variables['page']['#attached']['html_head'][$key]);
+    }
+  }
+
+  // Remove the toolbar from page_top
+  if (isset($variables['page_top']['toolbar'])) {
+    unset($variables['page_top']['toolbar']);
+  }
+
+  // Remove RDF and Metatag properties incompatible with AMP specification.
+  $attribute_list= [
+    'prefix',
+    'xmlns:dc',
+    'xmlns:og',
+    'xmlns:article',
+    'xmlns:book',
+    'xmlns:product',
+    'xmlns:profile',
+    'xmlns:video',
+    'itemtype',
+    'itemscope'
+  ];
+  if (isset($variables['html_attributes'])) {
+    foreach($attribute_list as $attribute_item) {
+      if (isset($variables['html_attributes'][$attribute_item])) {
+        unset($variables['html_attributes'][$attribute_item]);
+      }
+    }
+  }
+
+  // Add skip link render array.
+  $variables['amp_skip_link'] = [
+    '#theme' => 'amp_skip_link',
+    '#skiptext' => t('Skip to main content')
+  ];
+}
+
+/**
+ * Implements hook_preprocess_node() for node templates.
+ */
+function amptheme_preprocess_node(&$variables) {
+  // Remove RDF properties incompatible with AMP specification.
+  if (isset($variables['attributes']['about'])) {
+    unset($variables['attributes']['about']);
+  }
+  if (isset($variables['attributes']['typeof'])) {
+    unset($variables['attributes']['typeof']);
+  }
+  if (isset($variables['title_suffix']['rdf_meta_title'])) {
+    unset($variables['title_suffix']['rdf_meta_title']);
+  }
+  if (isset($variables['metadata'])) {
+    unset($variables['metadata']);
+  }
+  if (isset($variables['title_suffix']['rdf_meta_comment_count'])) {
+    unset($variables['title_suffix']['rdf_meta_comment_count']);
+  }
+}
+
+/**
+ * Implements hook_preprocess_user() for user templates.
+ */
+function amptheme_preprocess_user(&$variables) {
+  // Remove RDF properties incompatible with AMP specification.
+  if (isset($variables['attributes']['about'])) {
+    unset($variables['attributes']['about']);
+  }
+  if (isset($variables['attributes']['typeof'])) {
+    unset($variables['attributes']['typeof']);
+  }
+  if (isset($variables['#attached']['html_head']['rdf_user_username'])) {
+    unset($variables['#attached']['html_head']['rdf_user_username']);
+  }
+}
+
+/**
+ * Implements hook_preprocess_username() for username templates.
+ */
+function amptheme_preprocess_username(&$variables) {
+  // Remove RDF properties incompatible with AMP specification.
+  if (isset($variables['attributes']['about'])) {
+    unset($variables['attributes']['about']);
+  }
+  if (isset($variables['attributes']['typeof'])) {
+    unset($variables['attributes']['typeof']);
+  }
+  if (isset($variables['attributes']['property'])) {
+    unset($variables['attributes']['property']);
+  }
+  if (isset($variables['attributes']['content'])) {
+    unset($variables['attributes']['content']);
+  }
+  if (isset($variables['attributes']['datatype'])) {
+    unset($variables['attributes']['datatype']);
+  }
+}
+
+/**
+ * Implements hook_preprocess_comment() for comment templates.
+ */
+function amptheme_preprocess_comment(&$variables) {
+  // Remove RDF properties incompatible with AMP specification.
+  if (isset($variables['attributes']['about'])) {
+    unset($variables['attributes']['about']);
+  }
+  if (isset($variables['attributes']['typeof'])) {
+    unset($variables['attributes']['typeof']);
+  }
+  if (isset($variables['author']['#theme']['rdf_wrapper'])) {
+    $variables['author'] = $variables['author']['#content'];
+  }
+  foreach ($variables['submitted'] as $key => $submitted) {
+    if (isset($submitted['#theme']) && ($submitted['#theme'] == 'rdf_wrapper')) {
+      $variables['submitted'][$key] = $variables['submitted'][$key]['#content'];
+    }
+  }
+  if (isset($variables['title_attributes']['property'])) {
+    unset($variables['title_attributes']['property']);
+  }
+  if (isset($variables['title_attributes']['datatype'])) {
+    unset($variables['title_attributes']['datatype']);
+  }
+  if (isset($variables['rdf_metadata_attributes'])) {
+    unset($variables['rdf_metadata_attributes']);
+  }
+  if (isset($variables['content']['comment_body']['#prefix'])) {
+    unset($variables['content']['comment_body']['#prefix']);
+  }
+}
+
+/**
+ * Implements hook_preprocess_taxonomy_term() for taxonomy term templates.
+ */
+function amptheme_preprocess_taxonomy_term(&$variables) {
+  // Remove RDF properties incompatible with AMP specification.
+  if (isset($variables['attributes']['about'])) {
+    unset($variables['attributes']['about']);
+  }
+  if (isset($variables['attributes']['typeof'])) {
+    unset($variables['attributes']['typeof']);
+  }
+  if (isset($variables['title_suffix']['taxonomy_term_rdfa'])) {
+    unset($variables['title_suffix']['taxonomy_term_rdfa']);
+  }
+}
+
+/**
+ * Implements hook_preprocess_image() for image templates.
+ */
+function amptheme_preprocess_image(&$variables) {
+  // Remove RDF properties incompatible with AMP specification.
+  if (isset($variables['attributes']['typeof'])) {
+    unset($variables['attributes']['typeof']);
+  }
+}
+
+/**
+ * Implements hook_preprocess_rdf_metadata() for rdf metadata templates.
+ */
+function amptheme_preprocess_rdf_metadata(&$variables) {
+  // Remove RDF properties incompatible with AMP specification.
+  foreach ($variables['metadata'] as $key => $attributes) {
+    $variables['metadata'][$key] = new Attribute();
+  }
+}
+
+/**
+ * Implements hook_preprocess_block() for block templates.
+ */
+function amptheme_preprocess_block(&$variables) {
+  switch ($variables['base_plugin_id']) {
+    case 'system_branding_block':
+      if ($variables['content']['site_logo']['#access'] && ($logo_uri = $variables['content']['site_logo']['#uri'])) {
+        // Check if logo is an SVG.
+        if (substr(strrev($logo_uri), 0, 4) === strrev('.svg')) {
+          // The logo URI should be a relative path.
+          if (substr($logo_uri, 0, 1) === '/') {
+            $logo_uri = DRUPAL_ROOT . $logo_uri;
+          }
+
+          if (file_exists($logo_uri)) {
+            // Load XML for SVG file.
+            $logo_xml = simplexml_load_file($logo_uri);
+            $logo_attributes = $logo_xml ? $logo_xml->attributes() : NULL;
+          }
+
+          if (!empty($logo_attributes)) {
+            // The amp-img tag generated for the logo requires height and width to be defined.
+            if (property_exists($logo_attributes, 'height') && property_exists($logo_attributes, 'width')) {
+              $variables['site_logo_height'] = round($logo_attributes->height, 0);
+              $variables['site_logo_width'] = round($logo_attributes->width, 0);
+            }
+            // Use the SVG viewBox property in order to obtain height and width.
+            elseif (property_exists($logo_attributes, 'viewBox')) {
+              $logo_viewbox = (string) $logo_attributes->viewBox;
+              $logo_viewbox_coordinates = [];
+
+              // Create array of viewBox coordinates depending on item delimiter.
+              if (strpos($logo_viewbox, ',') !== false) {
+                $logo_viewbox_coordinates = explode(',', $logo_viewbox);
+              }
+              elseif (strpos($logo_viewbox, ' ') !== false) {
+                $logo_viewbox_coordinates = explode(' ', $logo_viewbox);
+              }
+
+              // Get SVG height and width from full viewBox coordinates.
+              if (!empty($logo_viewbox_coordinates[2]) && !empty($logo_viewbox_coordinates[3])) {
+                $variables['site_logo_height'] = round($logo_viewbox_coordinates[3], 0);
+                $variables['site_logo_width'] = round($logo_viewbox_coordinates[2], 0);
+              }
+            }
+          }
+        }
+        // If logo is not an SVG, we can use the image factory service.
+        else {
+          // The logo URI should be a relative path.
+          if (substr($logo_uri, 0, 1) === '/') {
+            $logo_uri = DRUPAL_ROOT . $logo_uri;
+          }
+
+          if (file_exists($logo_uri)) {
+            /** @var ImageInterface $logo_image */
+            $logo_image = \Drupal::service('image.factory')->get($logo_uri);
+          }
+
+          if (!empty($logo_image) && $logo_image->isValid()) {
+            // Get height and width of logo from image factory service.
+            $variables['site_logo_height'] = $logo_image->getHeight();
+            $variables['site_logo_width'] = $logo_image->getWidth();
+          }
+          else {
+            $variables['site_logo_width'] = $variables['site_logo_height'] = NULL;
+          }
+        }
+      }
+  }
+}
+
+/**
+ * Implements hook_preprocess_field() for field templates.
+ */
+function amptheme_preprocess_field(&$variables) {
+  // Remove RDF properties incompatible with AMP specification.
+  if (isset($variables['attributes']['rel'])) {
+    unset($variables['attributes']['rel']);
+  }
+
+  if (isset($variables['attributes']['rev'])) {
+    unset($variables['attributes']['rev']);
+  }
+
+  if (isset($variables['attributes']['property'])) {
+    unset($variables['attributes']['property']);
+  }
+
+  if (isset($variables['attributes']['content'])) {
+    unset($variables['attributes']['content']);
+  }
+
+  if (isset($variables['attributes']['datatype'])) {
+    unset($variables['attributes']['datatype']);
+  }
+}

@@ -1,0 +1,46 @@
+drupal.sharethisform:
+  version: VERSION
+  css:
+    theme:
+      css/sharethis.form.css: {}
+  js:
+    js/sharethis.form.js: {}
+  dependencies:
+      - core/jquery.ui.dialog
+      - core/drupal.ajax
+      - core/drupalSettings
+
+drupal.sharethispicker:
+  version: VERSION
+  css:
+    component:
+      css/stlib_picker.css: {}
+  js:
+    js/stlib_picker.js: { weight: -9 }
+
+drupal.sharethispickerexternal:
+  version: VERSION
+  js:
+    https://ws.sharethis.com/share5x/js/stcommon.js: {}
+  dependencies:
+      - core/jquery
+
+sharethispickerexternalbuttonsws:
+  js:
+    https://ws.sharethis.com/button/buttons.js: { type: external }
+  dependencies:
+      - core/jquery
+
+sharethispickerexternalbuttons:
+  js:
+    https://ws.sharethis.com/button/buttons.js: { type: external }
+  dependencies:
+      - core/jquery
+
+sharethis:
+  js:
+    js/sharethis.js: { weight: -3 }
+  dependencies:
+      - core/jquery.ui.dialog
+      - core/drupal.ajax
+      - core/drupalSettings

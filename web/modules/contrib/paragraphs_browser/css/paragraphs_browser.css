@@ -1,0 +1,122 @@
+/**
+ * For custom styles.
+ */
+
+.field--widget-entity-reference-paragraphs-browser {
+  margin-bottom: 2em;
+}
+
+.paragraphs-browser-wrapper .form-item-filters {
+  display: inline-block;
+}
+
+.paragraphs-browser-wrapper .form-item-pb-modal-text {
+  margin: 0.75em 0 1.75em;
+}
+
+@media screen and (min-width: 480px) {
+  .paragraphs-browser-wrapper .form-item-pb-modal-text {
+    display: inline-block;
+    margin: 0.75em 0 0.75em 15px;
+  }
+}
+
+.paragraphs-browser-wrapper .form-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.paragraphs-browser-wrapper .form-wrapper {
+  margin: 1em 0 3em;
+}
+
+.paragraphs-browser-wrapper .form-wrapper:last-child {
+  margin: 1em 0;
+}
+
+.paragraphs-browser-wrapper h2 {
+  width: 100%;
+  margin: 0;
+}
+
+.paragraphs-browser-wrapper fieldset:not(.fieldgroup) {
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  padding: 24px 10px 35px;
+}
+
+@media screen and (min-width: 480px) {
+  .paragraphs-browser-wrapper fieldset:not(.fieldgroup) {
+    width: 48%;
+    margin-left: 2.99%;
+  }
+
+  .paragraphs-browser-wrapper fieldset:nth-of-type(odd) {
+    margin-left: 0;
+  }
+}
+
+@media screen and (min-width: 600px) {
+  .paragraphs-browser-wrapper fieldset:not(.fieldgroup) {
+    width: 32%;
+    margin-left: 1.99%;
+  }
+
+  .paragraphs-browser-wrapper fieldset:nth-of-type(odd) {
+    margin-left: 1.99%;
+  }
+
+  .paragraphs-browser-wrapper fieldset:nth-of-type(3n+1) {
+    margin-left: 0;
+  }
+}
+
+.paragraphs-browser-wrapper fieldset:not(.fieldgroup) legend {
+  text-align: center;
+  position: relative;
+  letter-spacing: 0;
+  margin: 0;
+  padding: 0 .5em;
+  top: 0;
+}
+
+.paragraphs-browser-wrapper fieldset div {
+  text-align: center;
+}
+
+.paragraphs-browser-wrapper fieldset input {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translate(-50%, -85%);
+  max-width: 30%;
+  margin: 0;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .25);
+}
+
+@media screen and (min-width: 480px) {
+  .paragraphs-browser-wrapper fieldset input {
+    max-width: 50%;
+  }
+}
+
+@media screen and (min-width: 600px) {
+  .paragraphs-browser-wrapper fieldset input {
+    transform: translate(-50%, -50%);
+  }
+}
+
+.paragraphs-browser-wrapper img {
+  max-width: 100%;
+  height: auto;
+}
+
+.paragraphs-browser-paragraph-type {
+  cursor: pointer;
+}
+
+.paragraphs-browser-paragraph-type:hover {
+  border-color: #00a5e3;
+}

@@ -1,0 +1,7 @@
+git_config.settings:
+  path: '/admin/config/development/configuration/config-tools/git'
+  defaults:
+    _form: '\Drupal\git_config\Form\GitConfigSettingsForm'
+    _title: 'Git Configuration'
+  requirements:
+    _permission: 'administer git_config'
