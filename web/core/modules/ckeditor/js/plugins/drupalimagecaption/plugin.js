@@ -70,7 +70,7 @@
 
         var originalUpcast = widgetDefinition.upcast;
         widgetDefinition.upcast = function (element, data) {
-          if (element.name !== 'img' || !element.attributes['data-entity-type'] || !element.attributes['data-entity-uuid']) {
+          if (element.name !== 'img') {
             return;
           } else if (element.attributes['data-cke-realelement']) {
               return;

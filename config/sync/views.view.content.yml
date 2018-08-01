@@ -492,7 +492,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
-          operator: contains
+          operator: word
           value: ''
           group: 1
           exposed: true
@@ -509,6 +509,12 @@ display:
             remember_roles:
               authenticated: authenticated
               anonymous: '0'
+              guest_writer: '0'
+              guest_media_contact: '0'
+              writer: '0'
+              photographers: '0'
+              editor: '0'
+              programmer: '0'
               administrator: '0'
             placeholder: ''
           is_grouped: false

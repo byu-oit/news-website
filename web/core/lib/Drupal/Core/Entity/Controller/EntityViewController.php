@@ -70,6 +70,11 @@ class EntityViewController implements ContainerInjectionInterface {
     if ($entity instanceof FieldableEntityInterface) {
       $label_field = $entity->getEntityType()->getKey('label');
       if (isset($page[$label_field])) {
+        // @todo Change other entity types to inline also as part of
+        // https://www.drupal.org/project/drupal/issues/2941208
+        if ($entity_type == 'node') {
+          $page[$label_field]['#inline_field'] = TRUE;
+        }
         $page['#title'] = $this->renderer->render($page[$label_field]);
       }
     }

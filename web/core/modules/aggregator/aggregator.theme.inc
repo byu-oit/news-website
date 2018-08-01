@@ -46,5 +46,8 @@ function template_preprocess_aggregator_feed(&$variables) {
     $variables['content'][$key] = $variables['elements'][$key];
   }
   $variables['full'] = $variables['elements']['#view_mode'] == 'full';
-  $variables['title'] = $feed->label();
+  // If the title field is not configurable, make it available separately.
+  if (!$feed->getFieldDefinition('title')->isDisplayConfigurable('view')) {
+    $variables['title'] = $feed->label();
+  }
 }

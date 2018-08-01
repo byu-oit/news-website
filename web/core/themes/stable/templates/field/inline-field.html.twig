@@ -1,10 +1,15 @@
 {#
 /**
  * @file
- * Default theme implementation for the node created field.
+ * Template fragment for inclusion in field.html.twig and derived templates
+ * when inline_field is TRUE:
+ *   {% if inline_field %}
+ *   {% include "inline-field.html.twig" %}
+ *   {% else %}
  *
- * This is an override of field.html.twig for the node created field. See that
- * template for documentation about its details and overrides.
+ * Markup is suitable for display inside span/h1/h2 etc.
+ *
+ * See field.html.twig for documentation about details and overrides.
  *
  * Available variables:
  * - attributes: HTML attributes for the containing span element.
@@ -17,8 +22,6 @@
  * - label_display: The display settings for the label.
  *
  * @see field.html.twig
- *
- * @ingroup themeable
  */
 #}
 <span{{ attributes }}>

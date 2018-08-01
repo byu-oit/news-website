@@ -105,6 +105,9 @@ class RenderedEntity extends FieldPluginBase implements CacheableDependencyInter
    * {@inheritdoc}
    */
   public function render(ResultRow $values) {
+    if ($entity === NULL) {
+      return NULL;
+    }
     $entity = $this->getEntityTranslation($this->getEntity($values), $values);
     $build = [];
     if (isset($entity)) {

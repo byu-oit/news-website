@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "f90e60b4812a1a43e858b07ab7cad8d1",
+    "content-hash": "73003aca600af2cb4cd0d0f826d00157",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -3484,7 +3484,12 @@
                     "replace": false,
                     "merge-extra": false
                 },
-                "patches_applied": []
+                "patches_applied": {
+                    "Add date range to views": "https://www.drupal.org/files/issues/2786577-270_0.patch",
+                    "Allow pseudo fields in manage display": "https://www.drupal.org/files/issues/2018-03-13/title.display-2923701-161.patch",
+                    "RenderedEntity null value": "https://www.drupal.org/files/issues/2018-05-14/2972774-2.patch",
+                    "Make CKEditor and IMCE play with each other": "https://www.drupal.org/files/issues/2018-03-29/2822217-drupalimagecaption-img-src-fix-13.diff"
+                }
             },
             "autoload": {
                 "psr-4": {
@@ -4056,17 +4061,11 @@
         },
         {
             "name": "drupal/field_group",
-            "version": "3.0.0-beta1",
+            "version": "dev-3.x",
             "source": {
                 "type": "git",
                 "url": "https://git.drupal.org/project/field_group",
-                "reference": "8.x-3.0-beta1"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/field_group-8.x-3.0-beta1.zip",
-                "reference": "8.x-3.0-beta1",
-                "shasum": "a5dfb66385be7a1b3db232e49779d5bc530a048e"
+                "reference": "327821ebd9861a205007bc7ae961bd118d32f9e4"
             },
             "require": {
                 "drupal/core": "*"
@@ -4077,11 +4076,11 @@
                     "dev-3.x": "3.x-dev"
                 },
                 "drupal": {
-                    "version": "8.x-3.0-beta1",
-                    "datestamp": "1510352338",
+                    "version": "8.x-3.0-beta1+16-dev",
+                    "datestamp": "1531041521",
                     "security-coverage": {
                         "status": "not-covered",
-                        "message": "Beta releases are not covered by Drupal security advisories."
+                        "message": "Dev releases are not covered by Drupal security advisories."
                     }
                 }
             },
@@ -4115,7 +4114,8 @@
             "homepage": "https://www.drupal.org/project/field_group",
             "support": {
                 "source": "http://cgit.drupalcode.org/field_group"
-            }
+            },
+            "time": "2018-07-11T15:11:28+00:00"
         },
         {
             "name": "drupal/field_permissions",
@@ -5607,7 +5607,9 @@
                         "message": "Beta releases are not covered by Drupal security advisories."
                     }
                 },
-                "patches_applied": []
+                "patches_applied": {
+                    "change service_string to array": "https://www.drupal.org/files/issues/Error-operator-not-supported-for-strings-2885710-12128018.patch"
+                }
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
             "license": [
@@ -11686,6 +11688,7 @@
         "drupal/conditional_fields": 15,
         "drupal/config_tools": 15,
         "drupal/field_defaults": 5,
+        "drupal/field_group": 20,
         "drupal/field_permissions": 5,
         "drupal/file_entity": 10,
         "drupal/inline_entity_form": 5,

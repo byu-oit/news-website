@@ -15,10 +15,18 @@ class AccordionItem extends RenderElement {
    * {@inheritdoc}
    */
   public function getInfo() {
-    return array(
+    $class = get_class($this);
+
+    return [
+      '#process' => [
+        [$class, 'processGroup'],
+      ],
+      '#pre_render' => [
+        [$class, 'preRenderGroup'],
+      ],
       '#open' => TRUE,
-      '#theme_wrappers' => array('field_group_accordion_item'),
-    );
+      '#theme_wrappers' => ['field_group_accordion_item'],
+    ];
   }
 
 }

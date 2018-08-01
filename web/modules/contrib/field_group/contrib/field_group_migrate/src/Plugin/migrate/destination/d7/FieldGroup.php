@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\field_group_migrate\Plugin\migrate\destination\d7\FieldGroup.
- */
-
 namespace Drupal\field_group_migrate\Plugin\migrate\destination\d7;
 
 use Drupal\migrate\Plugin\migrate\destination\DestinationBase;
@@ -23,8 +18,8 @@ class FieldGroup extends DestinationBase {
   /**
    * {@inheritdoc}
    */
-  public function import(Row $row, array $old_destination_id_values = array()) {
-    $values = array();
+  public function import(Row $row, array $old_destination_id_values = []) {
+    $values = [];
     // array_intersect_key() won't work because the order is important because
     // this is also the return value.
     foreach (array_keys($this->getIds()) as $id) {

@@ -43,6 +43,7 @@ dependencies:
     - layout_discovery
     - link
     - paragraphs_browser
+    - path
     - text
 third_party_settings:
   field_group:
@@ -66,7 +67,6 @@ third_party_settings:
       children:
         - field_media_contact_type
         - field_media_contact_byline_perso
-        - field_full_name
         - field_writer_type
         - field_writer_person_
         - field_writer_name
@@ -81,10 +81,7 @@ third_party_settings:
       label: Author
       region: content
     group_old:
-      children:
-        - field_story_highlights
-        - body
-        - field_address_book
+      children: {  }
       parent_name: ''
       weight: 10
       format_type: details
@@ -105,7 +102,7 @@ mode: default
 content:
   body:
     type: text_textarea_with_summary
-    weight: 5
+    weight: 12
     settings:
       rows: 9
       summary_rows: 3
@@ -119,14 +116,14 @@ content:
     type: chosen_select
     region: content
   field_feature_as_hero:
-    weight: 12
+    weight: 14
     settings:
       display_label: true
     third_party_settings: {  }
     type: boolean_checkbox
     region: content
   field_hero_image:
-    weight: 13
+    weight: 15
     settings:
       preview_image_style: hero_side_image_2_ipad_portrait
       progress_indicator: throbber
@@ -153,7 +150,7 @@ content:
     type: image_image
     region: content
   field_hero_read_more_text:
-    weight: 14
+    weight: 16
     settings:
       size: 60
       placeholder: ''
@@ -251,7 +248,7 @@ content:
     type: image_image
     region: content
   field_publish_date:
-    weight: 15
+    weight: 17
     settings: {  }
     third_party_settings: {  }
     type: datetime_default
@@ -266,13 +263,13 @@ content:
     type: entity_reference_autocomplete
     region: content
   field_show_on_front:
-    weight: 11
+    weight: 13
     settings: {  }
     third_party_settings: {  }
     type: options_buttons
     region: content
   field_story_highlights:
-    weight: 4
+    weight: 11
     settings:
       rows: 5
       placeholder: ''
@@ -377,9 +374,15 @@ content:
     region: content
   moderation_state:
     type: moderation_state_default
-    weight: 16
+    weight: 18
     settings: {  }
     region: content
+    third_party_settings: {  }
+  path:
+    type: path
+    weight: 20
+    region: content
+    settings: {  }
     third_party_settings: {  }
   title:
     type: string_textfield
@@ -390,15 +393,16 @@ content:
       placeholder: ''
     third_party_settings: {  }
   url_redirects:
-    weight: 50
+    weight: 19
     region: content
+    settings: {  }
+    third_party_settings: {  }
 hidden:
   created: true
   field_contact_email: true
   field_contact_phone: true
   field_story_hero_classes: true
   node_class: true
-  path: true
   promote: true
   status: true
   sticky: true

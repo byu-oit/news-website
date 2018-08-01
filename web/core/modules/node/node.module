@@ -171,15 +171,6 @@ function node_theme() {
     'node_edit_form' => [
       'render element' => 'form',
     ],
-    'field__node__title' => [
-      'base hook' => 'field',
-    ],
-    'field__node__uid' => [
-      'base hook' => 'field',
-    ],
-    'field__node__created' => [
-      'base hook' => 'field',
-    ],
   ];
 }
 
@@ -605,16 +596,31 @@ function template_preprocess_node(&$variables) {
   $variables['node'] = $variables['elements']['#node'];
   /** @var \Drupal\node\NodeInterface $node */
   $node = $variables['node'];
-  $variables['date'] = \Drupal::service('renderer')->render($variables['elements']['created']);
-  unset($variables['elements']['created']);
-  $variables['author_name'] = \Drupal::service('renderer')->render($variables['elements']['uid']);
-  unset($variables['elements']['uid']);
+
+  // If the created, uid and title fields are not configurable, make them
+  // available separately.
+  // @todo In D9 delete this code and matching template lines. Using
+  // $variables['content'] is more flexible and consistent.
+  if (!$node->getFieldDefinition('created')->isDisplayConfigurable('view')) {
+    $variables['elements']['created']['#inline_field'] = TRUE;
+    $variables['date'] = \Drupal::service('renderer')->render($variables['elements']['created']);
+    unset($variables['elements']['created']);
+  }
+  if (!$node->getFieldDefinition('uid')->isDisplayConfigurable('view')) {
+    $variables['elements']['uid']['#inline_field'] = TRUE;
+    $variables['author_name'] = \Drupal::service('renderer')->render($variables['elements']['uid']);
+    unset($variables['elements']['uid']);
+  }
+  if (!$node->getFieldDefinition('title')->isDisplayConfigurable('view')) {
+    $variables['elements']['title']['#inline_field'] = TRUE;
+    $variables['label'] = $variables['elements']['title'];
+    unset($variables['elements']['title']);
+  }
 
   $variables['url'] = $node->url('canonical', [
     'language' => $node->language(),
   ]);
-  $variables['label'] = $variables['elements']['title'];
-  unset($variables['elements']['title']);
+
   // The 'page' variable is set to TRUE in two occasions:
   //   - The view mode is 'full' and we are on the 'node.view' route.
   //   - The node is in preview and view mode is either 'full' or 'default'.
@@ -626,17 +632,22 @@ function template_preprocess_node(&$variables) {
     $variables['content'][$key] = $variables['elements'][$key];
   }
 
-  // Display post information only on certain node types.
-  $node_type = $node->type->entity;
-  // Used by RDF to add attributes around the author and date submitted.
-  $variables['author_attributes'] = new Attribute();
-  $variables['display_submitted'] = $node_type->displaySubmitted();
-  if ($variables['display_submitted']) {
-    if (theme_get_setting('features.node_user_picture')) {
-      // To change user picture settings (e.g. image style), edit the 'compact'
-      // view mode on the User entity. Note that the 'compact' view mode might
-      // not be configured, so remember to always check the theme setting first.
-      $variables['author_picture'] = user_view($node->getOwner(), 'compact');
+  // If the created and uid are not configurable, display post information
+  // on certain node types.
+  // @todo In D9 delete this code and matching template lines. Using
+  // a field formatter is more flexible and consistent.
+  if (isset($variables['date']) && isset($variables['author_name'])) {
+    $node_type = $node->type->entity;
+    // Used by RDF to add attributes around the author and date submitted.
+    $variables['author_attributes'] = new Attribute();
+    $variables['display_submitted'] = $node_type->displaySubmitted();
+    if ($variables['display_submitted']) {
+      if (theme_get_setting('features.node_user_picture')) {
+        // To change user picture settings (e.g. image style), edit the 'compact'
+        // view mode on the User entity. Note that the 'compact' view mode might
+        // not be configured, so remember to always check the theme setting first.
+        $variables['author_picture'] = user_view($node->getOwner(), 'compact');
+      }
     }
   }
 

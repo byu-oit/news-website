@@ -323,13 +323,22 @@ function rdf_preprocess_node(&$variables) {
 
   // Adds RDFa markup for the date.
   $created_mapping = $mapping->getPreparedFieldMapping('created');
-  if (!empty($created_mapping) && $variables['display_submitted']) {
+  // If 'created' display is not configurable then it is controlled by the
+  // display_submitted setting. @see template_preprocess_node.
+  $display_configurable = $variables['node']->getFieldDefinition('created')->isDisplayConfigurable('view');
+  $display_created = $display_configurable ? isset($variables['elements']['created']) : $variables['display_submitted'];
+  if (!empty($created_mapping) && $display_created) {
     $date_attributes = rdf_rdfa_attributes($created_mapping, $variables['node']->get('created')->first()->toArray());
     $rdf_metadata = [
       '#theme' => 'rdf_metadata',
       '#metadata' => [$date_attributes],
     ];
-    $variables['metadata'] = \Drupal::service('renderer')->render($rdf_metadata);
+    if ($display_configurable) {
+      $variables['title_suffix']['rdf_meta_created'] = $rdf_metadata;
+    }
+    else {
+      $variables['metadata'] = \Drupal::service('renderer')->render($rdf_metadata);
+    }
   }
 
   // Adds RDFa markup annotating the number of comments a node has.

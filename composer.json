@@ -37,7 +37,7 @@
         "drupal/field_defaults": "^1.0@RC",
         "drupal/field_display_label": "^1.0",
         "drupal/field_formatter_class": "^1.0",
-        "drupal/field_group": "3.x",
+        "drupal/field_group": "3.x-dev",
         "drupal/field_permissions": "^1.0@RC",
         "drupal/field_token_value": "^1.0",
         "drupal/file_download": "^1.1",
@@ -141,7 +141,11 @@
 	        },
 		"drupal/sharethis": {
 			"change service_string to array": "https://www.drupal.org/files/issues/Error-operator-not-supported-for-strings-2885710-12128018.patch"
-		}
+		},
+	        "drupal/field_group": {
+		        "Fix field group migration in 8.5": "https://www.drupal.org/files/issues/2018-03-12/2951335-7-fix-core-8-5-fieldgroup-migration.patch",
+		        "Fix field Layout integration": "https://www.drupal.org/files/issues/2018-04-20/field_layout_support-2878359-56.patch"
+	        }
 	    }
     }
 }
