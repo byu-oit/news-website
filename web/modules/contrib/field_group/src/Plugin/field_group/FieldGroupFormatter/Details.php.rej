@@ -1,0 +1,28 @@
+--- src/Plugin/field_group/FieldGroupFormatter/Details.php
++++ src/Plugin/field_group/FieldGroupFormatter/Details.php
+@@ -23,8 +23,7 @@
+   /**
+    * {@inheritdoc}
+    */
+-  public function preRender(&$element, $rendering_object) {
+-    parent::preRender($element, $rendering_object);
++  public function process(&$element, $processed_object) {
+ 
+     $element += [
+       '#type' => 'details',
+@@ -53,6 +52,15 @@
+       $element['#attached']['library'][] = 'field_group/formatter.details';
+       $element['#attached']['library'][] = 'field_group/core';
+     }
++
++  }
++
++  /**
++   * {@inheritdoc}
++   */
++  public function preRender(&$element, $rendering_object) {
++    parent::preRender($element, $rendering_object);
++    $this->process($element, $rendering_object);
+   }
+ 
+   /**

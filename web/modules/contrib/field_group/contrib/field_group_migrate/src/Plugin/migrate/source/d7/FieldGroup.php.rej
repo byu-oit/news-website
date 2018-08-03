@@ -1,0 +1,13 @@
+--- contrib/field_group_migrate/src/Plugin/migrate/source/d7/FieldGroup.php
++++ contrib/field_group_migrate/src/Plugin/migrate/source/d7/FieldGroup.php
+@@ -14,7 +14,9 @@
+  * Drupal 7 field_group source.
+  *
+  * @MigrateSource(
+- *   id = "d7_field_group"
++ *   id = "d7_field_group",
++ *   source_module = "field_group",
++ *   destination_module = "field_group"
+  * )
+  */
+ class FieldGroup extends DrupalSqlBase {

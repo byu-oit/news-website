@@ -56,7 +56,7 @@ class AccordionItem extends FieldGroupFormatterBase {
         $element['#open'] = TRUE;
       }
     }
-
+    
   }
 
   /**

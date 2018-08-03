@@ -1,0 +1,23 @@
+--- src/Plugin/field_group/FieldGroupFormatter/AccordionItem.php
++++ src/Plugin/field_group/FieldGroupFormatter/AccordionItem.php
+@@ -28,14 +28,14 @@
+   /**
+    * {@inheritdoc}
+    */
+-  public function preRender(&$element, $rendering_object) {
+-    parent::preRender($element, $rendering_object);
++  public function process(&$element, $processed_object) {
++
++    // Keep using preRender parent for BC.
++    parent::preRender($element, $processed_object);
+ 
+     $element += [
+-      '#type' => 'field_group_accordion_item',
+-      '#open' => $this->getSetting('formatter') == 'open' ? TRUE : FALSE,
+-      '#description' => $this->getSetting('description'),
+-      '#title' => Drupal::translation()->translate($this->getLabel()),
++      '#type' => 'field_group_accordion',
++      '#effect' => $this->getSetting('effect'),
+     ];
+ 
+     if ($this->getSetting('id')) {

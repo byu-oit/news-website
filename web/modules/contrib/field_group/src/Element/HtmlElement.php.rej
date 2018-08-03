@@ -1,0 +1,15 @@
+--- src/Element/HtmlElement.php
++++ src/Element/HtmlElement.php
+@@ -20,8 +20,12 @@
+ 
+     return [
+       '#process' => [
++        [$class, 'processGroup'],
+         [$class, 'processHtmlElement'],
+       ],
++      '#pre_render' => [
++        [$class, 'preRenderGroup'],
++      ],
+       '#theme_wrappers' => ['field_group_html_element'],
+     ];
+   }

@@ -227,4 +227,17 @@ abstract class FieldGroupFormatterBase extends PluginSettingsBase implements Fie
     }
   }
 
+  /**
+   * {@inheritdoc}
+   */
+  public function process(&$element, $processed_object) {
+
+    $element['#group_name'] = $this->group->group_name;
+    $element['#entity_type'] = $this->group->entity_type;
+    $element['#bundle'] = $this->group->bundle;
+
+    // BC: Call the pre render layer to not break contrib plugins.
+    return $this->preRender($element, $processed_object);
+  }
+
 }
