@@ -81,7 +81,9 @@ third_party_settings:
       label: Author
       region: content
     group_old:
-      children: {  }
+      children:
+        - field_story_highlights
+        - body
       parent_name: ''
       weight: 10
       format_type: details
