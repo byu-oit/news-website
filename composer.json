@@ -141,11 +141,7 @@
 	        },
 		"drupal/sharethis": {
 			"change service_string to array": "https://www.drupal.org/files/issues/Error-operator-not-supported-for-strings-2885710-12128018.patch"
-		},
-	        "drupal/field_group": {
-		        "Fix field group migration in 8.5": "https://www.drupal.org/files/issues/2018-03-12/2951335-7-fix-core-8-5-fieldgroup-migration.patch",
-		        "Fix field Layout integration": "https://www.drupal.org/files/issues/2018-04-20/field_layout_support-2878359-56.patch"
-	        }
+		}
 	    }
     }
 }
