@@ -30,7 +30,8 @@ class MigrateNewsController extends ControllerBase {
     //       file_delete($fid);
     //   }
     $lastfid = 0;
-    $images_result = db_query("select * from drupal7_news.file_managed order by fid");
+    $maxfid = db_query("select max(fid) from file_managed")->fetchField();
+    $images_result = db_query("select * from drupal7_news.file_managedi where fid > $maxfid order by fid");
     foreach ($images_result as $imagerow) {
       $fid = $imagerow->fid;
       $values = \Drupal::entityQuery('file')->condition('fid', $fid)->execute();
@@ -167,7 +168,8 @@ class MigrateNewsController extends ControllerBase {
    *   Return Hello string.
    */
   public function migratestories() {
-    $query = "select nid, title, created, status from drupal7_news.node where type = 'story' order by nid";
+    $maxnid = db_query("select max(nid) from node where type = 'story'")->fetchField();
+    $query = "select nid, title, created, status from drupal7_news.node where type = 'story' and nid > $maxnid order by nid";
     $sql_result = db_query($query);
     $lastnid = 0;
     foreach ($sql_result as $row) {
