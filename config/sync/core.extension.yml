@@ -15,7 +15,6 @@ module:
   block: 0
   block_class: 0
   block_content: 0
-  block_token: 0
   breakpoint: 0
   byu_hero: 0
   byu_migrate_news: 0
@@ -119,6 +118,7 @@ module:
   telephone: 0
   text: 0
   token: 0
+  token_filter: 0
   toolbar: 0
   tour: 0
   twitter_block: 0

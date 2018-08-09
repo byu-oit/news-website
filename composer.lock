@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "677fb839be59509b7f78d65d23110e19",
+    "content-hash": "3df2ba675f5dbdd80b64074a09520fcc",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -2318,53 +2318,6 @@
                 "issues": "https://www.drupal.org/project/issues/block_class",
                 "irc": "irc://irc.freenode.org/drupal-contribute"
             }
-        },
-        {
-            "name": "drupal/block_token",
-            "version": "dev-1.x",
-            "source": {
-                "type": "git",
-                "url": "https://git.drupal.org/project/block_token",
-                "reference": "d46336acf0a00ecfe399191c93a51d901376cd8b"
-            },
-            "require": {
-                "drupal/core": "*",
-                "drupal/token": "*"
-            },
-            "type": "drupal-module",
-            "extra": {
-                "branch-alias": {
-                    "dev-1.x": "1.x-dev"
-                },
-                "drupal": {
-                    "version": "8.x-1.0-alpha1+1-dev",
-                    "datestamp": "1498762141",
-                    "security-coverage": {
-                        "status": "not-covered",
-                        "message": "Dev releases are not covered by Drupal security advisories."
-                    }
-                }
-            },
-            "notification-url": "https://packages.drupal.org/8/downloads",
-            "license": [
-                "GPL-2.0-or-later"
-            ],
-            "authors": [
-                {
-                    "name": "nehajyoti",
-                    "homepage": "https://www.drupal.org/user/2804915"
-                },
-                {
-                    "name": "skullhole",
-                    "homepage": "https://www.drupal.org/user/2257896"
-                }
-            ],
-            "description": "Allows you to create the tokens for blocks on site.",
-            "homepage": "https://www.drupal.org/project/block_token",
-            "support": {
-                "source": "http://cgit.drupalcode.org/block_token"
-            },
-            "time": "2017-06-29T18:45:16+00:00"
         },
         {
             "name": "drupal/bootstrap",
@@ -6089,6 +6042,78 @@
             "homepage": "https://www.drupal.org/project/token",
             "support": {
                 "source": "http://cgit.drupalcode.org/token"
+            }
+        },
+        {
+            "name": "drupal/token_filter",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupal.org/project/token_filter",
+                "reference": "8.x-1.0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/token_filter-8.x-1.0.zip",
+                "reference": "8.x-1.0",
+                "shasum": "9eed8874d2830be3b572d58cbf94ffc4111ec8df"
+            },
+            "require": {
+                "drupal/core": "*",
+                "drupal/token": "*"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "branch-alias": {
+                    "dev-1.x": "1.x-dev"
+                },
+                "drupal": {
+                    "version": "8.x-1.0",
+                    "datestamp": "1528597684",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "Darvanen",
+                    "homepage": "https://www.drupal.org/user/1068770"
+                },
+                {
+                    "name": "Dave Reid",
+                    "homepage": "https://www.drupal.org/user/53892"
+                },
+                {
+                    "name": "Deciphered",
+                    "homepage": "https://www.drupal.org/user/103796"
+                },
+                {
+                    "name": "ademarco",
+                    "homepage": "https://www.drupal.org/user/186696"
+                },
+                {
+                    "name": "asciikewl",
+                    "homepage": "https://www.drupal.org/user/147292"
+                },
+                {
+                    "name": "pescetti",
+                    "homepage": "https://www.drupal.org/user/436244"
+                },
+                {
+                    "name": "pvhee",
+                    "homepage": "https://www.drupal.org/user/108811"
+                }
+            ],
+            "description": "This is a very simple module to make global token values available as an input filter.",
+            "homepage": "https://www.drupal.org/project/token_filter",
+            "support": {
+                "source": "http://cgit.drupalcode.org/token_filter"
             }
         },
         {
@@ -11728,7 +11753,6 @@
     "minimum-stability": "dev",
     "stability-flags": {
         "drupal/block_class": 15,
-        "drupal/block_token": 20,
         "drupal/byu_hero": 20,
         "drupal/captcha": 10,
         "drupal/cas": 5,
