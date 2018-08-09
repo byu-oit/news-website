@@ -12,7 +12,7 @@ id: send_story
 title: 'Send Story'
 description: 'Send a story to your news contacts.'
 category: ''
-elements: "story:\n  '#type': webform_entity_select\n  '#title': Story\n  '#required': true\n  '#required_error': 'A story must be selected.'\n  '#target_type': node\n  '#selection_handler': views\n  '#selection_settings':\n    view:\n      view_name: story_to_send\n      display_name: entity_reference_1\n      arguments:\n        - '[current-page:url:args]'\nrecipient:\n  '#type': webform_term_checkboxes\n  '#title': Recipient\n  '#description': 'Select up to 30 contacts to email at once.'\n  '#required': true\n  '#required_error': 'At least one recipient is required.'\n  '#vocabulary': address_book\n  '#breadcrumb_delimiter': ''\n  '#tree_delimiter': '<span>     - </span>'\nmessage:\n  '#type': textarea\n  '#title': Message\n  '#autocomplete': 'off'\n"
+elements: "story:\n  '#type': webform_entity_select\n  '#title': Story\n  '#required': true\n  '#required_error': 'A story must be selected.'\n  '#default_value': 'nid=[current-page:url:unaliased:args:last]'\n  '#target_type': node\n  '#selection_handler': views\n  '#selection_settings':\n    view:\n      view_name: story_to_send\n      display_name: entity_reference_1\n      arguments:\n        - '[current-page:query:nid]'\nrecipient:\n  '#type': webform_term_checkboxes\n  '#title': Recipient\n  '#description': 'Select up to 30 contacts to email at once.'\n  '#required': true\n  '#required_error': 'At least one recipient is required.'\n  '#vocabulary': address_book\n  '#breadcrumb_delimiter': ''\n  '#tree_delimiter': '<span>     - </span>'\nmessage:\n  '#type': textarea\n  '#title': Message\n  '#autocomplete': 'off'\n"
 css: ''
 javascript: ''
 settings:
@@ -29,7 +29,7 @@ settings:
   form_confidential: false
   form_confidential_message: ''
   form_convert_anonymous: false
-  form_prepopulate: false
+  form_prepopulate: true
   form_prepopulate_source_entity: false
   form_prepopulate_source_entity_required: false
   form_prepopulate_source_entity_type: ''
@@ -41,7 +41,7 @@ settings:
   form_unsaved: false
   form_disable_back: false
   form_submit_back: false
-  form_autofocus: false
+  form_autofocus: true
   form_details_toggle: false
   form_login: false
   form_login_message: ''
