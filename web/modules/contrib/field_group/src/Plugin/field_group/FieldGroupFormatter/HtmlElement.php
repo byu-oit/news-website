@@ -48,7 +48,7 @@ class HtmlElement extends FieldGroupFormatterBase {
 
     // Add the id to the attributes array.
     if ($this->getSetting('id')) {
-      $element_attributes['id'] = Html::getId($this->getSetting('id'));
+      $element_attributes['id'] = Html::getUniqueId($this->getSetting('id'));
     }
 
     // Add the classes to the attributes array.

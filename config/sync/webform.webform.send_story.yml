@@ -1,8 +1,10 @@
+uuid: 572cba79-4abd-4109-95d1-e7498604cbf7
 langcode: en
 status: open
 dependencies: {  }
 open: null
 close: null
+weight: 0
 uid: 61
 template: false
 archive: false
@@ -10,7 +12,7 @@ id: send_story
 title: 'Send Story'
 description: 'Send a story to your news contacts.'
 category: ''
-elements: "story:\n  '#type': webform_entity_select\n  '#title': Story\n  '#required': true\n  '#required_error': 'A story must be selected.'\n  '#target_type': node\n  '#selection_handler': views\n  '#selection_settings':\n    view:\n      view_name: story_to_send\n      display_name: entity_reference_1\n      arguments: {  }\nrecipient:\n  '#type': webform_term_checkboxes\n  '#title': Recipient\n  '#description': 'Select up to 30 contacts to email at once.'\n  '#required': true\n  '#required_error': 'At least one recipient is required.'\n  '#vocabulary': address_book\n  '#breadcrumb_delimiter': ''\n  '#tree_delimiter': '<span>     - </span>'\nmessage:\n  '#type': textarea\n  '#title': Message\n  '#autocomplete': 'off'\n"
+elements: "story:\n  '#type': webform_entity_select\n  '#title': Story\n  '#required': true\n  '#required_error': 'A story must be selected.'\n  '#target_type': node\n  '#selection_handler': views\n  '#selection_settings':\n    view:\n      view_name: story_to_send\n      display_name: entity_reference_1\n      arguments:\n        - '[current-page:url:args]'\nrecipient:\n  '#type': webform_term_checkboxes\n  '#title': Recipient\n  '#description': 'Select up to 30 contacts to email at once.'\n  '#required': true\n  '#required_error': 'At least one recipient is required.'\n  '#vocabulary': address_book\n  '#breadcrumb_delimiter': ''\n  '#tree_delimiter': '<span>     - </span>'\nmessage:\n  '#type': textarea\n  '#title': Message\n  '#autocomplete': 'off'\n"
 css: ''
 javascript: ''
 settings:
@@ -198,4 +200,3 @@ handlers:
       return_path: ''
       sender_mail: ''
       sender_name: ''
-uuid: 572cba79-4abd-4109-95d1-e7498604cbf7

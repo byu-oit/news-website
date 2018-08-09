@@ -1,0 +1,5 @@
+services:
+  block_token.route_subscriber:
+    class: Drupal\block_token\Routing\RouteSubscriber
+    tags:
+      - { name: event_subscriber }

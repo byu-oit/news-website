@@ -40,10 +40,10 @@ class Tab extends FieldGroupFormatterBase {
     ];
 
     if ($this->getSetting('id')) {
-      $add['#id'] = Html::getId($this->getSetting('id'));
+      $add['#id'] = Html::getUniqueId($this->getSetting('id'));
     }
     else {
-      $add['#id'] = Html::getId('edit-' . $this->group->group_name);
+      $add['#id'] = Html::getUniqueId('edit-' . $this->group->group_name);
     }
 
     $classes = $this->getClasses();

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "016f80a4869e0c9b7a6af7304de7e7b2",
+    "content-hash": "677fb839be59509b7f78d65d23110e19",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -1757,7 +1757,7 @@
                 },
                 "drupal": {
                     "version": "8.x-1.7",
-                    "datestamp": "1526917680",
+                    "datestamp": "1533653580",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -2318,6 +2318,53 @@
                 "issues": "https://www.drupal.org/project/issues/block_class",
                 "irc": "irc://irc.freenode.org/drupal-contribute"
             }
+        },
+        {
+            "name": "drupal/block_token",
+            "version": "dev-1.x",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupal.org/project/block_token",
+                "reference": "d46336acf0a00ecfe399191c93a51d901376cd8b"
+            },
+            "require": {
+                "drupal/core": "*",
+                "drupal/token": "*"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "branch-alias": {
+                    "dev-1.x": "1.x-dev"
+                },
+                "drupal": {
+                    "version": "8.x-1.0-alpha1+1-dev",
+                    "datestamp": "1498762141",
+                    "security-coverage": {
+                        "status": "not-covered",
+                        "message": "Dev releases are not covered by Drupal security advisories."
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "nehajyoti",
+                    "homepage": "https://www.drupal.org/user/2804915"
+                },
+                {
+                    "name": "skullhole",
+                    "homepage": "https://www.drupal.org/user/2257896"
+                }
+            ],
+            "description": "Allows you to create the tokens for blocks on site.",
+            "homepage": "https://www.drupal.org/project/block_token",
+            "support": {
+                "source": "http://cgit.drupalcode.org/block_token"
+            },
+            "time": "2017-06-29T18:45:16+00:00"
         },
         {
             "name": "drupal/bootstrap",
@@ -4065,7 +4112,7 @@
             "source": {
                 "type": "git",
                 "url": "https://git.drupal.org/project/field_group",
-                "reference": "327821ebd9861a205007bc7ae961bd118d32f9e4"
+                "reference": "072bf212d8e13aa242a4e274e5a4837a0e0ffc5e"
             },
             "require": {
                 "drupal/core": "*"
@@ -4076,14 +4123,13 @@
                     "dev-3.x": "3.x-dev"
                 },
                 "drupal": {
-                    "version": "8.x-3.0-beta1+16-dev",
-                    "datestamp": "1531041521",
+                    "version": "8.x-3.0-beta1+20-dev",
+                    "datestamp": "1533547380",
                     "security-coverage": {
                         "status": "not-covered",
                         "message": "Dev releases are not covered by Drupal security advisories."
                     }
-                },
-                "patches_applied": []
+                }
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
             "license": [
@@ -4116,7 +4162,7 @@
             "support": {
                 "source": "http://cgit.drupalcode.org/field_group"
             },
-            "time": "2018-07-11T15:11:28+00:00"
+            "time": "2018-08-06T10:30:37+00:00"
         },
         {
             "name": "drupal/field_permissions",
@@ -11682,6 +11728,7 @@
     "minimum-stability": "dev",
     "stability-flags": {
         "drupal/block_class": 15,
+        "drupal/block_token": 20,
         "drupal/byu_hero": 20,
         "drupal/captcha": 10,
         "drupal/cas": 5,

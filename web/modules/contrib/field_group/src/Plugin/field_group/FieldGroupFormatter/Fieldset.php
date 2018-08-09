@@ -38,13 +38,13 @@ class Fieldset extends FieldGroupFormatterBase {
 
       // When a fieldset has a description, an id is required.
       if (!$this->getSetting('id')) {
-        $element['#id'] = Html::getId($this->group->group_name);
+        $element['#id'] = Html::getUniqueId($this->group->group_name);
       }
 
     }
 
     if ($this->getSetting('id')) {
-      $element['#id'] = Html::getId($this->getSetting('id'));
+      $element['#id'] = Html::getUniqueId($this->getSetting('id'));
     }
 
     $classes = $this->getClasses();

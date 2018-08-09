@@ -1,0 +1,7 @@
+name: Block Token
+type: module
+description: "Allows you to create the tokens for blocks on site."
+core: 8.x
+dependencies:
+  - block
+  - token
