@@ -31,7 +31,7 @@ class MigrateNewsController extends ControllerBase {
     //   }
     $lastfid = 0;
     $maxfid = db_query("select max(fid) from file_managed")->fetchField();
-    $images_result = db_query("select * from drupal7_news.file_managedi where fid > $maxfid order by fid");
+    $images_result = db_query("select * from drupal7_news.file_managed where fid > $maxfid order by fid");
     foreach ($images_result as $imagerow) {
       $fid = $imagerow->fid;
       $values = \Drupal::entityQuery('file')->condition('fid', $fid)->execute();
@@ -369,6 +369,24 @@ class MigrateNewsController extends ControllerBase {
     return [
       '#type' => 'markup',
       '#markup' => $this->t("Status Updated!")
+    ];
+  }
+// used to move content created mid migration so migration can be updated
+
+  public function movenodes() {
+      $nid = 11792;
+      $node = Node::load($nid);
+      $node1 = $node->createDuplicate();
+      $node1->nid = 2;
+      $node1->save();
+      $nid = 11791;
+      $node = Node::load($nid);
+      $node1 = $node->createDuplicate();
+      $node1->nid = 3;
+      $node1->save();
+    return [
+      '#type' => 'markup',
+      '#markup' => $this->t("Node moved!")
     ];
   }
   public function addredirects() {
