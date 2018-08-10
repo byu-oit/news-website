@@ -397,7 +397,7 @@ class MigrateNewsController extends ControllerBase {
     //    $query->addTag('node_access');
     //    $redirect_result = $query->execute()->fetchAll();
 
-    $redirect_query = "SELECT source,redirect FROM drupal7_news.redirect WHERE status = 1 and redirect NOT LIKE '%taxonomy/term%' and source not in (select redirect_source__path FROM drupal8_news.redirect )";
+    $redirect_query = "SELECT source,redirect FROM drupal7_news.redirect WHERE status = 1 and redirect NOT LIKE '%taxonomy/term%' and source not in (select redirect_source__path from drupal8_news.redirect)";
     $redirect_result = db_query($redirect_query);
     $redirectCount = 0;
     foreach ($redirect_result as $row) {
