@@ -1,4 +1,4 @@
-# BYU New Site (Drupal 8)
+# BYU News Site (Drupal 8)
 
 ## Step to install locally
 1. Clone repository
