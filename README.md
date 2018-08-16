@@ -1,7 +1,7 @@
 # BYU New Site (Drupal 8)
 
-Currently, the development version of this site can be found at http://news-linux.byu.edu. Contact @blakemorgan for the latest copy of the database.
-
-## Submodules
-
-When clonint the repository, because to initialize the submodules (which are the BYU News theme and the BYU AMP News theme). The hero video custom module should be a submodule, but may be delted eventually.
+## Step to install locally
+1. Clone repository
+2. Run `run composer install`
+3. Run `git submodule init && git submodule update --recursive`. If you get error because of submodule that don't exist, run `git rm --cached path/to/corrupted/folder`.
+4. Download the files and database from Box.
