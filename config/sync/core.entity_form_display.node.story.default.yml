@@ -31,7 +31,6 @@ dependencies:
     - image.style.small_thumbnail
     - node.type.story
   module:
-    - chosen_field
     - conditional_fields
     - content_moderation
     - datetime
@@ -112,10 +111,10 @@ content:
     third_party_settings: {  }
     region: content
   field_category:
-    weight: 6
+    weight: 26
     settings: {  }
     third_party_settings: {  }
-    type: chosen_select
+    type: options_select
     region: content
   field_feature_as_hero:
     weight: 14
@@ -300,10 +299,13 @@ content:
     type: string_textarea
     region: content
   field_tags:
-    weight: 7
-    settings: {  }
+    weight: 27
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
     third_party_settings: {  }
-    type: chosen_select
+    type: entity_reference_autocomplete_tags
     region: content
   field_thumbnail:
     weight: 9

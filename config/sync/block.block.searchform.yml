@@ -7,9 +7,6 @@ dependencies:
     - search
   theme:
     - byu_news
-third_party_settings:
-  block_class:
-    classes: ''
 id: searchform
 theme: byu_news
 region: search

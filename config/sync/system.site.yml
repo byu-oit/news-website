@@ -3,8 +3,8 @@ name: News
 mail: web-2@byu.edu
 slogan: ''
 page:
-  403: ''
-  404: ''
+  403: /home
+  404: /home
   front: /home
 admin_compact_mode: false
 weight_select_max: 100

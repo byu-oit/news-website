@@ -8,13 +8,10 @@ dependencies:
     - sharethis
   theme:
     - byu_news
-third_party_settings:
-  block_class:
-    classes: ''
 id: sharethis
 theme: byu_news
 region: right_sidebar
-weight: -5
+weight: -6
 provider: null
 plugin: sharethis_block
 settings:

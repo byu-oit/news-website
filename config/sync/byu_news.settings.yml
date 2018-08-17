@@ -13,9 +13,9 @@ custom_width: '1200'
 font_package: fonts-basic
 font_one: libreb
 font_two: libreb
-font_four: vitesse
+font_four: libreb
 font_four_color: h4-black
-font_five: vitesse
+font_five: libreb
 font_five_color: h5-black
 p_font: default
 footer_sticky: 1

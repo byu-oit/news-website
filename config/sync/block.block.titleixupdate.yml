@@ -1,24 +1,23 @@
-uuid: ee909c89-9151-48dd-b0c0-947a55e1ed6c
+uuid: a171d4e7-bbfc-4219-8a14-d20b15618c08
 langcode: en
 status: true
 dependencies:
   content:
-    - 'block_content:basic:db3d55ce-7738-424e-91f4-ec97a7b8024e'
+    - 'block_content:basic:480feaa9-0bed-4cc7-b8c0-cb879fe9919f'
   module:
-    - block_class
     - block_content
     - system
   theme:
     - byu_news
-id: newsvideo
+id: titleixupdate
 theme: byu_news
 region: right_sidebar
-weight: -14
+weight: -12
 provider: null
-plugin: 'block_content:db3d55ce-7738-424e-91f4-ec97a7b8024e'
+plugin: 'block_content:480feaa9-0bed-4cc7-b8c0-cb879fe9919f'
 settings:
-  id: 'block_content:db3d55ce-7738-424e-91f4-ec97a7b8024e'
-  label: 'News Video'
+  id: 'block_content:480feaa9-0bed-4cc7-b8c0-cb879fe9919f'
+  label: 'Title IX Update'
   provider: block_content
   label_display: visible
   status: true
@@ -27,6 +26,6 @@ settings:
 visibility:
   request_path:
     id: request_path
-    pages: '/node/*'
-    negate: true
+    pages: '<front>'
+    negate: false
     context_mapping: {  }

@@ -32,10 +32,12 @@ dependencies:
     - node.type.story
   module:
     - amp
+    - entity_reference_revisions
     - field_formatter_class
     - field_layout
     - layout_discovery
     - link
+    - text
 third_party_settings:
   field_layout:
     id: layout_onecol
@@ -48,13 +50,13 @@ content:
   body:
     label: hidden
     weight: 2
-    type: amp_text
+    type: text_default
     settings: {  }
     third_party_settings: {  }
     region: content
   field_category:
     type: entity_reference_label
-    weight: 5
+    weight: 6
     region: content
     label: above
     settings:
@@ -64,7 +66,7 @@ content:
         class: amp-story-category
   field_image:
     type: amp_image
-    weight: 7
+    weight: 8
     region: content
     label: above
     settings:
@@ -75,9 +77,18 @@ content:
     third_party_settings:
       field_formatter_class:
         class: amp-story-photos
+  field_main_body:
+    type: entity_reference_revisions_entity_view
+    weight: 3
+    region: content
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
   field_media_placement:
     type: link
-    weight: 8
+    weight: 9
     region: content
     label: above
     settings:
@@ -91,7 +102,7 @@ content:
         class: amp-story-media-placements
   field_related_stories:
     type: entity_reference_label
-    weight: 9
+    weight: 10
     region: content
     label: above
     settings:
@@ -119,7 +130,7 @@ content:
         class: amp-story-subtitle
   field_tags:
     type: entity_reference_label
-    weight: 6
+    weight: 7
     region: content
     label: above
     settings:
@@ -129,7 +140,7 @@ content:
         class: amp-story-tags
   field_writer_name:
     type: amp_text
-    weight: 3
+    weight: 4
     region: content
     label: hidden
     settings: {  }
@@ -138,7 +149,7 @@ content:
         class: amp-story-writer
   field_writer_person_:
     type: entity_reference_label
-    weight: 4
+    weight: 5
     region: content
     label: inline
     settings:
@@ -154,7 +165,6 @@ hidden:
   field_feature_as_hero: true
   field_hero_image: true
   field_hero_read_more_text: true
-  field_main_body: true
   field_media_contact_byline_perso: true
   field_media_contact_type: true
   field_meta_image: true

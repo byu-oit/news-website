@@ -18,6 +18,7 @@ settings:
             - Bold
             - Italic
             - PasteFromWord
+            - RemoveFormat
         -
           name: Links
           items:
@@ -38,10 +39,10 @@ settings:
             - Blockquote
             - '-'
   plugins:
-    stylescombo:
-      styles: ''
     language:
       language_list: un
+    stylescombo:
+      styles: ''
 image_upload:
   status: false
   scheme: public

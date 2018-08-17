@@ -8,9 +8,6 @@ dependencies:
     - system
   theme:
     - byu_news
-third_party_settings:
-  block_class:
-    classes: ''
 id: pagetitle_2
 theme: byu_news
 region: content

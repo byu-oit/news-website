@@ -1254,15 +1254,6 @@ display:
           admin_label: 'image from field_thumbnail'
           required: false
           plugin_id: standard
-        field_image_target_id:
-          id: field_image_target_id
-          table: node__field_image
-          field: field_image_target_id
-          relationship: none
-          group_type: group
-          admin_label: 'image from field_image'
-          required: false
-          plugin_id: standard
       arguments:
         field_category_target_id:
           id: field_category_target_id
