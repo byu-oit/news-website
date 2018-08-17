@@ -1734,17 +1734,17 @@
         },
         {
             "name": "drupal/adminimal_admin_toolbar",
-            "version": "1.7.0",
+            "version": "1.8.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupal.org/project/adminimal_admin_toolbar",
-                "reference": "8.x-1.7"
+                "reference": "8.x-1.8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/adminimal_admin_toolbar-8.x-1.7.zip",
-                "reference": "8.x-1.7",
-                "shasum": "488af30c3a6f44b0db569931926aa4c514fceae7"
+                "url": "https://ftp.drupal.org/files/projects/adminimal_admin_toolbar-8.x-1.8.zip",
+                "reference": "8.x-1.8",
+                "shasum": "56f5816955a5c7a91abb30bc28101883c5ab67cf"
             },
             "require": {
                 "drupal/admin_toolbar": "*",
@@ -1756,7 +1756,7 @@
                     "dev-1.x": "1.x-dev"
                 },
                 "drupal": {
-                    "version": "8.x-1.7",
+                    "version": "8.x-1.8",
                     "datestamp": "1533653580",
                     "security-coverage": {
                         "status": "covered",
