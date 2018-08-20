@@ -32,7 +32,6 @@ module:
   contact: 0
   content_moderation: 0
   contextual: 0
-  copy_filter: 0
   cors: 0
   ctools: 0
   ctools_block: 0
@@ -64,6 +63,7 @@ module:
   help: 0
   history: 0
   image: 0
+  imagick: 0
   imce: 0
   inline_entity_form: 0
   kint: 0

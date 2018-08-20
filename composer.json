@@ -46,6 +46,7 @@
         "drupal/file_download": "^1.1",
         "drupal/file_entity": "^2.0@beta",
         "drupal/google_analytics": "^2.2",
+        "drupal/imagick": "^1.2",
         "drupal/imce": "^1.6",
         "drupal/inline_entity_form": "^1.0@RC",
         "drupal/manage_display": "^1.0@alpha",
