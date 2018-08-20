@@ -38,6 +38,10 @@ settings:
             - DrupalImage
             - Blockquote
             - '-'
+        -
+          name: Developement
+          items:
+            - Source
   plugins:
     language:
       language_list: un
