@@ -15,8 +15,7 @@ use Drupal\filter\Plugin\FilterBase;
  */
 class FilterCopy extends FilterBase {
     public function process($text, $langcode) {
-        $pattern = '\'(\\sstyle=".*")|(<\\/span>)|(<p.*> <\\/p>)\'';  
-        $new_text = preg_replace($pattern, '', $text);
+        $new_text = preg_replace('\'(\\sstyle=".*?")|(<p.*> <\\/p>)\'', '', $text);
         return new FilterProcessResult($new_text);
     }
 }
