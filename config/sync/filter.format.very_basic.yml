@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   module:
+    - copy_filter
     - editor
 name: 'Very Basic'
 format: very_basic
@@ -65,4 +66,10 @@ filters:
     provider: filter
     status: false
     weight: -44
+    settings: {  }
+  filter_copy:
+    id: filter_copy
+    provider: copy_filter
+    status: true
+    weight: 0
     settings: {  }
