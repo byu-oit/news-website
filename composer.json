@@ -30,7 +30,6 @@
         "drupal/conditional_fields": "^1.0@alpha",
         "drupal/config_tools": "^1.0@alpha",
         "drupal/console": "^1.0.2",
-        "drupal/copy_filter": "^1.0",
         "drupal/core": "~8.5",
         "drupal/cors": "^1.0",
         "drupal/ctools": "^3.0",

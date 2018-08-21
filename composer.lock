@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "78cf53b54c70cbdb739b507fd08e28b2",
+    "content-hash": "081d7382e7fc6ef29017212d4ab99d89",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -3324,53 +3324,6 @@
             ],
             "description": "Drupal Console Extend Plugin",
             "time": "2017-07-28T17:11:54+00:00"
-        },
-        {
-            "name": "drupal/copy_filter",
-            "version": "1.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://git.drupal.org/project/copy_filter",
-                "reference": "8.x-1.0"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/copy_filter-8.x-1.0.zip",
-                "reference": "8.x-1.0",
-                "shasum": "d8b380616d240aaf3913ba7441503b3551137608"
-            },
-            "require": {
-                "drupal/core": "~8.0"
-            },
-            "type": "drupal-module",
-            "extra": {
-                "branch-alias": {
-                    "dev-1.x": "1.x-dev"
-                },
-                "drupal": {
-                    "version": "8.x-1.0",
-                    "datestamp": "1534463280",
-                    "security-coverage": {
-                        "status": "not-covered",
-                        "message": "Project has not opted into security advisory coverage!"
-                    }
-                }
-            },
-            "notification-url": "https://packages.drupal.org/8/downloads",
-            "license": [
-                "GPL-2.0-or-later"
-            ],
-            "authors": [
-                {
-                    "name": "blakemorgan",
-                    "homepage": "https://www.drupal.org/user/3527204"
-                }
-            ],
-            "description": "Remove extraneous formatting when copying from 3rd party text editors.",
-            "homepage": "https://www.drupal.org/project/copy_filter",
-            "support": {
-                "source": "http://cgit.drupalcode.org/copy_filter"
-            }
         },
         {
             "name": "drupal/core",

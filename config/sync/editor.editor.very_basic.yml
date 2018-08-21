@@ -39,9 +39,9 @@ settings:
             - Blockquote
             - '-'
         -
-          name: Developement
+          name: Styles
           items:
-            - Source
+            - Format
   plugins:
     language:
       language_list: un
