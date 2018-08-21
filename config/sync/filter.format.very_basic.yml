@@ -3,7 +3,6 @@ langcode: en
 status: true
 dependencies:
   module:
-    - copy_filter
     - editor
 name: 'Very Basic'
 format: very_basic
@@ -15,7 +14,7 @@ filters:
     status: true
     weight: -45
     settings:
-      allowed_html: '<a href hreflang> <em> <strong> <cite> <blockquote cite> <code> <ul type> <ol start type> <li> <dl> <dt> <dd> <h2 id> <h3 id> <h4 id> <h5 id> <h6 id> <img src alt data-entity-type data-entity-uuid data-align data-caption> <p> <br>'
+      allowed_html: '<a href hreflang> <em> <strong> <cite> <blockquote cite> <code> <ul type> <ol start type> <li> <dl> <dt> <dd> <h2 id> <h3 id> <h4 id> <h5 id> <h6 id> <img src alt data-entity-type data-entity-uuid data-align data-caption> <p> <br> <sup> <sub>'
       filter_html_help: true
       filter_html_nofollow: false
   filter_autop:
@@ -57,7 +56,7 @@ filters:
   filter_url:
     id: filter_url
     provider: filter
-    status: false
+    status: true
     weight: -43
     settings:
       filter_url_length: 72
@@ -66,10 +65,4 @@ filters:
     provider: filter
     status: false
     weight: -44
-    settings: {  }
-  filter_copy:
-    id: filter_copy
-    provider: copy_filter
-    status: true
-    weight: 0
     settings: {  }
