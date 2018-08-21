@@ -18,7 +18,6 @@ settings:
             - Bold
             - Italic
             - PasteFromWord
-            - RemoveFormat
         -
           name: Links
           items:
@@ -39,9 +38,9 @@ settings:
             - Blockquote
             - '-'
         -
-          name: Styles
+          name: Dev
           items:
-            - Format
+            - Source
   plugins:
     language:
       language_list: un
