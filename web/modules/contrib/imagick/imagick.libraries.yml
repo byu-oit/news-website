@@ -1,0 +1,12 @@
+colorpicker:
+  version: VERSION
+  js:
+    js/imagick.colorpicker.js: {}
+  dependencies:
+    - core/drupal
+    - core/jquery.farbtastic
+matrix:
+  version: VERSION
+  css:
+    theme:
+      css/imagick.matrix.css: {}

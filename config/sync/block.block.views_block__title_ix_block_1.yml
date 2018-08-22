@@ -10,9 +10,6 @@ dependencies:
     - views
   theme:
     - byu_news
-third_party_settings:
-  block_class:
-    classes: ''
 id: views_block__title_ix_block_1
 theme: byu_news
 region: content

@@ -11,13 +11,10 @@ dependencies:
     - user
   theme:
     - byu_news
-third_party_settings:
-  block_class:
-    classes: ''
 id: sendthisstorybutton
 theme: byu_news
 region: right_sidebar
-weight: -4
+weight: -5
 provider: null
 plugin: 'block_content:a8ae54dc-5b75-4dd8-862e-446fe2f513f1'
 settings:

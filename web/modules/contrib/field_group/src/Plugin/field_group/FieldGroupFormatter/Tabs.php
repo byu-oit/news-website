@@ -41,7 +41,7 @@ class Tabs extends FieldGroupFormatterBase {
     ];
 
     if ($this->getSetting('id')) {
-      $element['#id'] = Html::getId($this->getSetting('id'));
+      $element['#id'] = Html::getUniqueId($this->getSetting('id'));
     }
 
     // By default tabs don't have titles but you can override it in the theme.

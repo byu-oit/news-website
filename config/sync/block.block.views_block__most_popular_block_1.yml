@@ -5,18 +5,14 @@ dependencies:
   config:
     - views.view.most_popular
   module:
-    - block_class
     - system
     - views
   theme:
     - byu_news
-third_party_settings:
-  block_class:
-    classes: ''
 id: views_block__most_popular_block_1
 theme: byu_news
 region: right_sidebar
-weight: -6
+weight: -7
 provider: null
 plugin: 'views_block:most_popular-block_1'
 settings:
@@ -29,6 +25,6 @@ settings:
 visibility:
   request_path:
     id: request_path
-    pages: '<front>'
+    pages: "<front>\r\n/title-ix"
     negate: true
     context_mapping: {  }

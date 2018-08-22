@@ -1,0 +1,15 @@
+diff --git a/css/adminimal_admin_toolbar.css b/css/adminimal_admin_toolbar.css
+index c09d4d4..1ba9f4d 100644
+--- a/css/adminimal_admin_toolbar.css
++++ b/css/adminimal_admin_toolbar.css
+@@ -236,6 +236,10 @@
+   padding: 1em 12px;
+ }
+ 
++.toolbar-tray-horizontal .toolbar-menu:not(:first-child) li.menu-item--expanded > a:focus {
++    background-image: none !important;
++}
++
+ .adminimal-admin-toolbar .toolbar-tray-horizontal ul li.menu-item--expanded .menu-item:hover ul {
+   margin: -39px 0 0 200px;
+ }

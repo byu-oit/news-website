@@ -1,0 +1,10 @@
+name: Copy Filter
+description: Remove extraneous formatting when copying from 3rd party text editors.
+type: module
+package: Custom
+# core: 8.x
+# Information added by Drupal.org packaging script on 2018-08-21
+version: '8.x-1.1'
+core: '8.x'
+project: 'copy_filter'
+datestamp: 1534873983

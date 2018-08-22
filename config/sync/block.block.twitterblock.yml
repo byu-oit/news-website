@@ -8,9 +8,6 @@ dependencies:
     - twitter_block
   theme:
     - byu_news
-third_party_settings:
-  block_class:
-    classes: ''
 id: twitterblock
 theme: byu_news
 region: right_sidebar

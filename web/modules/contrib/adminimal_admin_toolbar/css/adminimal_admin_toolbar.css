@@ -11,7 +11,8 @@
   background: #333;
 }
 
-.adminimal-admin-toolbar .toolbar-tray .toolbar-menu a {
+.adminimal-admin-toolbar .toolbar-tray .toolbar-menu a,
+.adminimal-admin-toolbar .toolbar-tray .toolbar-menu span {
   background: transparent;
   color: #ccc;
 }
@@ -37,9 +38,15 @@
   box-shadow: none;
 }
 
-.adminimal-admin-toolbar .toolbar-tray a {
+.adminimal-admin-toolbar .toolbar-tray a,
+.adminimal-admin-toolbar .toolbar-tray span {
   background: #2d2d2d;
   color: #bbb;
+}
+
+.adminimal-admin-toolbar .toolbar-tray span {
+  display: block;
+  padding: 1em 1.3333em;
 }
 
 .adminimal-admin-toolbar .toolbar-tray-horizontal a:hover,
@@ -108,10 +115,6 @@
 
 .adminimal-admin-toolbar .toolbar .toolbar-toggle-orientation {
   background-color: #333;
-}
-
-.toolbar .toolbar-icon:before {
-  transition: .25s;
 }
 
 .adminimal-admin-toolbar .toolbar .toolbar-icon.toolbar-handle:focus {

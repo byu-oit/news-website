@@ -8,9 +8,6 @@ dependencies:
     - node
   theme:
     - byu_news
-third_party_settings:
-  block_class:
-    classes: ''
 id: publishdate
 theme: byu_news
 region: content

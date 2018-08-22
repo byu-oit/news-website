@@ -53,7 +53,7 @@ content:
     region: content
     label: hidden
     settings:
-      trim_length: 300
+      trim_length: 600
     third_party_settings:
       field_formatter_class:
         class: ''

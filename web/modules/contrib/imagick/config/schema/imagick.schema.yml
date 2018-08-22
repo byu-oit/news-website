@@ -1,0 +1,16 @@
+imagick.config:
+  type: mapping
+  label: 'Imagick image settings'
+  mapping:
+    jpeg_quality:
+      type: integer
+      label: 'JPEG quality'
+    resize_filter:
+      type: integer
+      label: 'Resize filter'
+    optimize:
+      type: boolean
+      label: 'Optimize'
+    strip_metadata:
+      type: boolean
+      label: 'Strip metadata'

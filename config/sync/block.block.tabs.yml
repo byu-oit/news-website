@@ -7,9 +7,6 @@ dependencies:
     - user
   theme:
     - byu_news
-third_party_settings:
-  block_class:
-    classes: ''
 id: tabs
 theme: byu_news
 region: content

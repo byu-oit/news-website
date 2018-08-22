@@ -1,0 +1,17 @@
+.matrix-wrapper fieldset {
+    padding: 0;
+}
+
+.matrix-wrapper .form-wrapper {
+    border: 0;
+    margin: 0;
+    padding: 2px;
+}
+
+.matrix-wrapper fieldset .form-item {
+    display: inline;
+}
+
+.matrix-wrapper fieldset .form-item input {
+    width: 75px;
+}

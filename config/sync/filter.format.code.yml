@@ -1,10 +1,18 @@
 uuid: 793241e5-86b4-4821-81f7-d7e8cef43779
 langcode: en
 status: true
-dependencies: {  }
+dependencies:
+  module:
+    - token_filter
 _core:
   default_config_hash: vCBcTuDXZrMA3x9KM4b_gl4c5EkNihXYPtxAoPycv6A
 name: Code
 format: code
 weight: 0
-filters: {  }
+filters:
+  token_filter:
+    id: token_filter
+    provider: token_filter
+    status: true
+    weight: 0
+    settings: {  }

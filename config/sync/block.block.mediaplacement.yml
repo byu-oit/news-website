@@ -7,9 +7,6 @@ dependencies:
     - ctools_block
   theme:
     - byu_news
-third_party_settings:
-  block_class:
-    classes: ''
 id: mediaplacement
 theme: byu_news
 region: right_sidebar

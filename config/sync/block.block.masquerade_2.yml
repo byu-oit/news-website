@@ -7,9 +7,6 @@ dependencies:
     - masquerade
   theme:
     - byu_news
-third_party_settings:
-  block_class:
-    classes: ''
 id: masquerade_2
 theme: byu_news
 region: after_content

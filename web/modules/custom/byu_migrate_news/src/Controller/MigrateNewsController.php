@@ -30,7 +30,8 @@ class MigrateNewsController extends ControllerBase {
     //       file_delete($fid);
     //   }
     $lastfid = 0;
-    $images_result = db_query("select * from drupal7_news.file_managed order by fid");
+    $maxfid = db_query("select max(fid) from file_managed")->fetchField();
+    $images_result = db_query("select * from drupal7_news.file_managed where fid > $maxfid order by fid");
     foreach ($images_result as $imagerow) {
       $fid = $imagerow->fid;
       $values = \Drupal::entityQuery('file')->condition('fid', $fid)->execute();
@@ -167,7 +168,8 @@ class MigrateNewsController extends ControllerBase {
    *   Return Hello string.
    */
   public function migratestories() {
-    $query = "select nid, title, created, status from drupal7_news.node where type = 'story' order by nid";
+    $maxnid = db_query("select max(nid) from node where type = 'story'")->fetchField();
+    $query = "select nid, title, created, status from drupal7_news.node where type = 'story' and nid > $maxnid order by nid";
     $sql_result = db_query($query);
     $lastnid = 0;
     foreach ($sql_result as $row) {
@@ -369,6 +371,24 @@ class MigrateNewsController extends ControllerBase {
       '#markup' => $this->t("Status Updated!")
     ];
   }
+// used to move content created mid migration so migration can be updated
+
+  public function movenodes() {
+      $nid = 11792;
+      $node = Node::load($nid);
+      $node1 = $node->createDuplicate();
+      $node1->nid = 2;
+      $node1->save();
+      $nid = 11791;
+      $node = Node::load($nid);
+      $node1 = $node->createDuplicate();
+      $node1->nid = 3;
+      $node1->save();
+    return [
+      '#type' => 'markup',
+      '#markup' => $this->t("Node moved!")
+    ];
+  }
   public function addredirects() {
     //    $query = \Drupal::database()->select('drupal7_news.redirect', 'r');
     //    $query->addField('r', 'source');
@@ -377,7 +397,7 @@ class MigrateNewsController extends ControllerBase {
     //    $query->addTag('node_access');
     //    $redirect_result = $query->execute()->fetchAll();
 
-    $redirect_query = "SELECT source,redirect FROM drupal7_news.redirect WHERE status = 1 and redirect NOT LIKE '%taxonomy/term%' and source not in (select redirect_source__path FROM drupal8_news.redirect )";
+    $redirect_query = "SELECT source,redirect FROM drupal7_news.redirect WHERE status = 1 and redirect NOT LIKE '%taxonomy/term%' and source not in (select redirect_source__path from drupal8_news.redirect)";
     $redirect_result = db_query($redirect_query);
     $redirectCount = 0;
     foreach ($redirect_result as $row) {

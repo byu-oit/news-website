@@ -3,7 +3,7 @@ server:
   hostname: cas.byu.edu
   port: 443
   path: /cas
-  verify: 2
+  verify: 0
   cert: ''
 gateway:
   check_frequency: -2

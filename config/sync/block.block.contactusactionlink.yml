@@ -9,9 +9,6 @@ dependencies:
     - block_content
   theme:
     - byu_news
-third_party_settings:
-  block_class:
-    classes: ''
 id: contactusactionlink
 theme: byu_news
 region: header_actions

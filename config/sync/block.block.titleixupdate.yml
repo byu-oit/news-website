@@ -1,0 +1,31 @@
+uuid: a171d4e7-bbfc-4219-8a14-d20b15618c08
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:480feaa9-0bed-4cc7-b8c0-cb879fe9919f'
+  module:
+    - block_content
+    - system
+  theme:
+    - byu_news
+id: titleixupdate
+theme: byu_news
+region: right_sidebar
+weight: -12
+provider: null
+plugin: 'block_content:480feaa9-0bed-4cc7-b8c0-cb879fe9919f'
+settings:
+  id: 'block_content:480feaa9-0bed-4cc7-b8c0-cb879fe9919f'
+  label: 'Title IX Update'
+  provider: block_content
+  label_display: visible
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  request_path:
+    id: request_path
+    pages: '<front>'
+    negate: false
+    context_mapping: {  }
