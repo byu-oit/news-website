@@ -1,5 +1,5 @@
 css:
-  brotli: true
+  brotli: false
   combine_media: true
   fix_type: true
   preserve_external: false
@@ -15,7 +15,7 @@ enabled: true
 global_counter: 0
 immutable: true
 js:
-  brotli: true
+  brotli: false
   fix_type: true
   preserve_external: false
 skip_enabled_preprocess_check: false
