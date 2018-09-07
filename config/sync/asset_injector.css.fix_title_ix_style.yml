@@ -1,0 +1,17 @@
+uuid: aa9b6bbb-bc22-4d72-b47f-c319374a5e3b
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+id: fix_title_ix_style
+label: 'Fix Title IX style'
+code: ".node-2 .region.region-content {\r\n    margin: 0 32px;\r\n}"
+media: all
+preprocess: true
+conditions:
+  request_path:
+    id: request_path
+    pages: /title-ix
+    negate: false
+conditions_require_all: true
