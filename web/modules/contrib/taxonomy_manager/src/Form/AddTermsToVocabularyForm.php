@@ -5,12 +5,15 @@ namespace Drupal\taxonomy_manager\Form;
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\taxonomy\VocabularyInterface;
+use Drupal\Core\Messenger\MessengerTrait;
 use Drupal\taxonomy_manager\TaxonomyManagerHelper;
 
 /**
  * Form for adding terms to a given vocabulary.
  */
 class AddTermsToVocabularyForm extends FormBase {
+
+  use MessengerTrait;
 
   /**
    * {@inheritdoc}
@@ -74,10 +77,9 @@ class AddTermsToVocabularyForm extends FormBase {
     }
 
     if (count($term_names_too_long)) {
-      drupal_set_message($this->t("Following term names were too long and truncated to 255 characters: %names.",
-        ['%names' => implode(', ', $term_names_too_long)]), 'warning');
+      $this->messenger()->addWarning($this->t("Following term names were too long and truncated to 255 characters: %names.", ['%names' => implode(', ', $term_names_too_long)]));
     }
-    drupal_set_message($this->t("Terms added: %terms", ['%terms' => implode(', ', $term_names)]));
+    $this->messenger()->addMessage($this->t("Terms added: %terms", ['%terms' => implode(', ', $term_names)]));
     $form_state->setRedirect('taxonomy_manager.admin_vocabulary', ['taxonomy_vocabulary' => $taxonomy_vocabulary->id()]);
   }
 

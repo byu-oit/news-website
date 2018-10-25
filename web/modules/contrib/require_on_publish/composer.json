@@ -1,6 +1,6 @@
 {
   "name": "drupal/require_on_publish",
-  "description": "",
+  "description": "Adds ability to designate fields as required for publishing only.",
   "type": "drupal-module",
   "homepage": "https://www.drupal.org/project/require_on_publish",
   "support": {

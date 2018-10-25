@@ -77,7 +77,7 @@ class SimpleXml extends DataParserPluginBase {
       }
       // Reduce single-value results to scalars.
       foreach ($this->currentItem as $field_name => $values) {
-        if (count($values) == 1) {
+        if (is_array($values) && count($values) == 1) {
           $this->currentItem[$field_name] = reset($values);
         }
       }

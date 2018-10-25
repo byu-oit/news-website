@@ -98,6 +98,8 @@ content:
   content_moderation_control:
     weight: -20
     region: content
+    settings: {  }
+    third_party_settings: {  }
   created:
     label: hidden
     type: timestamp

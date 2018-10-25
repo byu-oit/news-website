@@ -4,6 +4,8 @@
 id: beer_user
 label: Beer Drinkers of the world
 migration_group: beer
+migration_tags:
+  - example
 source:
   plugin: beer_user
 destination:

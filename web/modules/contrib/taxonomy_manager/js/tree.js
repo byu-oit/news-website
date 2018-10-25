@@ -39,13 +39,13 @@
       focusOnSelect: false, // Set focus when node is checked by a mouse click
       generateIds: false, // Generate id attributes like <span id='fancytree-id-KEY'>
       idPrefix: 'ft_', // Used to generate node id´s like <span id='fancytree-id-<key>'>.
-      icons: false, // Display node icons.
+      icon: false, // Display node icons.
       keyboard: false, // Support keyboard navigation.
       keyPathSeparator: '/', // Used by node.getKeyPath() and tree.loadKeyPath().
       minExpandLevel: 1, // 1: root node is not collapsible
       quicksearch: false, // Navigate to next node by typing the first letters.
       selectMode: 2, // 1:single, 2:multi, 3:multi-hier
-      tabbable: true, // Whole tree behaves as one single control
+      tabindex: 0, // Whole tree behaves as one single control
       titlesTabbable: false, // Node titles can receive keyboard focus
       lazyLoad: function (event, data) {
         // Load child nodes via ajax GET /taxonomy_manager/parent=1234
@@ -60,6 +60,16 @@
         // We update the the form inputs on every checkbox state change as
         // ajax events might require the latest state.
         data.tree.generateFormElements(name + '[]');
+        // If no item is selected then disable delete button.
+        if (data.tree.getSelectedNodes().length < 1) {
+          document.getElementById("edit-delete").disabled = true;
+        } else {
+          let $deleteButton = document.getElementById("edit-delete");
+          $deleteButton.disabled = false;
+          if ($deleteButton.classList.contains('is-disabled')) {
+            $deleteButton.classList.remove('is-disabled');
+          }
+        }
       },
       focus: function (event, data) {
         new Drupal.TaxonomyManagerTermData(data.node.key, data.tree);

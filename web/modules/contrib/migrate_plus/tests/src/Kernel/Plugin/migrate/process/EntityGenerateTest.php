@@ -2,6 +2,7 @@
 
 namespace Drupal\Tests\migrate_plus\Kernel\Plugin\migrate\process;
 
+use Drupal\Core\Config\Entity\ConfigEntityInterface;
 use Drupal\Core\Field\FieldStorageDefinitionInterface;
 use Drupal\Core\Language\LanguageInterface;
 use Drupal\field\Tests\EntityReference\EntityReferenceTestTrait;
@@ -119,12 +120,16 @@ class EntityGenerateTest extends KernelTestBase implements MigrateMessageInterfa
   public function testTransform(array $definition, array $expected, array $preSeed = []) {
     // Pre seed some test data.
     foreach ($preSeed as $storageName => $values) {
-      /** @var \Drupal\Core\Entity\ContentEntityStorageInterface $storage */
-      $storage = $this->container
-        ->get('entity_type.manager')
-        ->getStorage($storageName);
-      $entity = $storage->create($values);
-      $entity->save();
+      // If the first element of $values is a non-empty array, create multiple
+      // entities. Otherwise, create just one entity.
+      if (isset($values[0])) {
+        foreach ($values as $itemValues) {
+          $this->createTestData($storageName, $itemValues);
+        }
+      }
+      else {
+        $this->createTestData($storageName, $values);
+      }
     }
 
     /** @var \Drupal\migrate\Plugin\Migration $migration */
@@ -139,15 +144,54 @@ class EntityGenerateTest extends KernelTestBase implements MigrateMessageInterfa
       $properties = array_diff_key($row, array_flip(['id']));
       foreach ($properties as $property => $value) {
         if (is_array($value)) {
-          foreach ($value as $key => $expectedValue) {
-            if (empty($expectedValue)) {
-              $this->assertEmpty($entity->{$property}->getValue(), "Expected value is empty but field $property is not empty.");
+          if (empty($value)) {
+            $this->assertEmpty($entity->{$property}->getValue(), "Expected value is 'unset' but field $property is set.");
+          }
+          else {
+            // Check if we're testing multiple values in one field. If so, loop
+            // through them one-by-one and check that they're present in the
+            // $entity.
+            if (isset($value[0])) {
+              foreach ($value as $valueID => $valueToCheck) {
+                foreach ($valueToCheck as $key => $expectedValue) {
+                  if (empty($expectedValue)) {
+                    if (!$entity->{$property}->isEmpty()) {
+                      $this->assertTrue($entity->{$property}[0]->entity->$key->isEmpty(), "Expected value is empty but field $property.$key is not empty.");
+                    }
+                    else {
+                      $this->assertTrue($entity->{$property}->isEmpty(), "FOOBAR Expected value is empty but field $property is not empty.");
+                    }
+                  }
+                  elseif ($entity->{$property}->getValue()) {
+                    $this->assertEquals($expectedValue, $entity->{$property}[$valueID]->entity->$key->value);
+                  }
+                  else {
+                    $this->fail("Expected value: $expectedValue does not exist in $property.");
+                  }
+                }
+              }
             }
-            elseif ($entity->{$property}->getValue()) {
-              $this->assertEquals($expectedValue, $entity->{$property}[0]->entity->$key->value);
-            }
+            // If we get to this point, we're only checking a
+            // single field value.
             else {
-              $this->fail("Expected value: $expectedValue does not exist in $property.");
+              foreach ($value as $key => $expectedValue) {
+                if (empty($expectedValue)) {
+                  if (!$entity->{$property}->isEmpty()) {
+                    $this->assertTrue($entity->{$property}[0]->entity->$key->isEmpty(), "Expected value is empty but field $property.$key is not empty.");
+                  }
+                  else {
+                    $this->assertTrue($entity->{$property}->isEmpty(), "BINBAZ Expected value is empty but field $property is not empty.");
+                  }
+                }
+                elseif ($entity->{$property}->getValue()) {
+                  $referenced_entity = $entity->{$property}[0]->entity;
+                  $result_value = $referenced_entity instanceof ConfigEntityInterface ? $referenced_entity->get($key) : $referenced_entity->get($key)->value;
+                  $this->assertEquals($expectedValue, $result_value);
+                }
+                else {
+                  $this->fail("Expected value: $expectedValue does not exist in $property.");
+                }
+              }
             }
           }
         }
@@ -314,6 +358,406 @@ class EntityGenerateTest extends KernelTestBase implements MigrateMessageInterfa
           ],
         ],
       ],
+      'provide values' => [
+        'definition' => [
+          'source' => [
+            'plugin' => 'embedded_data',
+            'data_rows' => [
+              [
+                'id' => 1,
+                'title' => 'content item 1',
+                'term' => 'Apples',
+              ],
+              [
+                'id' => 2,
+                'title' => 'content item 2',
+                'term' => 'Bananas',
+              ],
+              [
+                'id' => 3,
+                'title' => 'content item 3',
+                'term' => 'Grapes',
+              ],
+            ],
+            'ids' => [
+              'id' => ['type' => 'integer'],
+            ],
+          ],
+          'process' => [
+            'id' => 'id',
+            'type' => [
+              'plugin' => 'default_value',
+              'default_value' => $this->bundle,
+            ],
+            'title' => 'title',
+            'term_upper' => [
+              'plugin' => 'callback',
+              'source' => 'term',
+              'callable' => 'strtoupper',
+            ],
+            $this->fieldName => [
+              'plugin' => 'entity_generate',
+              'source' => 'term',
+              'values' => [
+                'description' => '@term_upper',
+              ],
+            ],
+          ],
+          'destination' => [
+            'plugin' => 'entity:node',
+          ],
+        ],
+        'expected' => [
+          'row 1' => [
+            'id' => 1,
+            'title' => 'content item 1',
+            $this->fieldName => [
+              'tid' => 2,
+              'name' => 'Apples',
+              'description' => 'APPLES',
+            ],
+          ],
+          'row 2' => [
+            'id' => 2,
+            'title' => 'content item 2',
+            $this->fieldName => [
+              'tid' => 3,
+              'name' => 'Bananas',
+              'description' => 'BANANAS',
+            ],
+          ],
+          'row 3' => [
+            'id' => 3,
+            'title' => 'content item 3',
+            $this->fieldName => [
+              'tid' => 1,
+              'name' => 'Grapes',
+              'description' => NULL,
+            ],
+          ],
+        ],
+        'pre seed' => [
+          'taxonomy_term' => [
+            'name' => 'Grapes',
+            'vid' => $this->vocabulary,
+            'langcode' => LanguageInterface::LANGCODE_NOT_SPECIFIED,
+          ],
+        ],
+      ],
+      'lookup single existing term returns correct term' => [
+        'definition' => [
+          'source' => [
+            'plugin' => 'embedded_data',
+            'data_rows' => [
+              [
+                'id' => 1,
+                'title' => 'content item 1',
+                'term' => 'Grapes',
+              ],
+            ],
+            'ids' => [
+              'id' => ['type' => 'integer'],
+            ],
+          ],
+          'process' => [
+            'id' => 'id',
+            'type' => [
+              'plugin' => 'default_value',
+              'default_value' => $this->bundle,
+            ],
+            'title' => 'title',
+            $this->fieldName => [
+              'plugin' => 'entity_lookup',
+              'source' => 'term',
+            ],
+          ],
+          'destination' => [
+            'plugin' => 'entity:node',
+          ],
+        ],
+        'expected' => [
+          'row 1' => [
+            'id' => 1,
+            'title' => 'content item 1',
+            $this->fieldName => [
+              'tid' => 1,
+              'name' => 'Grapes',
+            ],
+          ],
+        ],
+        'pre seed' => [
+          'taxonomy_term' => [
+            'name' => 'Grapes',
+            'vid' => $this->vocabulary,
+            'langcode' => LanguageInterface::LANGCODE_NOT_SPECIFIED,
+          ],
+        ],
+      ],
+      'lookup single missing term returns null value' => [
+        'definition' => [
+          'source' => [
+            'plugin' => 'embedded_data',
+            'data_rows' => [
+              [
+                'id' => 1,
+                'title' => 'content item 1',
+                'term' => 'Apple',
+              ],
+            ],
+            'ids' => [
+              'id' => ['type' => 'integer'],
+            ],
+          ],
+          'process' => [
+            'id' => 'id',
+            'type' => [
+              'plugin' => 'default_value',
+              'default_value' => $this->bundle,
+            ],
+            'title' => 'title',
+            $this->fieldName => [
+              'plugin' => 'entity_lookup',
+              'source' => 'term',
+            ],
+          ],
+          'destination' => [
+            'plugin' => 'entity:node',
+          ],
+        ],
+        'expected' => [
+          'row 1' => [
+            'id' => 1,
+            'title' => 'content item 1',
+            $this->fieldName => [],
+          ],
+        ],
+        'pre seed' => [
+          'taxonomy_term' => [
+            'name' => 'Grapes',
+            'vid' => $this->vocabulary,
+            'langcode' => LanguageInterface::LANGCODE_NOT_SPECIFIED,
+          ],
+        ],
+      ],
+      'lookup multiple existing terms returns correct terms' => [
+        'definition' => [
+          'source' => [
+            'plugin' => 'embedded_data',
+            'data_rows' => [
+              [
+                'id' => 1,
+                'title' => 'content item 1',
+                'term' => [
+                  'Grapes',
+                  'Apples',
+                ],
+              ],
+            ],
+            'ids' => [
+              'id' => ['type' => 'integer'],
+            ],
+          ],
+          'process' => [
+            'id' => 'id',
+            'title' => 'title',
+            'type' => [
+              'plugin' => 'default_value',
+              'default_value' => $this->bundle,
+            ],
+            $this->fieldName => [
+              'plugin' => 'entity_lookup',
+              'source' => 'term',
+            ],
+          ],
+          'destination' => [
+            'plugin' => 'entity:node',
+          ],
+        ],
+        'expected' => [
+          'row 1' => [
+            'id' => 1,
+            'title' => 'content item 1',
+            $this->fieldName => [
+              [
+                'tid' => 1,
+                'name' => 'Grapes',
+              ],
+              [
+                'tid' => 2,
+                'name' => 'Apples',
+              ],
+            ],
+          ],
+        ],
+        'pre seed' => [
+          'taxonomy_term' => [
+            [
+              'name' => 'Grapes',
+              'vid' => $this->vocabulary,
+              'langcode' => LanguageInterface::LANGCODE_NOT_SPECIFIED,
+            ],
+            [
+              'name' => 'Apples',
+              'vid' => $this->vocabulary,
+              'langcode' => LanguageInterface::LANGCODE_NOT_SPECIFIED,
+            ],
+          ],
+        ],
+      ],
+      'lookup multiple mixed terms returns correct terms' => [
+        'definition' => [
+          'source' => [
+            'plugin' => 'embedded_data',
+            'data_rows' => [
+              [
+                'id' => 1,
+                'title' => 'content item 1',
+                'term' => [
+                  'Grapes',
+                  'Pears',
+                ],
+              ],
+            ],
+            'ids' => [
+              'id' => ['type' => 'integer'],
+            ],
+          ],
+          'process' => [
+            'id' => 'id',
+            'title' => 'title',
+            'type' => [
+              'plugin' => 'default_value',
+              'default_value' => $this->bundle,
+            ],
+            $this->fieldName => [
+              'plugin' => 'entity_lookup',
+              'source' => 'term',
+            ],
+          ],
+          'destination' => [
+            'plugin' => 'entity:node',
+          ],
+        ],
+        'expected' => [
+          'row 1' => [
+            'id' => '1',
+            'title' => 'content item 1',
+            $this->fieldName => [
+              [
+                'tid' => 1,
+                'name' => 'Grapes',
+              ],
+            ],
+          ],
+        ],
+        'pre seed' => [
+          'taxonomy_term' => [
+            [
+              'name' => 'Grapes',
+              'vid' => $this->vocabulary,
+              'langcode' => LanguageInterface::LANGCODE_NOT_SPECIFIED,
+            ],
+            [
+              'name' => 'Apples',
+              'vid' => $this->vocabulary,
+              'langcode' => LanguageInterface::LANGCODE_NOT_SPECIFIED,
+            ],
+          ],
+        ],
+      ],
+      'lookup with empty term value returns no terms' => [
+        'definition' => [
+          'source' => [
+            'plugin' => 'embedded_data',
+            'data_rows' => [
+              [
+                'id' => 1,
+                'title' => 'content item 1',
+                'term' => [],
+              ],
+            ],
+            'ids' => [
+              'id' => ['type' => 'integer'],
+            ],
+          ],
+          'process' => [
+            'id' => 'id',
+            'title' => 'title',
+            'type' => [
+              'plugin' => 'default_value',
+              'default_value' => $this->bundle,
+            ],
+            $this->fieldName => [
+              'plugin' => 'entity_lookup',
+              'source' => 'term',
+            ],
+          ],
+          'destination' => [
+            'plugin' => 'entity:node',
+          ],
+        ],
+        'expected' => [
+          'row 1' => [
+            'id' => 1,
+            'title' => 'content item 1',
+            $this->fieldName => [],
+          ],
+        ],
+        'pre seed' => [
+          'taxonomy_term' => [
+            'name' => 'Grapes',
+            'vid' => $this->vocabulary,
+            'langcode' => LanguageInterface::LANGCODE_NOT_SPECIFIED,
+          ],
+        ],
+      ],
+      'lookup config entity' => [
+        'definition' => [
+          'source' => [
+            'plugin' => 'embedded_data',
+            'data_rows' => [
+              [
+                'id' => 1,
+                'name' => 'user 1',
+                'mail' => 'user1@user1.com',
+                'roles' => ['role_1'],
+              ],
+            ],
+            'ids' => [
+              'id' => ['type' => 'integer'],
+            ],
+          ],
+          'process' => [
+            'id' => 'id',
+            'name' => 'name',
+            'roles' => [
+              'plugin' => 'entity_lookup',
+              'entity_type' => 'user_role',
+              'value_key' => 'id',
+              'source' => 'roles',
+            ],
+          ],
+          'destination' => [
+            'plugin' => 'entity:user',
+          ],
+        ],
+        'expected' => [
+          'row 1' => [
+            'id' => 1,
+            'name' => 'user 1',
+            'roles' => [
+              'id' => 'role_1',
+              'label' => 'Role 1',
+            ],
+          ],
+        ],
+        'pre seed' => [
+          'user_role' => [
+            'id' => 'role_1',
+            'label' => 'Role 1',
+          ],
+        ],
+      ],
     ];
   }
 
@@ -322,6 +766,23 @@ class EntityGenerateTest extends KernelTestBase implements MigrateMessageInterfa
    */
   public function display($message, $type = 'status') {
     $this->assertTrue($type == 'status', $message);
+  }
+
+  /**
+   * Create pre-seed test data.
+   *
+   * @param string $storageName
+   *   The storage manager to create.
+   * @param array $values
+   *   The values to use when creating the entity.
+   */
+  private function createTestData($storageName, array $values) {
+    /** @var \Drupal\Core\Entity\ContentEntityStorageInterface $storage */
+    $storage = $this->container
+      ->get('entity_type.manager')
+      ->getStorage($storageName);
+    $entity = $storage->create($values);
+    $entity->save();
   }
 
 }

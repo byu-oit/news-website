@@ -10,8 +10,8 @@ dependencies:
   - drupal:menu_ui
   - drupal:path
 
-# Information added by Drupal.org packaging script on 2018-02-23
-version: '8.x-4.0-beta3'
+# Information added by Drupal.org packaging script on 2018-09-06
+version: '8.x-4.0'
 core: '8.x'
 project: 'migrate_plus'
-datestamp: 1519400598
+datestamp: 1536264189

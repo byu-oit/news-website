@@ -1,6 +1,8 @@
 id: wine_terms
 label: Migrate all categories into Drupal taxonomy terms
 migration_group: wine
+migration_tags:
+  - advanced example
 source:
   plugin: wine_term
 destination:

@@ -1,11 +1,11 @@
 name: Require on Publish
 type: module
-description: Allows field to only be required when publishing an entity.
+description: Adds ability to designate fields as required for publishing only.
 package: Content Authoring
 # core: 8.x
 
-# Information added by Drupal.org packaging script on 2018-06-21
-version: '8.x-1.0-beta3'
+# Information added by Drupal.org packaging script on 2018-10-20
+version: '8.x-1.0-beta7'
 core: '8.x'
 project: 'require_on_publish'
-datestamp: 1529595525
+datestamp: 1540055887

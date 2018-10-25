@@ -5,6 +5,7 @@ namespace Drupal\taxonomy_manager\Form;
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\taxonomy\TermStorage;
+use Drupal\Core\Messenger\MessengerTrait;
 use Drupal\taxonomy\VocabularyInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
@@ -12,6 +13,8 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  * Form for deleting given terms.
  */
 class MoveTermsForm extends FormBase {
+
+  use MessengerTrait;
 
   /**
    * The current request.
@@ -87,10 +90,7 @@ class MoveTermsForm extends FormBase {
   public function submitForm(array &$form, FormStateInterface $form_state) {
     $taxonomy_vocabulary = $form_state->getValue('voc');
 
-    drupal_set_message(
-      $this->t('Move operation not yet implemented.'),
-      'error'
-    );
+    $this->messenger()->addError($this->t('Move operation not yet implemented.'));
     $form_state->setRedirect('taxonomy_manager.admin_vocabulary', ['taxonomy_vocabulary' => $taxonomy_vocabulary->id()]);
 
   }

@@ -1,15 +1,15 @@
 fancytree:
   remote: https://github.com/mar10/fancytree
-  version: 2.12.0
+  version: 2.28.1
   license:
     name: MIT
     url: https://github.com/mar10/fancytree/wiki/LicenseInfo
     gpl-compatible: true
   css:
     component:
-      https://cdn.jsdelivr.net/jquery.fancytree/2.12.0/skin-lion/ui.fancytree.min.css: {}
+      https://cdn.jsdelivr.net/npm/jquery.fancytree@2.28.1/dist/skin-lion/ui.fancytree.min.css: {}
   js:
-    https://cdn.jsdelivr.net/jquery.fancytree/2.12.0/jquery.fancytree-all.min.js: { type: external, minified: true }
+    https://cdn.jsdelivr.net/npm/jquery.fancytree@2.28.1/dist/jquery.fancytree.min.js: { type: external, minified: true }
   dependencies:
     - core/jquery
     - core/jquery.ui
@@ -20,8 +20,8 @@ fancytree:
 tree:
   version: 1.x
   css:
-      component:
-        css/taxonomy_manager.fancytree.css: {}
+    component:
+      css/taxonomy_manager.fancytree.css: {}
   js:
     js/tree.js: {}
   dependencies:

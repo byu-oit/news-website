@@ -2,6 +2,8 @@
 id: wine_role_json
 label: JSON feed of roles (positions)
 migration_group: wine
+migration_tags:
+  - advanced example
 source:
   # We use the JSON source plugin.
   plugin: url
@@ -17,7 +19,8 @@ source:
   # Normally, this is one or more fully-qualified URLs or file paths. Because
   # we can't hardcode your local URL, we provide a relative path here which
   # hook_install() will rewrite to a full URL for the current site.
-  urls: /migrate_example_advanced_position?_format=json
+  urls:
+    - /migrate_example_advanced_position?_format=json
   # An xpath-like selector corresponding to the items to be imported.
   item_selector: position
   # Under 'fields', we list the data items to be imported. The first level keys

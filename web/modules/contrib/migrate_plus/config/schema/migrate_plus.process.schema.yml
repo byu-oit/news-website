@@ -71,9 +71,9 @@ migrate_plus.process.get:
       type: string
       label: 'Source key'
 
-migrate_plus.process.iterator:
+migrate_plus.process.sub_process:
   type: migrate_process
-  label: 'Iterator process'
+  label: 'Sub process'
   mapping:
     process:
       type: ignore

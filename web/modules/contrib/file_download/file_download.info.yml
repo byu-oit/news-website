@@ -3,8 +3,8 @@ name: 'File Download'
 description: 'Enable a file to download.'
 # core: 8.x
 
-# Information added by Drupal.org packaging script on 2017-09-21
-version: '8.x-1.1'
+# Information added by Drupal.org packaging script on 2018-08-19
+version: '8.x-1.2'
 core: '8.x'
 project: 'file_download'
-datestamp: 1506028446
+datestamp: 1534643886

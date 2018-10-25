@@ -6,8 +6,8 @@ package: 'Paragraphs'
 dependencies:
   - paragraphs:paragraphs
 
-# Information added by Drupal.org packaging script on 2018-02-26
-version: '8.x-1.0-beta3'
+# Information added by Drupal.org packaging script on 2018-08-20
+version: '8.x-1.0'
 core: '8.x'
 project: 'news_cards'
-datestamp: 1519670586
+datestamp: 1534726686

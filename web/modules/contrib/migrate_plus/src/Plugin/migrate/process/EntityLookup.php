@@ -2,6 +2,7 @@
 
 namespace Drupal\migrate_plus\Plugin\migrate\process;
 
+use Drupal\Core\Config\Entity\ConfigEntityInterface;
 use Drupal\Core\Entity\EntityManagerInterface;
 use Drupal\Core\Entity\EntityReferenceSelection\SelectionPluginManagerInterface;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
@@ -152,6 +153,11 @@ class EntityLookup extends ProcessPluginBase implements ContainerFactoryPluginIn
    * {@inheritdoc}
    */
   public function transform($value, MigrateExecutableInterface $migrateExecutable, Row $row, $destinationProperty) {
+    // If the source data is an empty array, return the same.
+    if (gettype($value) === 'array' && count($value) === 0) {
+      return [];
+    }
+
     // In case of subfields ('field_reference/target_id'), extract the field
     // name only.
     $parts = explode('/', $destinationProperty);
@@ -270,7 +276,8 @@ class EntityLookup extends ProcessPluginBase implements ContainerFactoryPluginIn
     if (!$ignoreCase) {
       // Returns the entity's identifier.
       foreach ($results as $k => $identifier) {
-        $result_value = $this->entityManager->getStorage($this->lookupEntityType)->load($identifier)->{$this->lookupValueKey}->value;
+        $entity = $this->entityManager->getStorage($this->lookupEntityType)->load($identifier);
+        $result_value = $entity instanceof ConfigEntityInterface ? $entity->get($this->lookupValueKey) : $entity->get($this->lookupValueKey)->value;
         if (($multiple && !in_array($result_value, $value, TRUE)) || (!$multiple && $result_value !== $value)) {
           unset($results[$k]);
         }

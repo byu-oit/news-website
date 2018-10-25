@@ -66,6 +66,36 @@ class SkipOnValueTest extends MigrateProcessTestCase {
   }
 
   /**
+   * @covers ::process
+   */
+  public function testProcessBypassesOnMultipleNonValue() {
+    $configuration['method'] = 'process';
+    $configuration['value'] = [1, 1, 2, 3, 5, 8];
+    $configuration['not_equals'] = TRUE;
+    $value = (new SkipOnValue($configuration, 'skip_on_value', []))
+      ->transform(5, $this->migrateExecutable, $this->row, 'destinationproperty');
+    $this->assertEquals($value, '5');
+    $value = (new SkipOnValue($configuration, 'skip_on_value', []))
+      ->transform(1, $this->migrateExecutable, $this->row, 'destinationproperty');
+    $this->assertEquals($value, '1');
+  }
+
+  /**
+   * @covers ::row
+   */
+  public function testRowBypassesOnMultipleNonValue() {
+    $configuration['method'] = 'row';
+    $configuration['value'] = [1, 1, 2, 3, 5, 8];
+    $configuration['not_equals'] = TRUE;
+    $value = (new SkipOnValue($configuration, 'skip_on_value', []))
+      ->transform(5, $this->migrateExecutable, $this->row, 'destinationproperty');
+    $this->assertEquals($value, '5');
+    $value = (new SkipOnValue($configuration, 'skip_on_value', []))
+      ->transform(1, $this->migrateExecutable, $this->row, 'destinationproperty');
+    $this->assertEquals($value, '1');
+  }
+
+  /**
    * @covers ::row
    */
   public function testRowSkipsOnValue() {
