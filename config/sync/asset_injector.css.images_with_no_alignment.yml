@@ -1,17 +1,17 @@
-uuid: ecd23acb-1185-44e7-88cf-c7bebe24d1bb
+uuid: 71972a55-7be0-425e-9888-0d6b8400badd
 langcode: en
 status: true
 dependencies:
   module:
-    - node
-id: image_width_w_no_alignment
-label: 'Image width w/ no alignment'
+    - ctools
+id: images_with_no_alignment
+label: 'Images with no alignment'
 code: "img:not(.align-left):not(.align-right):not(.align-center) {\r\n  max-width: 100%;\r\n}"
 media: all
 preprocess: true
 conditions:
-  node_type:
-    id: node_type
+  'entity_bundle:node':
+    id: 'entity_bundle:node'
     bundles:
       story: story
     negate: false

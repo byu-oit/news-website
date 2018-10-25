@@ -32,7 +32,6 @@ dependencies:
     - image.style.recent_stories_thumbnail
     - node.type.story
   module:
-    - byu_news
     - field_formatter_class
     - field_layout
     - image

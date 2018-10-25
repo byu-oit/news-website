@@ -8,16 +8,16 @@ favicon:
   path: ''
   url: 'https://news-linux.byu.edu/themes/custom/byu_news/favicon.ico'
   use_default: 1
-font_three: libreb
+font_three: ringside
 custom_width: '1200'
 font_package: fonts-basic
-font_one: libreb
-font_two: libreb
-font_four: libreb
+font_one: ringside
+font_two: ringside
+font_four: ringside
 font_four_color: h4-black
-font_five: libreb
+font_five: ringside
 font_five_color: h5-black
-p_font: default
+p_font: ringside
 footer_sticky: 1
 search_use: 1
 features:
