@@ -1,0 +1,17 @@
+--- profiles/demo_umami/themes/umami/templates/content/node--article--full.html.twig
++++ profiles/demo_umami/themes/umami/templates/content/node--article--full.html.twig
+@@ -82,9 +82,11 @@
+ 
+   {{ title_prefix }}
+     <header class="node__header">
+-      <h1 class="page-title">
+-        {{ label }}
+-      </h1>
++      {% if label %}
++        <h1 class="page-title">
++          {{ label }}
++        </h1>
++      {% endif %}
+       {% if display_submitted %}
+       <div{{ author_attributes.addClass('node__submitted') }}>
+         {% trans %}<span class="by-author">by {{ author_name }}</span> {{ created_date }}{% endtrans %}
