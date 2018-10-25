@@ -40,6 +40,11 @@
  * @ingroup themeable
  */
 #}
+{%
+  set title_classes = [
+    label_display == 'visually_hidden' ? 'visually-hidden',
+  ]
+%}
 
 {% if inline_field %}
 {% include "inline-field.html.twig" %}
@@ -58,7 +63,7 @@
   {% endif %}
 {% else %}
   <div{{ attributes }}>
-    <div{{ title_attributes }}>{{ label }}</div>
+    <div{{ title_attributes.addClass(title_classes) }}>{{ label }}</div>
     {% if multiple %}
       <div>
     {% endif %}
