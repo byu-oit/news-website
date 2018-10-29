@@ -6,7 +6,7 @@ dependencies:
     - system
 id: fix_title_ix_style
 label: 'Fix Title IX style'
-code: ".node-2 .region.region-content {\r\n    margin: 0 32px;\r\n}"
+code: ".node-2 .region.region-content {\r\n    margin: 0 32px;\r\n}\r\n\r\np:last-child {\r\n  display: flex;\r\n  justify-content: center;\r\n}\r\n\r\nbutton {\r\n  color: #FFF;\r\n  background-color: #002E5D;\r\n  padding: 8px 16px;\r\n  text-align: center;\r\n  border: none;\r\n}\r\n\r\nbutton a {\r\n  color: #FFF;\r\n}\r\n\r\nbutton a:hover {\r\n  color: #FFF;\r\n  text-decoration: none;\r\n}\r\n\r\nbutton:hover {\r\n  background-color: #0057B8;\r\n}"
 media: all
 preprocess: true
 conditions:

@@ -6,6 +6,7 @@ dependencies:
     - field.field.paragraph.video.field_video
     - paragraphs.paragraphs_type.video
   module:
+    - field_formatter_class
     - field_layout
     - layout_discovery
     - video_embed_field
@@ -25,8 +26,10 @@ content:
       responsive: true
       width: 854
       height: 480
-      autoplay: true
-    third_party_settings: {  }
+      autoplay: false
+    third_party_settings:
+      field_formatter_class:
+        class: ''
     type: video_embed_field_video
     region: content
 hidden: {  }

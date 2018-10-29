@@ -1,0 +1,11 @@
+uuid: d0f8b81c-a26e-4496-b1cc-99e9b2958a26
+langcode: en
+status: true
+dependencies: {  }
+id: trigger_warning
+label: 'Trigger warning'
+code: ".trigger-warning-text {\r\n  border-width: thin;\r\n  border-color: #C5C5C5;\r\n  border-style: solid;\r\n  padding: 10px;\r\n  flex: 65%;\r\n}\r\n\r\n.trigger-warning-spacer {\r\n  flex: 5%;\r\n}\r\n\r\n.trigger-warning-image {\r\n  flex: 30%;\r\n}\r\n\r\n.trigger-warning {\r\n  display: flex;\r\n}\r\n\r\n@media only screen and (max-width: 800px) {\r\n  .trigger-warning-image {\r\n    display: none;\r\n  }\r\n  \r\n  .trigger-warning {\r\n    display: block;\r\n  }\r\n}"
+media: all
+preprocess: true
+conditions: {  }
+conditions_require_all: true
