@@ -171,6 +171,15 @@ function node_theme() {
     'node_edit_form' => [
       'render element' => 'form',
     ],
+    'field__node__title' => [
+      'base hook' => 'field',
+    ],
+    'field__node__uid' => [
+      'base hook' => 'field',
+    ],
+    'field__node__created' => [
+      'base hook' => 'field',
+    ],
   ];
 }
 
@@ -600,22 +609,15 @@ function template_preprocess_node(&$variables) {
   /** @var \Drupal\node\NodeInterface $node */
   $node = $variables['node'];
 
-  // If the created, uid and title fields are not configurable, make them
-  // available separately.
-  // @todo In D9 delete this code and matching template lines. Using
-  // $variables['content'] is more flexible and consistent.
-  if (!$node->getFieldDefinition('created')->isDisplayConfigurable('view')) {
-    $variables['elements']['created']['#inline_field'] = TRUE;
+  $preprocess = !$node->getEntityType()->get('bypass_base_preprocess');
+  if ($preprocess) {
+    // Make created, uid and title fields available separately.
+    // @todo In D9 delete this code and matching template lines. Using
+    // $variables['content'] is more flexible and consistent.
     $variables['date'] = \Drupal::service('renderer')->render($variables['elements']['created']);
     unset($variables['elements']['created']);
-  }
-  if (!$node->getFieldDefinition('uid')->isDisplayConfigurable('view')) {
-    $variables['elements']['uid']['#inline_field'] = TRUE;
     $variables['author_name'] = \Drupal::service('renderer')->render($variables['elements']['uid']);
     unset($variables['elements']['uid']);
-  }
-  if (!$node->getFieldDefinition('title')->isDisplayConfigurable('view')) {
-    $variables['elements']['title']['#inline_field'] = TRUE;
     $variables['label'] = $variables['elements']['title'];
     unset($variables['elements']['title']);
   }
@@ -635,11 +637,10 @@ function template_preprocess_node(&$variables) {
     $variables['content'][$key] = $variables['elements'][$key];
   }
 
-  // If the created and uid are not configurable, display post information
-  // on certain node types.
-  // @todo In D9 delete this code and matching template lines. Using
-  // a field formatter is more flexible and consistent.
-  if (isset($variables['date']) && isset($variables['author_name'])) {
+  if ($preprocess) {
+    // Display post information on certain node types.
+    // @todo In D9 delete this code and matching template lines. Using
+    // a field formatter is more flexible and consistent.
     $node_type = $node->type->entity;
     // Used by RDF to add attributes around the author and date submitted.
     $variables['author_attributes'] = new Attribute();

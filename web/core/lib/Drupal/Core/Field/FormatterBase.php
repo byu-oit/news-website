@@ -100,7 +100,6 @@ abstract class FormatterBase extends PluginSettingsBase implements FormatterInte
         '#items' => $items,
         '#formatter' => $this->getPluginId(),
         '#is_multiple' => $this->fieldDefinition->getFieldStorageDefinition()->isMultiple(),
-        '#inline_field' => FALSE,
       ];
 
       $elements = array_merge($info, $elements);

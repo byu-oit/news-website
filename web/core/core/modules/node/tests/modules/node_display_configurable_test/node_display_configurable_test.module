@@ -2,7 +2,7 @@
 
 /**
  * @file
- * A dummy module for testing node setDisplayConfigurable.
+ * A module for testing setDisplayConfigurable on node base fields.
  */
 
 use Drupal\Core\Entity\EntityTypeInterface;
@@ -16,4 +16,12 @@ function node_display_configurable_test_entity_base_field_info_alter(&$base_fiel
       $base_field_definitions[$field]->setDisplayConfigurable('view', TRUE);
     }
   }
+}
+
+/**
+ * Implements hook_entity_type_build().
+ */
+function node_display_configurable_test_entity_type_build(array &$entity_types) {
+  // Must disable extra preprocessing for configurable display.
+  $entity_types['node']->set('bypass_base_preprocess', TRUE);
 }

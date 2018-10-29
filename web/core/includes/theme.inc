@@ -1558,7 +1558,6 @@ function template_preprocess_field(&$variables, $hook) {
   $variables['label'] = $element['#title'];
 
   $variables['multiple'] = $element['#is_multiple'];
-  $variables['inline_field'] = $element['#inline_field'];
 
   static $default_attributes;
   if (!isset($default_attributes)) {
@@ -1875,19 +1874,6 @@ function drupal_common_theme() {
     // From field system.
     'field' => [
       'render element' => 'element',
-    ],
-    // The file inline-field.html.twig is a template 'fragment' for inclusion
-    // in field.*.html.twig templates (hence avoiding block copying of the same
-    // lines in many places). It is used as follows:
-    //   {% if inline_field %}
-    //   {% include "inline-field.html.twig" %}
-    //   {% else %}
-    //   ...
-    //   {% endif %}
-    // This entry creates a declaration in the theme registry so that Drupal
-    // automatically searches through the theme, base themes and finally the
-    // system module to find inline-field.html.twig.
-    'inline_field' => [
     ],
     'field_multiple_value_form' => [
       'render element' => 'element',

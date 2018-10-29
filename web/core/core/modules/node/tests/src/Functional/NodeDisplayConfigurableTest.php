@@ -5,7 +5,7 @@ namespace Drupal\Tests\node\Functional;
 use Drupal\Core\Entity\Entity\EntityViewDisplay;
 
 /**
- * Tests setDisplayConfigurable.
+ * Test setDisplayConfigurable on node base fields.
  *
  * @group node
  * @see \Drupal\node\Controller\NodeController
@@ -20,7 +20,7 @@ class NodeDisplayConfigurableTest extends NodeTestBase {
   public static $modules = ['quickedit', 'rdf'];
 
   /**
-   * Tests the html head links.
+   * Set base fields to configurable display and check settings are respected.
    */
   public function testDisplayConfigurable() {
     // Change the node type setting to show submitted by information.
@@ -36,7 +36,7 @@ class NodeDisplayConfigurableTest extends NodeTestBase {
     // Check the node with Drupal default non-configurable display.
     $this->drupalGet($node->urlInfo());
     $assert->elementTextContains('css', 'span.field--name-created', format_date($node->getCreatedTime()));
-    $assert->elementTextContains('css', 'span.field--name-uid[data-quickedit-field-id="node/1/uid/en/full"]', $user->getUsername());
+    $assert->elementTextContains('css', 'span.field--name-uid[data-quickedit-field-id="node/1/uid/en/full"]', $user->getAccountName());
     $assert->elementTextContains('css', 'div.node__submitted', 'Submitted by');
     $assert->elementTextContains('css', 'span.field--name-title', $node->getTitle());
 
@@ -55,10 +55,9 @@ class NodeDisplayConfigurableTest extends NodeTestBase {
 
     // Recheck the node with configurable display.
     $this->drupalGet($node->urlInfo());
-    $assert->elementTextContains('css', 'div.field--name-created', format_date($node->getCreatedTime()));
-    $assert->elementTextContains('css', 'div.field--name-uid[data-quickedit-field-id="node/1/uid/en/full"] .field__item[rel="schema:author"]', $user->getUsername());
-    $assert->elementNotExists('css', 'div.field--name-uid a');
-    $assert->elementTextContains('css', 'div.field--name-uid div.field__label', 'Authored by');
+    $assert->elementTextContains('css', 'span.field--name-created', format_date($node->getCreatedTime()));
+    $assert->elementTextContains('css', 'span.field--name-uid[data-quickedit-field-id="node/1/uid/en/full"]', $user->getAccountName());
+    $assert->elementNotExists('css', 'span.field--name-uid a');
     $assert->elementTextContains('css', 'span.field--name-title', $node->getTitle());
     $assert->elementExists('css', 'span[property="schema:dateCreated"]');
 
