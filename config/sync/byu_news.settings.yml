@@ -17,7 +17,7 @@ font_four: ringside
 font_four_color: h4-black
 font_five: ringside
 font_five_color: h5-black
-p_font: default
+p_font: ringside
 footer_sticky: 1
 search_use: 1
 features:

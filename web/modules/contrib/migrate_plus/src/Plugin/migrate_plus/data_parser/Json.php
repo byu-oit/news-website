@@ -16,13 +16,6 @@ use Drupal\migrate_plus\DataParserPluginBase;
 class Json extends DataParserPluginBase implements ContainerFactoryPluginInterface {
 
   /**
-   * The request headers passed to the data fetcher.
-   *
-   * @var array
-   */
-  protected $headers = [];
-
-  /**
    * Iterator over the JSON data.
    *
    * @var \Iterator
@@ -119,7 +112,12 @@ class Json extends DataParserPluginBase implements ContainerFactoryPluginInterfa
         $field_data = $current;
         $field_selectors = explode('/', trim($selector, '/'));
         foreach ($field_selectors as $field_selector) {
-          $field_data = $field_data[$field_selector];
+          if (is_array($field_data) && array_key_exists($field_selector, $field_data)) {
+            $field_data = $field_data[$field_selector];
+	        }
+	        else {
+            $field_data = '';
+          }
         }
         $this->currentItem[$field_name] = $field_data;
       }

@@ -275,12 +275,9 @@ function template_preprocess_taxonomy_term(&$variables) {
   $term = $variables['term'];
 
   $variables['url'] = $term->url();
-  // If the name field is not configurable, make it available separately.
   // We use name here because that is what appears in the UI.
-  if (!$term->getFieldDefinition('name')->isDisplayConfigurable('view')) {
-    $variables['name'] = $variables['elements']['name'];
-    unset($variables['elements']['name']);
-  }
+  $variables['name'] = $variables['elements']['name'];
+  unset($variables['elements']['name']);
   $variables['page'] = $variables['view_mode'] == 'full' && taxonomy_term_is_page($term);
 
   // Helpful $content variable for templates.

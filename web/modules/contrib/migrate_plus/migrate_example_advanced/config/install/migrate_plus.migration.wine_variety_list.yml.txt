@@ -3,13 +3,16 @@
 id: wine_variety_list
 label: XML feed of varieties
 migration_group: wine
+migration_tags:
+  - advanced example
 source:
   # We use the XML source plugin.
   plugin: xml
   # Normally, this is one or more fully-qualified URLs or file paths. Because
   # we can't hardcode your local URL, we provide a relative path here which
   # hook_install() will rewrite to a full URL for the current site.
-  urls: /migrate_example_advanced_variety_list?_format=xml
+  urls:
+    - /migrate_example_advanced_variety_list?_format=xml
   item_url: /migrate_example_advanced_variety_list/:id?_format=xml
   id_selector: /response/items
   # Visit the URL above (relative to your site root) and look at it. You can see

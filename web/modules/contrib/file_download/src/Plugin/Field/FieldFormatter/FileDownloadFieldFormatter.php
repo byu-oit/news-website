@@ -124,8 +124,9 @@ class FileDownloadFieldFormatter extends FileFormatterBase {
 
         case 'entity_title':
           $entity = $items->getEntity();
-          if ($entity->get('title')->getValue() != NULL) {
-            $title = $entity->get('title')->getValue()[0]['value'];
+          $title = NULL;
+          if ($entity->label() != NULL) {
+            $title = $entity->label();
           }
           break;
 

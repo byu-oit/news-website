@@ -19,9 +19,9 @@ settings:
             - Italic
             - Superscript
             - Subscript
-            - RemoveFormat
-            - '-'
             - PasteFromWord
+            - '-'
+            - RemoveFormat
         -
           name: Links
           items:
@@ -41,6 +41,14 @@ settings:
             - DrupalImage
             - Blockquote
             - '-'
+        -
+          name: Styles
+          items:
+            - Format
+        -
+          name: Dev
+          items:
+            - Source
   plugins:
     language:
       language_list: un

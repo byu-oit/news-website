@@ -1,0 +1,20 @@
+uuid: 71972a55-7be0-425e-9888-0d6b8400badd
+langcode: en
+status: true
+dependencies:
+  module:
+    - ctools
+id: images_with_no_alignment
+label: 'Images with no alignment'
+code: "img:not(.align-left):not(.align-right):not(.align-center) {\r\n  max-width: 100%;\r\n}"
+media: all
+preprocess: true
+conditions:
+  'entity_bundle:node':
+    id: 'entity_bundle:node'
+    bundles:
+      story: story
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'
+conditions_require_all: true

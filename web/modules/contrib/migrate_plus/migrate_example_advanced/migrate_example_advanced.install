@@ -21,7 +21,11 @@ function migrate_example_advanced_install() {
   if ($wine_role_xml_migration) {
     $source = $wine_role_xml_migration->get('source');
     $request = \Drupal::request();
-    $source['urls'] = 'http://' . $request->getHttpHost() . $source['urls'];
+    $urls = [];
+    foreach ($source['urls'] as $url) {
+      $urls[] = 'http://' . $request->getHttpHost() . $url;
+    }
+    $source['urls'] = $urls;
     $wine_role_xml_migration->set('source', $source);
     $wine_role_xml_migration->save();
   }
@@ -30,7 +34,11 @@ function migrate_example_advanced_install() {
   if ($wine_role_json_migration) {
     $source = $wine_role_json_migration->get('source');
     $request = \Drupal::request();
-    $source['urls'] = 'http://' . $request->getHttpHost() . $source['urls'];
+    $urls = [];
+    foreach ($source['urls'] as $url) {
+      $urls[] = 'http://' . $request->getHttpHost() . $url;
+    }
+    $source['urls'] = $urls;
     $wine_role_json_migration->set('source', $source);
     $wine_role_json_migration->save();
   }

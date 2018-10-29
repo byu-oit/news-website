@@ -15,6 +15,44 @@ use Drupal\migrate\Row;
  * @MigrateProcessPlugin(
  *   id = "skip_on_value"
  * )
+ *
+ * Available configuration keys:
+ * - value: An single value or array of values against which the source value
+ *   should be compared.
+ * - not_equals: (optional) If set, skipping occurs when values are not equal.
+ * - method: What to do if the input value is empty. Possible values:
+ *   - row: Skips the entire row when an empty value is encountered.
+ *   - process: Prevents further processing of the input property when the value
+ *     is empty.
+ *
+ * Examples:
+ *
+ * Example usage with minimal configuration:
+ * @code
+ *   type:
+ *     plugin: skip_on_value
+ *     source: content_type
+ *     method: row
+ *     value: blog
+ * @endcode
+ *
+ * The above example will skip processing the input property if the content_type
+ * source field equals "blog".
+ *
+ * Example usage with full configuration:
+ * @code
+ *   type:
+ *     plugin: skip_on_value
+ *     not_equals: true
+ *     source: content_type
+ *     method: row
+ *     value:
+ *       - article
+ *       - testimonial
+ * @endcode
+ *
+ * The above example will skip processing any row for which the source row's
+ * content type field is not "article" or "testimonial".
  */
 class SkipOnValue extends ProcessPluginBase {
 
@@ -27,10 +65,15 @@ class SkipOnValue extends ProcessPluginBase {
     }
 
     if (is_array($this->configuration['value'])) {
+      $value_in_array = FALSE;
+      $not_equals = isset($this->configuration['not_equals']);
+
       foreach ($this->configuration['value'] as $skipValue) {
-        if ($this->compareValue($value, $skipValue, !isset($this->configuration['not_equals']))) {
-          throw new MigrateSkipRowException();
-        }
+        $value_in_array |= $this->compareValue($value, $skipValue);
+      }
+
+      if (($not_equals && !$value_in_array) || (!$not_equals && $value_in_array)) {
+        throw new MigrateSkipRowException();
       }
     }
     elseif ($this->compareValue($value, $this->configuration['value'], !isset($this->configuration['not_equals']))) {
@@ -49,10 +92,15 @@ class SkipOnValue extends ProcessPluginBase {
     }
 
     if (is_array($this->configuration['value'])) {
+      $value_in_array = FALSE;
+      $not_equals = isset($this->configuration['not_equals']);
+
       foreach ($this->configuration['value'] as $skipValue) {
-        if ($this->compareValue($value, $skipValue, !isset($this->configuration['not_equals']))) {
-          throw new MigrateSkipProcessException();
-        }
+        $value_in_array |= $this->compareValue($value, $skipValue);
+      }
+
+      if (($not_equals && !$value_in_array) || (!$not_equals && $value_in_array)) {
+        throw new MigrateSkipProcessException();
       }
     }
     elseif ($this->compareValue($value, $this->configuration['value'], !isset($this->configuration['not_equals']))) {

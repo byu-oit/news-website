@@ -6,7 +6,6 @@ migrate_plugin:
     plugin:
       type: string
       label: 'Plugin'
-
 migrate_destination:
   type: migrate_plugin
   label: 'Destination'
@@ -25,6 +24,35 @@ migrate_source:
     constants:
       type: ignore
       label: 'Constants'
+    ids:
+      type: ignore
+      label: 'Source IDs schema definition for migrate mapping table'
+    urls:
+      type: sequence
+      label: 'URLs from which to fetch'
+      sequence:
+        type: string
+    data_fetcher_plugin:
+      type: string
+      label: 'Fetcher plugin'
+    data_parser_plugin:
+      type: string
+      label: 'Parser plugin'
+    fields:
+      type: ignore
+      label: Mapping of field names to selectors
+    function:
+      type: string
+      label: 'Function to call on the service'
+    parameters:
+      type: ignore
+      label: 'Parameters to pass to function on the service'
+    response_type:
+      type: string
+      label: 'Type of response; XML string, object or array'
+    item_selector:
+      type: string
+      label: 'XPath selector'
 
 migrate_process:
   type: migrate_plugin

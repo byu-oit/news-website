@@ -12,6 +12,10 @@ label: Migrate style categories from the source database to taxonomy terms
 # configuration to be merged with our own configuration here).
 migration_group: beer
 
+# The category or tag for the migration.
+migration_tags:
+  - example
+
 # Every migration must have a source plugin, which controls the delivery of our
 # source data. In this case, our source plugin has the name "beer_term", which
 # Drupal resolves to the PHP class defined in

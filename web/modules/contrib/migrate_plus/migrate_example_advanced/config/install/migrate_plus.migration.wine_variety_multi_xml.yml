@@ -2,6 +2,8 @@
 id: wine_variety_multi_xml
 label: XML feed of varieties
 migration_group: wine
+migration_tags:
+  - advanced example
 source:
   # We use the XML source plugin.
   plugin: url

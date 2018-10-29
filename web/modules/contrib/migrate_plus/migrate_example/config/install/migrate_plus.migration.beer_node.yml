@@ -2,6 +2,8 @@
 id: beer_node
 label: Beers of the world
 migration_group: beer
+migration_tags:
+  - example
 source:
   plugin: beer_node
 destination:

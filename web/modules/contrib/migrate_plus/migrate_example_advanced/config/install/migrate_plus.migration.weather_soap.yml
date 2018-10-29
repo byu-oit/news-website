@@ -2,13 +2,16 @@
 id: weather_soap
 label: SOAP service providing weather.
 migration_group: wine
+migration_tags:
+  - advanced example
 source:
   # We use the SOAP parser source plugin.
   plugin: url
   data_fetcher_plugin: http # Ignored - SoapClient does the fetching.
   data_parser_plugin: soap
   # URL of a WSDL endpoint.
-  urls: http://www.webservicex.net/globalweather.asmx?WSDL
+  urls:
+    - http://www.webservicex.net/globalweather.asmx?WSDL
   # The function to call on the service, and the parameters to pass. See
   # http://www.webservicex.net/New/Home/ServiceDetail/56 for the XML structure
   # of this feed - how CountryName is passed within the GetCitiesByCountry
@@ -48,3 +51,6 @@ process:
   name: City
 destination:
   plugin: entity:taxonomy_term
+migration_dependencies:
+  required: {}
+  optional: {}

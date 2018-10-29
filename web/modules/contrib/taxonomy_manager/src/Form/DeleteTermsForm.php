@@ -5,6 +5,7 @@ namespace Drupal\taxonomy_manager\Form;
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\taxonomy\TermStorage;
+use Drupal\Core\Messenger\MessengerTrait;
 use Drupal\taxonomy\VocabularyInterface;
 use Drupal\taxonomy_manager\TaxonomyManagerHelper;
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -13,6 +14,8 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  * Form for deleting given terms.
  */
 class DeleteTermsForm extends FormBase {
+
+  use MessengerTrait;
 
   /**
    * The current request.
@@ -90,9 +93,9 @@ class DeleteTermsForm extends FormBase {
     $delete_orphans = $form_state->getValue('delete_orphans');
 
     $info = TaxonomyManagerHelper::deleteTerms($selected_terms, $delete_orphans);
-    drupal_set_message($this->t("Deleted terms: %deleted_term_names", ['%deleted_term_names' => implode(', ', $info['deleted_terms'])]));
+    $this->messenger()->addMessage($this->t("Deleted terms: %deleted_term_names", ['%deleted_term_names' => implode(', ', $info['deleted_terms'])]));
     if (count($info['remaining_child_terms'])) {
-      drupal_set_message($this->t("Remaining child terms with different parents: %remaining_child_term_names", ['%remaining_child_term_names' => implode(', ', $info['remaining_child_terms'])]));
+      $this->messenger()->addMessage($this->t("Remaining child terms with different parents: %remaining_child_term_names", ['%remaining_child_term_names' => implode(', ', $info['remaining_child_terms'])]));
     }
     $form_state->setRedirect('taxonomy_manager.admin_vocabulary', ['taxonomy_vocabulary' => $taxonomy_vocabulary->id()]);
 

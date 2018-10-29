@@ -36,6 +36,9 @@ class BlazyLightbox {
     $settings['box_width']  = isset($item->width) ? $item->width : NULL;
     $settings['box_height'] = isset($item->height) ? $item->height : NULL;
 
+    $settings['box_width']  = isset($settings['box_width']) ? $settings['box_width'] : $settings['width'];
+    $settings['box_height'] = isset($settings['box_height']) ? $settings['box_height'] : $settings['height'];
+
     $dimensions = ['width' => $settings['box_width'], 'height' => $settings['box_height']];
     if (!empty($settings['box_style'])) {
       $box_style = ImageStyle::load($settings['box_style']);
@@ -77,7 +80,7 @@ class BlazyLightbox {
         $settings['box_url'] = $box_media_style->buildUrl($uri);
 
         // Allows custom work to override this without image style.
-        if (empty($settings['_box_width'])) {
+        if (empty($settings['box_width'])) {
           $settings['box_width']  = $dimensions['width'];
           $settings['box_height'] = $dimensions['height'];
         }

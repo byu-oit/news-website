@@ -81,6 +81,9 @@ class TaxonomyManagerForm extends FormBase {
       '#type' => 'submit',
       '#name' => 'delete',
       '#value' => $this->t('Delete'),
+      '#attributes' => [
+        'disabled' => TRUE,
+      ],
       '#ajax' => [
         'callback' => '::deleteFormCallback',
       ],
@@ -180,7 +183,6 @@ class TaxonomyManagerForm extends FormBase {
    * AJAX callback handler for the term data form.
    */
   public function termDataCallback($form, FormStateInterface $form_state) {
-    $taxonomy_vocabulary = $form_state->getValue('voc');
     $taxonomy_term = \Drupal::entityTypeManager()->getStorage('taxonomy_term')->load($form_state->getValue('load-term-data'));
 
     $term_form = \Drupal::service('entity.form_builder')->getForm($taxonomy_term, 'default');
@@ -198,9 +200,18 @@ class TaxonomyManagerForm extends FormBase {
 
     $term_form['#prefix'] = '<div id="taxonomy-term-data-form">';
     $term_form['#suffix'] = '</div>';
-
+    $current_path = \Drupal::service('path.current')->getPath();
     // Change the form action url form the current site to the add form.
-    $term_form['#action'] = $this->url('entity.taxonomy_term.edit_form', ['taxonomy_term' => $taxonomy_term->id()]);
+    $term_form['#action'] = $this->getUrlGenerator()
+      ->generateFromRoute(
+        'entity.taxonomy_term.edit_form',
+        ['taxonomy_term' => $taxonomy_term->id()],
+        [
+          'query' => [
+            'destination' => $current_path
+          ],
+        ]
+      );
 
     $response = new AjaxResponse();
     $response->addCommand(new ReplaceCommand('#taxonomy-term-data-form', $term_form));

@@ -104,7 +104,7 @@ function node_help($route_name, RouteMatchInterface $route_match) {
     else {
       $message = t('The content access permissions need to be rebuilt. <a href=":node_access_rebuild">Rebuild permissions</a>.', [':node_access_rebuild' => \Drupal::url('node.configure_rebuild_confirm')]);
     }
-    drupal_set_message($message, 'error');
+    \Drupal::messenger()->addError($message);
   }
 
   switch ($route_name) {
@@ -170,6 +170,15 @@ function node_theme() {
     ],
     'node_edit_form' => [
       'render element' => 'form',
+    ],
+    'field__node__title' => [
+      'base hook' => 'field',
+    ],
+    'field__node__uid' => [
+      'base hook' => 'field',
+    ],
+    'field__node__created' => [
+      'base hook' => 'field',
     ],
   ];
 }
@@ -538,9 +547,12 @@ function template_preprocess_node_add_list(&$variables) {
  * Implements hook_preprocess_HOOK() for HTML document templates.
  */
 function node_preprocess_html(&$variables) {
-  // If on an individual node page, add the node type to body classes.
-  if (($node = \Drupal::routeMatch()->getParameter('node')) && $node instanceof NodeInterface) {
-    $variables['node_type'] = $node->getType();
+  // If on an individual node page or node preview page, add the node type to
+  // the body classes.
+  if (($node = \Drupal::routeMatch()->getParameter('node')) || ($node = \Drupal::routeMatch()->getParameter('node_preview'))) {
+    if ($node instanceof NodeInterface) {
+      $variables['node_type'] = $node->getType();
+    }
   }
 }
 
@@ -597,22 +609,15 @@ function template_preprocess_node(&$variables) {
   /** @var \Drupal\node\NodeInterface $node */
   $node = $variables['node'];
 
-  // If the created, uid and title fields are not configurable, make them
-  // available separately.
-  // @todo In D9 delete this code and matching template lines. Using
-  // $variables['content'] is more flexible and consistent.
-  if (!$node->getFieldDefinition('created')->isDisplayConfigurable('view')) {
-    $variables['elements']['created']['#inline_field'] = TRUE;
+  $preprocess = !$node->getEntityType()->get('bypass_base_preprocess');
+  if ($preprocess) {
+    // Make created, uid and title fields available separately.
+    // @todo In D9 delete this code and matching template lines. Using
+    // $variables['content'] is more flexible and consistent.
     $variables['date'] = \Drupal::service('renderer')->render($variables['elements']['created']);
     unset($variables['elements']['created']);
-  }
-  if (!$node->getFieldDefinition('uid')->isDisplayConfigurable('view')) {
-    $variables['elements']['uid']['#inline_field'] = TRUE;
     $variables['author_name'] = \Drupal::service('renderer')->render($variables['elements']['uid']);
     unset($variables['elements']['uid']);
-  }
-  if (!$node->getFieldDefinition('title')->isDisplayConfigurable('view')) {
-    $variables['elements']['title']['#inline_field'] = TRUE;
     $variables['label'] = $variables['elements']['title'];
     unset($variables['elements']['title']);
   }
@@ -632,11 +637,10 @@ function template_preprocess_node(&$variables) {
     $variables['content'][$key] = $variables['elements'][$key];
   }
 
-  // If the created and uid are not configurable, display post information
-  // on certain node types.
-  // @todo In D9 delete this code and matching template lines. Using
-  // a field formatter is more flexible and consistent.
-  if (isset($variables['date']) && isset($variables['author_name'])) {
+  if ($preprocess) {
+    // Display post information on certain node types.
+    // @todo In D9 delete this code and matching template lines. Using
+    // a field formatter is more flexible and consistent.
     $node_type = $node->type->entity;
     // Used by RDF to add attributes around the author and date submitted.
     $variables['author_attributes'] = new Attribute();
@@ -852,7 +856,7 @@ function node_page_top(array &$page) {
     $page['page_top']['node_preview'] = [
       '#type' => 'container',
       '#attributes' => [
-        'class' => ['node-preview-container', 'container-inline']
+        'class' => ['node-preview-container', 'container-inline'],
       ],
     ];
 
@@ -1046,7 +1050,6 @@ function node_access_view_all_nodes($account = NULL) {
   return $access[$account->id()];
 }
 
-
 /**
  * Implements hook_query_TAG_alter().
  *
@@ -1197,7 +1200,7 @@ function node_access_rebuild($batch_mode = FALSE) {
         'operations' => [
           ['_node_access_rebuild_batch_operation', []],
         ],
-        'finished' => '_node_access_rebuild_batch_finished'
+        'finished' => '_node_access_rebuild_batch_finished',
       ];
       batch_set($batch);
     }
@@ -1233,7 +1236,7 @@ function node_access_rebuild($batch_mode = FALSE) {
   }
 
   if (!isset($batch)) {
-    drupal_set_message(t('Content permissions have been rebuilt.'));
+    \Drupal::messenger()->addStatus(t('Content permissions have been rebuilt.'));
     node_access_needs_rebuild(FALSE);
   }
 }
@@ -1306,11 +1309,11 @@ function _node_access_rebuild_batch_operation(&$context) {
  */
 function _node_access_rebuild_batch_finished($success, $results, $operations) {
   if ($success) {
-    drupal_set_message(t('The content access permissions have been rebuilt.'));
+    \Drupal::messenger()->addStatus(t('The content access permissions have been rebuilt.'));
     node_access_needs_rebuild(FALSE);
   }
   else {
-    drupal_set_message(t('The content access permissions have not been properly rebuilt.'), 'error');
+    \Drupal::messenger()->addError(t('The content access permissions have not been properly rebuilt.'));
   }
 }
 

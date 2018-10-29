@@ -139,8 +139,7 @@
         "enable-patching": true,
         "patches": {
 	        "drupal/core": {
-		        "Add date range to views": "https://www.drupal.org/files/issues/2786577-270_0.patch",
-		        "Allow pseudo fields in manage display": "https://www.drupal.org/files/issues/2018-03-13/title.display-2923701-161.patch",
+		        "Allow pseudo fields in manage display": "https://www.drupal.org/files/issues/2018-10-27/title.display-2923701-236.patch",
                 "RenderedEntity null value": "https://www.drupal.org/files/issues/2018-05-14/2972774-2.patch",
                 "Make CKEditor and IMCE play with each other": "https://www.drupal.org/files/issues/2018-03-29/2822217-drupalimagecaption-img-src-fix-13.diff"
 	        },

@@ -38,6 +38,7 @@ function rdf_help($route_name, RouteMatchInterface $route_match) {
  * into variables available to theme functions and templates. All Drupal core
  * themes are coded to be RDFa compatible.
  */
+
 /**
  * Returns the RDF mapping object associated with a bundle.
  *
@@ -293,7 +294,6 @@ function _rdf_set_field_rel_attribute(&$variables) {
   }
 }
 
-
 /**
  * Implements hook_preprocess_HOOK() for node templates.
  */
@@ -323,21 +323,25 @@ function rdf_preprocess_node(&$variables) {
 
   // Adds RDFa markup for the date.
   $created_mapping = $mapping->getPreparedFieldMapping('created');
-  // If 'created' display is not configurable then it is controlled by the
-  // display_submitted setting. @see template_preprocess_node.
-  $display_configurable = $variables['node']->getFieldDefinition('created')->isDisplayConfigurable('view');
-  $display_created = $display_configurable ? isset($variables['elements']['created']) : $variables['display_submitted'];
+  // If base fields are being preprocessed then 'created' display is controlled
+  // by the display_submitted setting. @see template_preprocess_node.
+  $preprocess = !$variables['node']->getEntityType()->get('bypass_base_preprocess');
+  $display_created = $preprocess ? $variables['display_submitted'] : isset($variables['elements']['created']);
   if (!empty($created_mapping) && $display_created) {
     $date_attributes = rdf_rdfa_attributes($created_mapping, $variables['node']->get('created')->first()->toArray());
     $rdf_metadata = [
       '#theme' => 'rdf_metadata',
       '#metadata' => [$date_attributes],
     ];
-    if ($display_configurable) {
-      $variables['title_suffix']['rdf_meta_created'] = $rdf_metadata;
+    if ($preprocess) {
+      // Use the special variable specifically for metadata related to
+      // "Submitted by".
+      $variables['metadata'] = \Drupal::service('renderer')->render($rdf_metadata);
     }
     else {
-      $variables['metadata'] = \Drupal::service('renderer')->render($rdf_metadata);
+      // Put the metadata into title_suffix, along with other metadata added
+      // by this module.
+      $variables['title_suffix']['rdf_meta_created'] = $rdf_metadata;
     }
   }
 

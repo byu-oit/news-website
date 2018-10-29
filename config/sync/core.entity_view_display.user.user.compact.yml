@@ -5,6 +5,7 @@ dependencies:
   config:
     - core.entity_view_mode.user.compact
     - field.field.user.user.field_biography
+    - field.field.user.user.field_contact_link
     - field.field.user.user.field_display
     - field.field.user.user.field_display_order
     - field.field.user.user.field_phone
@@ -34,6 +35,8 @@ content:
   masquerade:
     weight: 50
     region: content
+    settings: {  }
+    third_party_settings: {  }
   name:
     label: hidden
     type: title
@@ -54,6 +57,7 @@ content:
     label: hidden
 hidden:
   field_biography: true
+  field_contact_link: true
   field_display: true
   field_display_order: true
   field_phone: true

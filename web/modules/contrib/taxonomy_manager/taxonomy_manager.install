@@ -9,7 +9,7 @@
  * Implements hook_install().
  */
 function taxonomy_manager_install() {
-  drupal_set_message(t("Taxonomy manager module has been enabled successfully."), "status");
+  \Drupal::messenger()->addMessage(t("Taxonomy manager module has been enabled successfully."));
 }
 
 /**
@@ -17,5 +17,5 @@ function taxonomy_manager_install() {
  */
 function taxonomy_manager_uninstall() {
   \Drupal::configFactory()->getEditable('taxonomy_manager.settings')->delete();
-  drupal_set_message(t("Taxonomy manager module has been uninstalled successfully."), "status");
+  \Drupal::messenger()->addMessage(t("Taxonomy manager module has been uninstalled successfully."));
 }
