@@ -24,4 +24,4 @@
 /.c9/
 
 # Ignore contrib modules, themes, and libraries.
-/web/*/contri
+/web/*/contrib/*
