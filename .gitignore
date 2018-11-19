@@ -22,3 +22,6 @@
 
 # Ignore Cloud9 files
 /.c9/
+
+# Ignore contrib modules, themes, and libraries.
+/web/*/contri
