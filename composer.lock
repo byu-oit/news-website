@@ -1,10 +1,10 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "73000dae349eb33fc7ae688547dd5882",
+    "content-hash": "74ec9a7137e6cfe213336bc1f9026dd0",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -3714,6 +3714,7 @@
                     "merge-extra": false
                 },
                 "patches_applied": {
+                    "Allow pseudo fields in manage display": "https://www.drupal.org/files/issues/2018-10-27/title.display-2923701-236.patch",
                     "RenderedEntity null value": "https://www.drupal.org/files/issues/2018-05-14/2972774-2.patch",
                     "Make CKEditor and IMCE play with each other": "https://www.drupal.org/files/issues/2018-03-29/2822217-drupalimagecaption-img-src-fix-13.diff"
                 }
@@ -3942,6 +3943,53 @@
             "homepage": "https://www.drupal.org/project/download_all_files",
             "support": {
                 "source": "http://cgit.drupalcode.org/download_all_files"
+            }
+        },
+        {
+            "name": "drupal/editor_advanced_link",
+            "version": "1.4.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupal.org/project/editor_advanced_link",
+                "reference": "8.x-1.4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/editor_advanced_link-8.x-1.4.zip",
+                "reference": "8.x-1.4",
+                "shasum": "52cf139a313d5fa6a461a25a1ba36ae987bc403d"
+            },
+            "require": {
+                "drupal/core": "*"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "branch-alias": {
+                    "dev-1.x": "1.x-dev"
+                },
+                "drupal": {
+                    "version": "8.x-1.4",
+                    "datestamp": "1490108883",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "DuaelFr",
+                    "homepage": "https://www.drupal.org/user/931394"
+                }
+            ],
+            "description": "Add title, target etc. attributes to Text Editor's link dialog if the text format allows them.",
+            "homepage": "https://www.drupal.org/project/editor_advanced_link",
+            "support": {
+                "source": "http://cgit.drupalcode.org/editor_advanced_link"
             }
         },
         {

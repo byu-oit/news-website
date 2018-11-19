@@ -1,3 +1,0 @@
-administer config_files:
-  title: 'Administer Configuration Files Settings'
-  description: 'Administer the directory configuration for your active CMI files.'

@@ -1,7 +1,0 @@
-file_download.link:
-  path: '/file-download/download/{scheme}/{fid}'
-  defaults:
-    _controller:  '\Drupal\file_download\Controller\FileDownloadDownloadController::deliver'
-  # File access is controlled via a hook
-  requirements:
-    _access: 'TRUE'

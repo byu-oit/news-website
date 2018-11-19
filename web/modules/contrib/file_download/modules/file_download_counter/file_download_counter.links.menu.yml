@@ -1,6 +1,0 @@
-file_download_counter.settings:
-  title: File Downloads
-  description: 'Configure the logging of file download statistics.'
-  route_name: file_download_counter.settings
-  parent: system.admin_config_system
-  weight: -15
