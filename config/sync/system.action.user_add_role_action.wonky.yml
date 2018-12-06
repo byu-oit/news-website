@@ -1,0 +1,14 @@
+uuid: 2dd55e9d-5f1c-43d2-b0b2-0184b99e4ec0
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.wonky
+  module:
+    - user
+id: user_add_role_action.wonky
+label: 'Add the Wonky role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: wonky

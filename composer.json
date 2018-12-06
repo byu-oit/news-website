@@ -36,6 +36,7 @@
         "drupal/cors": "^1.0",
         "drupal/ctools": "^3.0",
         "drupal/download_all_files": "^1.1",
+        "drupal/editor_advanced_link": "^1.4",
         "drupal/extlink": "^1.1",
         "drupal/features": "^3.5",
         "drupal/field_defaults": "^1.0@RC",
