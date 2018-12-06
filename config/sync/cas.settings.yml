@@ -5,6 +5,7 @@ server:
   path: /cas
   verify: 0
   cert: ''
+  protocol: https
 gateway:
   check_frequency: -2
   paths:
