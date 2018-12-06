@@ -1,0 +1,36 @@
+cas_attributes.settings:
+  type: config_object
+  label: 'CAS Attributes settings'
+  mapping:
+    sitewide_token_support:
+      type: boolean
+      label: 'Sitewide token support'
+    field:
+      type: mapping
+      label: 'User Field Mappings'
+      mapping:
+        sync_frequency:
+          type: integer
+          label: 'When should field mappings be applied to the user?'
+        overwrite:
+          type: boolean
+          label: 'Overwrite existing field values'
+        mappings:
+          type: string
+          label: 'Fields'
+    role:
+      type: mapping
+      label: 'User Role Mappings'
+      mapping:
+        sync_frequency:
+          type: integer
+          label: 'When should role mappings be applied to the user?'
+        deny_login_no_match:
+          type: boolean
+          label: 'Deny login if no roles are mapped'
+        deny_registration_no_match:
+          type: boolean
+          label: 'Deny registration if no roles are mapped'
+        mappings:
+          type: string
+          label: 'Fields'

@@ -1,0 +1,16 @@
+cas_attributes.attributes:
+  title: Attributes
+  route_name: cas_attributes.settings
+  base_route: cas.settings
+  weight: 2
+
+cas_attributes.settings:
+  title: Settings
+  route_name: cas_attributes.settings
+  parent_id: cas_attributes.attributes
+
+cas_attributes.available_attributes:
+  title: 'Available Attributes'
+  route_name: cas_attributes.available_attributes
+  parent_id: cas_attributes.attributes
+  weight: 1

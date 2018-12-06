@@ -2,6 +2,7 @@
 
 namespace Drupal\cas\Service;
 
+use Drupal\cas\Event\CasPostLoginEvent;
 use Drupal\cas\Event\CasPreLoginEvent;
 use Drupal\cas\Event\CasPreRegisterEvent;
 use Drupal\cas\Event\CasPreUserLoadEvent;
@@ -215,6 +216,11 @@ class CasUserManager {
     $this->externalAuth->userLoginFinalize($account, $property_bag->getUsername(), $this->provider);
     $this->storeLoginSessionData($this->session->getId(), $ticket);
     $this->session->set('is_cas_user', TRUE);
+    $this->session->set('cas_username', $original_username);
+
+    $postLoginEvent = new CasPostLoginEvent($account, $property_bag);
+    $this->casHelper->log(LogLevel::DEBUG, 'Dispatching EVENT_POST_LOGIN.');
+    $this->eventDispatcher->dispatch(CasHelper::EVENT_POST_LOGIN, $postLoginEvent);
   }
 
   /**

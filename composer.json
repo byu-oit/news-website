@@ -25,6 +25,7 @@
         "drupal/byu_theme": "^3.1",
         "drupal/captcha": "^1.0@beta",
         "drupal/cas": "^1.0@RC",
+        "drupal/cas_attributes": "^1.0@beta",
         "drupal/chosen": "^2.5",
         "drupal/ckeditor_entity_link": "^1.0@alpha",
         "drupal/conditional_fields": "^1.0@alpha",

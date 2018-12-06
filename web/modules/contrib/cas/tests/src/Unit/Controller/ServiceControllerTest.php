@@ -7,6 +7,7 @@ use Drupal\cas\Exception\CasValidateException;
 use Drupal\cas\Exception\CasLoginException;
 use Drupal\cas\CasPropertyBag;
 use Symfony\Component\HttpFoundation\Request;
+use Drupal\cas\Controller\ServiceController;
 
 /**
  * ServiceController unit tests.
@@ -75,6 +76,8 @@ class ServiceControllerTest extends UnitTestCase {
 
   protected $requestObject;
 
+  protected $messenger;
+
   /**
    * {@inheritdoc}
    */
@@ -103,12 +106,12 @@ class ServiceControllerTest extends UnitTestCase {
         'server.path' => '/cas',
       ),
     ));
-    $this->requestStack = $this->getMock('\Symfony\Component\HttpFoundation\RequestStack');
-    $this->urlGenerator = $this->getMock('\Drupal\Core\Routing\UrlGeneratorInterface');
+    $this->requestStack = $this->createMock('\Symfony\Component\HttpFoundation\RequestStack');
+    $this->urlGenerator = $this->createMock('\Drupal\Core\Routing\UrlGeneratorInterface');
 
     $this->requestObject = new Request();
-    $request_bag = $this->getMock('\Symfony\Component\HttpFoundation\ParameterBag');
-    $query_bag = $this->getMock('\Symfony\Component\HttpFoundation\ParameterBag');
+    $request_bag = $this->createMock('\Symfony\Component\HttpFoundation\ParameterBag');
+    $query_bag = $this->createMock('\Symfony\Component\HttpFoundation\ParameterBag');
     $this->requestObject->query = $query_bag;
     $this->requestObject->request = $request_bag;
 
@@ -125,6 +128,8 @@ class ServiceControllerTest extends UnitTestCase {
 
     $this->requestBag = $request_bag;
     $this->queryBag = $query_bag;
+
+    $this->messenger = $this->createMock('\Drupal\Core\Messenger\MessengerInterface');
   }
 
   /**
@@ -150,7 +155,7 @@ class ServiceControllerTest extends UnitTestCase {
       ->method('handleSlo')
       ->with($this->equalTo('<foobar/>'));
 
-    $serviceController = new TestServiceController(
+    $serviceController = new ServiceController(
       $this->casHelper,
       $this->casProxyHelper,
       $this->casValidator,
@@ -158,8 +163,11 @@ class ServiceControllerTest extends UnitTestCase {
       $this->casLogout,
       $this->requestStack,
       $this->urlGenerator,
-      $this->configFactory
+      $this->configFactory,
+      $this->messenger
     );
+    $serviceController->setStringTranslation($this->getStringTranslationStub());
+
     $response = $serviceController->handle();
     $this->assertEquals(200, $response->getStatusCode());
     $this->assertEquals('', $response->getContent());
@@ -188,7 +196,7 @@ class ServiceControllerTest extends UnitTestCase {
       $this->assertDestinationSetFromReturnTo();
     }
 
-    $serviceController = new TestServiceController(
+    $serviceController = new ServiceController(
       $this->casHelper,
       $this->casProxyHelper,
       $this->casValidator,
@@ -196,8 +204,10 @@ class ServiceControllerTest extends UnitTestCase {
       $this->casLogout,
       $this->requestStack,
       $this->urlGenerator,
-      $this->configFactory
+      $this->configFactory,
+      $this->messenger
     );
+    $serviceController->setStringTranslation($this->getStringTranslationStub());
 
     $this->assertRedirectedToFrontPageOnHandle($serviceController);
   }
@@ -234,7 +244,7 @@ class ServiceControllerTest extends UnitTestCase {
       ->method('login')
       ->with($this->equalTo($validation_data), $this->equalTo('ST-foobar'));
 
-    $serviceController = new TestServiceController(
+    $serviceController = new ServiceController(
       $this->casHelper,
       $this->casProxyHelper,
       $this->casValidator,
@@ -242,8 +252,10 @@ class ServiceControllerTest extends UnitTestCase {
       $this->casLogout,
       $this->requestStack,
       $this->urlGenerator,
-      $this->configFactory
+      $this->configFactory,
+      $this->messenger
     );
+    $serviceController->setStringTranslation($this->getStringTranslationStub());
 
     $this->assertRedirectedToFrontPageOnHandle($serviceController);
   }
@@ -295,7 +307,7 @@ class ServiceControllerTest extends UnitTestCase {
       ),
     ));
 
-    $serviceController = new TestServiceController(
+    $serviceController = new ServiceController(
       $this->casHelper,
       $this->casProxyHelper,
       $this->casValidator,
@@ -303,8 +315,10 @@ class ServiceControllerTest extends UnitTestCase {
       $this->casLogout,
       $this->requestStack,
       $this->urlGenerator,
-      $configFactory
+      $configFactory,
+      $this->messenger
     );
+    $serviceController->setStringTranslation($this->getStringTranslationStub());
 
     $this->assertRedirectedToFrontPageOnHandle($serviceController);
   }
@@ -341,7 +355,7 @@ class ServiceControllerTest extends UnitTestCase {
     $this->casUserManager->expects($this->never())
       ->method('login');
 
-    $serviceController = new TestServiceController(
+    $serviceController = new ServiceController(
       $this->casHelper,
       $this->casProxyHelper,
       $this->casValidator,
@@ -349,8 +363,10 @@ class ServiceControllerTest extends UnitTestCase {
       $this->casLogout,
       $this->requestStack,
       $this->urlGenerator,
-      $this->configFactory
+      $this->configFactory,
+      $this->messenger
     );
+    $serviceController->setStringTranslation($this->getStringTranslationStub());
 
     $this->assertRedirectedToFrontPageOnHandle($serviceController);
   }
@@ -385,7 +401,7 @@ class ServiceControllerTest extends UnitTestCase {
       ->method('login')
       ->will($this->throwException(new CasLoginException()));
 
-    $serviceController = new TestServiceController(
+    $serviceController = new ServiceController(
       $this->casHelper,
       $this->casProxyHelper,
       $this->casValidator,
@@ -393,8 +409,10 @@ class ServiceControllerTest extends UnitTestCase {
       $this->casLogout,
       $this->requestStack,
       $this->urlGenerator,
-      $this->configFactory
+      $this->configFactory,
+      $this->messenger
     );
+    $serviceController->setStringTranslation($this->getStringTranslationStub());
 
     $this->assertRedirectedToFrontPageOnHandle($serviceController);
   }

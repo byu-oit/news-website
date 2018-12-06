@@ -1,0 +1,6 @@
+cas_attributes.settings:
+  title: 'CAS Attributes'
+  parent: cas.settings
+  description: 'Administer CAS Attributes.'
+  route_name: cas_attributes.settings
+  weight: 1
