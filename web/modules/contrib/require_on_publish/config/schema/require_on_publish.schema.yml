@@ -1,0 +1,6 @@
+field.field.*.*.*.third_party.require_on_publish:
+  type: mapping
+  label: 'require_on_publish settings'
+  mapping:
+    require_on_publish:
+      type: boolean

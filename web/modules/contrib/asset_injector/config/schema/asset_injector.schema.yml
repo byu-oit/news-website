@@ -45,7 +45,7 @@ asset_injector.js.*:
       type: text
       label: '<noscript> code'
     noscriptRegion:
-      type: array
+      type: sequence
       label: 'Region to which noscript should apply'
     jquery:
       type: boolean

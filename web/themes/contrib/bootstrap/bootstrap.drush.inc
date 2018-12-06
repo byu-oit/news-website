@@ -65,8 +65,7 @@ function _drush_bootstrap_generate_docs_settings(Theme $bootstrap) {
   $output[] = '```yaml';
   $output[] = '# Settings';
   $output[] = '';
-  $output[] = 'settings:';
-  $output[] = '  SETTING_NAME: SETTING_VALUE';
+  $output[] = 'SETTING_NAME: SETTING_VALUE';
   $output[] = '```';
 
   // Determine the groups.

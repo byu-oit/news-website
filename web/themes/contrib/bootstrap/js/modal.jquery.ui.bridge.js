@@ -78,7 +78,10 @@
         });
 
         // Indicate that the modal is a jQuery UI dialog bridge.
-        options.jQueryUiBridge = true;
+        options = {
+          dialogOptions: options,
+          jQueryUiBridge: true
+        };
 
         // Proxy just the options to the Bootstrap Modal plugin.
         return $.fn.modal.apply(this, [options]);
@@ -127,18 +130,58 @@
            */
           createButtons: function () {
             this.$footer.find('.modal-buttons').remove();
+
+            // jQuery UI supports both objects and arrays. Unfortunately
+            // developers have misunderstood and abused this by simply placing
+            // the objects that should be in an array inside an object with
+            // arbitrary keys (likely to target specific buttons as a hack).
             var buttons = this.options.dialogOptions && this.options.dialogOptions.buttons || [];
+            if (!Array.isArray(buttons)) {
+              var array = [];
+              for (var k in buttons) {
+                // Support the proper object values: label => click callback.
+                if (typeof buttons[k] === 'function') {
+                  array.push({
+                    label: k,
+                    click: buttons[k],
+                  });
+                }
+                // Support nested objects, but log a warning.
+                else if (buttons[k].text || buttons[k].label) {
+                  Bootstrap.warn('Malformed jQuery UI dialog button: @key. The button object should be inside an array.', {
+                    '@key': k
+                  });
+                  array.push(buttons[k]);
+                }
+                else {
+                  Bootstrap.unsupported('button', k, buttons[k]);
+                }
+              }
+              buttons = array;
+            }
+
             if (buttons.length) {
               var $buttons = $('<div class="modal-buttons"/>').appendTo(this.$footer);
               for (var i = 0, l = buttons.length; i < l; i++) {
                 var button = buttons[i];
                 var $button = $(Drupal.theme('bootstrapModalDialogButton', button));
-                if (typeof button.click === 'function') {
-                  $button.on('click', button.click);
+
+                // Invoke the "create" method for jQuery UI buttons.
+                if (typeof button.create === 'function') {
+                  button.create.call($button[0]);
                 }
+
+                // Bind the "click" method for jQuery UI buttons to the modal.
+                if (typeof button.click === 'function') {
+                  $button.on('click', button.click.bind(this.$element));
+                }
+
                 $buttons.append($button);
               }
             }
+
+            // Toggle footer visibility based on whether it has child elements.
+            this.$footer[this.$footer.children()[0] ? 'show' : 'hide']();
           },
 
           /**
@@ -159,14 +202,6 @@
               this.$footer = $(Drupal.theme('bootstrapModalFooter', {}, true)).insertAfter(this.$dialogBody);
             }
 
-            // Create buttons.
-            this.createButtons();
-
-            // Hide the footer if there are no children.
-            if (!this.$footer.children()[0]) {
-              this.$footer.hide();
-            }
-
             // Now call the parent init method.
             this.super();
 
@@ -176,7 +211,7 @@
             }
 
             // If show is enabled and currently not shown, show it.
-            if (this.options.show && !this.isShown) {
+            if (this.options.jQueryUiBridge && this.options.show && !this.isShown) {
               this.show();
             }
           },
@@ -202,8 +237,22 @@
            *   The options to map.
            */
           mapDialogOptions: function (options) {
-            var dialogOptions = {};
             var mappedOptions = {};
+            var dialogOptions = options.dialogOptions || {};
+
+            // Remove any existing dialog options.
+            delete options.dialogOptions;
+
+            // Separate Bootstrap modal options from jQuery UI dialog options.
+            for (var k in options) {
+              if (Modal.DEFAULTS.hasOwnProperty(k)) {
+                mappedOptions[k] = options[k];
+              }
+              else {
+                dialogOptions[k] = options[k];
+              }
+            }
+
 
             // Handle CSS properties.
             var cssUnitRegExp = /^([+-]?(?:\d+|\d*\.\d+))([a-z]*|%)?$/;
@@ -215,11 +264,20 @@
             var cssProperties = ['height', 'maxHeight', 'maxWidth', 'minHeight', 'minWidth', 'width'];
             for (var i = 0, l = cssProperties.length; i < l; i++) {
               var prop = cssProperties[i];
-              if (options[prop] !== void 0) {
-                var value = parseCssUnit(options[prop]);
+              if (dialogOptions[prop] !== void 0) {
+                var value = parseCssUnit(dialogOptions[prop]);
                 if (value) {
-                  dialogOptions[prop] = value;
                   styles[prop] = value;
+
+                  // If there's a defined height of some kind, enforce the modal
+                  // to use flex (on modern browsers). This will ensure that
+                  // the core autoResize calculations don't cause the content
+                  // to overflow.
+                  if (dialogOptions.autoResize && (prop === 'height' || prop === 'maxHeight')) {
+                    styles.display = 'flex';
+                    styles.flexDirection = 'column';
+                    this.$dialogBody.css('overflow', 'scroll');
+                  }
                 }
               }
             }
@@ -236,19 +294,24 @@
               'ui-dialog-content': 'modal-body',
               'ui-dialog-buttonpane': 'modal-footer'
             };
-            if (options.dialogClass) {
-              if (options.classes === void 0) {
-                options.classes = {};
+            if (dialogOptions.dialogClass) {
+              if (dialogOptions.classes === void 0) {
+                dialogOptions.classes = {};
               }
-              if (options.classes['ui-dialog'] === void 0) {
-                options.classes['ui-dialog'] = '';
+              if (dialogOptions.classes['ui-dialog'] === void 0) {
+                dialogOptions.classes['ui-dialog'] = '';
               }
-              var dialogClass = options.classes['ui-dialog'].split(' ');
-              dialogClass.push(options.dialogClass);
-              options.classes['ui-dialog'] = dialogClass.join(' ');
-              delete options.dialogClass;
+              var dialogClass = dialogOptions.classes['ui-dialog'].split(' ');
+              dialogClass.push(dialogOptions.dialogClass);
+              dialogOptions.classes['ui-dialog'] = dialogClass.join(' ');
+              delete dialogOptions.dialogClass;
             }
 
+            // Add jQuery UI classes to elements in case developers target them
+            // in callbacks.
+            for (k in classesMap) {
+              this.$element.find('.' + classesMap[k]).addClass(k);
+            }
 
             // Bind events.
             var events = [
@@ -261,59 +324,54 @@
             ];
             for (i = 0, l = events.length; i < l; i++) {
               var event = events[i].toLowerCase();
-              if (options[event] === void 0 || typeof options[event] !== 'function') continue;
-              this.$element.on('dialog' + event, options[event]);
+              if (dialogOptions[event] === void 0 || typeof dialogOptions[event] !== 'function') continue;
+              this.$element.on('dialog' + event, dialogOptions[event]);
+            }
+
+            // Support title attribute on the modal.
+            var title;
+            if ((dialogOptions.title === null || dialogOptions.title === void 0) && (title = this.$element.attr('title'))) {
+              dialogOptions.title = title;
             }
 
             // Handle the reset of the options.
-            for (var name in options) {
-              if (!options.hasOwnProperty(name) || options[name] === void 0) continue;
+            for (var name in dialogOptions) {
+              if (!dialogOptions.hasOwnProperty(name) || dialogOptions[name] === void 0) continue;
 
               switch (name) {
                 case 'appendTo':
-                  Bootstrap.unsupported('option', name, options.appendTo);
+                  Bootstrap.unsupported('option', name, dialogOptions.appendTo);
                   break;
 
                 case 'autoOpen':
-                  mappedOptions.show = !!options.autoOpen;
-                  break;
-
-                // This is really a drupal.dialog option, not jQuery UI.
-                case 'autoResize':
-                  dialogOptions.autoResize = !!options.autoResize;
-                  break;
-
-                case 'buttons':
-                  dialogOptions.buttons = options.buttons;
+                  mappedOptions.show = dialogOptions.show = !!dialogOptions.autoOpen;
                   break;
 
                 case 'classes':
-                  dialogOptions.classes = options.classes;
-                  for (var key in options.classes) {
-                    if (options.classes.hasOwnProperty(key) && classesMap[key] !== void 0) {
-                      // Run through Attributes to sanitize classes.
-                      var attributes = Attributes.create().addClass(options.classes[key]).toPlainObject();
-                      var selector = '.' + classesMap[key];
-                      this.$element.find(selector).addClass(attributes['class']);
+                  if (dialogOptions.classes) {
+                    for (var key in dialogOptions.classes) {
+                      if (dialogOptions.classes.hasOwnProperty(key) && classesMap[key] !== void 0) {
+                        // Run through Attributes to sanitize classes.
+                        var attributes = Attributes.create().addClass(dialogOptions.classes[key]).toPlainObject();
+                        var selector = '.' + classesMap[key];
+                        this.$element.find(selector).addClass(attributes['class']);
+                      }
                     }
                   }
                   break;
 
                 case 'closeOnEscape':
-                  dialogOptions.closeOnEscape = options.closeOnEscape;
-                  mappedOptions.keyboard = !!options.closeOnEscape;
-                  this.$close[options.closeOnEscape ? 'show' : 'hide']();
-                  if (!options.closeOnEscape && options.modal) {
-                    mappedOptions.backdrop = options.modal = 'static';
+                  mappedOptions.keyboard = !!dialogOptions.closeOnEscape;
+                  if (!dialogOptions.closeOnEscape && dialogOptions.modal) {
+                    mappedOptions.backdrop = 'static';
                   }
                   break;
 
                 case 'closeText':
-                  Bootstrap.unsupported('option', name, options.closeText);
+                  Bootstrap.unsupported('option', name, dialogOptions.closeText);
                   break;
 
                 case 'draggable':
-                  dialogOptions.draggable = options.draggable;
                   this.$content
                     .draggable({
                       handle: '.modal-header',
@@ -321,59 +379,60 @@
                       start: relayEvent(this.$element, 'dialogdragstart'),
                       end: relayEvent(this.$element, 'dialogdragend')
                     })
-                    .draggable(options.draggable ? 'enable' : 'disable');
+                    .draggable(dialogOptions.draggable ? 'enable' : 'disable');
                   break;
 
                 case 'hide':
-                  if (options.hide === false || options.hide === true) {
-                    this.$element[options.hide ? 'addClass' : 'removeClass']('fade');
-                    mappedOptions.animation = options.hide;
+                  if (dialogOptions.hide === false || dialogOptions.hide === true) {
+                    this.$element[dialogOptions.hide ? 'addClass' : 'removeClass']('fade');
+                    mappedOptions.animation = dialogOptions.hide;
                   }
                   else {
-                    Bootstrap.unsupported('option', name + ' (complex animation)', options.hide);
+                    Bootstrap.unsupported('option', name + ' (complex animation)', dialogOptions.hide);
                   }
                   break;
 
                 case 'modal':
-                  mappedOptions.backdrop = options.modal;
-                  dialogOptions.modal = !!options.modal;
+                  if (!dialogOptions.closeOnEscape && dialogOptions.modal) {
+                    mappedOptions.backdrop = 'static';
+                  }
+                  else {
+                    mappedOptions.backdrop = dialogOptions.modal;
+                  }
 
                   // If not a modal and no initial position, center it.
-                  if (!options.modal && !options.position) {
+                  if (!dialogOptions.modal && !dialogOptions.position) {
                     this.position({ my: 'center', of: window });
                   }
                   break;
 
                 case 'position':
-                  dialogOptions.position = options.position;
-                  this.position(options.position);
+                  this.position(dialogOptions.position);
                   break;
 
                 // Resizable support (must initialize first).
                 case 'resizable':
-                  dialogOptions.resizeable = options.resizable;
                   this.$content
                     .resizable({
                       resize: relayEvent(this.$element, 'dialogresize'),
                       start: relayEvent(this.$element, 'dialogresizestart'),
                       end: relayEvent(this.$element, 'dialogresizeend')
                     })
-                    .resizable(options.resizable ? 'enable' : 'disable');
+                    .resizable(dialogOptions.resizable ? 'enable' : 'disable');
                   break;
 
                 case 'show':
-                  if (options.show === false || options.show === true) {
-                    this.$element[options.show ? 'addClass' : 'removeClass']('fade');
-                    mappedOptions.animation = options.show;
+                  if (dialogOptions.show === false || dialogOptions.show === true) {
+                    this.$element[dialogOptions.show ? 'addClass' : 'removeClass']('fade');
+                    mappedOptions.animation = dialogOptions.show;
                   }
                   else {
-                    Bootstrap.unsupported('option', name + ' (complex animation)', options.show);
+                    Bootstrap.unsupported('option', name + ' (complex animation)', dialogOptions.show);
                   }
                   break;
 
                 case 'title':
-                  dialogOptions.title = options.title;
-                  this.$dialog.find('.modal-title').text(options.title);
+                  this.$dialog.find('.modal-title').text(dialogOptions.title);
                   break;
 
               }
@@ -396,13 +455,16 @@
            * Handler for $.fn.dialog('option').
            */
           option: function () {
-            var clone = {options: $.extend({}, this.options)};
+            var clone = {options: {}};
 
             // Apply the parent option method to the clone of current options.
             this.super.apply(clone, arguments);
 
             // Merge in the cloned mapped options.
             $.extend(true, this.options, this.mapDialogOptions(clone.options));
+
+            // Update buttons.
+            this.createButtons();
           },
 
           position: function(position) {
@@ -457,15 +519,28 @@
         var icon = '';
         var iconPosition = button.iconPosition || 'beginning';
         iconPosition = (iconPosition === 'end' && !rtl) || (iconPosition === 'beginning' && rtl) ? 'after' : 'before';
-        if (button.icon) {
+
+        // Handle Bootstrap icons differently.
+        if (button.bootstrapIcon) {
+          icon = Drupal.theme('icon', 'bootstrap', button.icon);
+        }
+        // Otherwise, assume it's a jQuery UI icon.
+        // @todo Map jQuery UI icons to Bootstrap icons?
+        else if (button.icon) {
           var iconAttributes = Attributes.create()
             .addClass(['ui-icon', button.icon])
             .set('aria-hidden', 'true');
           icon = '<span' + iconAttributes + '></span>';
         }
 
-        // Value.
-        var value = button.text;
+        // Label. Note: jQuery UI dialog has an inconsistency where it uses
+        // "text" instead of "label", so both need to be supported.
+        var value = button.label || button.text;
+
+        // Show/hide label.
+        if (icon && ((button.showLabel !== void 0 && !button.showLabel) || (button.text !== void 0 && !button.text))) {
+          value = '<span' + Attributes.create().addClass('sr-only') + '>' + value + '</span>';
+        }
         attributes.set('value', iconPosition === 'before' ? icon + value : value + icon);
 
         // Handle disabled.
@@ -476,6 +551,9 @@
         }
         if (button['class']) {
           attributes.addClass(button['class']);
+        }
+        if (button.primary) {
+          attributes.addClass('btn-primary');
         }
 
         return Drupal.theme('button', attributes);

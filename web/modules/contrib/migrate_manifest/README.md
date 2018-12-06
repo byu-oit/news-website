@@ -1,6 +1,7 @@
 # Migrate Manifest
 
-This project provides tools for running Drupal 8 migrations using the manifest format. 
+This project provides tools for running Drupal 8 migrations using the manifest
+format.
 
 ## Usage
 

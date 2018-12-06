@@ -2,12 +2,15 @@
 
 namespace Drupal\token_filter\Plugin\CKEditorPlugin;
 
+use Drupal\ckeditor\CKEditorPluginConfigurableInterface;
 use Drupal\Component\Serialization\Json;
+use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Drupal\Core\Url;
 use Drupal\Core\Access\CsrfTokenGenerator;
 use Drupal\ckeditor\CKEditorPluginBase;
 use Drupal\editor\Entity\Editor;
+use Drupal\token\Token;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
@@ -22,7 +25,7 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  *   label = @Translation("Token browser")
  * )
  */
-class TokenBrowser extends CKEditorPluginBase implements ContainerFactoryPluginInterface {
+class TokenBrowser extends CKEditorPluginBase implements ContainerFactoryPluginInterface, CKEditorPluginConfigurableInterface {
 
   /**
    * The CSRF token manager service.
@@ -31,24 +34,33 @@ class TokenBrowser extends CKEditorPluginBase implements ContainerFactoryPluginI
    */
   protected $csrfTokenService;
 
-  public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition) {
-    return new static(
-      $configuration,
-      $plugin_id,
-      $plugin_definition,
-      $container->get('csrf_token')
-    );
-  }
+  protected $tokenService;
 
   /**
    * {@inheritdoc}
    *
    * @param Drupal\Core\Access\CsrfTokenGenerator $csrf_token_service
    */
-  public function __construct(array $configuration, $plugin_id, $plugin_definition, CsrfTokenGenerator $csrf_token_service) {
+  public function __construct(
+    array $configuration,
+    $plugin_id,
+    $plugin_definition,
+    CsrfTokenGenerator $csrf_token_service,
+    Token $token_service) {
     parent::__construct($configuration, $plugin_id, $plugin_definition);
 
     $this->csrfTokenService = $csrf_token_service;
+    $this->tokenService = $token_service;
+  }
+
+  public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition) {
+    return new static(
+      $configuration,
+      $plugin_id,
+      $plugin_definition,
+      $container->get('csrf_token'),
+      $container->get('token')
+    );
   }
 
   /**
@@ -58,13 +70,13 @@ class TokenBrowser extends CKEditorPluginBase implements ContainerFactoryPluginI
    * names. They are the first argument of the editor.ui.addButton() or
    * editor.ui.addRichCombo() functions in the plugin.js file.
    */
-  public function getButtons() {
+  public function getButtons($token_types = NULL) {
     return [
       'tokenbrowser' => [
         'id' => 'tokenbrowser',
         'label' => t('Token browser'),
         'image' => file_create_url($this->getImage()),
-        'link' => $this->getUrl()->toString(),
+        'link' => $this->getUrl($token_types)->toString(),
       ],
     ];
   }
@@ -77,10 +89,10 @@ class TokenBrowser extends CKEditorPluginBase implements ContainerFactoryPluginI
    *
    * @see TokenTreeController::outputTree().
    */
-  protected function getUrl() {
+  protected function getUrl($token_types = NULL) {
     $url = Url::fromRoute('token.tree');
     $options['query'] = [
-      'options' => Json::encode($this->getQueryOptions()),
+      'options' => Json::encode($this->getQueryOptions($token_types)),
       'token' => $this->csrfTokenService->get($url->getInternalPath()),
     ];
     $url->setOptions($options);
@@ -95,9 +107,10 @@ class TokenBrowser extends CKEditorPluginBase implements ContainerFactoryPluginI
    *
    * @see TreeBuilderInterface::buildRenderable() for option definitions.
    */
-  protected function getQueryOptions() {
+  protected function getQueryOptions($token_types = NULL) {
+
     return [
-      'token_types' => 'all',
+      'token_types' => $token_types ?: 'all',
       'global_types' => FALSE,
       'click_insert' => TRUE,
       'show_restricted' => FALSE,
@@ -143,9 +156,47 @@ class TokenBrowser extends CKEditorPluginBase implements ContainerFactoryPluginI
    * {@inheritdoc}
    */
   public function getConfig(Editor $editor) {
+
+    // Get settings.
+    $token_types = NULL;
+    $settings = $editor->getSettings();
+    if (isset($settings['plugins']['tokenbrowser'], $settings['plugins']['tokenbrowser']['token_types'])) {
+      $token_types = $settings['plugins']['tokenbrowser']['token_types'];
+    }
+
     return [
-      'TokenBrowser_buttons' => $this->getButtons(),
+      'TokenBrowser_buttons' => $this->getButtons($token_types),
+      'token_types' => $token_types,
     ];
   }
 
+  /**
+   * {@inheritdoc}
+   */
+  public function settingsForm(array $form, FormStateInterface $form_state, Editor $editor) {
+
+    // Get config.
+    $config = $this->getConfig($editor);
+
+    // Get parent token type names, keyed by machine name.
+    $parent_token_types = array_filter($this->tokenService
+      ->getInfo()['types'], function ($v) {
+      return empty($v['nested']);
+    });
+    $parent_token_types = array_map(function ($v) {
+      return $v['name'];
+    }, $parent_token_types);
+
+    // Add multiselect for token types to show in browser.
+    $form['token_types'] = [
+      '#type' => 'select',
+      '#title' => $this->t('Token types'),
+      '#description' => $this->t('Optionally restrict the token types to show in the browser. Select none to show all.'),
+      '#multiple' => TRUE,
+      '#options' => $parent_token_types,
+      '#default_value' => $config['token_types'],
+    ];
+
+    return $form;
+  }
 }

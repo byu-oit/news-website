@@ -143,6 +143,8 @@ class AssetInjectorAccessControlHandler extends EntityAccessControlHandler imple
    *
    * @return bool
    *   If the theme condition resolves true or not.
+   *
+   * @throws \Drupal\Component\Plugin\Exception\PluginException
    */
   protected function resolveThemeConditions(AssetInjectorInterface $entity) {
 

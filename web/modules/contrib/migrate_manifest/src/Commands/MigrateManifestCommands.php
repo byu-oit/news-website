@@ -6,6 +6,7 @@ use Drupal\migrate_manifest\MigrateManifest;
 use Drush\Commands\DrushCommands;
 
 /**
+ * Drush 9 Migrate manifest command.
  *
  * In addition to a commandfile like this one, you need a drush.services.yml
  * in root of your module.
@@ -24,16 +25,23 @@ class MigrateManifestCommands extends DrushCommands {
    * @option legacy-db-url A Drupal 6 style database URL.
    * @option legacy-db-prefix A database table prefix to apply.
    * @option legacy-db-key A database connection key from settings.php. Use as an alternative to legacy-db-url
-   * @option update  In addition to processing unprocessed items from the source, update previously-imported items with the current data
+   * @option update In addition to processing unprocessed items from the source, update previously-imported items with the current data
    * @option force Force an operation to run, even if all dependencies are not satisfied
    * @validate-module-enabled migrate_manifest
    * @aliases migrate-manifest2,mm,migrate-manifest
    */
-  public function manifest($manifest, $options = ['legacy-db-url' => null, 'legacy-db-prefix' => null, 'legacy-db-key' => null, 'update' => null, 'force' => null]) {
+  public function manifest($manifest, $options = [
+    'legacy-db-url' => NULL,
+    'legacy-db-prefix' => NULL,
+    'legacy-db-key' => NULL,
+    'update' => NULL,
+    'force' => NULL,
+  ]) {
     try {
-      $manifest_runner = new MigrateManifest($manifest, $options['force'], $options['update']);
+      $migration_manager = \Drupal::service('plugin.manager.migration');
+      $manifest_runner = new MigrateManifest($migration_manager, $options['force'], $options['update']);
       MigrateManifest::setDbState($options['legacy-db-key'], $options['legacy-db-url'], $options['legacy-db-prefix']);
-      $manifest_runner->import();
+      $manifest_runner->import($manifest);
     }
     catch (\Exception $e) {
       drush_set_error('MIGRATE_ERROR', $e->getMessage());
@@ -51,7 +59,7 @@ class MigrateManifestCommands extends DrushCommands {
    * @validate-module-enabled migrate_manifest
    * @aliases migrate-template-list,mml
    */
-  public function templateList($options = ['tag' => null, 'as-yaml' => null]) {
+  public function templateList($options = ['tag' => NULL, 'as-yaml' => NULL]) {
     $tag = $options['tag'];
     $as_yaml = $options['as-yaml'];
 

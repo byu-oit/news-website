@@ -110,6 +110,8 @@ module.exports = function (grunt) {
                   '@import "' + themeVariables + '"',
                   // Then, import latest bootstrap mixins.
                   '@import "' + latestMixins + '"',
+                  // Then, import the variable overrides.
+                  '@import "' + path.join('starterkits', 'less', 'less', 'variable-overrides.less') + '"',
                   // Finally, import the base-theme overrides.
                   '@import "' + path.join('starterkits', 'less', 'less', 'overrides.less') + '"'
                 ];

@@ -65,8 +65,9 @@ function require_on_publish_field_config_submit($form, FormStateInterface $form_
  * Implements hook_entity_type_alter().
  */
 function require_on_publish_entity_type_alter(array &$entity_types) {
-  foreach ($entity_types as $type => $class) {
-    if (require_on_publish_entity_is_publishable($class->getClass())) {
+  foreach ($entity_types as $type => $entity_type) {
+    /** @var \Drupal\Core\Entity\EntityTypeInterface $class */
+    if (require_on_publish_entity_is_publishable($entity_type->getClass())) {
       $entity_types[$type]->addConstraint('require_on_publish');
     }
   }
@@ -75,9 +76,10 @@ function require_on_publish_entity_type_alter(array &$entity_types) {
 /**
  * Implements hook_preprocess_HOOK().
  */
-function require_on_publish_preprocess_form_element(&$variables) {
-  if ($variables['element']['#required_on_publish']) {
-    $variables['label']['#attributes']['class'][] = 'form-required-on-publish';
+function require_on_publish_preprocess_datetime_wrapper(&$variables) {
+  $element = $variables['element'];
+  if (isset($element['#required_on_publish']) && $element['#required_on_publish']) {
+    $variables['title_attributes']['class'][] = 'form-required-on-publish';
   }
 }
 
@@ -94,7 +96,7 @@ function require_on_publish_preprocess_field_multiple_value_form(&$variables) {
       $header_attributes['class'][] = 'form-required';
     }
 
-    if ($element['#required_on_publish']) {
+    if (isset($element['#required_on_publish']) && $element['#required_on_publish']) {
       $header_attributes['class'][] = 'form-required-on-publish';
     }
 
@@ -115,6 +117,26 @@ function require_on_publish_preprocess_field_multiple_value_form(&$variables) {
 }
 
 /**
+ * Implements hook_preprocess_HOOK().
+ */
+function require_on_publish_preprocess_fieldset(&$variables) {
+  $element = $variables['element'];
+  if (isset($element['#required_on_publish']) && $element['#required_on_publish']) {
+    $variables['legend_span']['attributes'] = new Attribute(['class' => ['form-required-on-publish']]);
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function require_on_publish_preprocess_form_element(&$variables) {
+  $element = $variables['element'];
+  if (isset($element['#required_on_publish']) && $element['#required_on_publish']) {
+    $variables['label']['#attributes']['class'][] = 'form-required-on-publish';
+  }
+}
+
+/**
  * Implements hook_field_widget_entity_reference_paragraphs_form_alter().
  */
 function require_on_publish_field_widget_entity_reference_paragraphs_form_alter(&$element, &$form_state, $context) {
@@ -126,19 +148,8 @@ function require_on_publish_field_widget_entity_reference_paragraphs_form_alter(
     }
     if ($field_config->getThirdPartySetting('require_on_publish', 'require_on_publish', FALSE)) {
       $field_name = $field_config->getName();
-      if (array_key_exists('target_id', $element['subform'][$field_name]['widget'][0])) {
-        $element['subform'][$field_name]['widget'][0]['target_id']['#required_on_publish'] = TRUE;
-      }
-      elseif (array_key_exists('value', $element['subform'][$field_name]['widget'][0])) {
-        $element['subform'][$field_name]['widget'][0]['value']['#required_on_publish'] = TRUE;
-      }
-      else {
-        $element['subform'][$field_name]['widget'][0]['#required_on_publish'] = TRUE;
-      }
-
-      if ($element['subform'][$field_name]['widget']['#theme'] == 'field_multiple_value_form') {
-        $element['subform'][$field_name]['widget']['#required_on_publish'] = TRUE;
-      }
+      $form['#attached']['library'][] = 'require_on_publish/require_on_publish';
+      require_on_publish_add_indicator($element['subform'][$field_name]['widget']);
     }
   }
 }
@@ -164,19 +175,35 @@ function require_on_publish_form_alter(&$form, FormStateInterface $form_state, $
     if ($field_config->getThirdPartySetting('require_on_publish', 'require_on_publish', FALSE)) {
       $field_name = $field_config->getName();
       $form['#attached']['library'][] = 'require_on_publish/require_on_publish';
-      if (array_key_exists('target_id', $form[$field_name]['widget'])) {
-        $form[$field_name]['widget']['target_id']['#required_on_publish'] = TRUE;
-      }
-      elseif (array_key_exists('value', $form[$field_name]['widget'])) {
-        $form[$field_name]['widget']['value']['title']['#required_on_publish'] = TRUE;
-      }
-      else {
-        $form[$field_name]['widget'][0]['#required_on_publish'] = TRUE;
-      }
+      require_on_publish_add_indicator($form[$field_name]['widget']);
+    }
+  }
+}
 
-      if ($form[$field_name]['widget']['#theme'] == 'field_multiple_value_form') {
-        $form[$field_name]['widget']['#required_on_publish'] = TRUE;
-      }
+/**
+ * Adds an indicator to fields that are required on publish.
+ *
+ * @param array $widget
+ *   The widget array.
+ */
+function require_on_publish_add_indicator(array &$widget) {
+  $widget['#required_on_publish'] = TRUE;
+
+  if (array_key_exists('target_id', $widget)) {
+    $widget['target_id']['#required_on_publish'] = TRUE;
+  }
+  elseif (array_key_exists('value', $widget)) {
+    $widget['value']['#required_on_publish'] = TRUE;
+
+    if (is_array($widget['value']['title'])) {
+      $widget['value']['title']['#required_on_publish'] = TRUE;
+    }
+  }
+  elseif (array_key_exists(0, $widget)) {
+    $widget[0]['#required_on_publish'] = TRUE;
+
+    if (array_key_exists('value', $widget[0])) {
+      $widget[0]['value']['#required_on_publish'] = TRUE;
     }
   }
 }

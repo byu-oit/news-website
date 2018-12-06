@@ -4,6 +4,7 @@ namespace Drupal\token_filter\Plugin\Filter;
 
 use Drupal\Core\Config\Entity\ConfigEntityBundleBase;
 use Drupal\Core\Entity\ContentEntityInterface;
+use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Drupal\Core\Render\RendererInterface;
 use Drupal\Core\Routing\RouteMatchInterface;
@@ -20,7 +21,9 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  *   id = "token_filter",
  *   title = @Translation("Replaces global and entity tokens with their values"),
  *   type = Drupal\filter\Plugin\FilterInterface::TYPE_TRANSFORM_IRREVERSIBLE,
- *   settings = { }
+ *   settings = {
+ *     "replace_empty" = FALSE
+ *   }
  * )
  */
 class TokenFilter extends FilterBase implements ContainerFactoryPluginInterface {
@@ -97,6 +100,20 @@ class TokenFilter extends FilterBase implements ContainerFactoryPluginInterface 
   /**
    * {@inheritdoc}
    */
+  public function settingsForm(array $form, FormStateInterface $form_state) {
+    $form['replace_empty'] = [
+      '#type' => 'checkbox',
+      '#title' => $this->t('Replace empty values'),
+      '#description' => $this->t('Remove tokens from text if they cannot be replaced with a value'),
+      '#default_value' => $this->settings['replace_empty'],
+    ];
+
+    return $form;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
   public function process($text, $langcode) {
     $data = [];
 
@@ -106,7 +123,10 @@ class TokenFilter extends FilterBase implements ContainerFactoryPluginInterface 
       $data[$token_type] = $entity;
     }
 
-    return new FilterProcessResult($this->token->replace($text, $data));
+    $clear = $this->settings['replace_empty'];
+    $replacements = $this->token->replace($text, $data, ['clear' => $clear]);
+
+    return new FilterProcessResult($replacements);
   }
 
   /**

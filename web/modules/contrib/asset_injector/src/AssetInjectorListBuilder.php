@@ -70,6 +70,10 @@ class AssetInjectorListBuilder extends ConfigEntityListBuilder {
       ];
     }
 
+    // Remove query option to allow the save and continue to correctly function.
+    $options = $operations['edit']['url']->getOptions();
+    unset($options['query']);
+    $operations['edit']['url']->setOptions($options);
     return $operations;
   }
 

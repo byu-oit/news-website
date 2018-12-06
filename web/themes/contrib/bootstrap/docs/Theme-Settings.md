@@ -3,14 +3,12 @@
 <!-- @ingroup -->
 # Theme Settings
 
-To override a setting, open `./config/install/THEMENAME.settings.yml`
-and add the following:
+To override a setting, open `./config/install/THEMENAME.settings.yml` and add the following:
 
 ```yaml
 # Settings
 
-settings:
-  SETTING_NAME: SETTING_VALUE
+SETTING_NAME: SETTING_VALUE
 ```
 
 ---
@@ -660,11 +658,28 @@ modal_enabled
     </td>
     <td>
       <div class="help-block">
-Enabling this will replace core's jQuery UI Dialog implementations with
-modals from the Bootstrap Framework.
+
       </div>
       <pre class=" language-yaml"><code>
 modal_enabled: 1
+
+</code></pre>
+    </td>
+  </tr>
+  <tr>
+    <td class="col-xs-3">
+modal_jquery_ui_bridge
+    </td>
+    <td>
+      <div class="help-block">
+Enabling this replaces the core/jquery.ui.dialog dependency in the
+core/drupal.dialog library with a bridge. This bridge adds support to
+Bootstrap Modals so that it may interpret jQuery UI Dialog functionality.
+It is highly recommended that this remain enabled unless you know what
+you're really doing.
+      </div>
+      <pre class=" language-yaml"><code>
+modal_jquery_ui_bridge: 1
 
 </code></pre>
     </td>
@@ -700,6 +715,21 @@ modal_backdrop: 'true'
   </tr>
   <tr>
     <td class="col-xs-3">
+modal_focus_input
+    </td>
+    <td>
+      <div class="help-block">
+Enabling this focuses on the first available and visible input found in the
+modal after it's opened.
+      </div>
+      <pre class=" language-yaml"><code>
+modal_focus_input: 1
+
+</code></pre>
+    </td>
+  </tr>
+  <tr>
+    <td class="col-xs-3">
 modal_keyboard
     </td>
     <td>
@@ -708,6 +738,21 @@ Closes the modal when escape key is pressed.
       </div>
       <pre class=" language-yaml"><code>
 modal_keyboard: 1
+
+</code></pre>
+    </td>
+  </tr>
+  <tr>
+    <td class="col-xs-3">
+modal_select_text
+    </td>
+    <td>
+      <div class="help-block">
+Enabling this selects the text of the first available and visible input
+found after it has been focused.
+      </div>
+      <pre class=" language-yaml"><code>
+modal_select_text: 1
 
 </code></pre>
     </td>
@@ -783,6 +828,22 @@ Apply a CSS fade transition to the popover.
       </div>
       <pre class=" language-yaml"><code>
 popover_animation: 1
+
+</code></pre>
+    </td>
+  </tr>
+  <tr>
+    <td class="col-xs-3">
+popover_auto_close
+    </td>
+    <td>
+      <div class="help-block">
+If enabled, the active popover will automatically close when it loses
+focus, when a click occurs anywhere in the DOM (outside the popover), the
+escape key (ESC) is pressed or when another popover is opened.
+      </div>
+      <pre class=" language-yaml"><code>
+popover_auto_close: 1
 
 </code></pre>
     </td>

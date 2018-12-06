@@ -32,12 +32,16 @@ class AssetInjectorJsTest extends BrowserTestBase {
    */
   public function setUp() {
     parent::setUp();
+
     $this->drupalPlaceBlock('local_tasks_block');
     $this->drupalPlaceBlock('page_title_block');
+    $this->drupalPlaceBlock('system_messages_block');
   }
 
   /**
    * Tests a user without permissions gets access denied.
+   *
+   * @throws \Exception
    */
   public function testJsPermissionDenied() {
     $account = $this->drupalCreateUser();
@@ -48,6 +52,8 @@ class AssetInjectorJsTest extends BrowserTestBase {
 
   /**
    * Tests a user WITH permission has access.
+   *
+   * @throws \Exception
    */
   public function testJsPermissionGranted() {
     $account = $this->drupalCreateUser(['administer js assets injector']);
@@ -82,6 +88,27 @@ class AssetInjectorJsTest extends BrowserTestBase {
       $this->drupalGet($path);
       $this->assertSession()->statusCodeEquals(200);
     }
+  }
+
+  /**
+   * Tests if the save and continue button works accurately.
+   *
+   * @throws \Exception
+   */
+  public function testSaveContinue() {
+    $page = $this->getSession()->getPage();
+    $this->testJsPermissionGranted();
+    $this->drupalGet('admin/config/development/asset-injector/js/add');
+    $this->assertSession()->statusCodeEquals(200);
+    $this->assertSession()->pageTextContains(t('Code'));
+    $page->fillField('Label', 'test save continue');
+    $page->fillField('Machine-readable name', 'test_save_continue');
+    $page->fillField('Code', 'var a;');
+    $page->pressButton('Save and Continue Editing');
+    $this->assertSession()
+      ->pageTextContains('Created the test save continue Asset Injector');
+    $this->assertSession()
+      ->addressEquals('admin/config/development/asset-injector/js/test_save_continue');
   }
 
 }

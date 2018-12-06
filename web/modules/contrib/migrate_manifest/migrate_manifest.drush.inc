@@ -63,16 +63,18 @@ function migrate_manifest_drush_command() {
  *   The path to the manifest file.
  *
  * @return array
+ *   A list of run migrations.
  */
 function drush_migrate_manifest($manifest) {
   try {
-    $manifest_runner = new MigrateManifest($manifest, drush_get_option('force'), drush_get_option('update'));
+    $manager = \Drupal::service('plugin.manager.migration');
+    $manifest_runner = new MigrateManifest($manager, drush_get_option('force'), drush_get_option('update'));
     MigrateManifest::setDbState(
       drush_get_option('legacy-db-key'),
       drush_get_option('legacy-db-url'),
       drush_get_option('legacy-db-prefix')
     );
-    return $manifest_runner->import();
+    return $manifest_runner->import($manifest);
   } catch (\Exception $e) {
     drush_set_error('MIGRATE_ERROR', $e->getMessage());
   }
@@ -81,12 +83,7 @@ function drush_migrate_manifest($manifest) {
 }
 
 /**
- * Import from a manifest file.
- *
- * @param string $manifest
- *   The path to the manifest file.
- *
- * @return array
+ * List templates.
  */
 function drush_migrate_manifest_migrate_template_list() {
   /** @var \Drupal\migrate_manifest\MigrateTemplateStorageInterface $template_storage */

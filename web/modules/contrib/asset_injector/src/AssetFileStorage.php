@@ -110,7 +110,10 @@ final class AssetFileStorage {
    * @see asset_injector_cache_flush()
    */
   public static function deleteAllFiles() {
-    file_unmanaged_delete_recursive(self::internalDirectoryUri());
+    $internal_uri = self::internalDirectoryUri();
+    if (file_exists($internal_uri)) {
+      file_unmanaged_delete_recursive($internal_uri);
+    }
   }
 
 }
