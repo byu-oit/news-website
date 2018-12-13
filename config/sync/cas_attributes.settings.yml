@@ -1,0 +1,12 @@
+sitewide_token_support: true
+field:
+  sync_frequency: 0
+  overwrite: false
+  mappings: 'a:3:{s:4:"name";s:0:"";s:4:"mail";s:0:"";s:19:"field_title_subline";s:0:"";}'
+role:
+  sync_frequency: 0
+  deny_login_no_match: false
+  deny_registration_no_match: false
+  mappings: 'a:0:{}'
+_core:
+  default_config_hash: 93lZgXLXkkm3h6X8S7_Xcm92kOl1aKLoGl3wXbpm-Fc

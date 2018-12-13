@@ -1,4 +1,5 @@
 (function ($, Drupal) {
+  'use strict';
 
   Drupal.behaviors.toggleRequiredOnPublish = {
     attach: function (context) {
@@ -20,4 +21,4 @@
     }
   };
 
-}(jQuery, Drupal))
+}(jQuery, Drupal));

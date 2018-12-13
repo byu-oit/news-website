@@ -50,3 +50,31 @@ function asset_injector_update_8201() {
   $query = "UPDATE {config} SET name = REPLACE(name, 'asset_injector.asset_injector_js', 'asset_injector.js') WHERE name LIKE 'asset_injector.asset_injector_js%'";
   \Drupal::database()->query($query);
 }
+
+/**
+ * Replace the entity type name in key_value.
+ */
+function asset_injector_update_8202() {
+  $key_value_exists = \Drupal::database()
+    ->select('key_value', 'k')
+    ->fields('k')
+    ->condition('name', [
+      'asset_injector_css.entity_type',
+      'asset_injector_js.entity_type',
+    ], 'IN')
+    ->execute()
+    ->fetchAssoc();
+  if (!$key_value_exists) {
+    $query = "UPDATE {key_value} SET name = 'asset_injector_css.entity_type' WHERE name = 'css_injector.entity_type'";
+    \Drupal::database()->query($query);
+    $query = "UPDATE {key_value} SET name = 'asset_injector_js.entity_type' WHERE name = 'js_injector.entity_type'";
+    \Drupal::database()->query($query);
+  }
+  \Drupal::database()
+    ->delete('key_value')
+    ->condition('name', [
+      'css_injector.entity_type',
+      'js_injector.entity_type',
+    ], 'IN')
+    ->execute();
+}

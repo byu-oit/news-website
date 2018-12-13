@@ -22,19 +22,10 @@ class SubmittedFormatter extends AuthorFormatter {
    * {@inheritdoc}
    */
   public function viewElements(FieldItemListInterface $items, $langcode) {
-    $elements = [];
-    //@todo call parent then switch theme?
+    $elements = parent::viewElements($items, $langcode);
 
-    foreach ($this->getEntitiesToView($items, $langcode) as $delta => $entity) {
-      /** @var $referenced_user \Drupal\user\UserInterface */
-      $elements[$delta] = [
-        '#theme' => 'submitted',
-        '#account' => $entity,
-        '#link_options' => ['attributes' => ['rel' => 'author']],
-        '#cache' => [
-          'tags' => $entity->getCacheTags(),
-        ],
-      ];
+    foreach ($elements as $delta => $entity) {
+      $elements[$delta]['#theme'] = 'submitted';
     }
 
     return $elements;

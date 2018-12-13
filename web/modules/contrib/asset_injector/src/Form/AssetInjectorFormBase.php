@@ -27,7 +27,6 @@ class AssetInjectorFormBase extends EntityForm {
    */
   protected $logger;
 
-
   /**
    * The Asset entity.
    *
@@ -357,7 +356,7 @@ class AssetInjectorFormBase extends EntityForm {
         ]);
         $log = '%type asset %id saved';
     }
-    drupal_set_message($message);
+    $this->messenger()->addMessage($message);
     $this->logger->notice($log, [
       '%type' => $entity->getEntityTypeId(),
       '%id' => $entity->id(),

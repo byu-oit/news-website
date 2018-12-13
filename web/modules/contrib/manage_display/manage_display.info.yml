@@ -4,8 +4,8 @@ description: Make base fields such as 'title' available in "Manage Display"
 # core: 8.x
 package: Fields
 
-# Information added by Drupal.org packaging script on 2018-05-02
-version: '8.x-1.0-alpha5'
+# Information added by Drupal.org packaging script on 2018-12-02
+version: '8.x-1.0-alpha6'
 core: '8.x'
 project: 'manage_display'
-datestamp: 1525270392
+datestamp: 1543752484

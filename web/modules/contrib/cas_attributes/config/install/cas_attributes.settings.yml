@@ -1,0 +1,10 @@
+sitewide_token_support: false
+field:
+  sync_frequency: 0
+  overwrite: false
+  mappings: ''
+role:
+  sync_frequency: 0
+  deny_login_no_match: false
+  deny_registration_no_match: false
+  mappings: ''

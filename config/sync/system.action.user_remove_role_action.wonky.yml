@@ -1,0 +1,14 @@
+uuid: 79801fb5-a032-4594-9628-55bdfaa25aea
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.wonky
+  module:
+    - user
+id: user_remove_role_action.wonky
+label: 'Remove the Wonky role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: wonky

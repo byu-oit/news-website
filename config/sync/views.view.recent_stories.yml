@@ -206,7 +206,7 @@ display:
           hide_alter_empty: true
           text: view
           output_url_as_text: true
-          absolute: true
+          absolute: false
           entity_type: node
           plugin_id: entity_link
         field_summary:
@@ -673,10 +673,16 @@ display:
     display_options:
       display_extenders: {  }
       row:
-        type: node_rss
+        type: rss_fields
         options:
-          relationship: none
-          view_mode: title
+          title_field: title
+          link_field: view_node
+          description_field: field_summary
+          creator_field: field_media_contact_byline_perso
+          date_field: field_publish_date
+          guid_field_options:
+            guid_field: nid
+            guid_field_is_permalink: false
       path: rss.xml
       style:
         type: rss

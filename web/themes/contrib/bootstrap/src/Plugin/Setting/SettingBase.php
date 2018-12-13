@@ -178,6 +178,12 @@ class SettingBase extends PluginBase implements SettingInterface {
         $group->$plugin_id->setProperty('description', $description);
       }
     }
+
+    // Hide the setting if is been deprecated.
+    if ($this instanceof DeprecatedSettingInterface) {
+      $group->$plugin_id->access(FALSE);
+    }
+
     return $group->$plugin_id;
   }
 

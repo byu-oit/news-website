@@ -17,6 +17,9 @@ cas.settings:
         version:
           type: string
           label: 'Version'
+        protocol:
+          type: string
+          label: 'Protocol'
         hostname:
           type: string
           label: 'Hostname'

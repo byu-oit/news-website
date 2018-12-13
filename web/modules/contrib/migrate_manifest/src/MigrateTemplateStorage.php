@@ -1,11 +1,5 @@
 <?php
 
-/**
- * @file
- * Direct copy of the template storage removed in
- * https://www.drupal.org/node/2676258
- */
-
 namespace Drupal\migrate_manifest;
 
 use Drupal\Component\Serialization\Yaml;
@@ -13,13 +7,16 @@ use Drupal\Core\Extension\ModuleHandlerInterface;
 
 /**
  * Storage to access migration template configuration in enabled extensions.
+ *
+ * Direct copy of the template storage removed from core.
+ * @see https://www.drupal.org/node/2676258
  */
 class MigrateTemplateStorage implements MigrateTemplateStorageInterface {
   /**
    * Extension sub-directory containing default configuration for migrations.
    */
 
-  const MIGRATION_TEMPLATE_DIRECTORY = 'migration_templates';
+  const MIGRATION_TEMPLATE_DIRECTORY = 'migrations';
 
   /**
    * Template subdirectory.

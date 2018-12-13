@@ -1,0 +1,14 @@
+cas_attributes.settings:
+  path: '/admin/config/people/cas/attributes'
+  defaults:
+    _form: '\Drupal\cas_attributes\Form\CasAttributesSettings'
+    _title: 'CAS Attributes settings'
+  requirements:
+    _permission: 'administer account settings'
+cas_attributes.available_attributes:
+  path: '/admin/config/people/cas/attributes/available'
+  defaults:
+    _controller: '\Drupal\cas_attributes\Controller\CasAttributesListController::content'
+    _title: 'Available CAS attributes'
+  requirements:
+    _permission: 'administer account settings'

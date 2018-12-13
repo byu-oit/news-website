@@ -135,6 +135,18 @@ class Element extends DrupalAttributes {
   }
 
   /**
+   * Sets the #access property on an element.
+   *
+   * @param bool|\Drupal\Core\Access\AccessResultInterface $access
+   *   The value to assign to #access.
+   *
+   * @return static
+   */
+  public function access($access = NULL) {
+    return $this->setProperty('access', $access);
+  }
+
+  /**
    * Appends a property with a value.
    *
    * @param string $name

@@ -1,4 +1,4 @@
-(function ($, Drupal) {
+(function ($, Drupal, Bootstrap) {
   /*global jQuery:false */
   /*global Drupal:false */
   "use strict";
@@ -59,10 +59,63 @@
       });
 
       // JavaScript.
+      var $jQueryUiBridge = $context.find('input[name="modal_jquery_ui_bridge"]');
+      $jQueryUiBridge.once('bs.jquery.ui.dialog.bridge').each(function () {
+        $jQueryUiBridge
+          .off('change.bs.jquery.ui.dialog.bridge')
+          .on('change.bs.jquery.ui.dialog.bridge', function (e) {
+            if ($jQueryUiBridge[0].checked) {
+              return;
+            }
+
+            var disable = false;
+            var title = Drupal.t('<p><strong>Warning: Disabling the jQuery UI Dialog bridge may have major consequences.</strong></p>');
+            var message = Drupal.t('<p>If you are unfamiliar with how to properly handle Bootstrap modals and jQuery UI dialogs together, it is highly recommended this remains <strong>enabled</strong>.</p> <p>Are you sure you want to disable this?</p>');
+            var callback = function () {
+              if (!disable) {
+                $jQueryUiBridge[0].checked = true;
+                $jQueryUiBridge.trigger('change');
+              }
+            };
+
+            if (!$.fn.dialog) {
+              disable = window.confirm(Bootstrap.stripHtml(title + ' ' + message));
+              callback();
+            }
+            else {
+              $('<div title="Disable jQuery UI Dialog Bridge?"><div class="alert alert-danger alert-sm">' + title + '</div>' + message + '</div>')
+                .appendTo('body')
+                .dialog({
+                  modal: true,
+                  close: callback,
+                  buttons: [
+                    {
+                      text: Drupal.t('Disable'),
+                      classes: {
+                        'ui-button': 'btn-danger',
+                      },
+                      click: function () {
+                        disable = true;
+                        $(this).dialog('close');
+                      }
+                    },
+                    {
+                      text: 'Cancel',
+                      primary: true,
+                      click: function () {
+                        $(this).dialog('close');
+                      }
+                    }
+                  ]
+                });
+            }
+          });
+      });
+
       $context.find('#edit-javascript').drupalSetSummary(function () {
         var summary = [];
         if ($context.find('input[name="modal_enabled"]').is(':checked')) {
-          if ($context.find('input[name="modal_jquery_ui_bridge"]').is(':checked')) {
+          if ($jQueryUiBridge.is(':checked')) {
             summary.push(Drupal.t('Modals (Bridged)'));
           }
           else {
@@ -204,4 +257,4 @@
     }
   };
 
-})(jQuery, Drupal);
+})(jQuery, Drupal, Drupal.bootstrap);

@@ -101,6 +101,10 @@ drupal.form:
   dependencies:
     - bootstrap/theme
 
+drupal.message:
+  js:
+    js/misc/message.js: {}
+
 drupal.progress:
   js:
     js/misc/progress.js: {}
@@ -112,6 +116,10 @@ drupal.states:
 drupal.tabledrag:
   js:
     js/misc/tabledrag.js: {}
+
+drupal.tableheader:
+  js:
+    js/misc/tableheader.js: {}
 
 image_widget_crop:
   js:

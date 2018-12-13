@@ -919,7 +919,7 @@ function field_group_remove_empty_form_groups(&$element, $groups, $entity_type) 
 
       // If the element is not empty, and it has a group. Mark the group as not
       // empty.
-      if (!$empty_element && isset($element[$childname]['#group'])) {
+      if (!$empty_element && isset($element[$childname]['#group']) && (!isset($element[$childname]['#access']) || $element[$childname]['#access'])) {
         $name_prefix = implode('][', $element['#array_parents']) . '][';
         $group_name = str_replace($name_prefix, '', $element[$childname]['#group']);
         $empty_groups_indication[$group_name] = FALSE;

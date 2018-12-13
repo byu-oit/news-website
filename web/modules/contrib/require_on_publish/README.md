@@ -2,6 +2,7 @@ CONTENTS OF THIS FILE
 ---------------------
 
  * Introduction
+ * Requirements
  * Installation
  * Configuration
  * Maintainers
@@ -17,6 +18,11 @@ required when the piece of content is about to be published.
 
  * To submit bug reports and feature suggestions, or to track changes:
    https://drupal.org/project/issues/require_on_publish
+
+REQUIREMENTS
+------------
+
+No special requirements.
 
 INSTALLATION
 ------------

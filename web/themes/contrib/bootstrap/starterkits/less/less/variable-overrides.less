@@ -5,5 +5,9 @@
  * these variables directly from ../bootstrap/less/variables.less to this file.
  */
 
-// Set the proper directory for the Bootstrap Glyphicon font.
-@icon-font-path: '../bootstrap/fonts/';
+// Set the directory for the theme root used to locate images, fonts etc.
+@theme-root: '..';
+
+// Set other directories relative to theme root.
+@image-path: '@{theme-root}/images';
+@icon-font-path: '@{theme-root}/bootstrap/fonts/';

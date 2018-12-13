@@ -3,19 +3,11 @@
 namespace Drupal\migrate_manifest;
 
 use Drupal\Core\Database\Database;
-use Drupal\migrate\MigrateExecutable;
 use Drupal\migrate\Plugin\MigrationInterface;
 use Symfony\Component\HttpFoundation\File\Exception\FileNotFoundException;
 use Symfony\Component\Yaml\Yaml;
 
 class MigrateManifest {
-
-  /**
-   * The path to the manifest file.
-   *
-   * @var string
-   */
-  protected $manifestFile;
 
   /**
    * @var bool
@@ -28,95 +20,104 @@ class MigrateManifest {
   protected $force;
 
   /**
+   * @var \Drupal\migrate\Plugin\MigrationPluginManagerInterface
+   */
+  protected $manager;
+
+  /**
    * Constructs a new MigrateManifest object.
    *
-   * @param string $manifest_file
-   *   The location of the manifest file.
+   * @param $migration_manager
    * @param bool $force
    *   Force operation to regardless of dependencies.
    * @param bool $update
    *   Update previously imported items with current data.
    */
-  public function __construct($manifest_file, $force = FALSE, $update = FALSE) {
-    $this->manifestFile = $manifest_file;
+  public function __construct($migration_manager, $force = FALSE, $update = FALSE) {
     $this->force = $force;
     $this->update = $update;
+    $this->manager = $migration_manager;
   }
 
   /**
    * Drush execution method. Runs imports on the supplied manifest.
+   *
+   * @param $manifest_file
+   *   The location of the manifest file.
+   *
+   * @return array
+   *   A list of run migrations.
    */
-  public function import() {
-    $migration_ids = [];
-    $migrations = [];
+  public function import($manifest_file) {
     $nonexistent_migrations = [];
 
-    /** @var \Drupal\migrate\Plugin\MigrationPluginManager $manager */
-    $manager = \Drupal::service('plugin.manager.migration');
-
-    if (!file_exists($this->manifestFile)) {
-      throw new FileNotFoundException($this->manifestFile);
+    if (!file_exists($manifest_file)) {
+      throw new FileNotFoundException($manifest_file);
     }
 
-    $migration_manifest = Yaml::parse(file_get_contents($this->manifestFile));
-    // Build initial list of migrations.
-    foreach ($migration_manifest as $migration_info) {
-      if (is_array($migration_info)) {
+    $migration_manifest = Yaml::parse(file_get_contents($manifest_file));
+    $migration_info = [];
+    // Standardize list of migrations.
+    foreach ($migration_manifest as $manifest_row) {
+      if (is_array($manifest_row)) {
         // The migration is stored as the key in the info array.
-        $migration_id = key($migration_info);
+        // The info will be stored underneath that key as another array.
+        // Any other info is just dropped. It can't be mapped and doesn't match
+        // our expected input.
+        $migration_info[key($migration_info)] = current($manifest_row);
       }
       else {
         // If it wasn't an array then the info is just the migration_id.
-        $migration_id = $migration_info;
-        $migration_info = [];
-      }
-      // createInstances doesn't use the configuration given but the keyed value
-      // so you can provide multiple IDs so work around that.
-      // Note: createInstance() doesn't work around this so we always have to
-      // do this.
-      $migration_info = [$migration_id => $migration_info];
-
-      /** @var \Drupal\migrate\Plugin\MigrationInterface $migration */
-      // createInstance and createInstances doesn't follow the plugin interface
-      // so this won't throw an exception. Instead we have to check the return
-      // value to confirm that a migration was returned.
-      // https://www.drupal.org/node/2744323
-      $migration_instances = $manager->createInstances($migration_id, $migration_info);
-      if (!empty($migration_instances)) {
-        // Merge any created instances into the full migration list.
-        $migrations = array_merge($migrations, $migration_instances);
-        // Add to the list of migrations we've found.
-        $migration_ids[] = $migration_id;
-      }
-      else {
-        $nonexistent_migrations[] = $migration_id;
+        $migration_info[$manifest_row] = [];
       }
     }
 
     $run_migrations = [];
-    foreach ($migrations as $migration_instance) {
-      $migrations_to_run = $this->injectDependencies($migration_instance, $migrations);
-      foreach ($migrations_to_run as $migration) {
-
-        if (isset($run_migrations[$migration->id()])) continue;
-
-        if ($this->force) {
-          $migration->set('requirements', []);
+    foreach ($migration_info as $migration_id => $config) {
+      do {
+        $complete = true;
+        // createInstance and createInstances doesn't follow the plugin interface
+        // so this won't throw an exception. Instead we have to check the return
+        // value to confirm that a migration was returned.
+        // https://www.drupal.org/node/2744323
+        /** @var \Drupal\migrate\Plugin\MigrationInterface $migration */
+        $migration_instances = $this->manager->createInstances([$migration_id], [$migration_id => $config]);
+        if (empty($migration_instances)) {
+          $nonexistent_migrations[] = $migration_id;
+          continue;
         }
+        foreach ($migration_instances as $migration_instance) {
+          if ($this->force == 2) {
+            $migration_instance->set('requirements', []);
+          }
+          $migrations_to_run = $this->injectDependencies($migration_instance, $migration_instances);
+          foreach ($migrations_to_run as $migration) {
+            if (isset($run_migrations[$migration->id()])) {
+              continue;
+            }
 
-        if ($this->update) {
-          $migration->getIdMap()->prepareUpdate();
+            if ($this->force) {
+              $migration->set('requirements', []);
+            }
+
+            if ($this->update) {
+              $migration->getIdMap()->prepareUpdate();
+            }
+
+            // Store all the migrations for later.
+            $run_migrations[$migration->id()] = $this->executeMigration($migration);
+            if ($run_migrations[$migration->id()] == MigrationInterface::RESULT_INCOMPLETE) {
+              unset($run_migrations[$migration->id()]);
+              $complete = FALSE;
+              break 2;
+            }
+          }
         }
-
-        $executable = $this->executeMigration($migration);
-        // Store all the migrations for later.
-        $run_migrations[$migration->id()] = [
-          'executable' => $executable,
-          'migration' => $migration,
-          'source' => $migration->get('source'),
-          'destination' => $migration->get('destination'),
-        ];
-      }
+        // Since we might be cycling because of memory leaks in the migration
+        // instance, clear the references and force a gc to recover the memory.
+        unset($migration_instances, $migrations_to_run);
+        gc_collect_cycles();
+      } while (!$complete);
     }
 
     // Warn the user if any migrations were not found.
@@ -129,22 +130,22 @@ class MigrateManifest {
     return $run_migrations;
   }
 
-
   /**
    * A naive graph flattener for compressing dependencies into a list.
    *
    * @param \Drupal\migrate\Plugin\MigrationInterface $migration
    * @param \Drupal\migrate\Plugin\MigrationInterface[] $manifest_list
+   *
    * @return \Drupal\migrate\Plugin\MigrationInterface[]
    */
   protected function injectDependencies(MigrationInterface $migration, array $manifest_list) {
     $migrations = [$migration->id() => $migration];
-    if ($required_Ids = $migration->get('requirements')) {
+    if ($required_ids = $migration->get('requirements')) {
       /** @var \Drupal\migrate\Plugin\MigrationPluginManager $manager */
       $manager = \Drupal::service('plugin.manager.migration');
       /** @var \Drupal\migrate\Plugin\MigrationInterface[] $required_migrations */
       $required_migrations = [];
-      foreach ($required_Ids as $id) {
+      foreach ($required_ids as $id) {
         // See if there are any configured versions of the migration already
         // in the manifest list.
         if (isset($manifest_list[$id])) {
@@ -165,40 +166,7 @@ class MigrateManifest {
         $migrations = $this->injectDependencies($required_migration, $manifest_list) + $migrations;
       }
     }
-//    $this->doInjectDependencies($migrations, $manifest_list);
     return $migrations;
-  }
-
-  /**
-   * @param \Drupal\migrate\Plugin\MigrationInterface[] $migrations
-   * @param \Drupal\migrate\Plugin\MigrationInterface[] $manifest_list
-   */
-  protected function doInjectDependencies(array &$migrations, array $manifest_list) {
-    /** @var \Drupal\migrate\Plugin\MigrationPluginManager $manager */
-    $manager = \Drupal::service('plugin.manager.migration');
-    foreach ($migrations as $migration) {
-      if ($required_Ids = $migration->get('requirements')) {
-        /** @var \Drupal\migrate\Plugin\MigrationInterface[] $required_migrations */
-        $required_migrations = [];
-        foreach ($required_Ids as $id) {
-          // See if there are any configured versions of the migration already
-          // in the manifest list.
-          if (isset($manifest_list[$id])) {
-            $required_migrations[$id] = $manifest_list[$id];
-          }
-          // Otherwise, create a new instance.
-          else {
-            $required_migrations += $manager->createInstances($id);
-          }
-        }
-
-        // Recurse to find any nested dependencies.
-        $this->doInjectDependencies($required_migrations, $manifest_list);
-        // Merge required migrations, using requirements as the base so they
-        // bubble to the front.
-        $migrations = $required_migrations + $migrations;
-      }
-    }
   }
 
   /**
@@ -207,16 +175,16 @@ class MigrateManifest {
    * @param \Drupal\migrate\Plugin\MigrationInterface $migration
    *   The migration to run.
    *
-   * @return \Drupal\migrate\MigrateExecutable
+   * @return \Drupal\migrate_manifest\MigrateExecutable
    *   The migration executable.
    */
   protected function executeMigration(MigrationInterface $migration) {
-    drush_log('Running ' . $migration->id(), 'ok');
-    $executable = new MigrateExecutable($migration, new DrushLogMigrateMessage());
+    $run_migration = unserialize(serialize($migration));
+    drush_log('Running ' . $run_migration->id(), 'ok');
+    $executable = new MigrateExecutable($run_migration, new DrushLogMigrateMessage());
     // drush_op() provides --simulate support.
-    drush_op([$executable, 'import']);
 
-    return $executable;
+    return drush_op([$executable, 'import']);
   }
 
   /**
@@ -229,19 +197,21 @@ class MigrateManifest {
       \Drupal::state()->set($database_state_key, $database_state);
       \Drupal::state()->set('migrate.fallback_state_key', $database_state_key);
     }
-    else if ($db_url) {
-      if (function_exists('drush_convert_db_from_db_url')) {
-        $db_spec = drush_convert_db_from_db_url($db_url);
+    else {
+      if ($db_url) {
+        if (function_exists('drush_convert_db_from_db_url')) {
+          $db_spec = drush_convert_db_from_db_url($db_url);
+        }
+        elseif (class_exists('\Drush\Sql\SqlBase')) {
+          $db_spec = \Drush\Sql\SqlBase::dbSpecFromDbUrl($db_url);
+        }
+        else {
+          $db_spec = []; // support other conversion methods?
+        }
+        $db_spec['prefix'] = $db_prefix;
+        Database::removeConnection('migrate');
+        Database::addConnectionInfo('migrate', 'default', $db_spec);
       }
-      elseif (class_exists('\Drush\Sql\SqlBase')) {
-        $db_spec = \Drush\Sql\SqlBase::dbSpecFromDbUrl($db_url);
-      }
-      else {
-        $db_spec = []; // support other conversion methods?
-      }
-      $db_spec['prefix'] = $db_prefix;
-      Database::removeConnection('migrate');
-      Database::addConnectionInfo('migrate', 'default', $db_spec);
     }
   }
 

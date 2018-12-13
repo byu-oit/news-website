@@ -4,6 +4,11 @@ namespace Drupal\migrate_manifest;
 
 use Drupal\migrate\MigrateMessageInterface;
 
+/**
+ * Simple Migrate Message implementation that uses drush to output.
+ *
+ * @package Drupal\migrate_manifest
+ */
 class DrushLogMigrateMessage implements MigrateMessageInterface {
 
   /**

@@ -79,7 +79,7 @@ class CasSettings extends ConfigFormBase {
     );
     $form['server']['version'] = array(
       '#type' => 'radios',
-      '#title' => $this->t('Protocol version'),
+      '#title' => $this->t('CAS Protocol version'),
       '#options' => array(
         '1.0' => $this->t('1.0'),
         '2.0' => $this->t('2.0'),
@@ -87,6 +87,16 @@ class CasSettings extends ConfigFormBase {
       ),
       '#default_value' => $config->get('server.version'),
       '#description' => $this->t('The CAS protocol version your CAS server supports.'),
+    );
+    $form['server']['protocol'] = array(
+      '#type' => 'radios',
+      '#title' => $this->t('HTTP Protocol'),
+      '#options' => array(
+        'http' => $this->t('HTTP (non-secure)'),
+        'https' => $this->t('HTTPS (secure)'),
+      ),
+      '#default_value' => $config->get('server.protocol'),
+      '#description' => $this->t('HTTP protocol of the CAS server. WARNING: Do not use HTTP on production environments!'),
     );
     $form['server']['hostname'] = array(
       '#type' => 'textfield',
@@ -140,7 +150,7 @@ class CasSettings extends ConfigFormBase {
     );
     $form['general']['login_link_enabled'] = array(
       '#type' => 'checkbox',
-      '#title' => $this->t('Login link lnabled'),
+      '#title' => $this->t('Login link Enabled'),
       '#description' => $this->t('Display a link to login via CAS above the user login form.'),
       '#default_value' => $config->get('login_link_enabled'),
     );
@@ -473,6 +483,7 @@ class CasSettings extends ConfigFormBase {
     $server_data = $form_state->getValue('server');
     $config
       ->set('server.version', $server_data['version'])
+      ->set('server.protocol', $server_data['protocol'])
       ->set('server.hostname', $server_data['hostname'])
       ->set('server.port', $server_data['port'])
       ->set('server.path', $server_data['path'])

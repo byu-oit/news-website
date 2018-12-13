@@ -129,11 +129,11 @@ class CasAccountAndRegistrationFormTest extends CasBrowserTestBase {
     // First try changing data with wrong password to ensure the protected
     // password constraint still works.
     $this->drupalPostForm('/user/' . $non_cas_user->id() . '/edit', $form_data, 'Save');
-    $this->assertSession()->responseContains(t('Your current password is missing or incorrect'));
+    $this->assertSession()->responseContains('Your current password is missing or incorrect');
     // Now again with the correct current password.
     $form_data['current_pass'] = $non_cas_user->pass_raw;
     $this->drupalPostForm('/user/' . $non_cas_user->id() . '/edit', $form_data, 'Save');
-    $this->assertSession()->responseContains(t('The changes have been saved.'));
+    $this->assertSession()->responseContains('The changes have been saved.');
 
     // For CAS users, we modify the user form to remove the password management
     // fields and remove the protected password constraint that normally
@@ -151,7 +151,7 @@ class CasAccountAndRegistrationFormTest extends CasBrowserTestBase {
       'mail' => 'new-casuser-email@sample.com',
     ];
     $this->drupalPostForm('/user/' . $cas_user->id() . '/edit', $form_data, 'Save');
-    $this->assertSession()->responseContains(t('The changes have been saved.'));
+    $this->assertSession()->responseContains('The changes have been saved.');
 
     // An admin should still be able to see the password fields the CAS user.
     $this->drupalLogout();
@@ -185,11 +185,11 @@ class CasAccountAndRegistrationFormTest extends CasBrowserTestBase {
     ];
     // First try changing data with wrong password.
     $this->drupalPostForm('/user/' . $cas_user->id() . '/edit', $form_data, 'Save');
-    $this->assertSession()->responseContains(t('Your current password is missing or incorrect'));
+    $this->assertSession()->responseContains('Your current password is missing or incorrect');
     // Now again with the correct current password.
     $form_data['current_pass'] = $cas_user->pass_raw;
     $this->drupalPostForm('/user/' . $cas_user->id() . '/edit', $form_data, 'Save');
-    $this->assertSession()->responseContains(t('The changes have been saved.'));
+    $this->assertSession()->responseContains('The changes have been saved.');
   }
 
   /**
@@ -229,11 +229,11 @@ class CasAccountAndRegistrationFormTest extends CasBrowserTestBase {
     // First try changing data with wrong password to ensure the protected
     // password constraint still works.
     $this->drupalPostForm('/user/' . $non_cas_user->id() . '/edit', $form_data, 'Save');
-    $this->assertSession()->responseContains(t('Your current password is missing or incorrect'));
+    $this->assertSession()->responseContains('Your current password is missing or incorrect');
     // Now again with the correct current password.
     $form_data['current_pass'] = $non_cas_user->pass_raw;
     $this->drupalPostForm('/user/' . $non_cas_user->id() . '/edit', $form_data, 'Save');
-    $this->assertSession()->responseContains(t('The changes have been saved.'));
+    $this->assertSession()->responseContains('The changes have been saved.');
 
     // For CAS users, we modify the user form to disable the email field.
     $this->drupalLogout();

@@ -128,3 +128,13 @@ function cas_update_8003() {
   $config->set('user_accounts.prevent_normal_login', FALSE);
   $config->save();
 }
+
+/**
+ * Set new 'protocol' config option to HTTPS.
+ */
+function cas_update_8004() {
+  $config_factory = \Drupal::configFactory();
+  $config = $config_factory->getEditable('cas.settings');
+  $config->set('server.protocol', 'https');
+  $config->save();
+}
