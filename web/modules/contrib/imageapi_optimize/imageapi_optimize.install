@@ -1,0 +1,97 @@
+<?php
+
+/**
+ * @file
+ * Install and update functions for the Image Optimize module.
+ */
+
+/**
+ * Remove previously invalid config entities.
+ */
+function imageapi_optimize_update_8001() {
+  $config_factory = \Drupal::configFactory();
+  // These were mis-named, so can never have been in-use by anyone.
+  $legacy_pipelines = [
+    'imageapi_optimize.pipeline.resmushit',
+    'imageapi_optimize.pipeline.local_binaries',
+  ];
+  foreach ($legacy_pipelines as $legacy_pipeline) {
+    $config_list = $config_factory->listAll($legacy_pipeline);
+    foreach ($config_list as $config_key) {
+      $config = $config_factory->getEditable($config_key);
+      // Remove the old config entity.
+      $config->delete();
+    }
+  }
+}
+
+/**
+ * Update misnamed config entites.
+ */
+function imageapi_optimize_update_8002() {
+  $config_factory = \Drupal::configFactory();
+  $config_list = $config_factory->listAll('imageapi_optimize.processor.');
+
+  foreach ($config_list as $config_key) {
+    $config = $config_factory->getEditable($config_key);
+    // Store the raw data for re-saving.
+    $data = $config->getRawData();
+    // Our config entity prefix changes from processor to pipeline.
+    $new_name = 'imageapi_optimize.pipeline.' . substr($config_key, strlen('imageapi_optimize.processor.'));
+
+    $config
+      // Remove the old config entity.
+      ->delete()
+      // Set the name to the updated name.
+      ->setName($new_name)
+      // Set the old data.
+      ->setData($data)
+      // Save with the old data and new name.
+      ->save(TRUE);
+  }
+}
+
+/**
+ * Re-enable sub modules.
+ */
+function imageapi_optimize_update_8003() {
+  $modules = [];
+
+  $pipelines = \Drupal\imageapi_optimize\Entity\ImageAPIOptimizePipeline::loadMultiple();
+  /* @var \Drupal\imageapi_optimize\Entity\ImageAPIOptimizePipeline $pipeline */
+  foreach ($pipelines as $pipeline) {
+    $processors = $pipeline->getProcessorsCollection();
+    foreach ($processors->getInstanceIds() as $id) {
+      try {
+        $processors->get($id);
+      } catch (\Drupal\imageapi_optimize\Exception\PluginNotFoundException $e) {
+        switch ($e->getPluginId()) {
+          case 'advdef':
+          case 'advpng':
+          case 'jfifremove':
+          case 'jpegoptim':
+          case 'jpegtran':
+          case 'optipng':
+          case 'pngcrush':
+          case 'pngout':
+          case 'pngquant':
+            $modules[] = 'imageapi_optimize_binaries';
+            break;
+
+          case 'resmushit':
+            $modules[] = 'imageapi_optimize_resmushit';
+            break;
+
+          case 'tinypng':
+            $modules[] = 'imageapi_optimize_tinypng';
+            break;
+        }
+      }
+    }
+  }
+
+  // Now we might have a list of modules to enable.
+  if (!empty($modules)) {
+    \Drupal::service('module_installer')->install(array_unique($modules));
+  }
+}

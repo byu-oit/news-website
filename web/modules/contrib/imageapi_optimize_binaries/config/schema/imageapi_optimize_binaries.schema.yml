@@ -1,0 +1,94 @@
+# Schema for configuration files of the ImageAPI Optimize module.
+
+imageapi_optimize.processor.advdef:
+  type: mapping
+  mapping:
+    manual_executable_path:
+      label: 'Binary executable path'
+      type: string
+    recompress:
+      label: 'Recompress'
+      type: boolean
+    mode:
+      label: 'Compression mode'
+      type: integer
+
+imageapi_optimize.processor.advpng:
+  type: mapping
+  mapping:
+    manual_executable_path:
+      label: 'Binary executable path'
+      type: string
+    recompress:
+      label: 'Recompress'
+      type: boolean
+    mode:
+      label: 'Compression mode'
+      type: integer
+
+imageapi_optimize.processor.jfifremove:
+  type: mapping
+  mapping:
+    manual_executable_path:
+      label: 'Binary executable path'
+      type: string
+
+imageapi_optimize.processor.jpegoptim:
+  type: mapping
+  mapping:
+    manual_executable_path:
+      label: 'Binary executable path'
+      type: string
+    progressive:
+      label: 'Progressive'
+      type: boolean
+    quality:
+      label: 'Quality'
+      type: integer
+    size:
+      label: 'Target file size'
+      type: integer
+
+imageapi_optimize.processor.jpegtran:
+  type: mapping
+  mapping:
+    manual_executable_path:
+      label: 'Binary executable path'
+      type: string
+    progressive:
+      label: 'Progressive'
+      type: boolean
+
+imageapi_optimize.processor.optipng:
+  type: mapping
+  mapping:
+    manual_executable_path:
+      label: 'Binary executable path'
+      type: string
+    interlace:
+      label: 'Interlace'
+      type: boolean
+    level:
+      label: 'Optimization level'
+      type: integer
+
+imageapi_optimize.processor.pngcrush:
+  type: mapping
+  mapping:
+    manual_executable_path:
+      label: 'Binary executable path'
+      type: string
+
+imageapi_optimize.processor.pngout:
+  type: mapping
+  mapping:
+    manual_executable_path:
+      label: 'Binary executable path'
+      type: string
+
+imageapi_optimize.processor.pngquant:
+  type: mapping
+  mapping:
+    manual_executable_path:
+      label: 'Binary executable path'
+      type: string

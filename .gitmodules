@@ -13,3 +13,9 @@
 [submodule "web/libraries/json-js"]
 	path = web/libraries/json-js
 	url = https://github.com/douglascrockford/JSON-js.git
+[submodule "exposure_api_consumer_drupal"]
+	path = exposure_api_consumer_drupal
+	url = https://github.com/byuweb/exposure_api_consumer_drupal.git
+[submodule "web/modules/custom/exposure_api_consumer_drupal"]
+	path = web/modules/custom/exposure_api_consumer_drupal
+	url = https://github.com/byuweb/exposure_api_consumer_drupal.git

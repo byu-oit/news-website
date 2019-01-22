@@ -1,0 +1,13 @@
+name: Image Optimize - Binaires
+type: module
+package: Image Optimize
+description: 'Provide image optimization plugins that use locally installed binaries.'
+# core: 8.x
+dependencies:
+  - imageapi_optimize
+
+# Information added by Drupal.org packaging script on 2018-08-23
+version: '8.x-1.0-alpha1'
+core: '8.x'
+project: 'imageapi_optimize_binaries'
+datestamp: 1535007497

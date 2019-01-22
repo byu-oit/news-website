@@ -1,0 +1,35 @@
+# Schema for configuration files of the ImageAPI Optimize module.
+
+imageapi_optimize.pipeline.*:
+  type: config_entity
+  label: 'Image Optimize pipeline'
+  mapping:
+    name:
+      type: string
+    label:
+      type: label
+      label: 'Label'
+    processors:
+      type: sequence
+      sequence:
+        type: mapping
+        mapping:
+          id:
+            type: string
+          data:
+            type: imageapi_optimize.processor.[%parent.id]
+          weight:
+            type: integer
+          uuid:
+            type: string
+
+imageapi_optimize.processor.*:
+  type: mapping
+  label: 'Processor settings'
+
+imageapi_optimize.settings:
+  type: config_object
+  mapping:
+    default_pipeline:
+      type: string
+      label: 'Default Image Optimize pipeline'

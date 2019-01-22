@@ -1,0 +1,5 @@
+entity.imageapi_optimize_pipeline.collection:
+  title: 'Image Optimize pipelines'
+  description: 'Configure pipelines that can be used for optimizing images.'
+  parent: system.admin_config_media
+  route_name: entity.imageapi_optimize_pipeline.collection
