@@ -47,6 +47,7 @@ module:
   editor: 0
   editor_advanced_link: 0
   entity_reference_revisions: 0
+  exposure_api_consumer: 0
   externalauth: 0
   field: 0
   field_defaults: 0
