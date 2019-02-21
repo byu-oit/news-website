@@ -96,7 +96,7 @@ class ThemeInfoRebuildSubscriber implements EventSubscriberInterface {
   protected function triggerWarningIfNeeded(Request $request) {
     if ($this->account && $this->account->hasPermission('access devel information')) {
       $session = $request->getSession();
-      if (!$session->has($this->notificationFlag)) {
+      if ($session && !$session->has($this->notificationFlag)) {
         $session->set($this->notificationFlag, TRUE);
         $message = $this->t('The theme information is being rebuilt on every request. Remember to <a href=":url">turn off</a> this feature on production websites.', [':url' => Url::fromRoute('devel.admin_settings')->toString()]);
         drupal_set_message($message, 'warning', TRUE);

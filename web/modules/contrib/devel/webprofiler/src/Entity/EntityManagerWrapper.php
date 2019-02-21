@@ -8,6 +8,7 @@ use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Entity\EntityViewBuilderInterface;
 use Drupal\Core\Plugin\DefaultPluginManager;
 use Drupal\webprofiler\Entity\Decorators\Config\ConfigEntityStorageDecorator;
+use Drupal\webprofiler\Entity\Decorators\Config\ImageStyleStorageDecorator;
 use Drupal\webprofiler\Entity\Decorators\Config\RoleStorageDecorator;
 use Drupal\webprofiler\Entity\Decorators\Config\ShortcutSetStorageDecorator;
 use Drupal\webprofiler\Entity\Decorators\Config\VocabularyStorageDecorator;
@@ -97,6 +98,9 @@ class EntityManagerWrapper extends DefaultPluginManager implements EntityTypeMan
           break;
         case 'shortcut_set':
           return new ShortcutSetStorageDecorator($handler);
+          break;
+        case 'image_style':
+          return new ImageStyleStorageDecorator($handler);
           break;
         default:
           return new ConfigEntityStorageDecorator($handler);
