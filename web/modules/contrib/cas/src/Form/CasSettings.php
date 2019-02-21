@@ -5,6 +5,7 @@ namespace Drupal\cas\Form;
 use Drupal\cas\Service\CasUserManager;
 use Drupal\Component\Plugin\Factory\FactoryInterface;
 use Drupal\Core\Config\ConfigFactoryInterface;
+use Drupal\Core\Extension\ModuleHandlerInterface;
 use Drupal\Core\Form\ConfigFormBase;
 use Drupal\Core\Form\FormState;
 use Drupal\Core\Form\FormStateInterface;
@@ -34,17 +35,27 @@ class CasSettings extends ConfigFormBase {
   protected $forcedLoginPaths;
 
   /**
+   * Module handler.
+   *
+   * @var \Drupal\Core\Extension\ModuleHandlerInterface
+   */
+  protected $moduleHandler;
+
+  /**
    * Constructs a \Drupal\cas\Form\CasSettings object.
    *
    * @param \Drupal\Core\Config\ConfigFactoryInterface $config_factory
    *   The factory for configuration objects.
    * @param \Drupal\Component\Plugin\Factory\FactoryInterface $plugin_factory
    *   The condition plugin factory.
+   * @param \Drupal\Core\Extension\ModuleHandlerInterface $module_handler
+   *   The module handler.
    */
-  public function __construct(ConfigFactoryInterface $config_factory, FactoryInterface $plugin_factory) {
+  public function __construct(ConfigFactoryInterface $config_factory, FactoryInterface $plugin_factory, ModuleHandlerInterface $module_handler) {
     parent::__construct($config_factory);
     $this->gatewayPaths = $plugin_factory->createInstance('request_path');
     $this->forcedLoginPaths = $plugin_factory->createInstance('request_path');
+    $this->moduleHandler = $module_handler;
   }
 
   /**
@@ -53,7 +64,8 @@ class CasSettings extends ConfigFormBase {
   public static function create(ContainerInterface $container) {
     return new static(
       $container->get('config.factory'),
-      $container->get('plugin.manager.condition')
+      $container->get('plugin.manager.condition'),
+      $container->get('module_handler')
     );
   }
 
@@ -172,6 +184,16 @@ class CasSettings extends ConfigFormBase {
       '#open' => TRUE,
       '#tree' => TRUE,
     );
+
+
+    if (!$this->moduleHandler->moduleExists('cas_attributes')) {
+      $form['user_accounts']['cas_attributes_callout'] = [
+        '#prefix' => '<p class="messages messages--status">',
+        '#markup' => $this->t('If your CAS server supports <a href="@attributes" target="_blank">attributes</a>, you can install the <a href="@module" target="_blank">CAS Attributes</a> module to map them to user fields and roles.', ['@attributes' => 'https://apereo.github.io/cas/5.1.x/protocol/CAS-Protocol-Specification.html#255-attributes-cas-30', '@module' => 'https://drupal.org/project/cas_attributes']),
+        '#suffix' => '</p>',
+      ];
+    }
+
     $form['user_accounts']['auto_register'] = array(
       '#type' => 'checkbox',
       '#title' => $this->t('Auto register users'),

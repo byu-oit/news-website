@@ -1,4 +1,15 @@
 
+Slick views 8.x-1.0-dev, 2019-01-06
+-----------------------------------
+- Added support for a potential unique thumbnail different from the main image,
+  such as company logo for thumbnail vs. company profile image for slide.
+
+Slick views 8.x-1.0-dev, 2018-12-18
+-----------------------------------
+- Issue #2976246 by s.messaris: Cache added in settings does not respect views
+  cache tags.
+- Issue #2906639 by netsliver: Use "No results behavior" on main stage.
+
 Slick views 8.x-1.0-dev, 2017-02-10
 -----------------------------------
 - Fixed for regression with Overridables option not being respected.

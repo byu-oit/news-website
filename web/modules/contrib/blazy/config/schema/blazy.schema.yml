@@ -24,6 +24,9 @@ blazy.settings:
         saveViewportOffsetDelay:
           type: integer
           label: 'Save viewport offset delay'
+        validateDelay:
+          type: integer
+          label: 'Set validate delay'
 
 blazy_base:
   type: mapping

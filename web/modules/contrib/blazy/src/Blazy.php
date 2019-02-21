@@ -76,6 +76,14 @@ class Blazy implements BlazyInterface {
       $image['#responsive_image_style_id'] = $settings['responsive_image_style_id'];
       $image['#uri'] = $settings['uri'];
 
+      // Responsive images with height and width save a lot of calls to
+      // image.factory service for every image and breakpoint in
+      // _responsive_image_build_source_attributes(). Very necessary for
+      // external file system like Amazon S3.
+      if (empty($image['#width']) || empty($image['#height'])) {
+        $image['#width'] = $settings['width'];
+        $image['#height'] = $settings['height'];
+      }
       // Disable aspect ratio which is not yet supported due to complexity.
       $settings['ratio'] = FALSE;
     }
@@ -221,7 +229,7 @@ class Blazy implements BlazyInterface {
       }
 
       if ($style = ImageStyle::load($breakpoint['image_style'])) {
-        $url = $style->buildUrl($settings['uri']);
+        $url = file_url_transform_relative($style->buildUrl($settings['uri']));
 
         // Supports multi-breakpoint aspect ratio with irregular sizes.
         // Yet, only provide individual dimensions if not already set.
@@ -286,7 +294,7 @@ class Blazy implements BlazyInterface {
 
     // Lazyloaded elements expect image URL, not URI.
     if (empty($settings['image_url'])) {
-      $settings['image_url'] = file_create_url($settings['uri']);
+      $settings['image_url'] = file_url_transform_relative(file_create_url($settings['uri']));
     }
 
     // Sets dimensions.
@@ -299,7 +307,7 @@ class Blazy implements BlazyInterface {
     // Image style modifier can be multi-style images such as GridStack.
     if (!empty($settings['image_style']) && ($style = ImageStyle::load($settings['image_style']))) {
       // Image URLs, as opposed to URIs, are expected by lazyloaded images.
-      $settings['image_url']  = $style->buildUrl($settings['uri']);
+      $settings['image_url']  = file_url_transform_relative($style->buildUrl($settings['uri']));
       $settings['cache_tags'] = $style->getCacheTags();
 
       // Only re-calculate dimensions if not cropped, nor already set.
@@ -352,12 +360,14 @@ class Blazy implements BlazyInterface {
     // Prepare all <picture> [data-srcset] attributes on <source> elements.
     if (!$variables['output_image_tag']) {
       /** @var \Drupal\Core\Template\Attribute $source */
-      foreach ($variables['sources'] as &$source) {
-        $srcset = $source['srcset'];
-        $srcset_values = $srcset->value();
+      if (isset($variables['sources']) && is_array($variables['sources'])) {
+        foreach ($variables['sources'] as &$source) {
+          $srcset = $source['srcset'];
+          $srcset_values = $srcset->value();
 
-        $source->setAttribute('data-srcset', $srcset_values);
-        $source->removeAttribute('srcset');
+          $source->setAttribute('data-srcset', $srcset_values);
+          $source->removeAttribute('srcset');
+        }
       }
 
       // Fetches the picture element fallback URI, and empty it later.

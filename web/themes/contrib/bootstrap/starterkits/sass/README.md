@@ -54,6 +54,6 @@ name, using a different extension of course).
 - @link templates Templates @endlink
 - @link plugins Plugin System @endlink
 
-[Bootstrap Framework]: https://getbootstrap.com/docs/3.3/
+[Bootstrap Framework]: https://getbootstrap.com/docs/3.4/
 [Bootstrap Framework Source Files]: https://github.com/twbs/bootstrap-sass
 [Sass]: http://sass-lang.com

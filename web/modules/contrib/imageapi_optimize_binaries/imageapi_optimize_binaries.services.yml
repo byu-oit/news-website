@@ -1,3 +1,0 @@
-services:
-  imageapi_optimize_binaries.shell_operations:
-    class: Drupal\imageapi_optimize_binaries\ShellOperations

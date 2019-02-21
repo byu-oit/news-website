@@ -378,12 +378,13 @@ class Slick extends ConfigEntityBase implements SlickInterface {
       'downArrowTarget' => '',
       'downArrowOffset' => '',
       'lazyLoad'        => 'ondemand',
-      'prevArrow'       => '<button type="button" data-role="none" class="slick-prev" aria-label="Previous" tabindex="0" role="button">Previous</button>',
-      'nextArrow'       => '<button type="button" data-role="none" class="slick-next" aria-label="Next" tabindex="0" role="button">Next</button>',
+      'prevArrow'       => '<button type="button" data-role="none" class="slick-prev" aria-label="Previous" tabindex="0">Previous</button>',
+      'nextArrow'       => '<button type="button" data-role="none" class="slick-next" aria-label="Next" tabindex="0">Next</button>',
       'rows'            => 1,
       'slidesPerRow'    => 1,
       'slide'           => '',
       'slidesToShow'    => 1,
+      'vertical'        => FALSE,
     ];
   }
 

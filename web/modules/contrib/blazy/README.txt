@@ -155,6 +155,14 @@ o If breakpoints provided with tons of images, using image styles with ANY crop
   they contain word crop. If using scaled image styles, regular calculation
   applies.
 
+SUBMITTING PATCHES OR ISSUES
+When submitting bug reports, please be kind with proper reproduction, and enough
+details. Mentioning library version, module version, active theme, or anything
+which may help us identify issue better would be very helpful. Please consider
+the following to help you explain better and to help us understand better your
+bug reports, or patches as needed:
+https://www.drupal.org/issue-summaries
+https://www.drupal.org/node/1326662
 
 AUTHOR/MAINTAINER/CREDITS
 gausarts

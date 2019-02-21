@@ -20,6 +20,10 @@ class MigrationConfigDeriver extends DeriverBase {
     $migrations = Migration::loadMultiple();
     /** @var \Drupal\migrate_plus\Entity\MigrationInterface $migration */
     foreach ($migrations as $id => $migration) {
+      if (!$migration->status()) {
+        continue;
+      }
+
       $this->derivatives[$id] = $migration->toArray();
     }
     return $this->derivatives;

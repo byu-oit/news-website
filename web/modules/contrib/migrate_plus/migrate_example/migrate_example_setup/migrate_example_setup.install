@@ -316,7 +316,7 @@ function migrate_example_beer_data_node() {
     'image_title',
     'image_description',
   ];
-  $query = db_insert('migrate_example_beer_node')
+  $query = \Drupal::database()->insert('migrate_example_beer_node')
     ->fields($fields);
   // Use high bid numbers to avoid overwriting an existing node id.
   $data = [
@@ -381,7 +381,7 @@ function migrate_example_beer_data_account() {
     'sex',
     'beers',
   ];
-  $query = db_insert('migrate_example_beer_account')
+  $query = \Drupal::database()->insert('migrate_example_beer_account')
     ->fields($fields);
   $data = [
     [
@@ -436,7 +436,7 @@ function migrate_example_beer_data_account() {
  */
 function migrate_example_beer_data_comment() {
   $fields = ['bid', 'cid_parent', 'subject', 'body', 'name', 'mail', 'aid'];
-  $query = db_insert('migrate_example_beer_comment')
+  $query = \Drupal::database()->insert('migrate_example_beer_comment')
     ->fields($fields);
   $data = [
     [99999998, NULL, 'im first', 'full body', 'alice', 'alice@example.com', 0],
@@ -464,7 +464,7 @@ function migrate_example_beer_data_comment() {
  */
 function migrate_example_beer_data_topic() {
   $fields = ['style', 'details', 'style_parent', 'region', 'hoppiness'];
-  $query = db_insert('migrate_example_beer_topic')
+  $query = \Drupal::database()->insert('migrate_example_beer_topic')
     ->fields($fields);
   $data = [
     ['ale', 'traditional', NULL, 'Medieval British Isles', 'Medium'],
@@ -488,7 +488,7 @@ function migrate_example_beer_data_topic() {
  */
 function migrate_example_beer_data_topic_node() {
   $fields = ['bid', 'style'];
-  $query = db_insert('migrate_example_beer_topic_node')
+  $query = \Drupal::database()->insert('migrate_example_beer_topic_node')
     ->fields($fields);
   $data = [
     [99999999, 'pilsner'],

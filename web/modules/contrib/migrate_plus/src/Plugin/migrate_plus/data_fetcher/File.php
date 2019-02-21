@@ -34,7 +34,7 @@ class File extends DataFetcherPluginBase {
    * {@inheritdoc}
    */
   public function getResponse($url) {
-    $response = file_get_contents($url);
+    $response = @file_get_contents($url);
     if ($response === FALSE) {
       throw new MigrateException('file parser plugin: could not retrieve data from ' . $url);
     }

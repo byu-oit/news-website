@@ -114,8 +114,8 @@ class Json extends DataParserPluginBase implements ContainerFactoryPluginInterfa
         foreach ($field_selectors as $field_selector) {
           if (is_array($field_data) && array_key_exists($field_selector, $field_data)) {
             $field_data = $field_data[$field_selector];
-	        }
-	        else {
+          }
+          else {
             $field_data = '';
           }
         }

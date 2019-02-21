@@ -206,7 +206,7 @@ trait BlazyVideoTrait {
           $this->buildVideo($settings, $input_url);
         }
       }
-      elseif (isset($value[0]['alt'])) {
+      elseif (isset($value[0]['alt']) || is_null($value[0]['alt'])) {
         $settings['type'] = 'image';
       }
 

@@ -4,6 +4,7 @@ namespace Drupal\slick;
 
 use Drupal\slick\Entity\Slick;
 use Drupal\blazy\BlazyFormatterManager;
+use Drupal\image\Plugin\Field\FieldType\ImageItem;
 
 /**
  * Implements SlickFormatterInterface.
@@ -69,12 +70,17 @@ class SlickFormatter extends BlazyFormatterManager implements SlickFormatterInte
    */
   public function getThumbnail(array $settings = [], $item = NULL) {
     $thumbnail = [];
+    $thumbnail_alt = '';
+    if ($item instanceof ImageItem) {
+      $thumbnail_alt = $item->getValue()['alt'];
+    }
     if (!empty($settings['uri'])) {
       $thumbnail = [
         '#theme'      => 'image_style',
         '#style_name' => isset($settings['thumbnail_style']) ? $settings['thumbnail_style'] : 'thumbnail',
         '#uri'        => $settings['uri'],
         '#item'       => $item,
+        '#alt'        => $thumbnail_alt,
       ];
     }
     return $thumbnail;

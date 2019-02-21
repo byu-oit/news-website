@@ -43,7 +43,7 @@ function slick_config_schema_info_alter(array &$definitions) {
  */
 function slick_field_formatter_info_alter(array &$info) {
   // Supports Media Entity via VEM within VEF if available.
-  if (function_exists('video_embed_media_media_bundle_insert')) {
+  if (\Drupal::moduleHandler()->moduleExists('video_embed_media')) {
     $info['slick_file'] = [
       'id'          => 'slick_file',
       'label'       => t('Slick Image with Media'),
@@ -69,11 +69,26 @@ function slick_hook_info() {
  */
 function slick_library_info_alter(&$libraries, $extension) {
   if ($extension === 'slick' && function_exists('libraries_get_path')) {
-    $library_path = libraries_get_path('slick') ? libraries_get_path('slick') : libraries_get_path('slick-carousel');
+    $library_path = libraries_get_path('slick') ?: libraries_get_path('slick-carousel');
     if ($library_path) {
       $libraries['slick']['js'] = ['/' . $library_path . '/slick/slick.min.js' => ['weight' => -3]];
       $libraries['slick']['css']['base'] = ['/' . $library_path . '/slick/slick.css' => []];
       $libraries['slick.css']['css']['theme'] = ['/' . $library_path . '/slick/slick-theme.css' => []];
+    }
+
+    $library_easing = libraries_get_path('easing') ?: libraries_get_path('jquery.easing');
+    if ($library_easing) {
+      $easing_path = $library_easing . '/jquery.easing.min.js';
+      // Composer via bower-asset puts the library within `js` directory.
+      if (!is_file($easing_path)) {
+        $easing_path = $library_path . '/js/jquery.easing.min.js';
+      }
+      $libraries['slick.easing']['js'] = ['/' . $easing_path => ['weight' => -4]];
+    }
+
+    $library_mousewheel = libraries_get_path('mousewheel') ?: libraries_get_path('jquery-mousewheel');
+    if ($library_mousewheel) {
+      $libraries['slick.mousewheel']['js'] = ['/' . $library_mousewheel . '/jquery.mousewheel.min.js' => ['weight' => -4]];
     }
   }
 }

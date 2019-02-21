@@ -38,58 +38,69 @@
     /**
      * Proxy $.fn.dialog to $.fn.modal.
      */
-    Bootstrap.createPlugin('dialog', function (options) {
+    var Dialog = function (options) {
       // When only options are passed, jQuery UI dialog treats this like a
       // initialization method. Destroy any existing Bootstrap modal and
       // recreate it using the contents of the dialog HTML.
       if (arguments.length === 1 && typeof options === 'object') {
-        this.each(function () {
-          // This part gets a little tricky. Core can potentially already
-          // semi-process this "dialog" if was created using an Ajax command
-          // (i.e. prepareDialogButtons in drupal.ajax.js). Because of this,
-          // we cannot simply dump the existing dialog content into a newly
-          // created modal because that would destroy any existing event
-          // bindings. Instead, we have to create this in steps and "move"
-          // (append) the existing content as needed.
-          var $this = $(this);
+        this.each($.fn.dialog.ensureModalStructure);
 
-          // Create a new modal to get a complete template.
-          var $modal = $(Drupal.theme('bootstrapModal', {attributes: Attributes.create(this).remove('style')}));
-
-          // Store a reference to the content inside the existing dialog.
-          // This references the actual DOM node elements which will allow
-          // jQuery to "move" then when appending below. Using $.fn.children()
-          // does not return any text nodes present and $.fn.html() only returns
-          // a string representation of the content, which effectively destroys
-          // any prior event bindings or processing.
-          var $existing = $this.contents();
-
-          // Destroy any existing Bootstrap Modal data that may have been saved.
-          $this.removeData('bs.modal');
-
-          // Set the attributes of the dialog to that of the newly created modal.
-          $this.attr(Attributes.create($modal).toPlainObject());
-
-          // Append the newly created modal markup.
-          $this.append($modal.html());
-
-          // Move the existing HTML into the modal markup that was just appended.
-          $this.find('.modal-body').append($existing);
-        });
-
-        // Indicate that the modal is a jQuery UI dialog bridge.
-        options = {
+        // Proxy to the Bootstrap Modal plugin, indicating that this is a
+        // jQuery UI dialog bridge.
+        return $.fn.modal.apply(this, [{
           dialogOptions: options,
           jQueryUiBridge: true
-        };
-
-        // Proxy just the options to the Bootstrap Modal plugin.
-        return $.fn.modal.apply(this, [options]);
+        }]);
       }
 
       // Otherwise, proxy all arguments to the Bootstrap Modal plugin.
       return $.fn.modal.apply(this, arguments);
-    });
+    };
+
+    /**
+     * Ensures a DOM element has the appropriate structure for a modal.
+     *
+     * Note: this can get a little tricky. Core potentially already
+     * semi-processes a "dialog" if was created using an Ajax command
+     * (i.e. prepareDialogButtons in drupal.ajax.js). Because of this, the
+     * contents (HTML) of the existing element cannot simply be dumped into a
+     * newly created modal. This would destroy any existing event bindings.
+     * Instead, the contents must be "moved" (appended) to the new modal and
+     * then "moved" again back to the to the existing container as needed.
+     */
+    Dialog.ensureModalStructure = function () {
+      var $element = $(this);
+
+      // Immediately return if the modal was already converted into a proper modal.
+      if ($element.is('[data-drupal-theme="bootstrapModal"]')) {
+        return;
+      }
+
+      // Create a new modal.
+      var $modal = $(Drupal.theme('bootstrapModal', {
+        attributes: Attributes.create(this).remove('style').set('data-drupal-theme', 'bootstrapModal'),
+      }));
+
+      // Store a reference to the content inside the existing element container.
+      // This references the actual DOM node elements which will allow
+      // jQuery to "move" then when appending below. Using $.fn.children()
+      // does not return any text nodes present and $.fn.html() only returns
+      // a string representation of the content, which effectively destroys
+      // any prior event bindings or processing.
+      var $body = $element.find('.modal-body');
+      var $existing = $body[0] ? $body.contents() : $element.contents();
+
+      // Set the attributes of the dialog to that of the newly created modal.
+      $element.attr(Attributes.create($modal).toPlainObject());
+
+      // Append the newly created modal markup.
+      $element.append($modal.html());
+
+      // Move the existing HTML into the modal markup that was just appended.
+      $element.find('.modal-body').append($existing);
+    };
+
+    Bootstrap.createPlugin('dialog', Dialog);
 
     /**
      * Extend the Bootstrap Modal plugin constructor class.

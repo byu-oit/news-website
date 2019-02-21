@@ -1,5 +1,0 @@
-admin:
-  version: VERSION
-  css:
-    theme:
-      css/imageapi_optimize.admin.css: {}

@@ -764,8 +764,9 @@ html.js .form--slick .collapsed .details-legend .details-legend-prefix::after {
   width: 100%;
 }
 
-.form--slick .vertical-tabs .form-item {
-  min-height: 72px;
+.form--slick .vertical-tabs .form-item,
+.form--slick .vertical-tabs .form-item.form-type-textfield.is-focused {
+  min-height: 76px;
 }
 
 .form--slick .vertical-tabs .fieldgroup.form-composite {

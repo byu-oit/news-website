@@ -86,6 +86,16 @@ class BlazySettingsForm extends ConfigFormBase {
       '#size'          => 10,
     ];
 
+    $form['blazy']['validateDelay'] = [
+      '#type'          => 'textfield',
+      '#title'         => $this->t('Set validate delay'),
+      '#default_value' => $config->get('blazy.validateDelay'),
+      '#description'   => $this->t('Delay for how often it should call the validate function on scroll/resize. Default is <strong>25</strong>ms.'),
+      '#field_suffix'  => 'ms',
+      '#maxlength'     => 5,
+      '#size'          => 10,
+    ];
+
     return parent::buildForm($form, $form_state);
   }
 
@@ -100,6 +110,7 @@ class BlazySettingsForm extends ConfigFormBase {
       ->set('blazy.loadInvisible', $form_state->getValue(['blazy', 'loadInvisible']))
       ->set('blazy.offset', $form_state->getValue(['blazy', 'offset']))
       ->set('blazy.saveViewportOffsetDelay', $form_state->getValue(['blazy', 'saveViewportOffsetDelay']))
+      ->set('blazy.validateDelay', $form_state->getValue(['blazy', 'validateDelay']))
       ->save();
 
     // Invalidate the library discovery cache to update the responsive image.

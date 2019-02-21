@@ -61,7 +61,7 @@ enabled your starterkit, please refer to the starterkit's documentation page
 to customize.
 
 [Drupal Bootstrap]: https://www.drupal.org/project/bootstrap
-[Bootstrap Framework]: https://getbootstrap.com/docs/3.3/
+[Bootstrap Framework]: https://getbootstrap.com/docs/3.4/
 [jsDelivr CDN]: http://www.jsdelivr.com
 [Less]: http://lesscss.org
 [Sass]: http://sass-lang.com

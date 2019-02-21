@@ -4,8 +4,8 @@ description: Adds ability to designate fields as required for publishing only.
 package: Content Authoring
 # core: 8.x
 
-# Information added by Drupal.org packaging script on 2018-12-06
-version: '8.x-1.1'
+# Information added by Drupal.org packaging script on 2018-12-20
+version: '8.x-1.2'
 core: '8.x'
 project: 'require_on_publish'
-datestamp: 1544118783
+datestamp: 1545274983

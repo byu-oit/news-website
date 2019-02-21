@@ -7,8 +7,8 @@ Extensions to base API
   migration configuration.
 * A MigrationGroup configuration entity is provided, which enables migrations to
   be organized in groups, and to maintain shared configuration in one place.
-* A MigrateEvents::PREPARE_ROW event is provided to dispatch hook_prepare_row()
-  invocations as events.
+* A MigrateEvents::PREPARE_ROW event is provided to dispatch
+  hook_migrate_prepare_row() invocations as events.
 * A SourcePluginExtension class is provided, enabling one to define fields and
   IDs for a source plugin via configuration rather than requiring PHP code.
 

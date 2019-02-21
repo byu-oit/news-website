@@ -1,4 +1,24 @@
 
+Slick 8.x-1.0-dev, 2018-12-17
+-----------------------------
+- Issue #2964773 by fjgarlin: Support Slick library 1.9.0
+- Issue #2937960 by gausarts, WalkingDexter, a.sinitsa, igonzalez: Many
+  carousels on one page with custom AppendDots.
+- Change negative margins to transforms for center captions to allow more
+  flexible widths without hard-coding widths.
+- Added support for Video Embed Media 8.x-2.x.
+- Issue #2480245 by B-Prod, Ben Young: Breakpoint-specific options lost if same
+  as defaults
+- Issue #2920193 by ShaxA: Slick is not starting the autoplay after a modal is
+  closed
+- Issue #3010260 by bendeguz.csirmaz: Optimize slick_library_info_alter()
+- Issue #2996130 by huzooka, bendeguz.csirmaz: Misleading (false-negative)
+  report on status report page
+- Issue #2948735 by alaa abbad, Muath Khraisat: Adding the alt attribute to the
+  slick thumbnails
+- Issue #2945030 by alaa abbad: The button role is unnecessary for element button
+- Issue #2922036 by shaal, matio89: RTL Views Drupal 8
+
 Slick 8.x-1.0-dev, 2017-05-26
 -----------------------------
 - Added more tests.

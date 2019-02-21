@@ -1,9 +1,0 @@
-entity.imageapi_optimize_pipeline.edit_form:
-  title: 'Edit'
-  route_name: entity.imageapi_optimize_pipeline.edit_form
-  base_route: entity.iimageapi_optimize_pipeline.edit_form
-
-entity.imageapi_optimize_pipeline.collection:
-  title: List
-  route_name: entity.imageapi_optimize_pipeline.collection
-  base_route: entity.imageapi_optimize_pipeline.collection

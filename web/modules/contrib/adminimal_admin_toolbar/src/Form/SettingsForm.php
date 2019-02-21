@@ -37,7 +37,7 @@ class SettingsForm extends ConfigFormBase {
 
     $form['avoid_custom_font'] = array(
       '#type' => 'checkbox',
-      '#title' => t('Avoid loading "Open Sans" font'),
+      '#title' => $this->t('Avoid loading "Open Sans" font'),
       '#default_value' => $config->get('avoid_custom_font'),
       '#description' => $this->t(
         'Google Open Sans will not be downloaded if this is checked (useful for languages that are not well supported by the "Open sans" font. Like Japanese for example).'

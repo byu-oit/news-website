@@ -5,12 +5,15 @@ namespace Drupal\Tests\migrate_plus\Kernel\Plugin\migrate\process;
 use Drupal\Core\Config\Entity\ConfigEntityInterface;
 use Drupal\Core\Field\FieldStorageDefinitionInterface;
 use Drupal\Core\Language\LanguageInterface;
-use Drupal\field\Tests\EntityReference\EntityReferenceTestTrait;
+use Drupal\field\Entity\FieldConfig;
+use Drupal\field\Entity\FieldStorageConfig;
 use Drupal\KernelTests\KernelTestBase;
 use Drupal\migrate\MigrateExecutable;
 use Drupal\migrate\MigrateMessageInterface;
 use Drupal\node\Entity\NodeType;
+use Drupal\taxonomy\Entity\Term;
 use Drupal\taxonomy\Entity\Vocabulary;
+use Drupal\Tests\field\Traits\EntityReferenceTestTrait;
 
 /**
  * Tests the migration plugin.
@@ -107,6 +110,18 @@ class EntityGenerateTest extends KernelTestBase implements MigrateMessageInterfa
       FieldStorageDefinitionInterface::CARDINALITY_UNLIMITED
     );
 
+    // Create a non-reference field.
+    FieldStorageConfig::create([
+      'field_name' => 'field_integer',
+      'type' => 'integer',
+      'entity_type' => 'node',
+    ])->save();
+    FieldConfig::create([
+      'field_name' => 'field_integer',
+      'entity_type' => 'node',
+      'bundle' => $this->bundle,
+    ])->save();
+
     $this->migrationPluginManager = \Drupal::service('plugin.manager.migration');
   }
 
@@ -156,14 +171,14 @@ class EntityGenerateTest extends KernelTestBase implements MigrateMessageInterfa
                 foreach ($valueToCheck as $key => $expectedValue) {
                   if (empty($expectedValue)) {
                     if (!$entity->{$property}->isEmpty()) {
-                      $this->assertTrue($entity->{$property}[0]->entity->$key->isEmpty(), "Expected value is empty but field $property.$key is not empty.");
+                      $this->assertTrue($entity->{$property}[0]->entity->{$key}->isEmpty(), "Expected value is empty but field $property.$key is not empty.");
                     }
                     else {
-                      $this->assertTrue($entity->{$property}->isEmpty(), "FOOBAR Expected value is empty but field $property is not empty.");
+                      $this->assertTrue($entity->{$property}->isEmpty(), "Expected value is empty but field $property is not empty.");
                     }
                   }
                   elseif ($entity->{$property}->getValue()) {
-                    $this->assertEquals($expectedValue, $entity->{$property}[$valueID]->entity->$key->value);
+                    $this->assertEquals($expectedValue, $entity->get($property)->offsetGet($valueID)->entity->{$key}->value);
                   }
                   else {
                     $this->fail("Expected value: $expectedValue does not exist in $property.");
@@ -177,7 +192,7 @@ class EntityGenerateTest extends KernelTestBase implements MigrateMessageInterfa
               foreach ($value as $key => $expectedValue) {
                 if (empty($expectedValue)) {
                   if (!$entity->{$property}->isEmpty()) {
-                    $this->assertTrue($entity->{$property}[0]->entity->$key->isEmpty(), "Expected value is empty but field $property.$key is not empty.");
+                    $this->assertTrue($entity->{$property}[0]->entity->{$key}->isEmpty(), "Expected value is empty but field $property.$key is not empty.");
                   }
                   else {
                     $this->assertTrue($entity->{$property}->isEmpty(), "BINBAZ Expected value is empty but field $property is not empty.");
@@ -201,6 +216,99 @@ class EntityGenerateTest extends KernelTestBase implements MigrateMessageInterfa
         }
       }
     }
+  }
+
+  /**
+   * Test lookup without a reference field.
+   */
+  public function testNonReferenceField() {
+    $values = [
+      'name' => 'Apples',
+      'vid' => $this->vocabulary,
+      'langcode' => LanguageInterface::LANGCODE_NOT_SPECIFIED,
+    ];
+    $this->createTestData('taxonomy_term', $values);
+
+    // Not enough context is provided for a non reference field, so error out.
+    $definition = [
+      'source' => [
+        'plugin' => 'embedded_data',
+        'data_rows' => [
+          [
+            'id' => 1,
+            'title' => 'content item 1',
+            'term' => 'Apples',
+          ],
+        ],
+        'ids' => [
+          'id' => ['type' => 'integer'],
+        ],
+      ],
+      'process' => [
+        'id' => 'id',
+        'type' => [
+          'plugin' => 'default_value',
+          'default_value' => $this->bundle,
+        ],
+        'title' => 'title',
+        'field_integer' => [
+          'plugin' => 'entity_generate',
+          'source' => 'term',
+        ],
+      ],
+      'destination' => [
+        'plugin' => 'entity:node',
+      ],
+    ];
+    /** @var \Drupal\migrate\Plugin\Migration $migration */
+    $migration = $this->migrationPluginManager->createStubMigration($definition);
+    $migrationExecutable = (new MigrateExecutable($migration, $this));
+    $migrationExecutable->import();
+    $this->assertEquals('Destination field type integer is not a recognized reference type.', $migration->getIdMap()->getMessageIterator()->fetch()->message);
+    $this->assertSame(1, $migration->getIdMap()->messageCount());
+
+    // Enough context is provided so this should work.
+    $definition = [
+      'source' => [
+        'plugin' => 'embedded_data',
+        'data_rows' => [
+          [
+            'id' => 1,
+            'title' => 'content item 1',
+            'term' => 'Apples',
+          ],
+        ],
+        'ids' => [
+          'id' => ['type' => 'integer'],
+        ],
+      ],
+      'process' => [
+        'id' => 'id',
+        'type' => [
+          'plugin' => 'default_value',
+          'default_value' => $this->bundle,
+        ],
+        'title' => 'title',
+        'field_integer' => [
+          'plugin' => 'entity_generate',
+          'source' => 'term',
+          'value_key' => 'name',
+          'bundle_key' => 'vid',
+          'bundle' => $this->vocabulary,
+          'entity_type' => 'taxonomy_term',
+        ],
+      ],
+      'destination' => [
+        'plugin' => 'entity:node',
+      ],
+    ];
+    /** @var \Drupal\migrate\Plugin\Migration $migration */
+    $migration = $this->migrationPluginManager->createStubMigration($definition);
+    $migrationExecutable = (new MigrateExecutable($migration, $this));
+    $migrationExecutable->import();
+    $this->assertEmpty($migration->getIdMap()->messageCount());
+    $term = Term::load(1);
+    $this->assertEquals('Apples', $term->label());
   }
 
   /**
@@ -775,6 +883,9 @@ class EntityGenerateTest extends KernelTestBase implements MigrateMessageInterfa
    *   The storage manager to create.
    * @param array $values
    *   The values to use when creating the entity.
+   *
+   * @return string|int
+   *   The entity identifier.
    */
   private function createTestData($storageName, array $values) {
     /** @var \Drupal\Core\Entity\ContentEntityStorageInterface $storage */
@@ -783,6 +894,7 @@ class EntityGenerateTest extends KernelTestBase implements MigrateMessageInterfa
       ->getStorage($storageName);
     $entity = $storage->create($values);
     $entity->save();
+    return $entity->id();
   }
 
 }

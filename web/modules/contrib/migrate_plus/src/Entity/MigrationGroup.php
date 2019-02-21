@@ -19,7 +19,15 @@ use Drupal\Core\Config\Entity\ConfigEntityBase;
  *   entity_keys = {
  *     "id" = "id",
  *     "label" = "label"
- *   }
+ *   },
+ *   config_export = {
+ *     "id",
+ *     "label",
+ *     "description",
+ *     "source_type",
+ *     "module",
+ *     "shared_configuration",
+ *   },
  * )
  */
 class MigrationGroup extends ConfigEntityBase implements MigrationGroupInterface {

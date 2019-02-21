@@ -10,7 +10,7 @@ use Drupal\Core\Session\AccountInterface;
  *
  * @ingroup views_field_handlers
  *
- * @ViewsField("statistics_numeric")
+ * @ViewsField("file_download_counter_numeric")
  */
 class FileDownloadNumeric extends NumericField {
 

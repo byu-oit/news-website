@@ -4,7 +4,6 @@ namespace Drupal\Tests\cas\Unit\Service;
 
 use Drupal\cas\CasRedirectData;
 use Drupal\cas\Event\CasPreRedirectEvent;
-use Drupal\cas\Service\CasHelper;
 use Drupal\cas\Service\CasRedirector;
 use Drupal\Component\Utility\UrlHelper;
 use Drupal\Tests\UnitTestCase;

@@ -146,7 +146,6 @@ abstract class BlazyManagerBase implements BlazyManagerInterface {
    */
   public function attach($attach = []) {
     $load   = [];
-    $dummy  = [];
     $switch = empty($attach['media_switch']) ? '' : $attach['media_switch'];
 
     if ($switch && $switch != 'content') {
@@ -183,9 +182,8 @@ abstract class BlazyManagerBase implements BlazyManagerInterface {
    */
   public function buildSkins($namespace, $skin_class, $methods = []) {
     $cid = $namespace . ':skins';
-    $cache = $this->cache->get($cid);
 
-    if ($cache) {
+    if ($cache = $this->cache->get($cid)) {
       return $cache->data;
     }
 

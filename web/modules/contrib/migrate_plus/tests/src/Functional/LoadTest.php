@@ -20,7 +20,10 @@ class LoadTest extends BrowserTestBase {
   public static $modules = [
     'migrate_plus',
     'migrate_example',
+    'migrate_example_setup',
     'migrate_example_advanced',
+    'migrate_example_advanced_setup',
+    'migrate_json_example',
   ];
 
   /**

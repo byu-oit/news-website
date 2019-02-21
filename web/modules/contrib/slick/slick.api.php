@@ -294,7 +294,8 @@
  *   ];
  *
  *   // 2. Thumbnail slider ----------------------------------------------------
- *   // The thumbnail array is grouped by 'thumb'.
+ *   // The thumbnail array is grouped by 'thumb', yet has the same structured
+ *   // array as the main display: items, options, optionset, settings.
  *   $build['thumb'] = ['items' => []];
  *   foreach ($images as $key) {
  *     // Each item has keys: slide, caption, settings.
@@ -491,15 +492,88 @@ function hook_slick_skins_info() {
 }
 
 /**
- * Modifies overridable options to re-use one optionset.
+ * Modifies overridable options at admin UI to re-use one optionset.
+ *
+ * Only accepts boolean values as these are displayed as checkboxes under
+ * `Override main optionset` form field at Slick formatter/ Slick Views forms.
  *
  * @see \Drupal\slick\Form\SlickAdmin::getOverridableOptions()
+ * @see config/install/slick.optionset.default.yml
  *
  * @ingroup slick_api
  */
 function hook_slick_overridable_options_info_alter(&$options) {
-  // Adds RTL option to Slick field formatters, or Slick Views UI.
+  // Adds RTL option to Slick field formatters, or Slick Views UI forms.
   $options['rtl'] = t('RTL');
+}
+
+/**
+ * Modifies Slick optionset before being passed to preprocess, or templates.
+ *
+ * @param object $slick
+ *   The \Drupal\slick\Entity\Slick Slick object being modified.
+ * @param array $settings
+ *   The contextual settings related to UI and HTML layout settings.
+ *
+ * @see \Drupal\slick\SlickManager::preRenderSlick()
+ *
+ * @ingroup slick_api
+ */
+function hook_slick_optionset_alter(\Drupal\slick\Entity\Slick &$slick, array $settings) {
+  if ($slick->id() == 'x_slick_nav') {
+    // Overrides the main settings of navigation with optionset ID x_slick_nav.
+    // To see available options, see config/install/slick.optionset.default.yml.
+    // Disable arrows.
+    $slick->setSetting('arrows', FALSE);
+
+    // Checks if we have defined responsive settings.
+    if ($responsives = $slick->getResponsiveOptions()) {
+      foreach ($responsives as $key => $responsive) {
+        if ($responsive['breakpoint'] == 481) {
+          // If Optimized option is enabled, only those different from default
+          // settings will be displayed at $responsive array. To poke around
+          // available settings, see config/install/slick.optionset.default.yml
+          // See what we have here.
+          // dpr($responsive);
+          // Overrides responsive settings.
+          $values = $responsive['settings'];
+          $values['centerPadding'] = '40px';
+          $values['slidesToShow'] = 1;
+
+          // Assign the new settings values.
+          $slick->setResponsiveSettings($values, $key);
+          // Verify responsive settings updated.
+          // dpr($slick->getResponsiveOptions());
+        }
+      }
+    }
+  }
+}
+
+/**
+ * Modifies Slick HTML settings before being passed to preprocess, or templates.
+ *
+ * If you need to override globally to be inherited by all blazy-related
+ * modules: slick, gridstack, mason, etc., consider hook_blazy_settings_alter().
+ *
+ * @param array $build
+ *   The array containing: item, content, settings, or optional captions.
+ * @param object $items
+ *   The \Drupal\Core\Field\FieldItemListInterface items.
+ *
+ * @see \Drupal\blazy\BlazyFormatterManager::buildSettings()
+ * @see \Drupal\slick\SlickFormatter::buildSettings()
+ *
+ * @ingroup slick_api
+ */
+function hook_slick_settings_alter(array &$build, $items) {
+  $settings = &$build['settings'];
+
+  // Change skin if meeting a particular criteria.
+  // See blazy_blazy_settings_alter() at blazy.module for existing samples.
+  if ($settings['optionset'] == 'x_slick_for') {
+    $settings['skin'] = $settings['entity_id'] == 54 ? 'fullwidth' : $settings['skin'];
+  }
 }
 
 /**

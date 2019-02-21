@@ -126,8 +126,21 @@ class SlickManager extends BlazyManagerBase implements BlazyManagerInterface, Sl
       $load['library'][] = 'blazy/loading';
     }
 
-    // @todo: Only load slick if not static grid.
-    if (is_file('libraries/easing/jquery.easing.min.js')) {
+    // Load optional easing library.
+    $easing = 'libraries/easing/jquery.easing.min.js';
+    if (function_exists('libraries_get_path')) {
+      $library_path = libraries_get_path('easing') ?: libraries_get_path('jquery.easing');
+
+      if ($library_path) {
+        $easing = $library_path . '/jquery.easing.min.js';
+        // Composer via bower-asset puts the library within `js` directory.
+        if (!is_file($easing)) {
+          $easing = $library_path . '/js/jquery.easing.min.js';
+        }
+      }
+    }
+
+    if (is_file($easing)) {
       $load['library'][] = 'slick/slick.easing';
     }
 
@@ -188,12 +201,12 @@ class SlickManager extends BlazyManagerBase implements BlazyManagerInterface, Sl
    * {@inheritdoc}
    */
   public static function slick(array $build = []) {
-    foreach (['items', 'options', 'optionset', 'settings'] as $key) {
-      $build[$key] = isset($build[$key]) ? $build[$key] : [];
-    }
-
     if (empty($build['items'])) {
       return [];
+    }
+
+    foreach (['items', 'options', 'optionset', 'settings'] as $key) {
+      $build[$key] = isset($build[$key]) ? $build[$key] : [];
     }
 
     $slick = [
@@ -267,6 +280,7 @@ class SlickManager extends BlazyManagerBase implements BlazyManagerInterface, Sl
     }
 
     $build['options'] = isset($js) ? array_merge($build['options'], $js) : $build['options'];
+    \Drupal::moduleHandler()->alter('slick_optionset', $build['optionset'], $build['settings']);
     foreach (['items', 'options', 'optionset', 'settings'] as $key) {
       $element["#$key"] = $build[$key];
     }

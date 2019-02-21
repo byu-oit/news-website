@@ -113,7 +113,16 @@ module.exports = function (grunt) {
                   // Then, import the variable overrides.
                   '@import "' + path.join('starterkits', 'less', 'less', 'variable-overrides.less') + '"',
                   // Finally, import the base-theme overrides.
-                  '@import "' + path.join('starterkits', 'less', 'less', 'overrides.less') + '"'
+                  '@import "' + path.join('starterkits', 'less', 'less', 'overrides.less') + '"',
+                  // Add some default variables that may not be available.
+                  '@form-group-margin-bottom: 15px',
+                  '@screen-sm-min: @screen-sm',
+                  '@screen-md-min: @screen-md',
+                  '@screen-lg-min: @screen-lg',
+                  '@container-sm: @container-tablet',
+                  '@container-md: @container-desktop',
+                  '@container-large-desktop: (1140px + @grid-gutter-width)',
+                  '@container-lg: @container-large-desktop'
                 ];
                 grunt.log.debug("\noptions: " + JSON.stringify(options, null, 2));
                 grunt.log.debug(imports.join("\n"));

@@ -1,5 +1,0 @@
-imageapi_optimize_pipeline_add_action:
-  route_name: imageapi_optimize.pipeline_add
-  title: 'Add optimization pipeline'
-  appears_on:
-    - entity.imageapi_optimize_pipeline.collection

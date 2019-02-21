@@ -21,7 +21,8 @@
    * Callback for custom captions.
    */
   Drupal.blazy.photobox = function () {
-    var $caption = $(this).next('.litebox-caption');
+    var $elm = $('.litebox[href="' + $('.pbWrapper img').attr('src') + '"]');
+    var $caption = $elm.next('.litebox-caption');
 
     if ($caption.length) {
       $('#pbCaption .title').html($caption.html());

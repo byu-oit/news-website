@@ -10,7 +10,7 @@ use Drupal\Core\Session\AccountInterface;
  *
  * @ingroup views_field_handlers
  *
- * @ViewsField("node_counter_timestamp")
+ * @ViewsField("file_download_counter_date")
  */
 class FileDownloadCounterTimestamp extends Date {
 

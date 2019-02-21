@@ -8,6 +8,9 @@ migrate_plus.destination.*:
       type: boolean
       label: 'Whether stubbing is allowed.'
       default: false
+    default_bundle:
+      type: string
+      label: 'The default bundle for content entity destinations.'
 
 migrate_plus.destination.config:
   type: migrate_destination

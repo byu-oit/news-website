@@ -27,13 +27,17 @@ class BlazyDefault {
    * Returns basic plugin settings.
    */
   public static function baseSettings() {
-    return [
+    $settings = [
       'cache'             => 0,
       'current_view_mode' => '',
       'optionset'         => 'default',
       'skin'              => '',
       'style'             => '',
     ];
+
+    $context = ['class' => get_called_class()];
+    \Drupal::moduleHandler()->alter('blazy_base_settings', $settings, $context);
+    return $settings;
   }
 
   /**

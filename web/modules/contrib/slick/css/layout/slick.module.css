@@ -36,10 +36,14 @@
   .slide--caption--center .slide__caption,
   .slide--caption--center-top .slide__caption {
     left: 50%;
-    margin-left: -21%;
     padding: 0;
     position: absolute;
     text-align: center;
+    transform: translateX(-50%);
+  }
+
+  .slide--caption--center .slide__caption {
+    transform: translate(-50%, -50%);
   }
 
   .slide--caption--left .slide__caption {
@@ -71,9 +75,9 @@
   .slide--caption--stage-right .slide__caption,
   .slide--caption--stage-zebra .slide__caption {
     left: 50%;
-    margin-left: -41%;
     padding: 0;
     position: absolute;
+    transform: translateX(-50%);
     width: 82%;
   }
 

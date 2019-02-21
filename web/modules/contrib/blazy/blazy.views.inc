@@ -17,6 +17,7 @@ function blazy_views_data_alter(&$data) {
       'click sortable' => FALSE,
     ],
   ];
+
   if (\Drupal::moduleHandler()->moduleExists('video_embed_media')) {
     $data['media_field_data']['blazy_media'] = [
       'title' => 'Blazy',

@@ -131,8 +131,8 @@ class EntityLookup extends ProcessPluginBase implements ContainerFactoryPluginIn
     $this->entityManager = $entityManager;
     $this->selectionPluginManager = $selectionPluginManager;
     $pluginIdParts = explode(':', $this->migration->getDestinationPlugin()->getPluginId());
-    $this->destinationEntityType = empty($pluginIdParts[1]) ?: $pluginIdParts[1];
-    $this->destinationBundleKey = !$this->destinationEntityType ?: $this->entityManager->getDefinition($this->destinationEntityType)->getKey('bundle');
+    $this->destinationEntityType = empty($pluginIdParts[1]) ? NULL : $pluginIdParts[1];
+    $this->destinationBundleKey = $this->destinationEntityType ? $this->entityManager->getDefinition($this->destinationEntityType)->getKey('bundle') : NULL;
   }
 
   /**
@@ -223,8 +223,7 @@ class EntityLookup extends ProcessPluginBase implements ContainerFactoryPluginIn
             break;
 
           default:
-            throw new MigrateException('Destination field type ' .
-              $fieldConfig->getType() . 'is not a recognized reference type.');
+            throw new MigrateException(sprintf('Destination field type %s is not a recognized reference type.', $fieldConfig->getType()));
         }
       }
     }
@@ -262,6 +261,11 @@ class EntityLookup extends ProcessPluginBase implements ContainerFactoryPluginIn
     $query = $this->entityManager->getStorage($this->lookupEntityType)
       ->getQuery()
       ->condition($this->lookupValueKey, $value, $multiple ? 'IN' : NULL);
+    // Sqlite and possibly others returns data in a non-deterministic order.
+    // Make it deterministic.
+    if ($multiple) {
+      $query->sort($this->lookupValueKey, 'DESC');
+    }
 
     if ($this->lookupBundleKey) {
       $query->condition($this->lookupBundleKey, $this->lookupBundle);

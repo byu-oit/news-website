@@ -29,13 +29,13 @@ migrate_plus.migration.*:
       type: label
       label: 'Label'
     source:
-      type: migrate_plus.source.[plugin]
+      type: ignore
       label: 'Source'
     process:
       type: ignore
       label: 'Process'
     destination:
-      type: migrate_plus.destination.[plugin]
+      type: ignore
       label: 'Destination'
     migration_dependencies:
       type: mapping

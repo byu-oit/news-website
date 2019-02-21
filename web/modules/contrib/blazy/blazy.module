@@ -80,6 +80,7 @@ function blazy_field_formatter_info_alter(array &$info) {
     'quickedit'   => ['editor' => 'disabled'],
     'provider'    => 'blazy',
   ];
+
   if (\Drupal::moduleHandler()->moduleExists('video_embed_media')) {
     $info['blazy_file'] = $common + [
       'id'          => 'blazy_file',

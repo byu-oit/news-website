@@ -116,22 +116,23 @@ class SlickViews extends BlazyStylePluginBase {
     $view_name = $view->storage->id();
     $view_mode = $view->current_display;
     $id        = Blazy::getHtmlId("slick-views-{$view_name}-{$view_mode}", $settings['id']);
-
     $settings += [
-      'cache_metadata'    => [
+      'cache_metadata' => [
         'keys' => [$id, $view_mode, $settings['optionset']],
       ],
-      'count'             => $count,
-      'current_view_mode' => $view_mode,
-      'view_name'         => $view_name,
     ];
 
-    $settings['id']           = $id;
-    $settings['item_id']      = 'slide';
-    $settings['caption']      = array_filter($settings['caption']);
-    $settings['namespace']    = 'slick';
-    $settings['nav']          = !$settings['vanilla'] && $settings['optionset_thumbnail'] && isset($view->result[1]);
-    $settings['overridables'] = empty($settings['override']) ? array_filter($settings['overridables']) : $settings['overridables'];
+    // Prepare needed settings to work with.
+    $settings['id']                = $id;
+    $settings['item_id']           = 'slide';
+    $settings['cache_tags']        = $view->getCacheTags();
+    $settings['caption']           = array_filter($settings['caption']);
+    $settings['count']             = $count;
+    $settings['current_view_mode'] = $view_mode;
+    $settings['namespace']         = 'slick';
+    $settings['nav']               = !$settings['vanilla'] && $settings['optionset_thumbnail'] && isset($view->result[1]);
+    $settings['overridables']      = empty($settings['override']) ? array_filter($settings['overridables']) : $settings['overridables'];
+    $settings['view_name']         = $view_name;
 
     $elements = [];
     foreach ($this->renderGrouping($view->result, $settings['grouping']) as $rows) {
@@ -159,39 +160,53 @@ class SlickViews extends BlazyStylePluginBase {
     $keys    = array_keys($view->field);
     $item_id = $settings['item_id'];
 
-    // @todo enable after proper checks.
-    // $settings = array_filter($settings);
     foreach ($rows as $index => $row) {
       $view->row_index = $index;
 
       $slide = [];
       $thumb = $slide[$item_id] = [];
 
-      $slide['settings'] = $settings;
-
-      if (!empty($settings['class'])) {
-        $classes = $this->getFieldString($row, $settings['class'], $index);
-        $slide['settings']['class'] = empty($classes[$index]) ? [] : $classes[$index];
+      // Provides a potential unique thumbnail different from the main image.
+      if (!empty($settings['thumbnail'])) {
+        $thumbnail = $this->getFieldRenderable($row, 0, $settings['thumbnail']);
+        if (isset($thumbnail['rendered']['#item'])) {
+          $item = $thumbnail['rendered']['#item'];
+          $settings['thumbnail_uri'] = (($entity = $item->entity) && empty($item->uri)) ? $entity->getFileUri() : $item->uri;
+        }
       }
+
+      $slide['settings'] = $settings;
 
       // Use Vanilla slick if so configured, ignoring Slick markups.
       if (!empty($settings['vanilla'])) {
         $slide[$item_id] = $view->rowPlugin->render($row);
       }
       else {
+        // Otherwise, extra works. With a working Views cache, no big deal.
         $this->buildElement($slide, $row, $index);
 
+        // Build thumbnail navs if so configured.
         if (!empty($settings['nav'])) {
-          $thumb[$item_id]  = empty($settings['thumbnail']) ? [] : $this->getFieldRendered($index, $settings['thumbnail']);
+          $thumb[$item_id] = empty($settings['thumbnail']) ? [] : $this->getFieldRendered($index, $settings['thumbnail']);
           $thumb['caption'] = empty($settings['thumbnail_caption']) ? [] : $this->getFieldRendered($index, $settings['thumbnail_caption']);
 
           $build['thumb']['items'][$index] = $thumb;
         }
       }
 
+      if (!empty($settings['class'])) {
+        $classes = $this->getFieldString($row, $settings['class'], $index);
+        $slide['settings']['class'] = empty($classes[$index]) ? [] : $classes[$index];
+      }
+
+      if (empty($slide[$item_id])) {
+        $slide[$item_id] = $this->getFieldRendered($index, $settings['image']);
+      }
+
       $build['items'][$index] = $slide;
       unset($slide, $thumb);
     }
+
     unset($view->row_index);
     return $build;
   }

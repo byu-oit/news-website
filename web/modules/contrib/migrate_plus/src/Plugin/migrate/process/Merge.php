@@ -56,7 +56,7 @@ class Merge extends ProcessPluginBase {
       throw new MigrateException(sprintf('Merge process failed for destination property (%s): input is not an array.', $destination_property));
     }
     $new_value = [];
-    foreach($value as $i => $item) {
+    foreach ($value as $i => $item) {
       if (!is_array($item)) {
         throw new MigrateException(sprintf('Merge process failed for destination property (%s): index (%s) in the source value is not an array that can be merged.', $destination_property, $i));
       }

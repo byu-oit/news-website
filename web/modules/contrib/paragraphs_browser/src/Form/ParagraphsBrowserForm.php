@@ -12,6 +12,7 @@ use Drupal\Component\Utility\NestedArray;
 use Drupal\Core\Ajax\AjaxResponse;
 use Drupal\Core\Ajax\CloseModalDialogCommand;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
+use Drupal\Core\Entity\EntityTypeBundleInfoInterface;
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\field\Entity\FieldConfig;
@@ -46,16 +47,24 @@ class ParagraphsBrowserForm extends FormBase {
   protected $entityTypeManager;
 
   /**
+   * @var \Drupal\Core\Entity\EntityTypeBundleInfoInterface
+   */
+  protected $entityTypeBundleInfo;
+
+  /**
    * Constructs a new ParagraphsTypeDeleteConfirm object.
    *
    * @param \Drupal\Core\Entity\Query\QueryFactory $query_factory
    *   The entity query object.
    *
    * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entity_type_manager
+   *
+   * @param \Drupal\Core\Entity\EntityTypeBundleInfoInterface $entity_type_bundle_info
    */
-  public function __construct(QueryFactory $query_factory, EntityTypeManagerInterface $entity_type_manager) {
+  public function __construct(QueryFactory $query_factory, EntityTypeManagerInterface $entity_type_manager, EntityTypeBundleInfoInterface $entity_type_bundle_info) {
     $this->queryFactory = $query_factory;
     $this->entityTypeManager = $entity_type_manager;
+    $this->entityTypeBundleInfo = $entity_type_bundle_info;
   }
 
   /**
@@ -64,7 +73,8 @@ class ParagraphsBrowserForm extends FormBase {
   public static function create(ContainerInterface $container) {
     return new static(
       $container->get('entity.query'),
-      $container->get('entity_type.manager')
+      $container->get('entity_type.manager'),
+      $container->get('entity_type.bundle.info')
     );
   }
 
@@ -84,18 +94,32 @@ class ParagraphsBrowserForm extends FormBase {
     $form['#attached']['library'][] = 'paragraphs_browser/modal';
 
     $field_name = $field_config->getName();
-    $target_bundles = $field_config->getSetting('handler_settings')['target_bundles'];
+    $handler_settings = $field_config->getSetting('handler_settings');
+    $target_bundles = is_array($handler_settings['target_bundles']) ?
+      array_keys($handler_settings['target_bundles']) : [];
+      $paragraph_type_storage = $this->entityTypeManager
+      ->getStorage('paragraphs_type');
+    $all_paragraph_types = array_keys($this->entityTypeBundleInfo->getBundleInfo('paragraph'));
 
-    $paragraphs_types = $this->entityTypeManager
-      ->getStorage('paragraphs_type')
-      ->loadMultiple($target_bundles);
 
-    if (is_null($target_bundles)) {
-      $handler_settings = $field_config->getSetting('handler_settings');
-      $target_bundles = isset($handler_settings['target_bundles_drag_drop'])
-        ? array_keys($handler_settings['target_bundles_drag_drop'])
-        : array_keys($paragraphs_types);
+
+    if (empty($target_bundles)) {
+
+      /**
+       * if there are no target bundles defined in the field config, then we
+       * default to target them all
+       */
+      $target_bundles = $all_paragraph_types;
+    } else if ($handler_settings['negate']) {
+
+      /**
+       * if "Exclude the selected types" is set, then we only target bundles
+       * other than the ones defined in the field config
+       */
+      $target_bundles = array_diff($all_paragraph_types, $target_bundles);
     }
+
+    $paragraphs_types = $paragraph_type_storage->loadMultiple($target_bundles);
 
     //@todo: Add access checks
 

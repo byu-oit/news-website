@@ -242,20 +242,18 @@ class BlazyManager extends BlazyManagerBase {
 
     /** @var Drupal\image\Plugin\Field\FieldType\ImageItem $item */
     $item                    = $build['item'];
+    $uri                     = ($entity = $item->entity) && empty($item->uri) ? $entity->getFileUri() : $item->uri;
     $settings                = &$build['settings'];
     $settings['delta']       = isset($settings['delta']) ? $settings['delta'] : 0;
     $settings['image_style'] = isset($settings['image_style']) ? $settings['image_style'] : '';
-
-    if (empty($settings['uri'])) {
-      $settings['uri'] = ($entity = $item->entity) && empty($item->uri) ? $entity->getFileUri() : $item->uri;
-    }
+    $settings['uri']         = empty($settings['uri']) ? $uri : $settings['uri'];
 
     // Respects content not handled by theme_blazy(), but passed through.
     if (empty($build['content'])) {
       $image = [
-        '#theme'       => isset($settings['theme_hook_image']) ? $settings['theme_hook_image'] : 'blazy',
+        '#theme'       => empty($settings['theme_hook_image']) ?'blazy' : $settings['theme_hook_image'],
         '#delta'       => $settings['delta'],
-        '#item'        => [],
+        '#item'        => isset($settings['entity_type_id']) && $settings['entity_type_id'] == 'user' ? $item : [],
         '#image_style' => $settings['image_style'],
         '#build'       => $build,
         '#pre_render'  => [[$this, 'preRenderImage']],
@@ -328,7 +326,6 @@ class BlazyManager extends BlazyManagerBase {
     $element['#item']            = $item;
     $element['#captions']        = empty($build['captions']) ? [] : ['inline' => $build['captions']];
     $element['#item_attributes'] = $item_attributes;
-    $element['#url']             = '';
     $element['#settings']        = $settings;
 
     foreach (['caption', 'media', 'wrapper'] as $key) {

@@ -59,6 +59,15 @@ use Drupal\migrate\Row;
  * All the rules for
  * @link http://php.net/manual/function.str-replace.php str_replace @endlink
  * apply. This means that you can provide arrays as values.
+ *
+ * Multiple values can be matched like this:
+ * @code
+ * field_text:
+ *   plugin: str_replace
+ *   source: text
+ *   search: ["AT", "CH", "DK"]
+ *   replace: ["Austria", "Switzerland", "Denmark"]
+ * @endcode
  */
 class StrReplace extends ProcessPluginBase {
 

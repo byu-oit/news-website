@@ -69,10 +69,9 @@ class MigrationGroupTest extends KernelTestBase {
     $migration->save();
 
     $expected_config = [
-      'migration_group' => $group_id,
       'label' => 'Unaffected by the group',
-      'migration_tags' => ['Drupal 7'],
-      'source' => [
+      'getMigrationTags' => ['Drupal 7'],
+      'getSourceConfiguration' => [
         'plugin' => 'empty',
         'constants' => [
           'entity_type' => 'user',
@@ -80,13 +79,13 @@ class MigrationGroupTest extends KernelTestBase {
           'cardinality' => '3',
         ],
       ],
-      'destination' => ['plugin' => 'field_storage_config'],
+      'getDestinationConfiguration' => ['plugin' => 'field_storage_config'],
     ];
-    /** @var \Drupal\migrate\Plugin\MigrationInterface $loaded_migration */
+    /** @var \Drupal\migrate_plus\Plugin\MigrationInterface $loaded_migration */
     $loaded_migration = $this->container->get('plugin.manager.migration')
       ->createInstance('specific_migration');
-    foreach ($expected_config as $key => $expected_value) {
-      $actual_value = $loaded_migration->get($key);
+    foreach ($expected_config as $method => $expected_value) {
+      $actual_value = call_user_func([$loaded_migration, $method]);
       $this->assertEquals($expected_value, $actual_value);
     }
   }

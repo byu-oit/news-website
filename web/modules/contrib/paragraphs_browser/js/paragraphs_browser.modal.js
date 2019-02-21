@@ -86,13 +86,13 @@
   };
 
   Drupal.behaviors.PBStyling = {
-    attach: (context) => {
+    attach: function (context) {
       $('.paragraphs-browser-wrapper', context)
         .once('fieldsetclick')
-        .each((i, el) => {
-        $(el).on('click', '.paragraphs-browser-paragraph-type', (e) => {
-          e.preventDefault();
-          e.stopPropagation();
+        .each(function (i, el) {
+          $(el).on('click', '.paragraphs-browser-paragraph-type', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
 
           $(e.currentTarget)
             .find('input')

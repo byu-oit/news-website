@@ -12,16 +12,16 @@ Generally speaking, you should really read the entire [Bootstrap Framework]
 documentation site, if you haven't already. Here are the four basic "sections"
 that site is split into:
 
-- [Getting Started](https://getbootstrap.com/docs/3.3/getting-started) - An overview of
+- [Getting Started](https://getbootstrap.com/docs/3.4/getting-started) - An overview of
   the [Bootstrap Framework], how to download and use, basic templates and
   examples, and more.
-- [CSS](https://getbootstrap.com/docs/3.3/css/) - Global CSS settings, fundamental HTML
+- [CSS](https://getbootstrap.com/docs/3.4/css/) - Global CSS settings, fundamental HTML
   elements styled and enhanced with extensible classes, and an advanced grid
   system.
-- [Components](https://getbootstrap.com/docs/3.3/components/) - Over a dozen reusable
+- [Components](https://getbootstrap.com/docs/3.4/components/) - Over a dozen reusable
   components built to provide iconography, dropdowns, input groups, navigation,
   alerts, and much more.
-- [JavaScript](https://getbootstrap.com/docs/3.3/javascript/) - Bring the
+- [JavaScript](https://getbootstrap.com/docs/3.4/javascript/) - Bring the
   [Bootstrap Framework] components to life with over a dozen custom jQuery
   plugins. Easily include them all, or one by one.
 
@@ -75,7 +75,7 @@ you are attempting to integrate the base theme with.
 **A: No, not "officially"**
 
 The [Bootstrap Framework] itself does not officially support older Internet
-Explorer [compatibility modes](https://getbootstrap.com/docs/3.3/getting-started/#support-ie-compatibility-modes).
+Explorer [compatibility modes](https://getbootstrap.com/docs/3.4/getting-started/#support-ie-compatibility-modes).
 To ensure you are using the latest rendering mode for IE, consider installing
 the [HTML5 Tools](https://www.drupal.org/project/html5_tools) module.
 
@@ -123,5 +123,5 @@ Instead, you should create a custom sub-theme that isn't hosted on Drupal.org.
 [Respond.js]: https://github.com/scottjehl/Respond
 [Drush]: http://www.drush.org
 [Drupal Bootstrap]: https://www.drupal.org/project/bootstrap
-[Bootstrap Framework]: https://getbootstrap.com/docs/3.3/
+[Bootstrap Framework]: https://getbootstrap.com/docs/3.4/
 [jQuery Update]: https://www.drupal.org/project/jquery_update

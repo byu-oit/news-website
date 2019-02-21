@@ -6,8 +6,8 @@ package: Testing
 dependencies:
   - field_permissions:field_permissions
 
-# Information added by Drupal.org packaging script on 2018-04-16
-version: '8.x-1.0-rc1'
+# Information added by Drupal.org packaging script on 2018-12-20
+version: '8.x-1.0-rc2'
 core: '8.x'
 project: 'field_permissions'
-datestamp: 1523911690
+datestamp: 1545332284

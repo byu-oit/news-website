@@ -13,7 +13,6 @@ use Drupal\Component\Utility\NestedArray;
  * @BootstrapProvider(
  *   id = "jsdelivr",
  *   label = @Translation("jsDelivr"),
- *   api = "https://api.jsdelivr.com/v1/bootstrap/libraries",
  *   themes = { },
  *   versions = { },
  * )
@@ -66,10 +65,10 @@ class JsDelivr extends ProviderBase {
 
         $themes[$theme]['title'] = $title;
         if ($min) {
-          $themes[$theme]['min'][$filetype][] = "$base_url/$path/bootstrap{$matches[2]}$min.$filetype";
+          $themes[$theme]['min'][$filetype][] = "$base_url/" . ltrim($file, '/');
         }
         else {
-          $themes[$theme][$filetype][] = "$base_url/$path/bootstrap{$matches[2]}$min.$filetype";
+          $themes[$theme][$filetype][] = "$base_url/" . ltrim($file, '/');
         }
       }
     }
@@ -92,6 +91,61 @@ class JsDelivr extends ProviderBase {
 
   /**
    * {@inheritdoc}
+   *
+   * Due to the complex nature of how the existing Provider APIs work and the
+   * changes made to the JsDelivr API, a new method was needed to extract the
+   * appropriate JSON and URLs to convert the new API data structure into the
+   * previous API data structure.
+   *
+   * @see https://www.drupal.org/project/bootstrap/issues/2657138
+   */
+  public function processDefinition(array &$definition, $plugin_id) {
+    $json = [];
+    foreach (['bootstrap', 'bootswatch'] as $package) {
+      $data = ['name' => $package, 'assets' => []];
+      $latest = '0.0.0';
+      $versions = [];
+      $packageJson = $this->requestJson("https://data.jsdelivr.com/v1/package/npm/$package") + ['versions' => []];
+      foreach ($packageJson['versions'] as $key => $version) {
+        // Skip irrelevant versions.
+        if (!preg_match('/^' . substr(Bootstrap::FRAMEWORK_VERSION, 0, 1) . '\.\d+\.\d+$/', $version)) {
+          continue;
+        }
+        $versionJson = $this->requestJson("https://data.jsdelivr.com/v1/package/npm/$package@$version/flat");
+
+        // Skip empty files.
+        if (empty($versionJson['files'])) {
+          continue;
+        }
+
+        $versions[] = $version;
+        if (version_compare($latest, $version) === -1) {
+          $latest = $version;
+        }
+
+        $asset = ['files' => [], 'version' => $version];
+        foreach ($versionJson['files'] as $file) {
+          // Skip old bootswatch file structure.
+          if ($package === 'bootswatch' && preg_match('`^/2|/bower_components`', $file['name'], $matches)) {
+            continue;
+          }
+          preg_match('`([^/]*)/bootstrap(-theme)?(\.min)?\.(js|css)$`', $file['name'], $matches);
+          if (!empty($matches[1]) && !empty($matches[4])) {
+            $asset['files'][] = $file['name'];
+          }
+        }
+        $data['assets'][] = $asset;
+      }
+      $data['lastversion'] = $latest;
+      $data['versions'] = $versions;
+      $json[] = $data;
+    }
+
+    $this->processApi($json, $definition);
+  }
+
+  /**
+   * {@inheritdoc}
    */
   public function processApi(array $json, array &$definition) {
     $definition['description'] = t('<p><a href=":jsdelivr" target="_blank">jsDelivr</a> is a free multi-CDN infrastructure that uses <a href=":maxcdn" target="_blank">MaxCDN</a>, <a href=":cloudflare" target="_blank">Cloudflare</a> and many others to combine their powers for the good of the open source community... <a href=":jsdelivr_about" target="_blank">read more</a></p>', [
@@ -101,18 +155,11 @@ class JsDelivr extends ProviderBase {
       ':cloudflare' => 'https://www.cloudflare.com',
     ]);
 
-    // Expected library names from jsDelivr API v1. Must use "twitter-bootstrap"
-    // instead of "bootstrap" (which is just a directory alias).
-    // @see https://www.drupal.org/node/2504343
-    // @see https://github.com/jsdelivr/api/issues/94
-    $bootstrap = 'twitter-bootstrap';
-    $bootswatch = 'bootswatch';
-
     // Extract the raw asset files from the JSON data for each framework.
     $libraries = [];
     if ($json) {
       foreach ($json as $data) {
-        if ($data['name'] === $bootstrap || $data['name'] === $bootswatch) {
+        if ($data['name'] === 'bootstrap' || $data['name'] === 'bootswatch') {
           foreach ($data['assets'] as $asset) {
             if (preg_match('/^' . substr(Bootstrap::FRAMEWORK_VERSION, 0, 1) . '\.\d\.\d$/', $asset['version'])) {
               $libraries[$data['name']][$asset['version']] = $asset['files'];
@@ -123,17 +170,17 @@ class JsDelivr extends ProviderBase {
     }
 
     // If the main bootstrap library could not be found, then provide defaults.
-    if (!isset($libraries[$bootstrap])) {
+    if (!isset($libraries['bootstrap'])) {
       $definition['error'] = TRUE;
       $definition['versions'][Bootstrap::FRAMEWORK_VERSION] = Bootstrap::FRAMEWORK_VERSION;
       $definition['themes'][Bootstrap::FRAMEWORK_VERSION] = [
         'bootstrap' => [
           'title' => (string) t('Bootstrap'),
-          'css' => ['//cdn.jsdelivr.net/bootstrap/' . Bootstrap::FRAMEWORK_VERSION . '/css/bootstrap.css'],
-          'js' => ['//cdn.jsdelivr.net/bootstrap/' . Bootstrap::FRAMEWORK_VERSION . '/js/bootstrap.js'],
+          'css' => ['https://cdn.jsdelivr.net/npm/bootstrap@' . Bootstrap::FRAMEWORK_VERSION . '/dist/css/bootstrap.css'],
+          'js' => ['https://cdn.jsdelivr.net/npm/bootstrap@' . Bootstrap::FRAMEWORK_VERSION . '/dist/js/bootstrap.js'],
           'min' => [
-            'css' => ['//cdn.jsdelivr.net/bootstrap/' . Bootstrap::FRAMEWORK_VERSION . '/css/bootstrap.min.css'],
-            'js' => ['//cdn.jsdelivr.net/bootstrap/' . Bootstrap::FRAMEWORK_VERSION . '/js/bootstrap.min.js'],
+            'css' => ['https://cdn.jsdelivr.net/npm/bootstrap@' . Bootstrap::FRAMEWORK_VERSION . '/dist/css/bootstrap.min.css'],
+            'js' => ['https://cdn.jsdelivr.net/npm/bootstrap@' . Bootstrap::FRAMEWORK_VERSION . '/dist/js/bootstrap.min.js'],
           ],
         ],
       ];
@@ -141,7 +188,7 @@ class JsDelivr extends ProviderBase {
     }
 
     // Populate the provider array with the versions and themes available.
-    foreach (array_keys($libraries[$bootstrap]) as $version) {
+    foreach (array_keys($libraries['bootstrap']) as $version) {
       $definition['versions'][$version] = $version;
 
       if (!isset($definition['themes'][$version])) {
@@ -149,11 +196,11 @@ class JsDelivr extends ProviderBase {
       }
 
       // Extract Bootstrap themes.
-      $definition['themes'][$version] = NestedArray::mergeDeep($definition['themes'][$version], $this->extractThemes($libraries[$bootstrap][$version], "//cdn.jsdelivr.net/bootstrap/$version"));
+      $definition['themes'][$version] = NestedArray::mergeDeep($definition['themes'][$version], $this->extractThemes($libraries['bootstrap'][$version], "https://cdn.jsdelivr.net/npm/bootstrap@$version"));
 
       // Extract Bootswatch themes.
-      if (isset($libraries[$bootswatch][$version])) {
-        $definition['themes'][$version] = NestedArray::mergeDeep($definition['themes'][$version], $this->extractThemes($libraries[$bootswatch][$version], "//cdn.jsdelivr.net/bootswatch/$version"));
+      if (isset($libraries['bootswatch'][$version])) {
+        $definition['themes'][$version] = NestedArray::mergeDeep($definition['themes'][$version], $this->extractThemes($libraries['bootswatch'][$version], "https://cdn.jsdelivr.net/npm/bootswatch@$version"));
       }
     }
 

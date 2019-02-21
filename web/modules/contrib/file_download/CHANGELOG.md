@@ -32,3 +32,8 @@ Add token ability to custom field so user, file and parent entity tokens can be 
 
 8.x-1.1
 Add ability to include html in the link
+
+8.x-1.3
+Counter handlers not working: https://www.drupal.org/project/file_download/issues/2922571
+Title fallback to filename: https://www.drupal.org/project/file_download/issues/2993613
+Prefix dependencies: https://www.drupal.org/project/file_download/issues/3001455

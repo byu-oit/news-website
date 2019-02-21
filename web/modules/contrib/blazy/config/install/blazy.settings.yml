@@ -5,3 +5,4 @@ blazy:
   loadInvisible: false
   offset: 100
   saveViewportOffsetDelay: 50
+  validateDelay: 25

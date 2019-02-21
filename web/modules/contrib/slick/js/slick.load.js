@@ -20,9 +20,11 @@
     var a = $('> .slick__arrow', elm);
     var o = t.data('slick') ? $.extend({}, drupalSettings.slick, t.data('slick')) : drupalSettings.slick;
     var r = $.type(o.responsive) === 'array' && o.responsive.length ? o.responsive : false;
+    var d = o.appendDots;
     var b;
 
     // Populate defaults + globals into each breakpoint.
+    o.appendDots = d === '.slick__arrow' ? a : (d || $(t));
     if (r) {
       for (b in r) {
         if (r.hasOwnProperty(b) && r[b].settings !== 'unslick') {
@@ -39,28 +41,41 @@
      * The event must be bound prior to slick being called.
      */
     function beforeSlick() {
+      var isBlazy = o.lazyLoad === 'blazy' && Drupal.blazy;
+
       if (o.randomize && !t.hasClass('slick-initiliazed')) {
         randomize();
       }
 
-      t.on('setPosition.sl', function (e, slick) {
-        setPosition(slick);
-      });
-
       $('.media--loading', t).closest('.slide__content').addClass('is-loading');
 
-      // Blazy integration.
-      if (o.lazyLoad === 'blazy' && Drupal.blazy) {
-        t.on('beforeChange.sl', function () {
-          // .b-lazy can be attached to IMG, or DIV as CSS background.
-          var $src = $('.b-lazy:not(.b-loaded)', t);
+      // Puts dots in between arrows for easy theming like this: < ooooo >.
+      if (d === '.slick__arrow') {
+        t.on('init.sl', function (e, slick) {
+          $(slick.$dots).insertAfter(slick.$prevArrow);
+        });
+      }
 
+      // Blazy integration.
+      // .b-lazy can be attached to IMG, or DIV as CSS background.
+      var $src = $('.b-lazy:not(.b-loaded)', t);
+      if (isBlazy) {
+        t.on('beforeChange.sl', function () {
           if ($src.length) {
             // Enforces lazyload ahead to smoothen the UX.
             Drupal.blazy.init.load($src);
           }
         });
       }
+
+      t.on('setPosition.sl', function (e, slick) {
+        setPosition(slick);
+
+        // Revalidate Blazy.
+        if (isBlazy && $src.length) {
+          Drupal.blazy.init.revalidate();
+        }
+      });
     }
 
     /**
@@ -142,14 +157,17 @@
      *   The visibility of slick arrows controlled by CSS class visually-hidden.
      */
     function setPosition(slick) {
-      var less = slick.slideCount <= o.slidesToShow;
-      var hide = less || o.arrows === false;
+      // Use the options that applies for the current breakpoint and not the
+      // variable "o".
+      // @see https://www.drupal.org/project/slick/issues/2480245
+      var less = slick.slideCount <= slick.options.slidesToShow;
+      var hide = less || slick.options.arrows === false;
 
       // Be sure the most complex slicks are taken care of as well, e.g.:
       // asNavFor with the main display containing nested slicks.
       if (t.attr('id') === slick.$slider.attr('id')) {
         // Removes padding rules, if no value is provided to allow non-inline.
-        if (!o.centerPadding || o.centerPadding === '0') {
+        if (!slick.options.centerPadding || slick.options.centerPadding === '0') {
           slick.$list.css('padding', '');
         }
 
@@ -199,8 +217,6 @@
         lazyLoad: o.lazyLoad,
         dotsClass: o.dotsClass,
         rtl: o.rtl,
-        appendDots: o.appendDots === '.slick__arrow'
-          ? a : (o.appendDots || $(t)),
         prevArrow: $('.slick-prev', a),
         nextArrow: $('.slick-next', a),
         appendArrows: a,

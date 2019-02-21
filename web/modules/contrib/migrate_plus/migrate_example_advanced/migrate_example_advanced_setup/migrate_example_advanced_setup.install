@@ -737,7 +737,7 @@ function migrate_example_advanced_data_wine() {
     'region',
     'rating',
   ];
-  $query = db_insert('migrate_example_wine')
+  $query = \Drupal::database()->insert('migrate_example_wine')
     ->fields($fields);
   $data = [
     [
@@ -776,7 +776,7 @@ function migrate_example_advanced_data_wine() {
  */
 function migrate_example_advanced_data_updates() {
   $fields = ['wineid', 'rating'];
-  $query = db_insert('migrate_example_advanced_updates')
+  $query = \Drupal::database()->insert('migrate_example_advanced_updates')
     ->fields($fields);
   $data = [
     [1, 93],
@@ -793,7 +793,7 @@ function migrate_example_advanced_data_updates() {
  */
 function migrate_example_advanced_data_producer() {
   $fields = ['producerid', 'name', 'body', 'excerpt', 'accountid'];
-  $query = db_insert('migrate_example_advanced_producer')
+  $query = \Drupal::database()->insert('migrate_example_advanced_producer')
     ->fields($fields);
   $data = [
     [1, 'Montes', 'Fine Chilean winery', 'Great!', 9],
@@ -824,7 +824,7 @@ function migrate_example_advanced_data_account() {
     'imageid',
     'positions',
   ];
-  $query = db_insert('migrate_example_advanced_account')
+  $query = \Drupal::database()->insert('migrate_example_advanced_account')
     ->fields($fields);
   $data = [
     [
@@ -884,7 +884,7 @@ function migrate_example_advanced_data_account() {
  */
 function migrate_example_advanced_data_account_updates() {
   $fields = ['accountid', 'sex'];
-  $query = db_insert('migrate_example_advanced_account_updates')
+  $query = \Drupal::database()->insert('migrate_example_advanced_account_updates')
     ->fields($fields);
   $data = [
     [1, NULL],
@@ -915,7 +915,7 @@ function migrate_example_advanced_data_comment() {
     'posted',
     'lastchanged',
   ];
-  $query = db_insert('migrate_example_advanced_comment')
+  $query = \Drupal::database()->insert('migrate_example_advanced_comment')
     ->fields($fields);
   $data = [
     [
@@ -1000,7 +1000,7 @@ function migrate_example_advanced_data_comment() {
  */
 function migrate_example_advanced_data_comment_updates() {
   $fields = ['commentid', 'subject'];
-  $query = db_insert('migrate_example_advanced_comment_updates')
+  $query = \Drupal::database()->insert('migrate_example_advanced_comment_updates')
     ->fields($fields);
   $data = [
     [1, 'I am first'],
@@ -1027,7 +1027,7 @@ function migrate_example_advanced_data_categories() {
     'details',
     'ordering',
   ];
-  $query = db_insert('migrate_example_advanced_categories')
+  $query = \Drupal::database()->insert('migrate_example_advanced_categories')
     ->fields($fields);
   $data = [
     [
@@ -1079,7 +1079,7 @@ function migrate_example_advanced_data_categories() {
  */
 function migrate_example_advanced_data_vintages() {
   $fields = ['wineid', 'vintage'];
-  $query = db_insert('migrate_example_advanced_vintages')
+  $query = \Drupal::database()->insert('migrate_example_advanced_vintages')
     ->fields($fields);
   $data = [
     [1, 2006],
@@ -1097,7 +1097,7 @@ function migrate_example_advanced_data_vintages() {
  */
 function migrate_example_advanced_data_variety_updates() {
   $fields = ['categoryid', 'details'];
-  $query = db_insert('migrate_example_advanced_variety_updates')
+  $query = \Drupal::database()->insert('migrate_example_advanced_variety_updates')
     ->fields($fields);
   $data = [
     [1, 'White wines are simpler and sweeter than red'],
@@ -1120,7 +1120,7 @@ function migrate_example_advanced_data_variety_updates() {
  */
 function migrate_example_advanced_data_category_wine() {
   $fields = ['wineid', 'categoryid'];
-  $query = db_insert('migrate_example_advanced_category_wine')
+  $query = \Drupal::database()->insert('migrate_example_advanced_category_wine')
     ->fields($fields);
   $data = [
     [1, 12],
@@ -1138,7 +1138,7 @@ function migrate_example_advanced_data_category_wine() {
  */
 function migrate_example_advanced_data_category_producer() {
   $fields = ['producerid', 'categoryid'];
-  $query = db_insert('migrate_example_advanced_category_producer')
+  $query = \Drupal::database()->insert('migrate_example_advanced_category_producer')
     ->fields($fields);
   $data = [
     [1, 17],
@@ -1154,7 +1154,7 @@ function migrate_example_advanced_data_category_producer() {
  */
 function migrate_example_advanced_data_files() {
   $fields = ['imageid', 'url', 'image_alt', 'image_title', 'wineid'];
-  $query = db_insert('migrate_example_advanced_files')
+  $query = \Drupal::database()->insert('migrate_example_advanced_files')
     ->fields($fields);
   $data = [
     [
@@ -1192,7 +1192,7 @@ function migrate_example_advanced_data_files() {
 function migrate_example_advanced_data_blobs() {
   $blob = file_get_contents('core/misc/druplicon.png');
   $fields = ['imageid', 'imageblob'];
-  $query = db_insert('migrate_example_advanced_blobs')
+  $query = \Drupal::database()->insert('migrate_example_advanced_blobs')
     ->fields($fields);
   $data = [
     [1, $blob],
@@ -1208,7 +1208,7 @@ function migrate_example_advanced_data_blobs() {
  */
 function migrate_example_advanced_data_table_source() {
   $fields = ['fooid', 'field1', 'field2'];
-  $query = db_insert('migrate_example_advanced_table_source')
+  $query = \Drupal::database()->insert('migrate_example_advanced_table_source')
     ->fields($fields);
   $data = [
     [3, 'Some sample data', 58],

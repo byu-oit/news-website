@@ -200,6 +200,11 @@ class CasUserManager {
       }
     }
 
+    // Check if the retrieved user is blocked before moving forward.
+    if (!$account->isActive()) {
+      throw new CasLoginException(sprintf('The username %s has not been activated or is blocked.', $account->getAccountName()));
+    }
+
     // Dispatch an event that allows modules to prevent this user from logging
     // in and/or alter the user entity before we save it.
     $pre_login_event = new CasPreLoginEvent($account, $property_bag);

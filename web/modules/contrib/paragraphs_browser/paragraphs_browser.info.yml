@@ -6,8 +6,8 @@ package: Paragraphs
 dependencies:
   - paragraphs
 
-# Information added by Drupal.org packaging script on 2017-11-25
-version: '8.x-1.0-alpha1'
+# Information added by Drupal.org packaging script on 2018-12-19
+version: '8.x-1.0-alpha2'
 core: '8.x'
 project: 'paragraphs_browser'
-datestamp: 1511629090
+datestamp: 1545237487

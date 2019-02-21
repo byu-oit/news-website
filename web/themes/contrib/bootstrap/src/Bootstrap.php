@@ -61,14 +61,14 @@ class Bootstrap {
    *
    * @var string
    */
-  const FRAMEWORK_VERSION = '3.3.7';
+  const FRAMEWORK_VERSION = '3.4.0';
 
   /**
    * The Bootstrap Framework documentation site.
    *
    * @var string
    */
-  const FRAMEWORK_HOMEPAGE = 'https://getbootstrap.com/docs/3.3/';
+  const FRAMEWORK_HOMEPAGE = 'https://getbootstrap.com/docs/3.4/';
 
   /**
    * The Bootstrap Framework repository.
@@ -1009,6 +1009,7 @@ class Bootstrap {
       $versions['3.3.5'] = $versions['3.3.4'];
       $versions['3.3.6'] = $versions['3.3.5'];
       $versions['3.3.7'] = $versions['3.3.6'];
+      $versions['3.4.0'] = $versions['3.3.7'];
     }
 
     // Return a specific versions icon set.

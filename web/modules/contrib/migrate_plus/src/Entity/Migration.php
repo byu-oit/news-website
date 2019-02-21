@@ -18,8 +18,23 @@ use Drupal\Core\Entity\EntityTypeInterface;
  *   entity_keys = {
  *     "id" = "id",
  *     "label" = "label",
- *     "weight" = "weight"
- *   }
+ *     "weight" = "weight",
+ *     "status" = "status"
+ *   },
+ *   config_export = {
+ *     "id",
+ *     "class",
+ *     "field_plugin_method",
+ *     "cck_plugin_method",
+ *     "migration_tags",
+ *     "migration_group",
+ *     "status",
+ *     "label",
+ *     "source",
+ *     "process",
+ *     "destination",
+ *     "migration_dependencies",
+ *   },
  * )
  */
 class Migration extends ConfigEntityBase implements MigrationInterface {

@@ -145,6 +145,12 @@ class FileDownloadFieldFormatter extends FileFormatterBase {
           $title = NULL;
       }
 
+      if (empty($title) && $settings['link_title'] !== 'empty') {
+        // If we explicitly want to have a title but no title was defined yet,
+        // fallback to the filename.
+        $title = NULL;
+      }
+
       $elements[$delta] = [
         '#theme' => 'download_file_link',
         '#file' => $file,

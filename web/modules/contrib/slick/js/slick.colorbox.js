@@ -16,6 +16,10 @@
       $(context).on('cbox_load', function () {
         Drupal.slickColorbox.set('setPosition');
       });
+
+      $(context).on('cbox_closed', function () {
+        Drupal.slickColorbox.set('slickPlay');
+      });
     }
   };
 

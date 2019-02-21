@@ -20,19 +20,24 @@ samples from slick_example [3] only if trouble to build slicks. Be sure to read
 its README.txt. Spending 5 minutes or so will save you hours in building more
 complex slideshows.
 
-The module supports Slick 1.6 above.
+The module supports Slick 1.6 above until 1.8.1. Versions 1.9.0 and above are
+not currently supported.
 Slick 2.x is just out 9/21/15, and hasn't been officially supported now, 9/27.
 
 [1] https://groups.drupal.org/node/20384
 [2] https://www.drupal.org/node/418616
 [3] http://dgo.to/slick_extras
+[4] https://www.drupal.org/project/slick/issues/2964773
 
 
 REQUIREMENTS
 --------------------------------------------------------------------------------
 - Slick library:
-  o Download Slick archive >= 1.6 from https://github.com/kenwheeler/slick/
-  o Extract it as is, rename "slick-master" to "slick", so the assets are at:
+  o Download Slick archive >= 1.6 && <= 1.8.1 from
+    https://github.com/kenwheeler/slick/releases
+  o Master branch (1.9.0) is not supported. Instead download, rename one of the
+    official slick releases to slick. Extract and rename it to "slick", so the
+    assets are at:
 
     /libraries/slick/slick/slick.css
     /libraries/slick/slick/slick-theme.css (optional if a skin chosen)
@@ -50,6 +55,24 @@ REQUIREMENTS
 
   Important! Be sure to enable Blazy first before updating Slick Alphas,
   otherwise a requirement error.
+
+- If using Composer with https://github.com/fxpio/composer-asset-plugin and via
+  bower-asset, Libraries.module[5] is required. Watch out dots and dashes:
+
+  $ composer require bower-asset/blazy \
+  bower-asset/slick-carousel:^1.8 \
+  bower-asset/jquery-mousewheel \
+  bower-asset/jquery.easing \
+  drupal/blazy \
+  drupal/slick
+
+  Be sure to install `composer-asset-plugin' globally first:
+  $ composer global require "fxp/composer-asset-plugin:~1.3"
+
+  And setup the required config first:
+  https://www.drupal.org/project/slick/issues/2907371#comment-12882235
+
+  [5] http://dgo.to/libraries
 
 FEATURES
 --------------------------------------------------------------------------------
@@ -297,6 +320,17 @@ Shortly, you should kindly help the maintainers with detailed info to help you.
 Thanks.
 
 
+SUBMITTING PATCHES OR BUG REPORTS
+--------------------------------------------------------------------------------
+When submitting bug reports, please be kind with proper reproduction, and enough
+details. Mentioning library version, module version, active theme, or anything
+which may help us identify issue better would be very helpful. Please consider
+the following to help you explain better and to help us understand better your
+bug reports, or patches as needed:
+https://www.drupal.org/issue-summaries
+https://www.drupal.org/node/1326662
+
+
 TROUBLESHOOTING
 --------------------------------------------------------------------------------
 - When upgrading from Slick v1.3.6 to later version, try to resave options at:
@@ -324,7 +358,7 @@ KNOWN ISSUES
   themes. Only if trouble with admin display, please disable it at:
   admin/config/media/blazy
 
-- The Slick lazyLoad is not supported with Responsive image. Slick only
+- The Slick lazyLoad is not compatible with Responsive image. Slick only
   facilitates Responsive image to get in. The image formatting is taken over by
   Responsive image.
   Some other options such as Aspect ratio is currently not supported either.
@@ -362,7 +396,7 @@ CURRENT DEVELOPMENT STATUS
 A full release should be reasonable after proper feedbacks from the community,
 some code cleanup, and optimization where needed. Patches are very much welcome.
 
-Alpha and Beta releases are for developers only. Be aware of possible breakage.
+Alpha, Beta, DEV releases are for developers only. Beware of possible breakage.
 
 However if it is broken, unless an update is explicitly required, clearing cache
 should fix most issues during DEV phases. Prior to any update, always visit:
