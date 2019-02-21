@@ -48,7 +48,7 @@
         "drupal/field_token_value": "^1.0",
         "drupal/file_download": "^1.1",
         "drupal/file_entity": "^2.0@beta",
-        "drupal/google_analytics": "^2.2",
+        "drupal/google_analytics": "^3.0",
         "drupal/imagick": "^1.2",
         "drupal/imce": "^1.6",
         "drupal/inline_entity_form": "^1.0@RC",

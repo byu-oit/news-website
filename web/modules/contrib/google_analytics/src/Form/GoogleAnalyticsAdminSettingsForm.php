@@ -387,6 +387,7 @@ class GoogleAnalyticsAdminSettingsForm extends ConfigFormBase {
       '#type' => 'table',
       '#header' => [
         ['data' => $this->t('Index')],
+        ['data' => $this->t('Name')],
         ['data' => $this->t('Value')],
       ],
     ];
@@ -403,6 +404,14 @@ class GoogleAnalyticsAdminSettingsForm extends ConfigFormBase {
         '#disabled' => TRUE,
         '#size' => ($limit == 200) ? 3 : 2,
         '#title' => $this->t('Custom dimension index #@index', ['@index' => $i]),
+        '#title_display' => 'invisible',
+        '#type' => 'textfield',
+      ];
+      $form['google_analytics_custom_dimension']['indexes'][$i]['name'] = [
+        '#default_value' => isset($google_analytics_custom_dimension[$i]['name']) ? $google_analytics_custom_dimension[$i]['name'] : '',
+        '#description' => $this->t('The custom dimension name.'),
+        '#maxlength' => 255,
+        '#title' => $this->t('Custom dimension name #@index', ['@index' => $i]),
         '#title_display' => 'invisible',
         '#type' => 'textfield',
       ];
@@ -444,6 +453,7 @@ class GoogleAnalyticsAdminSettingsForm extends ConfigFormBase {
       '#type' => 'table',
       '#header' => [
         ['data' => $this->t('Index')],
+        ['data' => $this->t('Name')],
         ['data' => $this->t('Value')],
       ],
     ];
@@ -459,6 +469,14 @@ class GoogleAnalyticsAdminSettingsForm extends ConfigFormBase {
         '#disabled' => TRUE,
         '#size' => ($limit == 200) ? 3 : 2,
         '#title' => $this->t('Custom metric index #@index', ['@index' => $i]),
+        '#title_display' => 'invisible',
+        '#type' => 'textfield',
+      ];
+      $form['google_analytics_custom_metric']['indexes'][$i]['name'] = [
+        '#default_value' => isset($google_analytics_custom_metric[$i]['name']) ? $google_analytics_custom_metric[$i]['name'] : '',
+        '#description' => $this->t('The custom metric name.'),
+        '#maxlength' => 255,
+        '#title' => $this->t('Custom metric name #@index', ['@index' => $i]),
         '#title_display' => 'invisible',
         '#type' => 'textfield',
       ];
@@ -522,11 +540,11 @@ class GoogleAnalyticsAdminSettingsForm extends ConfigFormBase {
     ];
     $form['advanced']['codesnippet']['google_analytics_codesnippet_create'] = [
       '#type' => 'textarea',
-      '#title' => $this->t('Create only fields'),
+      '#title' => $this->t('Parameters'),
       '#default_value' => $this->getNameValueString($config->get('codesnippet.create')),
       '#rows' => 5,
-      '#description' => $this->t('Enter one value per line, in the format name|value. Settings in this textarea will be added to <code>ga("create", "UA-XXXX-Y", {"name":"value"});</code>. For more information, read <a href=":url">create only fields</a> documentation in the Analytics.js field reference.', [':url' => 'https://developers.google.com/analytics/devguides/collection/analyticsjs/field-reference#create']),
-      '#element_validate' => [[get_class($this), 'validateCreateFieldValues']],
+      '#description' => $this->t('Enter one value per line, in the format name|value. Settings in this textarea will be added to <code>gtag("config", "UA-XXXX-Y", {"name":"value"});</code>. For more information, read <a href=":url">documentation</a> in the gtag.js reference.', [':url' => 'https://developers.google.com/analytics/devguides/collection/gtagjs/']),
+      '#element_validate' => [[get_class($this), 'validateParameterValues']],
     ];
     $form['advanced']['codesnippet']['google_analytics_codesnippet_before'] = [
       '#type' => 'textarea',
@@ -534,7 +552,7 @@ class GoogleAnalyticsAdminSettingsForm extends ConfigFormBase {
       '#default_value' => $config->get('codesnippet.before'),
       '#disabled' => $user_access_add_js_snippets,
       '#rows' => 5,
-      '#description' => $this->t('Code in this textarea will be added <strong>before</strong> <code>ga("send", "pageview");</code>.') . $user_access_add_js_snippets_permission_warning,
+      '#description' => $this->t('Code in this textarea will be added <strong>before</strong> <code>gtag("config", "UA-XXXX-Y");</code>.') . $user_access_add_js_snippets_permission_warning,
     ];
     $form['advanced']['codesnippet']['google_analytics_codesnippet_after'] = [
       '#type' => 'textarea',
@@ -542,7 +560,7 @@ class GoogleAnalyticsAdminSettingsForm extends ConfigFormBase {
       '#default_value' => $config->get('codesnippet.after'),
       '#disabled' => $user_access_add_js_snippets,
       '#rows' => 5,
-      '#description' => $this->t('Code in this textarea will be added <strong>after</strong> <code>ga("send", "pageview");</code>. This is useful if you\'d like to track a site in two accounts.') . $user_access_add_js_snippets_permission_warning,
+      '#description' => $this->t('Code in this textarea will be added <strong>after</strong> <code>gtag("config", "UA-XXXX-Y");</code>. This is useful if you\'d like to track a site in two accounts.') . $user_access_add_js_snippets_permission_warning,
     ];
 
     $form['advanced']['google_analytics_debug'] = [
@@ -804,7 +822,7 @@ class GoogleAnalyticsAdminSettingsForm extends ConfigFormBase {
   }
 
   /**
-   * The #element_validate callback for create only fields.
+   * The #element_validate callback for parameters.
    *
    * @param array $element
    *   An associative array containing the properties and children of the
@@ -814,8 +832,8 @@ class GoogleAnalyticsAdminSettingsForm extends ConfigFormBase {
    *
    * @see form_process_pattern()
    */
-  public static function validateCreateFieldValues(array $element, FormStateInterface $form_state) {
-    $values = static::extractCreateFieldValues($element['#value']);
+  public static function validateParameterValues(array $element, FormStateInterface $form_state) {
+    $values = static::extractParameterValues($element['#value']);
 
     if (!is_array($values)) {
       $form_state->setError($element, t('The %element-title field contains invalid input.', ['%element-title' => $element['#title']]));
@@ -823,11 +841,11 @@ class GoogleAnalyticsAdminSettingsForm extends ConfigFormBase {
     else {
       // Check that name and value are valid for the field type.
       foreach ($values as $name => $value) {
-        if ($error = static::validateCreateFieldName($name)) {
+        if ($error = static::validateParameterName($name)) {
           $form_state->setError($element, $error);
           break;
         }
-        if ($error = static::validateCreateFieldValue($value)) {
+        if ($error = static::validateParameterValue($value)) {
           $form_state->setError($element, $error);
           break;
         }
@@ -848,7 +866,7 @@ class GoogleAnalyticsAdminSettingsForm extends ConfigFormBase {
    *
    * @see \Drupal\options\Plugin\Field\FieldType\ListTextItem::allowedValuesString()
    */
-  protected static function extractCreateFieldValues($string) {
+  protected static function extractParameterValues($string) {
     $values = [];
 
     $list = explode("\n", $string);
@@ -874,7 +892,7 @@ class GoogleAnalyticsAdminSettingsForm extends ConfigFormBase {
   }
 
   /**
-   * Checks whether a field name is valid.
+   * Checks whether a parameter name is valid.
    *
    * @param string $name
    *   The option value entered by the user.
@@ -882,35 +900,39 @@ class GoogleAnalyticsAdminSettingsForm extends ConfigFormBase {
    * @return string|null
    *   The error message if the specified value is invalid, NULL otherwise.
    */
-  protected static function validateCreateFieldName($name) {
+  protected static function validateParameterName($name) {
     // List of supported field names:
     // https://developers.google.com/analytics/devguides/collection/analyticsjs/field-reference#create
-    $create_only_fields = [
-      'allowAnchor',
-      'alwaysSendReferrer',
-      'clientId',
-      'cookieName',
-      'cookieDomain',
-      'cookieExpires',
-      'legacyCookieDomain',
-      'legacyHistoryImport',
-      'sampleRate',
-      'siteSpeedSampleRate',
-      'storage',
-      'useAmpClientId',
+    $allowed_parameters = [
+      'client_id',
+      'currency',
+      'country',
+      'cookie_name',
+      'cookie_domain',
+      'cookie_expires',
+      'sample_rate',
+      'send_page_view',
+      'site_speed_sample_rate',
+      'use_amp_client_id',
     ];
 
-    if ($name == 'name') {
-      return t('Create only field name %name is a disallowed field name. Changing the <em>Tracker Name</em> is currently not supported.', ['%name' => $name]);
+    if ($name == 'allow_ad_personalization_signals') {
+      return t('Parameter name %name is disallowed. Please configure <em>Track display features</em> under <em>Tracking scope > Search and Advertising</em>.', ['%name' => $name]);
     }
-    if ($name == 'allowLinker') {
-      return t('Create only field name %name is a disallowed field name. Please select <em>Multiple top-level domains</em> under <em>Tracking scope > Domains</em> to enable cross domain tracking.', ['%name' => $name]);
+    if ($name == 'anonymize_ip') {
+      return t('Parameter name %name is disallowed. Please configure <em>Anonymize visitors IP address</em> under <em>Tracking scope > Privacy</em>.', ['%name' => $name]);
     }
-    if ($name == 'userId') {
-      return t('Create only field name %name is a disallowed field name. Please enable <em>Track User ID</em> under <em>Tracking scope > Users</em>.', ['%name' => $name]);
+    if ($name == 'link_attribution') {
+      return t('Parameter name %name is disallowed. Please configure <em>Track enhanced link attribution</em> under <em>Tracking scope > Links and downloads</em>.', ['%name' => $name]);
     }
-    if (!in_array($name, $create_only_fields)) {
-      return t('Create only field name %name is an unknown field name. Field names are case sensitive. Please see <a href=":url">create only fields</a> documentation for supported field names.', ['%name' => $name, ':url' => 'https://developers.google.com/analytics/devguides/collection/analyticsjs/field-reference#create']);
+    if ($name == 'linker') {
+      return t('Parameter name %name is disallowed. Please configure <em>Multiple top-level domains</em> under <em>Tracking scope > Domains</em> to enable cross domain tracking.', ['%name' => $name]);
+    }
+    if ($name == 'user_id') {
+      return t('Parameter name %name is disallowed. Please configure <em>Track User ID</em> under <em>Tracking scope > Users</em>.', ['%name' => $name]);
+    }
+    if (!in_array($name, $allowed_parameters)) {
+      return t('Parameter name %name is unknown. Parameters are case sensitive. Please see <a href=":url">documentation</a> for supported parameters.', ['%name' => $name, ':url' => 'https://developers.google.com/analytics/devguides/collection/gtagjs/']);
     }
   }
 
@@ -923,12 +945,12 @@ class GoogleAnalyticsAdminSettingsForm extends ConfigFormBase {
    * @return string|null
    *   The error message if the specified value is invalid, NULL otherwise.
    */
-  protected static function validateCreateFieldValue($value) {
+  protected static function validateParameterValue($value) {
     if (!is_bool($value) && !Unicode::strlen($value)) {
-      return t('A create only field requires a value.');
+      return t('A parameter requires a value.');
     }
     if (Unicode::strlen($value) > 255) {
-      return t('The value of a create only field must be a string at most 255 characters long.');
+      return t('The value of a parameter must be a string at most 255 characters long.');
     }
   }
 
@@ -982,13 +1004,12 @@ class GoogleAnalyticsAdminSettingsForm extends ConfigFormBase {
 
       // Convert other known fields.
       switch ($name) {
-        case 'sampleRate':
+        case 'sample_rate':
           // Float types.
           settype($value, 'float');
           break;
 
-        case 'siteSpeedSampleRate':
-        case 'cookieExpires':
+        case 'cookie_expires':
           // Integer types.
           settype($value, 'integer');
           break;

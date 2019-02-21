@@ -11,7 +11,7 @@ test_dependencies:
   - token:token
 
 # Information added by Drupal.org packaging script on 2019-01-31
-version: '8.x-2.4'
+version: '8.x-3.0'
 core: '8.x'
 project: 'google_analytics'
-datestamp: 1548968592
+datestamp: 1548968586
